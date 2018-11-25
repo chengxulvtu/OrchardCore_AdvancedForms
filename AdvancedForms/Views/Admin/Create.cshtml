@@ -6,7 +6,8 @@
 
 <style asp-src="/AdvancedForms/Styles/formio.full.min.css"></style>
 <script asp-src="/AdvancedForms/Scripts/formio.full.min.js" at="Head" asp-name="formio.full.min"></script>
-
+<script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
+<script asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" at="Head"></script>
 
 @{
     var standardComp = "{components:this.formioComponents}";
@@ -15,6 +16,7 @@
 }
 
 <script type='text/javascript' at="Head">
+
     window.onload = function () {
         let formioComponents;
         Formio.builder(document.getElementById('builder'),
@@ -30,10 +32,22 @@
             )
             .then(function (builder) {
                 builder.on('saveComponent', function () {
-                  document.getElementById('Container').value = JSON.stringify(builder.schema);
+                    document.getElementById('Container').value = JSON.stringify(builder.schema);
+                    var formElement = document.getElementById('formio');
+                    formElement.innerHTML = '';
+                    var formJsonElement = document.getElementById('formJson');
+                    formElement.innerHTML = '';
+                    formJsonElement.innerHTML = '';
+                    if (builder.form.components) {                       
+                        Formio.createForm(formElement, builder.form).then();
+                        formJsonElement.appendChild(document.createTextNode(JSON.stringify(builder.schema, null, 4)));
+                    }
                 });
             });
     };
+
+
+
 </script>
 
 <h1>@T["Advanced Form Module"]</h1>
@@ -65,7 +79,29 @@
     <br />
 </div>
 
-<div id='builder'></div>
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#formBuilder">Form Builder</a></li>
+    <li><a data-toggle="tab" href="#formPreview">Preview</a></li>
+    <li><a data-toggle="tab" href="#formJsonTab">JSON</a></li>
+</ul>
+
+<div class="tab-content">
+    <div id="formBuilder" class="tab-pane fade in active">
+        <br />
+        <div id='builder'></div>
+    </div>
+    <div id="formPreview" class="tab-pane fade">
+        <br />
+        <div id='formio'></div>
+    </div>
+    <div id="formJsonTab" class="tab-pane fade">
+        <br />
+        <div class="card card-body bg-light jsonviewer">
+            <pre id="formJson"></pre>
+        </div>        
+    </div>
+</div>
+
 <input type="hidden" asp-for="Container" form="main" />
 
 <br />
@@ -76,7 +112,7 @@
 @if (isEdit)
 {
     var returnUrl = Context.Request.Query["returnUrl"];
-    <button form="main" type="submit" name="submit.Save" class="primaryAction btn btn-primary" value="submit.Save">@T["Save Draft"]</button>      
+    <button form="main" type="submit" name="submit.Save" class="primaryAction btn btn-primary" value="submit.Save">@T["Save Draft"]</button>
     @if (!String.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
     {
         <a id="button-cancel" href="@returnUrl" class="btn btn-secondary">@T["Cancel"]</a>
