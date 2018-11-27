@@ -39,15 +39,21 @@
                     formElement.innerHTML = '';
                     formJsonElement.innerHTML = '';
                     if (builder.form.components) {                       
-                        Formio.createForm(formElement, builder.form).then();
+                        Formio.createForm(formElement, builder.form).then(onForm);
                         formJsonElement.appendChild(document.createTextNode(JSON.stringify(builder.schema, null, 4)));
                     }
                 });
             });
     };
 
-
-
+    var onForm = function (form) {
+        form.on('change', function () {
+            var subJsonElement = document.getElementById('subJson');
+            subJsonElement.innerHTML = '';
+            subJsonElement.appendChild(document.createTextNode(JSON.stringify(form.submission, null, 4)));
+        });
+    };
+    
 </script>
 
 <h1>@T["Advanced Form Module"]</h1>
@@ -81,8 +87,9 @@
 
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#formBuilder">@T["Form Builder"]</a></li>
-<li><a data-toggle="tab" href="#formPreview">@T["Preview"]</a></li>
-<li><a data-toggle="tab" href="#formJsonTab">@T["JSON"]</a></li>
+    <li><a data-toggle="tab" href="#formPreview">@T["Preview"]</a></li>
+    <li><a data-toggle="tab" href="#formJsonTab">@T["Form JSON"]</a></li>
+    <li><a data-toggle="tab" href="#subJsonTab">@T["Subumssion JSON"]</a></li>
 </ul>
 
 <div class="tab-content">
@@ -98,7 +105,13 @@
         <br />
         <div class="card card-body bg-light jsonviewer">
             <pre id="formJson"></pre>
-        </div>        
+        </div>
+    </div>
+    <div id="subJsonTab" class="tab-pane fade">
+        <br />
+        <div class="card card-body bg-light jsonviewer">
+            <pre id="subJson"></pre>
+        </div>
     </div>
 </div>
 
