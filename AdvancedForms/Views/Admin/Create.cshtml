@@ -1,13 +1,22 @@
 ﻿@model AdvancedForms.ViewModels.AdvancedFormViewModel
 
+
 <style asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" debug-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></style>
 @*<style asp-src="https://unpkg.com/formiojs@latest/dist/formio.full.min.css" debug-src="https://unpkg.com/formiojs@latest/dist/formio.full.min.css"></style>*@
 @*<script asp-src="https://unpkg.com/formiojs@latest/dist/formio.full.min.js" debug-src="https://unpkg.com/formiojs@latest/dist/formio.full.min.js" at="Head" asp-name="formio.full.min"></script>*@
 
 <style asp-src="/AdvancedForms/Styles/formio.full.min.css"></style>
 <script asp-src="/AdvancedForms/Scripts/formio.full.min.js" at="Head" asp-name="formio.full.min"></script>
+
+
 <script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
 <script asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" at="Head"></script>
+
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<style asp-src="/AdvancedForms/Styles/trumbowyg.min.css"></style>
+<script asp-src="/AdvancedForms/Scripts/trumbowyg.min.js" at="Head" asp-name="trumbowyg.min"></script>
+
 
 @{
     var standardComp = "{components:this.formioComponents}";
@@ -38,7 +47,7 @@
                     var formJsonElement = document.getElementById('formJson');
                     formElement.innerHTML = '';
                     formJsonElement.innerHTML = '';
-                    if (builder.form.components) {                       
+                    if (builder.form.components) {
                         Formio.createForm(formElement, builder.form).then(onForm);
                         formJsonElement.appendChild(document.createTextNode(JSON.stringify(builder.schema, null, 4)));
                     }
@@ -53,7 +62,7 @@
             subJsonElement.appendChild(document.createTextNode(JSON.stringify(form.submission, null, 4)));
         });
     };
-    
+
 </script>
 
 <h1>@T["Advanced Form Module"]</h1>
@@ -90,6 +99,7 @@
     <li><a data-toggle="tab" href="#formPreview">@T["Preview"]</a></li>
     <li><a data-toggle="tab" href="#formJsonTab">@T["Form JSON"]</a></li>
     <li><a data-toggle="tab" href="#subJsonTab">@T["Subumssion JSON"]</a></li>
+    <li><a data-toggle="tab" href="#printTab">@T["Print"]</a></li>
 </ul>
 
 <div class="tab-content">
@@ -113,8 +123,24 @@
             <pre id="subJson"></pre>
         </div>
     </div>
+    <div id="printTab" class="tab-pane fade">
+        <br />
+        <div>
+            <label asp-for="Header">@T["Header"]</label>
+            <textarea asp-for="Header" class="form-control content-preview-text content-caption-text" form="main"></textarea>
+            <span class="hint">@T["The Header for the form."]</span>
+            <br />
+            <br />
+        </div>
+        <div>
+            <label asp-for="Footer">@T["Footer"]</label>
+            <textarea asp-for="Footer" class="form-control content-preview-text content-caption-text" form="main"></textarea>
+            <span class="hint">@T["The Footer for the form."]</span>
+            <br />
+            <br />
+        </div>
+    </div>
 </div>
-
 <input type="hidden" asp-for="Container" form="main" />
 
 <br />
@@ -132,3 +158,12 @@
     }
 }
 <input type="hidden" asp-for="Id" form="main" />
+
+
+<script type="text/javascript">
+    $('#Footer').trumbowyg();
+    $('#Header').trumbowyg();
+    $("#Description").trumbowyg();
+    $("#Instructions").trumbowyg();
+</script>
+

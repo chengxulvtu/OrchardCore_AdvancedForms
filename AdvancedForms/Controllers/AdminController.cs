@@ -104,12 +104,11 @@ namespace AdvancedForms.Controllers
             }
 
             var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions, 
-                viewModel.Container, viewModel.Title);
+                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer);
             var titlePart = new TitlePart(viewModel.Title);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.Content.TitlePart = JToken.FromObject(titlePart);
             contentItem.Content.AutoroutePart.Path = CreatePath(viewModel.Title);
-
             if (!ModelState.IsValid)
             {
                 _session.Cancel();
@@ -145,7 +144,9 @@ namespace AdvancedForms.Controllers
                 Title = contentItem.Content.AdvancedForm.Title,
                 Container = contentItem.Content.AdvancedForm.Container.Html,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
-                Instructions = contentItem.Content.AdvancedForm.Instructions.Html
+                Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
+                Header = contentItem.Content.AdvancedForm.Header.Html,
+                Footer = contentItem.Content.AdvancedForm.Footer.Html,
             };
 
             return View("Create", model);
@@ -214,7 +215,7 @@ namespace AdvancedForms.Controllers
             }
 
             var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions,
-                viewModel.Container, viewModel.Title);
+                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer);
             var titlePart = new TitlePart(viewModel.Title);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.Content.TitlePart = JToken.FromObject(titlePart);
@@ -226,7 +227,9 @@ namespace AdvancedForms.Controllers
                 Title = contentItem.Content.AdvancedForm.Title,
                 Container = contentItem.Content.AdvancedForm.Container.Html,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
-                Instructions = contentItem.Content.AdvancedForm.Instructions.Html
+                Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
+                Header = contentItem.Content.AdvancedForm.Header.Html,
+                Footer = contentItem.Content.AdvancedForm.Footer.Html
             };               
 
             if (!ModelState.IsValid)

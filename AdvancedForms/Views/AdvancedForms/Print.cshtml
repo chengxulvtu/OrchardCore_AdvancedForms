@@ -45,11 +45,11 @@
 </script>
 
 <div class="wrapper">
-    <button id="printButton" style="font-size:24px" onclick="screenPrint();">Print&nbsp;<i class="fa fa-print"></i></button>    
+    <button id="printButton" style="font-size:24px" onclick="screenPrint();">Print&nbsp;<i class="fa fa-print"></i></button>
 </div>
 
-<h1>@Model.Title</h1>
+@Html.Raw(Model.Header)
+<h2>@Model.Title</h2>
 
 <div id='formio'></div>
-
-
+@Html.Raw(Model.Footer)

@@ -42,7 +42,10 @@
                       submission: JSON.stringify(submission),
                       title: '@Model.Title',
                       id: '@Model.Id',
-                      container: document.getElementById('Container').value
+                      container: document.getElementById('Container').value,
+                      header: '@Model.Header',
+                      footer: '@Model.Footer',
+                      description: '@Model.Description'
                   },
                   success: function (data) {
                       window.location.replace("/submission-confirmation");
@@ -75,19 +78,26 @@
     </h1>
 </div>
 <div>
-    @Html.LabelFor(model => model.Description)
-    <br />
-    @Html.Raw(Model.Description)
-    <br />
-    <br />
+    @if (!string.IsNullOrEmpty(Model.Description))
+    {
+        @Html.LabelFor(model => model.Description)
+        <br />
+        @Html.Raw(Model.Description)
+        <br />
+        <br />
+    }
 </div>
 
 <div>
-    @Html.LabelFor(model => model.Instructions)
-    <br />
-    @Html.Raw(Model.Instructions)
-    <br />
-    <br />
+
+    @if (!string.IsNullOrEmpty(Model.Instructions))
+    {
+        @Html.LabelFor(model => model.Instructions)
+        <br />
+        @Html.Raw(Model.Instructions)
+        <br />
+        <br />
+    }
 </div>
 
 <div id="advancedForm-errors"></div>
@@ -96,3 +106,4 @@
 
 <input type="hidden" asp-for="Container" form="main" />
 <input type="hidden" asp-for="Id" form="main" />
+

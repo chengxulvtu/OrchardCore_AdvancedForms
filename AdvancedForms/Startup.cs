@@ -34,8 +34,6 @@ namespace AdvancedForms
                 defaults: new { controller = "AdvancedForms", action = "Index" }
             );
 
-
-
             routes.MapAreaRoute(
                 name: "DisplayAdvancedForm",
                 areaName: "AdvancedForms",

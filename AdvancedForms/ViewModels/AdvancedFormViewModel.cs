@@ -6,6 +6,8 @@ namespace AdvancedForms.ViewModels
     {
         public string Id { get; set; }
         public string Title { get; set; }
+        public string Header { get; set; }
+        public string Footer { get; set; }
         public string Description { get; set; }
         public string Instructions { get; set; }
         public string Container { get; set; }
