@@ -12,20 +12,23 @@ using System;
 using System.Reflection;
 
 [assembly: OrchardCore.Modules.Manifest.ModuleMarkerAttribute("AdvancedForms", "Module")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\Admin\\Create.cshtml|C:\\Code\\Forms\\AdvancedForms\\View" +
-    "s\\Admin\\Create.cshtml")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\AdvancedForms\\Display.cshtml|C:\\Code\\Forms\\AdvancedF" +
-    "orms\\Views\\AdvancedForms\\Display.cshtml")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\AdvancedForms\\Index.cshtml|C:\\Code\\Forms\\AdvancedFor" +
-    "ms\\Views\\AdvancedForms\\Index.cshtml")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\AdvancedForms\\Print.cshtml|C:\\Code\\Forms\\AdvancedFor" +
-    "ms\\Views\\AdvancedForms\\Print.cshtml")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\_ViewImports.cshtml|C:\\Code\\Forms\\AdvancedForms\\View" +
-    "s\\_ViewImports.cshtml")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\formio.full.min.js|C:\\Code\\Forms\\AdvancedF" +
-    "orms\\wwwroot\\Scripts\\formio.full.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Styles\\formio.full.min.css|C:\\Code\\Forms\\AdvancedF" +
-    "orms\\wwwroot\\Styles\\formio.full.min.css")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\Admin\\Create.cshtml|C:\\AST-Work\\Matt Kenney\\Latest\\O" +
+    "rchardCore_AdvancedForms\\AdvancedForms\\Views\\Admin\\Create.cshtml")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\AdvancedForms\\Display.cshtml|C:\\AST-Work\\Matt Kenney" +
+    "\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\Views\\AdvancedForms\\Display.csht" +
+    "ml")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\AdvancedForms\\Index.cshtml|C:\\AST-Work\\Matt Kenney\\L" +
+    "atest\\OrchardCore_AdvancedForms\\AdvancedForms\\Views\\AdvancedForms\\Index.cshtml")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\AdvancedForms\\Print.cshtml|C:\\AST-Work\\Matt Kenney\\L" +
+    "atest\\OrchardCore_AdvancedForms\\AdvancedForms\\Views\\AdvancedForms\\Print.cshtml")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\_ViewImports.cshtml|C:\\AST-Work\\Matt Kenney\\Latest\\O" +
+    "rchardCore_AdvancedForms\\AdvancedForms\\Views\\_ViewImports.cshtml")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\formio.full.min.js|C:\\AST-Work\\Matt Kenney" +
+    "\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\formio.full.min." +
+    "js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Styles\\formio.full.min.css|C:\\AST-Work\\Matt Kenney" +
+    "\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Styles\\formio.full.min.c" +
+    "ss")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdvancedForms")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
