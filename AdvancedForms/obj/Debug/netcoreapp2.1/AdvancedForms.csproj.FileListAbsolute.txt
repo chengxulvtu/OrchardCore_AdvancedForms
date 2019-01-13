@@ -33,3 +33,12 @@ C:\Code\Forms\AdvancedForms\obj\Debug\netcoreapp2.1\AdvancedForms.AssemblyInfo.c
 C:\Code\Forms\AdvancedForms\obj\Debug\netcoreapp2.1\AdvancedForms.dll
 C:\Code\Forms\AdvancedForms\obj\Debug\netcoreapp2.1\AdvancedForms.pdb
 C:\Code\Forms\AdvancedForms\obj\Debug\netcoreapp2.1\AdvancedForms.csprojAssemblyReference.cache
+C:\Code\Orchard\AdvancedForms\AdvancedForms\obj\Debug\netcoreapp2.1\AdvancedForms.dll
+C:\Code\Orchard\AdvancedForms\AdvancedForms\obj\Debug\netcoreapp2.1\AdvancedForms.pdb
+C:\Code\Orchard\AdvancedForms\AdvancedForms\bin\Debug\netcoreapp2.1\AdvancedForms.deps.json
+C:\Code\Orchard\AdvancedForms\AdvancedForms\bin\Debug\netcoreapp2.1\AdvancedForms.dll
+C:\Code\Orchard\AdvancedForms\AdvancedForms\bin\Debug\netcoreapp2.1\AdvancedForms.pdb
+C:\Code\Orchard\AdvancedForms\AdvancedForms\obj\Debug\netcoreapp2.1\AdvancedForms.csproj.CoreCompileInputs.cache
+C:\Code\Orchard\AdvancedForms\AdvancedForms\obj\Debug\netcoreapp2.1\AdvancedForms.AssemblyInfoInputs.cache
+C:\Code\Orchard\AdvancedForms\AdvancedForms\obj\Debug\netcoreapp2.1\AdvancedForms.AssemblyInfo.cs
+C:\Code\Orchard\AdvancedForms\AdvancedForms\obj\Debug\netcoreapp2.1\AdvancedForms.csprojAssemblyReference.cache

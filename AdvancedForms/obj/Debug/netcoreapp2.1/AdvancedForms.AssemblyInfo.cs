@@ -12,407 +12,394 @@ using System;
 using System.Reflection;
 
 [assembly: OrchardCore.Modules.Manifest.ModuleMarkerAttribute("AdvancedForms", "Module")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\Admin\\Create.cshtml|C:\\AST-Work\\Matt Kenney\\Latest\\O" +
-    "rchardCore_AdvancedForms\\AdvancedForms\\Views\\Admin\\Create.cshtml")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\AdvancedForms\\Display.cshtml|C:\\AST-Work\\Matt Kenney" +
-    "\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\Views\\AdvancedForms\\Display.csht" +
-    "ml")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\AdvancedForms\\Index.cshtml|C:\\AST-Work\\Matt Kenney\\L" +
-    "atest\\OrchardCore_AdvancedForms\\AdvancedForms\\Views\\AdvancedForms\\Index.cshtml")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\AdvancedForms\\Print.cshtml|C:\\AST-Work\\Matt Kenney\\L" +
-    "atest\\OrchardCore_AdvancedForms\\AdvancedForms\\Views\\AdvancedForms\\Print.cshtml")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\_ViewImports.cshtml|C:\\AST-Work\\Matt Kenney\\Latest\\O" +
-    "rchardCore_AdvancedForms\\AdvancedForms\\Views\\_ViewImports.cshtml")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\formio.full.min.js|C:\\AST-Work\\Matt Kenney" +
-    "\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\formio.full.min." +
-    "js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ar.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ar.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ar.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ar.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\bg.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\bg.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\bg.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\bg.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\by.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\by.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\by.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\by.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ca.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ca.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ca.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ca.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\cs.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\cs.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\cs.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\cs.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\da.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\da.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\da.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\da.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\de.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\de.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\de.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\de.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\el.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\el.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\el.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\el.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\es.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\es.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\es.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\es.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\es_ar.js|C:\\AST-Work\\Matt Kenney\\Lat" +
-    "est\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\es_ar.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\es_ar.min.js|C:\\AST-Work\\Matt Kenney" +
-    "\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\es_ar.min." +
-    "js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\fa.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\fa.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\fa.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\fa.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\fi.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\fi.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\fi.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\fi.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\fr.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\fr.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\fr.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\fr.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\he.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\he.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\he.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\he.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\hr.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\hr.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\hr.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\hr.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\hu.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\hu.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\hu.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\hu.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\id.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\id.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\id.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\id.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\it.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\it.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\it.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\it.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ja.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ja.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ja.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ja.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ko.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ko.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ko.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ko.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\lt.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\lt.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\lt.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\lt.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\mn.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\mn.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\mn.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\mn.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\my.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\my.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\my.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\my.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\nl.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\nl.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\nl.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\nl.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\no_nb.js|C:\\AST-Work\\Matt Kenney\\Lat" +
-    "est\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\no_nb.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\no_nb.min.js|C:\\AST-Work\\Matt Kenney" +
-    "\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\no_nb.min." +
-    "js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ph.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ph.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ph.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ph.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\pl.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\pl.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\pl.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\pl.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\pt.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\pt.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\pt.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\pt.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\pt_br.js|C:\\AST-Work\\Matt Kenney\\Lat" +
-    "est\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\pt_br.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\pt_br.min.js|C:\\AST-Work\\Matt Kenney" +
-    "\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\pt_br.min." +
-    "js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ro.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ro.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ro.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ro.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\rs.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\rs.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\rs.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\rs.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\rs_latin.js|C:\\AST-Work\\Matt Kenney\\" +
-    "Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\rs_latin.js" +
-    "")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\rs_latin.min.js|C:\\AST-Work\\Matt Ken" +
-    "ney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\rs_lati" +
-    "n.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ru.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ru.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ru.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ru.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\sk.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\sk.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\sk.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\sk.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\sq.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\sq.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\sq.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\sq.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\sv.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\sv.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\sv.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\sv.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\th.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\th.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\th.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\th.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\tr.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\tr.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\tr.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\tr.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ua.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ua.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ua.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ua.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\vi.js|C:\\AST-Work\\Matt Kenney\\Latest" +
-    "\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\vi.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\vi.min.js|C:\\AST-Work\\Matt Kenney\\La" +
-    "test\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\vi.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\zh_cn.js|C:\\AST-Work\\Matt Kenney\\Lat" +
-    "est\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\zh_cn.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\zh_cn.min.js|C:\\AST-Work\\Matt Kenney" +
-    "\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\zh_cn.min." +
-    "js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\zh_tw.js|C:\\AST-Work\\Matt Kenney\\Lat" +
-    "est\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\zh_tw.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\zh_tw.min.js|C:\\AST-Work\\Matt Kenney" +
-    "\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\zh_tw.min." +
-    "js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\Admin\\Create.cshtml|C:\\Code\\Orchard\\AdvancedForms\\Ad" +
+    "vancedForms\\Views\\Admin\\Create.cshtml")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\AdvancedForms\\Display.cshtml|C:\\Code\\Orchard\\Advance" +
+    "dForms\\AdvancedForms\\Views\\AdvancedForms\\Display.cshtml")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\AdvancedForms\\Index.cshtml|C:\\Code\\Orchard\\AdvancedF" +
+    "orms\\AdvancedForms\\Views\\AdvancedForms\\Index.cshtml")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\AdvancedForms\\Print.cshtml|C:\\Code\\Orchard\\AdvancedF" +
+    "orms\\AdvancedForms\\Views\\AdvancedForms\\Print.cshtml")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\Views\\_ViewImports.cshtml|C:\\Code\\Orchard\\AdvancedForms\\Ad" +
+    "vancedForms\\Views\\_ViewImports.cshtml")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\formio.full.min.js|C:\\Code\\Orchard\\Advance" +
+    "dForms\\AdvancedForms\\wwwroot\\Scripts\\formio.full.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ar.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\ar.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ar.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ar.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\bg.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\bg.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\bg.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\bg.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\by.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\by.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\by.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\by.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ca.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\ca.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ca.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ca.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\cs.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\cs.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\cs.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\cs.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\da.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\da.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\da.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\da.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\de.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\de.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\de.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\de.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\el.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\el.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\el.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\el.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\es.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\es.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\es.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\es.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\es_ar.js|C:\\Code\\Orchard\\AdvancedFor" +
+    "ms\\AdvancedForms\\wwwroot\\Scripts\\langs\\es_ar.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\es_ar.min.js|C:\\Code\\Orchard\\Advance" +
+    "dForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\es_ar.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\fa.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\fa.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\fa.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\fa.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\fi.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\fi.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\fi.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\fi.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\fr.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\fr.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\fr.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\fr.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\he.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\he.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\he.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\he.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\hr.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\hr.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\hr.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\hr.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\hu.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\hu.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\hu.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\hu.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\id.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\id.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\id.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\id.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\it.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\it.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\it.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\it.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ja.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\ja.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ja.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ja.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ko.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\ko.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ko.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ko.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\lt.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\lt.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\lt.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\lt.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\mn.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\mn.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\mn.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\mn.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\my.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\my.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\my.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\my.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\nl.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\nl.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\nl.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\nl.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\no_nb.js|C:\\Code\\Orchard\\AdvancedFor" +
+    "ms\\AdvancedForms\\wwwroot\\Scripts\\langs\\no_nb.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\no_nb.min.js|C:\\Code\\Orchard\\Advance" +
+    "dForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\no_nb.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ph.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\ph.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ph.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ph.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\pl.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\pl.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\pl.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\pl.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\pt.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\pt.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\pt.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\pt.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\pt_br.js|C:\\Code\\Orchard\\AdvancedFor" +
+    "ms\\AdvancedForms\\wwwroot\\Scripts\\langs\\pt_br.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\pt_br.min.js|C:\\Code\\Orchard\\Advance" +
+    "dForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\pt_br.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ro.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\ro.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ro.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ro.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\rs.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\rs.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\rs.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\rs.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\rs_latin.js|C:\\Code\\Orchard\\Advanced" +
+    "Forms\\AdvancedForms\\wwwroot\\Scripts\\langs\\rs_latin.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\rs_latin.min.js|C:\\Code\\Orchard\\Adva" +
+    "ncedForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\rs_latin.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ru.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\ru.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ru.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ru.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\sk.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\sk.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\sk.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\sk.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\sq.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\sq.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\sq.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\sq.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\sv.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\sv.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\sv.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\sv.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\th.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\th.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\th.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\th.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\tr.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\tr.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\tr.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\tr.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ua.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\ua.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\ua.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\ua.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\vi.js|C:\\Code\\Orchard\\AdvancedForms\\" +
+    "AdvancedForms\\wwwroot\\Scripts\\langs\\vi.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\vi.min.js|C:\\Code\\Orchard\\AdvancedFo" +
+    "rms\\AdvancedForms\\wwwroot\\Scripts\\langs\\vi.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\zh_cn.js|C:\\Code\\Orchard\\AdvancedFor" +
+    "ms\\AdvancedForms\\wwwroot\\Scripts\\langs\\zh_cn.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\zh_cn.min.js|C:\\Code\\Orchard\\Advance" +
+    "dForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\zh_cn.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\zh_tw.js|C:\\Code\\Orchard\\AdvancedFor" +
+    "ms\\AdvancedForms\\wwwroot\\Scripts\\langs\\zh_tw.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\langs\\zh_tw.min.js|C:\\Code\\Orchard\\Advance" +
+    "dForms\\AdvancedForms\\wwwroot\\Scripts\\langs\\zh_tw.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\allowtagsfrompaste\\trumbowyg.allow" +
-    "tagsfrompaste.js|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\Advanc" +
-    "edForms\\wwwroot\\Scripts\\plugins\\allowtagsfrompaste\\trumbowyg.allowtagsfrompaste." +
-    "js")]
+    "tagsfrompaste.js|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plu" +
+    "gins\\allowtagsfrompaste\\trumbowyg.allowtagsfrompaste.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\allowtagsfrompaste\\trumbowyg.allow" +
-    "tagsfrompaste.min.js|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\Ad" +
-    "vancedForms\\wwwroot\\Scripts\\plugins\\allowtagsfrompaste\\trumbowyg.allowtagsfrompa" +
-    "ste.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\base64\\trumbowyg.base64.js|C:\\AST-" +
-    "Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\" +
-    "plugins\\base64\\trumbowyg.base64.js")]
+    "tagsfrompaste.min.js|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts" +
+    "\\plugins\\allowtagsfrompaste\\trumbowyg.allowtagsfrompaste.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\base64\\trumbowyg.base64.js|C:\\Code" +
+    "\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\base64\\trumbowyg.ba" +
+    "se64.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\base64\\trumbowyg.base64.min.js|C:\\" +
-    "AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scri" +
-    "pts\\plugins\\base64\\trumbowyg.base64.min.js")]
+    "Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\base64\\trumbowy" +
+    "g.base64.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\cleanpaste\\trumbowyg.cleanpaste.js" +
-    "|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\" +
-    "Scripts\\plugins\\cleanpaste\\trumbowyg.cleanpaste.js")]
+    "|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\cleanpaste\\" +
+    "trumbowyg.cleanpaste.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\cleanpaste\\trumbowyg.cleanpaste.mi" +
-    "n.js|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwr" +
-    "oot\\Scripts\\plugins\\cleanpaste\\trumbowyg.cleanpaste.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\colors\\trumbowyg.colors.js|C:\\AST-" +
-    "Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\" +
-    "plugins\\colors\\trumbowyg.colors.js")]
+    "n.js|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\cleanpa" +
+    "ste\\trumbowyg.cleanpaste.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\colors\\trumbowyg.colors.js|C:\\Code" +
+    "\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\colors\\trumbowyg.co" +
+    "lors.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\colors\\trumbowyg.colors.min.js|C:\\" +
-    "AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scri" +
-    "pts\\plugins\\colors\\trumbowyg.colors.min.js")]
+    "Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\colors\\trumbowy" +
+    "g.colors.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\colors\\ui\\sass\\trumbowyg.colors.sc" +
-    "ss|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroo" +
-    "t\\Scripts\\plugins\\colors\\ui\\sass\\trumbowyg.colors.scss")]
+    "ss|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\colors\\ui" +
+    "\\sass\\trumbowyg.colors.scss")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\colors\\ui\\trumbowyg.colors.css|C:\\" +
-    "AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scri" +
-    "pts\\plugins\\colors\\ui\\trumbowyg.colors.css")]
+    "Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\colors\\ui\\trumb" +
+    "owyg.colors.css")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\colors\\ui\\trumbowyg.colors.min.css" +
-    "|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\" +
-    "Scripts\\plugins\\colors\\ui\\trumbowyg.colors.min.css")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\emoji\\trumbowyg.emoji.js|C:\\AST-Wo" +
-    "rk\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\pl" +
-    "ugins\\emoji\\trumbowyg.emoji.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\emoji\\trumbowyg.emoji.min.js|C:\\AS" +
-    "T-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Script" +
-    "s\\plugins\\emoji\\trumbowyg.emoji.min.js")]
+    "|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\colors\\ui\\t" +
+    "rumbowyg.colors.min.css")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\emoji\\trumbowyg.emoji.js|C:\\Code\\O" +
+    "rchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\emoji\\trumbowyg.emoji" +
+    ".js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\emoji\\trumbowyg.emoji.min.js|C:\\Co" +
+    "de\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\emoji\\trumbowyg.e" +
+    "moji.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\emoji\\ui\\sass\\trumbowyg.emoji.scss" +
-    "|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\" +
-    "Scripts\\plugins\\emoji\\ui\\sass\\trumbowyg.emoji.scss")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\emoji\\ui\\trumbowyg.emoji.css|C:\\AS" +
-    "T-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Script" +
-    "s\\plugins\\emoji\\ui\\trumbowyg.emoji.css")]
+    "|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\emoji\\ui\\sa" +
+    "ss\\trumbowyg.emoji.scss")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\emoji\\ui\\trumbowyg.emoji.css|C:\\Co" +
+    "de\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\emoji\\ui\\trumbowy" +
+    "g.emoji.css")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\emoji\\ui\\trumbowyg.emoji.min.css|C" +
-    ":\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Sc" +
-    "ripts\\plugins\\emoji\\ui\\trumbowyg.emoji.min.css")]
+    ":\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\emoji\\ui\\trum" +
+    "bowyg.emoji.min.css")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\fontfamily\\trumbowyg.fontfamily.js" +
-    "|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\" +
-    "Scripts\\plugins\\fontfamily\\trumbowyg.fontfamily.js")]
+    "|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\fontfamily\\" +
+    "trumbowyg.fontfamily.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\fontfamily\\trumbowyg.fontfamily.mi" +
-    "n.js|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwr" +
-    "oot\\Scripts\\plugins\\fontfamily\\trumbowyg.fontfamily.min.js")]
+    "n.js|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\fontfam" +
+    "ily\\trumbowyg.fontfamily.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\fontsize\\trumbowyg.fontsize.js|C:\\" +
-    "AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scri" +
-    "pts\\plugins\\fontsize\\trumbowyg.fontsize.js")]
+    "Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\fontsize\\trumbo" +
+    "wyg.fontsize.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\fontsize\\trumbowyg.fontsize.min.js" +
-    "|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\" +
-    "Scripts\\plugins\\fontsize\\trumbowyg.fontsize.min.js")]
+    "|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\fontsize\\tr" +
+    "umbowyg.fontsize.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\highlight\\trumbowyg.highlight.js|C" +
-    ":\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Sc" +
-    "ripts\\plugins\\highlight\\trumbowyg.highlight.js")]
+    ":\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\highlight\\tru" +
+    "mbowyg.highlight.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\highlight\\trumbowyg.highlight.min." +
-    "js|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroo" +
-    "t\\Scripts\\plugins\\highlight\\trumbowyg.highlight.min.js")]
+    "js|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\highlight" +
+    "\\trumbowyg.highlight.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\highlight\\ui\\sass\\trumbowyg.highli" +
-    "ght.scss|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\" +
-    "wwwroot\\Scripts\\plugins\\highlight\\ui\\sass\\trumbowyg.highlight.scss")]
+    "ght.scss|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\hig" +
+    "hlight\\ui\\sass\\trumbowyg.highlight.scss")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\highlight\\ui\\trumbowyg.highlight.c" +
-    "ss|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroo" +
-    "t\\Scripts\\plugins\\highlight\\ui\\trumbowyg.highlight.css")]
+    "ss|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\highlight" +
+    "\\ui\\trumbowyg.highlight.css")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\highlight\\ui\\trumbowyg.highlight.m" +
-    "in.css|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\ww" +
-    "wroot\\Scripts\\plugins\\highlight\\ui\\trumbowyg.highlight.min.css")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\history\\trumbowyg.history.js|C:\\AS" +
-    "T-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Script" +
-    "s\\plugins\\history\\trumbowyg.history.js")]
+    "in.css|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\highl" +
+    "ight\\ui\\trumbowyg.highlight.min.css")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\history\\trumbowyg.history.js|C:\\Co" +
+    "de\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\history\\trumbowyg" +
+    ".history.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\history\\trumbowyg.history.min.js|C" +
-    ":\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Sc" +
-    "ripts\\plugins\\history\\trumbowyg.history.min.js")]
+    ":\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\history\\trumb" +
+    "owyg.history.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\insertaudio\\trumbowyg.insertaudio." +
-    "js|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroo" +
-    "t\\Scripts\\plugins\\insertaudio\\trumbowyg.insertaudio.js")]
+    "js|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\insertaud" +
+    "io\\trumbowyg.insertaudio.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\insertaudio\\trumbowyg.insertaudio." +
-    "min.js|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\ww" +
-    "wroot\\Scripts\\plugins\\insertaudio\\trumbowyg.insertaudio.min.js")]
+    "min.js|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\inser" +
+    "taudio\\trumbowyg.insertaudio.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\lineheight\\trumbowyg.lineheight.js" +
-    "|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\" +
-    "Scripts\\plugins\\lineheight\\trumbowyg.lineheight.js")]
+    "|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\lineheight\\" +
+    "trumbowyg.lineheight.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\lineheight\\trumbowyg.lineheight.mi" +
-    "n.js|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwr" +
-    "oot\\Scripts\\plugins\\lineheight\\trumbowyg.lineheight.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mathml\\trumbowyg.mathml.js|C:\\AST-" +
-    "Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\" +
-    "plugins\\mathml\\trumbowyg.mathml.js")]
+    "n.js|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\linehei" +
+    "ght\\trumbowyg.lineheight.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mathml\\trumbowyg.mathml.js|C:\\Code" +
+    "\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mathml\\trumbowyg.ma" +
+    "thml.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mathml\\trumbowyg.mathml.min.js|C:\\" +
-    "AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scri" +
-    "pts\\plugins\\mathml\\trumbowyg.mathml.min.js")]
+    "Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mathml\\trumbowy" +
+    "g.mathml.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mathml\\ui\\sass\\trumbowyg.mathml.sc" +
-    "ss|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroo" +
-    "t\\Scripts\\plugins\\mathml\\ui\\sass\\trumbowyg.mathml.scss")]
+    "ss|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mathml\\ui" +
+    "\\sass\\trumbowyg.mathml.scss")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mathml\\ui\\trumbowyg.mathml.css|C:\\" +
-    "AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scri" +
-    "pts\\plugins\\mathml\\ui\\trumbowyg.mathml.css")]
+    "Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mathml\\ui\\trumb" +
+    "owyg.mathml.css")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mathml\\ui\\trumbowyg.mathml.min.css" +
-    "|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\" +
-    "Scripts\\plugins\\mathml\\ui\\trumbowyg.mathml.min.css")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mention\\trumbowyg.mention.js|C:\\AS" +
-    "T-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Script" +
-    "s\\plugins\\mention\\trumbowyg.mention.js")]
+    "|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mathml\\ui\\t" +
+    "rumbowyg.mathml.min.css")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mention\\trumbowyg.mention.js|C:\\Co" +
+    "de\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mention\\trumbowyg" +
+    ".mention.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mention\\trumbowyg.mention.min.js|C" +
-    ":\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Sc" +
-    "ripts\\plugins\\mention\\trumbowyg.mention.min.js")]
+    ":\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mention\\trumb" +
+    "owyg.mention.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mention\\ui\\sass\\trumbowyg.mention." +
-    "scss|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwr" +
-    "oot\\Scripts\\plugins\\mention\\ui\\sass\\trumbowyg.mention.scss")]
+    "scss|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mention" +
+    "\\ui\\sass\\trumbowyg.mention.scss")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mention\\ui\\trumbowyg.mention.css|C" +
-    ":\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Sc" +
-    "ripts\\plugins\\mention\\ui\\trumbowyg.mention.css")]
+    ":\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mention\\ui\\tr" +
+    "umbowyg.mention.css")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mention\\ui\\trumbowyg.mention.min.c" +
-    "ss|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroo" +
-    "t\\Scripts\\plugins\\mention\\ui\\trumbowyg.mention.min.css")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\noembed\\trumbowyg.noembed.js|C:\\AS" +
-    "T-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Script" +
-    "s\\plugins\\noembed\\trumbowyg.noembed.js")]
+    "ss|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\mention\\u" +
+    "i\\trumbowyg.mention.min.css")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\noembed\\trumbowyg.noembed.js|C:\\Co" +
+    "de\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\noembed\\trumbowyg" +
+    ".noembed.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\noembed\\trumbowyg.noembed.min.js|C" +
-    ":\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Sc" +
-    "ripts\\plugins\\noembed\\trumbowyg.noembed.min.js")]
+    ":\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\noembed\\trumb" +
+    "owyg.noembed.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\pasteembed\\trumbowyg.pasteembed.js" +
-    "|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\" +
-    "Scripts\\plugins\\pasteembed\\trumbowyg.pasteembed.js")]
+    "|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\pasteembed\\" +
+    "trumbowyg.pasteembed.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\pasteembed\\trumbowyg.pasteembed.mi" +
-    "n.js|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwr" +
-    "oot\\Scripts\\plugins\\pasteembed\\trumbowyg.pasteembed.min.js")]
+    "n.js|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\pasteem" +
+    "bed\\trumbowyg.pasteembed.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\pasteimage\\trumbowyg.pasteimage.js" +
-    "|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\" +
-    "Scripts\\plugins\\pasteimage\\trumbowyg.pasteimage.js")]
+    "|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\pasteimage\\" +
+    "trumbowyg.pasteimage.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\pasteimage\\trumbowyg.pasteimage.mi" +
-    "n.js|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwr" +
-    "oot\\Scripts\\plugins\\pasteimage\\trumbowyg.pasteimage.min.js")]
+    "n.js|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\pasteim" +
+    "age\\trumbowyg.pasteimage.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\preformatted\\trumbowyg.preformatte" +
-    "d.js|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwr" +
-    "oot\\Scripts\\plugins\\preformatted\\trumbowyg.preformatted.js")]
+    "d.js|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\preform" +
+    "atted\\trumbowyg.preformatted.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\preformatted\\trumbowyg.preformatte" +
-    "d.min.js|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\" +
-    "wwwroot\\Scripts\\plugins\\preformatted\\trumbowyg.preformatted.min.js")]
+    "d.min.js|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\pre" +
+    "formatted\\trumbowyg.preformatted.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\resizimg\\trumbowyg.resizimg.js|C:\\" +
-    "AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scri" +
-    "pts\\plugins\\resizimg\\trumbowyg.resizimg.js")]
+    "Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\resizimg\\trumbo" +
+    "wyg.resizimg.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\resizimg\\trumbowyg.resizimg.min.js" +
-    "|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\" +
-    "Scripts\\plugins\\resizimg\\trumbowyg.resizimg.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\ruby\\trumbowyg.ruby.js|C:\\AST-Work" +
-    "\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plug" +
-    "ins\\ruby\\trumbowyg.ruby.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\ruby\\trumbowyg.ruby.min.js|C:\\AST-" +
-    "Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\" +
-    "plugins\\ruby\\trumbowyg.ruby.min.js")]
+    "|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\resizimg\\tr" +
+    "umbowyg.resizimg.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\ruby\\trumbowyg.ruby.js|C:\\Code\\Orc" +
+    "hard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\ruby\\trumbowyg.ruby.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\ruby\\trumbowyg.ruby.min.js|C:\\Code" +
+    "\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\ruby\\trumbowyg.ruby" +
+    ".min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\specialchars\\trumbowyg.specialchar" +
-    "s.js|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwr" +
-    "oot\\Scripts\\plugins\\specialchars\\trumbowyg.specialchars.js")]
+    "s.js|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\special" +
+    "chars\\trumbowyg.specialchars.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\specialchars\\trumbowyg.specialchar" +
-    "s.min.js|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\" +
-    "wwwroot\\Scripts\\plugins\\specialchars\\trumbowyg.specialchars.min.js")]
+    "s.min.js|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\spe" +
+    "cialchars\\trumbowyg.specialchars.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\specialchars\\ui\\sass\\trumbowyg.spe" +
-    "cialchars.scss|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\Advanced" +
-    "Forms\\wwwroot\\Scripts\\plugins\\specialchars\\ui\\sass\\trumbowyg.specialchars.scss")]
+    "cialchars.scss|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugi" +
+    "ns\\specialchars\\ui\\sass\\trumbowyg.specialchars.scss")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\specialchars\\ui\\trumbowyg.specialc" +
-    "hars.css|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\" +
-    "wwwroot\\Scripts\\plugins\\specialchars\\ui\\trumbowyg.specialchars.css")]
+    "hars.css|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\spe" +
+    "cialchars\\ui\\trumbowyg.specialchars.css")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\specialchars\\ui\\trumbowyg.specialc" +
-    "hars.min.css|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedFo" +
-    "rms\\wwwroot\\Scripts\\plugins\\specialchars\\ui\\trumbowyg.specialchars.min.css")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\table\\trumbowyg.table.js|C:\\AST-Wo" +
-    "rk\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\pl" +
-    "ugins\\table\\trumbowyg.table.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\table\\trumbowyg.table.min.js|C:\\AS" +
-    "T-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Script" +
-    "s\\plugins\\table\\trumbowyg.table.min.js")]
+    "hars.min.css|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins" +
+    "\\specialchars\\ui\\trumbowyg.specialchars.min.css")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\table\\trumbowyg.table.js|C:\\Code\\O" +
+    "rchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\table\\trumbowyg.table" +
+    ".js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\table\\trumbowyg.table.min.js|C:\\Co" +
+    "de\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\table\\trumbowyg.t" +
+    "able.min.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\table\\ui\\sass\\trumbowyg.table.scss" +
-    "|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\" +
-    "Scripts\\plugins\\table\\ui\\sass\\trumbowyg.table.scss")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\table\\ui\\trumbowyg.table.css|C:\\AS" +
-    "T-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Script" +
-    "s\\plugins\\table\\ui\\trumbowyg.table.css")]
+    "|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\table\\ui\\sa" +
+    "ss\\trumbowyg.table.scss")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\table\\ui\\trumbowyg.table.css|C:\\Co" +
+    "de\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\table\\ui\\trumbowy" +
+    "g.table.css")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\table\\ui\\trumbowyg.table.min.css|C" +
-    ":\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Sc" +
-    "ripts\\plugins\\table\\ui\\trumbowyg.table.min.css")]
+    ":\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\table\\ui\\trum" +
+    "bowyg.table.min.css")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\template\\trumbowyg.template.js|C:\\" +
-    "AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scri" +
-    "pts\\plugins\\template\\trumbowyg.template.js")]
+    "Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\template\\trumbo" +
+    "wyg.template.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\template\\trumbowyg.template.min.js" +
-    "|C:\\AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\" +
-    "Scripts\\plugins\\template\\trumbowyg.template.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\upload\\trumbowyg.upload.js|C:\\AST-" +
-    "Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\" +
-    "plugins\\upload\\trumbowyg.upload.js")]
+    "|C:\\Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\template\\tr" +
+    "umbowyg.template.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\upload\\trumbowyg.upload.js|C:\\Code" +
+    "\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\upload\\trumbowyg.up" +
+    "load.js")]
 [assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\plugins\\upload\\trumbowyg.upload.min.js|C:\\" +
-    "AST-Work\\Matt Kenney\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scri" +
-    "pts\\plugins\\upload\\trumbowyg.upload.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\trumbowyg.min.js|C:\\AST-Work\\Matt Kenney\\L" +
-    "atest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\trumbowyg.min.js")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\ui\\icons.svg|C:\\AST-Work\\Matt Kenney\\Lates" +
-    "t\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\ui\\icons.svg")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Styles\\formio.full.min.css|C:\\AST-Work\\Matt Kenney" +
-    "\\Latest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Styles\\formio.full.min.c" +
-    "ss")]
-[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Styles\\trumbowyg.min.css|C:\\AST-Work\\Matt Kenney\\L" +
-    "atest\\OrchardCore_AdvancedForms\\AdvancedForms\\wwwroot\\Styles\\trumbowyg.min.css")]
+    "Code\\Orchard\\AdvancedForms\\AdvancedForms\\wwwroot\\Scripts\\plugins\\upload\\trumbowy" +
+    "g.upload.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\trumbowyg.min.js|C:\\Code\\Orchard\\AdvancedF" +
+    "orms\\AdvancedForms\\wwwroot\\Scripts\\trumbowyg.min.js")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Scripts\\ui\\icons.svg|C:\\Code\\Orchard\\AdvancedForms" +
+    "\\AdvancedForms\\wwwroot\\Scripts\\ui\\icons.svg")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Styles\\formio.full.min.css|C:\\Code\\Orchard\\Advance" +
+    "dForms\\AdvancedForms\\wwwroot\\Styles\\formio.full.min.css")]
+[assembly: OrchardCore.Modules.Manifest.ModuleAssetAttribute(".Modules\\AdvancedForms\\wwwroot\\Styles\\trumbowyg.min.css|C:\\Code\\Orchard\\AdvancedF" +
+    "orms\\AdvancedForms\\wwwroot\\Styles\\trumbowyg.min.css")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdvancedForms")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
