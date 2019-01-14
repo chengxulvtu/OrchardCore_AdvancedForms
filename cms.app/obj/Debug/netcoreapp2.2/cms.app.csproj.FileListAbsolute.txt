@@ -15,3 +15,20 @@ C:\Code\Orchard\AdvancedForms\cms.app\obj\Debug\netcoreapp2.2\cms.app.pdb
 C:\Code\Orchard\AdvancedForms\cms.app\bin\Debug\netcoreapp2.2\AdvancedForms.dll
 C:\Code\Orchard\AdvancedForms\cms.app\bin\Debug\netcoreapp2.2\AdvancedForms.pdb
 C:\Code\Orchard\AdvancedForms\cms.app\obj\Debug\netcoreapp2.2\cms.app.csproj.CopyComplete
+C:\AST-Work\OrchardCore Working\cms.app\bin\Debug\netcoreapp2.2\cms.app.deps.json
+C:\AST-Work\OrchardCore Working\cms.app\bin\Debug\netcoreapp2.2\cms.app.runtimeconfig.json
+C:\AST-Work\OrchardCore Working\cms.app\bin\Debug\netcoreapp2.2\cms.app.runtimeconfig.dev.json
+C:\AST-Work\OrchardCore Working\cms.app\bin\Debug\netcoreapp2.2\cms.app.dll
+C:\AST-Work\OrchardCore Working\cms.app\bin\Debug\netcoreapp2.2\cms.app.pdb
+C:\AST-Work\OrchardCore Working\cms.app\bin\Debug\netcoreapp2.2\AdvancedForms.dll
+C:\AST-Work\OrchardCore Working\cms.app\bin\Debug\netcoreapp2.2\AdvancedForms.pdb
+C:\AST-Work\OrchardCore Working\cms.app\obj\Debug\netcoreapp2.2\cms.app.csprojAssemblyReference.cache
+C:\AST-Work\OrchardCore Working\cms.app\obj\Debug\netcoreapp2.2\cms.app.csproj.CoreCompileInputs.cache
+C:\AST-Work\OrchardCore Working\cms.app\obj\Debug\netcoreapp2.2\cms.app.RazorAssemblyInfo.cache
+C:\AST-Work\OrchardCore Working\cms.app\obj\Debug\netcoreapp2.2\cms.app.RazorAssemblyInfo.cs
+C:\AST-Work\OrchardCore Working\cms.app\obj\Debug\netcoreapp2.2\cms.app.AssemblyInfoInputs.cache
+C:\AST-Work\OrchardCore Working\cms.app\obj\Debug\netcoreapp2.2\cms.app.AssemblyInfo.cs
+C:\AST-Work\OrchardCore Working\cms.app\obj\Debug\netcoreapp2.2\cms.app.RazorTargetAssemblyInfo.cache
+C:\AST-Work\OrchardCore Working\cms.app\obj\Debug\netcoreapp2.2\cms.app.csproj.CopyComplete
+C:\AST-Work\OrchardCore Working\cms.app\obj\Debug\netcoreapp2.2\cms.app.dll
+C:\AST-Work\OrchardCore Working\cms.app\obj\Debug\netcoreapp2.2\cms.app.pdb
