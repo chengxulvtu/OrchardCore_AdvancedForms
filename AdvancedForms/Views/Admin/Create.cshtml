@@ -17,6 +17,39 @@
 <style asp-src="/AdvancedForms/Styles/trumbowyg.min.css"></style>
 <script asp-src="/AdvancedForms/Scripts/trumbowyg.min.js" at="Head" asp-name="trumbowyg.min"></script>
 
+<style>
+    .ta-navbar-brand{
+        font-size:1.5rem;
+    }
+
+    .navbar-collapse {
+        display: flex !important;
+    }
+
+        .navbar-collapse.collapse {
+            display: flex !important;
+        }
+
+    .navbar-nav{
+        float:right !important;
+    }
+    .nav-link:hover{
+        background: none;
+    }
+    .nav-link {
+        display: block;
+        text-decoration: none;
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+        padding: 0.5rem 1rem !important;
+        font-size: 16px;
+    }
+
+    .btn-link {
+        text-decoration: none !important;
+    }
+</style>
+
 
 @{
     var standardComp = "{components:this.formioComponents}";
