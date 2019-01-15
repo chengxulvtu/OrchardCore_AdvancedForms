@@ -21,13 +21,31 @@ namespace AdvancedForms
                 return;
             }
 
+            //builder
+            //    .Add(T["Content"], content => content
+            //        .Add(T["Advanced Forms"], "6", layers => layers
+            //            .Permission(Permissions.ManageOwnAdvancedForms)
+            //            .Action("Create", "Admin", new { area = "AdvancedForms" })
+            //            .LocalNav()
+            //        ));
+
+
             builder
-                .Add(T["Content"], content => content
-                    .Add(T["Advanced Forms"], "6", layers => layers
-                        .Permission(Permissions.ManageOwnAdvancedForms)
-                        .Action("Create", "Admin", new { area = "AdvancedForms" })
-                        .LocalNav()
-                    ));
+                .Add(T["Content"], configuration => configuration
+                    .Add(T["Advanced Forms"], "6", settings => settings
+                        .Add(T["New"], layers => layers
+                            .Action("Create", "Admin", new { area = "AdvancedForms" })
+                            .Permission(Permissions.ManageOwnAdvancedForms)
+                            .LocalNav()
+                        ).Add(T["Forms"], layers => layers
+                            .Url("Admin/Contents/ContentItems?id=AdvancedForm")
+                            .Permission(Permissions.ManageOwnAdvancedForms)
+                            .LocalNav()
+                        ).Add(T["Submissions"], layers => layers
+                            .Url("Admin/Contents/ContentItems?id=AdvancedFormSubmissions")
+                            .Permission(Permissions.ManageOwnAdvancedForms)
+                            .LocalNav()
+                        )));
 
             return;
         }
