@@ -1272,12 +1272,6 @@
       "name": "Queries",
       "Queries": [
         {
-          "Template": "select DocumentId\r\nfrom ContentItemIndex \r\nwhere Published = true and ContentType = 'Article'",
-          "ReturnDocuments": true,
-          "Name": "AllArticles",
-          "Source": "Sql"
-        },
-        {
           "Template": "select DocumentId\r\nfrom ContentItemIndex \r\nwhere Published = true and ContentType = 'AdvancedForm'",
           "ReturnDocuments": true,
           "Name": "AllAdvancedForms",

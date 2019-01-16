@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using OrchardCore.Environment.Navigation;
 using OrchardCore.Security.Permissions;
 using Microsoft.Extensions.DependencyInjection;
+using OrchardCore.Data.Migration;
 
 namespace AdvancedForms
 {
@@ -20,19 +21,13 @@ namespace AdvancedForms
 
         public override void ConfigureServices(IServiceCollection services)
         {
+            //services.AddScoped<IDataMigration, Migrations>();
             services.AddScoped<IPermissionProvider, Permissions>();
             services.AddScoped<INavigationProvider, AdminMenu>();
         }
 
         public override void Configure(IApplicationBuilder builder, IRouteBuilder routes, IServiceProvider serviceProvider)
         {
-            routes.MapAreaRoute
-            (
-                name: "AdvancedForms",
-                areaName: "AdvancedForms",
-                template: "",
-                defaults: new { controller = "AdvancedForms", action = "Index" }
-            );
 
             routes.MapAreaRoute(
                 name: "DisplayAdvancedForm",
