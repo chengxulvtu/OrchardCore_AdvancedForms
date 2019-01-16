@@ -190,10 +190,5 @@ namespace AdvancedForms.Controllers
             return title;
         }
 
-        public ActionResult ContentItems()
-        {
-            return RedirectToAction("Display", "Item", new { area = "OrchardCore.Contents" });
-        }
-
     }
 }

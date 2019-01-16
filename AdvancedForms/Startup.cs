@@ -28,7 +28,6 @@ namespace AdvancedForms
 
         public override void Configure(IApplicationBuilder builder, IRouteBuilder routes, IServiceProvider serviceProvider)
         {
-
             routes.MapAreaRoute(
                 name: "DisplayAdvancedForm",
                 areaName: "AdvancedForms",
