@@ -40,19 +40,13 @@ namespace AdvancedForms.Controllers
             _session = session;
         }
 
-        [Route("AdvancedForms")]
-        [Route("AdvancedForms/Index")]
-        public async Task<IActionResult> Index()
-        {
-            return View();
-        }
 
         [Route("AdvancedForms/{alias}")]
         public async Task<IActionResult> Display(string alias)
         {
             if (String.IsNullOrWhiteSpace(alias))
             {
-                await Index(); 
+                return Redirect("/");
             }
       
             var contentItemId = await _contentAliasManager.GetContentItemIdAsync("slug:AdvancedForms/" + alias);
@@ -140,7 +134,7 @@ namespace AdvancedForms.Controllers
         {
             if (String.IsNullOrWhiteSpace(alias))
             {
-                await Index();
+                return Redirect("/");
             }
             else if (String.IsNullOrWhiteSpace(id))
             {
@@ -194,6 +188,11 @@ namespace AdvancedForms.Controllers
                 title = "AdvancedForms" + "/" + title.Replace(" ", "-") + "/View/" + quid;
             }
             return title;
+        }
+
+        public ActionResult ContentItems()
+        {
+            return RedirectToAction("Display", "Item", new { area = "OrchardCore.Contents" });
         }
 
     }
