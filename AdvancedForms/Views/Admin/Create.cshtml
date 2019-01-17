@@ -14,12 +14,12 @@
 
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-<style asp-src="/AdvancedForms/Styles/trumbowyg.min.css"></style>
-<script asp-src="/AdvancedForms/Scripts/trumbowyg.min.js" at="Head" asp-name="trumbowyg.min"></script>
+<script name="trumbowyg" depends-on="admin" asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js" debug-src="/OrchardCore.Resources/Scripts/trumbowyg.js" at="Foot"></script>
+<style name="trumbowyg" asp-src="/OrchardCore.Resources/Styles/trumbowyg.min.css" debug-src="/OrchardCore.Resources/Styles/trumbowyg.css"></style>
 
 <style>
-    .ta-navbar-brand{
-        font-size:1.5rem;
+    .ta-navbar-brand {
+        font-size: 1.5rem;
     }
 
     .navbar-collapse {
@@ -30,12 +30,14 @@
             display: flex !important;
         }
 
-    .navbar-nav{
-        float:right !important;
+    .navbar-nav {
+        float: right !important;
     }
-    .nav-link:hover{
+
+    .nav-link:hover {
         background: none;
     }
+
     .nav-link {
         display: block;
         text-decoration: none;
@@ -67,26 +69,32 @@
         font-weight: 100;
         font-size: 1.07em;
     }
-    .invalid-feedback, .field-validation-error{
-        display:block;
+
+    .invalid-feedback, .field-validation-error {
+        display: block;
     }
-    .trumbowyg-box, .trumbowyg-editor{
-        margin:auto;
+
+    .trumbowyg-box, .trumbowyg-editor {
+        margin: auto;
     }
+
     .error-box {
         border: 1px solid red;
     }
+
     .form-control.input-validation-error {
         border-color: #ccc;
     }
 
-    .form-control.input-validation-error:focus {
-        border-color: #ccc;
-        box-shadow:none;
+        .form-control.input-validation-error:focus {
+            border-color: #ccc;
+            box-shadow: none;
+        }
+
+    .trumbowyg-button-pane {
+        z-index: 0;
     }
-    .trumbowyg-button-pane{
-        z-index:0;
-    }
+
     .formcomponents {
         z-index: 99;
     }
@@ -269,11 +277,20 @@
 }
 <input type="hidden" asp-for="Id" form="main" />
 
-
-<script type="text/javascript">
-    $('#Footer').trumbowyg();
-    $('#Header').trumbowyg();
-    $("#Description").trumbowyg();
-    $("#Instructions").trumbowyg();
+<script at="Foot">
+    $(function () {
+        $('#Footer').trumbowyg().on('tbwchange', function () {
+            $(document).trigger('contentpreview:render');
+        });
+        $('#Header').trumbowyg().on('tbwchange', function () {
+            $(document).trigger('contentpreview:render');
+        });
+        $('#Description').trumbowyg().on('tbwchange', function () {
+            $(document).trigger('contentpreview:render');
+        });
+        $('#Instructions').trumbowyg().on('tbwchange', function () {
+            $(document).trigger('contentpreview:render');
+        });
+    });
 </script>
 
