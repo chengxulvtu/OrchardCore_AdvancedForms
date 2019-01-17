@@ -1,13 +1,9 @@
 ﻿@model AdvancedForms.ViewModels.AdvancedFormViewModel
 
-@{
-    Layout = null;
-}
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/AdvancedForms/Styles/formio.full.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" href="/AdvancedForms/Styles/formio.full.min.css" type="text/css" media="all">
 <script src="/AdvancedForms/Scripts/formio.full.min.js"></script>
 
 <style>
@@ -18,10 +14,24 @@
     .button {
         position: absolute;
     }
+
+    #formio button {
+        display: none;
+    }
+    .container{
+        padding:0px !important;
+    }
+    #mainNav{
+        display:none !important;
+    }
+    .widget-container{
+        display:none !important;
+    }
 </style>
 
 <script type='text/javascript'>
-    window.onload = function() {
+    window.onload = function () {
+        debugger;
         Formio.createForm(document.getElementById('formio'),
             //create the form from saved data
             @Html.Raw(Model.Container)
@@ -32,12 +42,13 @@
                 @if (!String.IsNullOrEmpty(Model.SubmissionId))
                 {
                     string submission = "data:" + Html.Raw(Model.Submission);
+                    submission = submission.Replace("col-sm", "col-xs");
                     @Html.Raw(submission);
                 }
+
             };
         });
     };
-
     function screenPrint() {
         document.getElementById('printButton').style.visibility = 'hidden';
         window.print();
@@ -48,10 +59,11 @@
     <button id="printButton" style="font-size:24px" onclick="screenPrint();">Print&nbsp;<i class="fa fa-print"></i></button>
 </div>
 
-@Html.Raw(Model.Header)
-
-
-<h2 style="text-align:center;">@Model.Title</h2>
-<div id='formio'></div>
-
-@Html.Raw(Model.Footer)
+<div class="container" id="containerID">
+    <div class="row">
+        @Html.Raw(Model.Header)
+        <h2 style="text-align:center;">@Model.Title</h2>
+        <div id='formio'></div>
+        @Html.Raw(Model.Footer)
+    </div>
+</div>
