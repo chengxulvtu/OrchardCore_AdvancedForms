@@ -129,26 +129,32 @@
                     } else {
                         document.getElementById('Container').value = null;
                     }
-                    var formElement = document.getElementById('formio');
-                    formElement.innerHTML = '';
-                    var formJsonElement = document.getElementById('formJson');
-                    formElement.innerHTML = '';
-                    formJsonElement.innerHTML = '';
-                    if (builder.form.components) {
-                        Formio.createForm(formElement, builder.form).then(onForm);
-                        formJsonElement.appendChild(document.createTextNode(JSON.stringify(builder.schema, null, 4)));
-                    }
+                    this.panelValues(builder);
                 });
+                this.panelValues(builder);
             });
     };
 
     var onForm = function (form) {
+        debugger;
         form.on('change', function () {
             var subJsonElement = document.getElementById('subJson');
             subJsonElement.innerHTML = '';
             subJsonElement.appendChild(document.createTextNode(JSON.stringify(form.submission, null, 4)));
         });
     };
+
+    function panelValues(builder) {
+        var formElement = document.getElementById('formio');
+        formElement.innerHTML = '';
+        var formJsonElement = document.getElementById('formJson');
+        formElement.innerHTML = '';
+        formJsonElement.innerHTML = '';
+        if (builder.form.components) {
+            Formio.createForm(formElement, builder.form).then(onForm);
+            formJsonElement.appendChild(document.createTextNode(JSON.stringify(builder.schema, null, 4)));
+        }
+    }
 
     function onFormSubmit(form) {
         debugger;
