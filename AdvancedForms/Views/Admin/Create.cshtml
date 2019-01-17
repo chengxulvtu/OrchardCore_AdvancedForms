@@ -48,6 +48,45 @@
     .btn-link {
         text-decoration: none !important;
     }
+
+    .menu label {
+        font-weight: 100;
+        font-size: 1.1em;
+    }
+
+    .workflows {
+        font-weight: 100;
+        font-size: 1.05em;
+    }
+
+    #ta-left-sidebar #left-nav ul li {
+        line-height: 2.8em;
+    }
+
+    #ta-left-sidebar .icon {
+        font-weight: 100;
+        font-size: 1.07em;
+    }
+    .invalid-feedback, .field-validation-error{
+        display:block;
+    }
+    .trumbowyg-box, .trumbowyg-editor{
+        margin:auto;
+    }
+    .error-box {
+        border: 1px solid red;
+    }
+    .form-control.input-validation-error {
+        border-color: #ccc;
+    }
+
+    .form-control.input-validation-error:focus {
+        border-color: #ccc;
+        box-shadow:none;
+    }
+    .trumbowyg-button-pane{
+        z-index:0;
+    }
 </style>
 
 
@@ -73,8 +112,12 @@
                 }
             )
             .then(function (builder) {
-                builder.on('saveComponent', function () {
-                    document.getElementById('Container').value = JSON.stringify(builder.schema);
+                builder.on('change', function () {
+                    if (builder.schema != null && builder.schema.components != null && builder.schema.components.length > 1) {
+                        document.getElementById('Container').value = JSON.stringify(builder.schema);
+                    } else {
+                        document.getElementById('Container').value = null;
+                    }
                     var formElement = document.getElementById('formio');
                     formElement.innerHTML = '';
                     var formJsonElement = document.getElementById('formJson');
@@ -96,24 +139,54 @@
         });
     };
 
+    function onFormSubmit(form) {
+        debugger;
+        var isValidate = true;
+        if (form.Title.value == '') {
+            isValidate = false;
+            document.getElementById('TitleError').innerHTML = "The Title field is required.";
+            document.getElementById("TitleError").classList.add('field-validation-error');
+        } else {
+            document.getElementById('TitleError').innerHTML = "";
+        }
+        if (form.Description.value == '') {
+            isValidate = false;
+            document.getElementById('DescriptionError').innerHTML = "The Description field is required.";
+            document.getElementById("DescriptionError").classList.add('field-validation-error');
+        } else {
+            document.getElementById('DescriptionError').innerHTML = "";
+        }
+        if (form.Container.value == '') {
+            isValidate = false;
+            document.getElementById('ContainerError').innerHTML = "Form components is Required";
+            document.getElementById("ContainerError").classList.add('field-validation-error');
+        } else {
+            document.getElementById('ContainerError').innerHTML = "";
+        }
+        document.documentElement.scrollTop = 0;
+        return isValidate;
+    }
+
 </script>
 
 <h1>@T["Advanced Form Module"]</h1>
 <br />
 
-<form enctype="multipart/form-data" asp-action="@createOrEdit" method="post" id="main"></form>
+<form enctype="multipart/form-data" asp-action="@createOrEdit" method="post" id="main" onsubmit="return onFormSubmit(this)"></form>
 
 <div>
     <label asp-for="Title">@T["Title"]</label>
     <input asp-for="Title" class="form-control content-preview-text content-caption-text" autofocus="autofocus" form="main" />
+    <span id="TitleError" asp-validation-for="Title"></span>
     <span class="hint">@T["The title of the form."]</span>
     <br />
     <br />
 </div>
 
-<div>
+<div class="description">
     <label asp-for="Description">@T["Description"]</label>
     <textarea asp-for="Description" class="form-control content-preview-text content-caption-text" form="main"></textarea>
+    <span id="DescriptionError" asp-validation-for="Description"></span>
     <span class="hint">@T["The Description of the form."]</span>
     <br />
     <br />
@@ -173,6 +246,7 @@
             <br />
         </div>
     </div>
+    <span id="ContainerError" asp-validation-for="Container"></span>
 </div>
 <input type="hidden" asp-for="Container" form="main" />
 

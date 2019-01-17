@@ -76,6 +76,12 @@ namespace AdvancedForms.Controllers
         [FormValueRequired("submit.Publish")]
         public async Task<IActionResult> CreateAndPublishPOST(AdvancedFormViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+
             // pass a dummy content to the authorization check to check for "own" variations
             var dummyContent = await _contentManager.NewAsync(_id);
 
@@ -172,6 +178,10 @@ namespace AdvancedForms.Controllers
         [FormValueRequired("submit.Publish")]
         public async Task<IActionResult> EditAndPublishPOST(AdvancedFormViewModel viewModel, string returnUrl)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
             string contentItemId = viewModel.Id;
 
             var content = await _contentManager.GetAsync(contentItemId, VersionOptions.Latest);

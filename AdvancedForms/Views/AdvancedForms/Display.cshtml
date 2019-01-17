@@ -5,6 +5,12 @@
 <style asp-src="/AdvancedForms/Styles/formio.full.min.css"></style>
 <script asp-src="/AdvancedForms/Scripts/formio.full.min.js" at="Head" asp-name="formio.full.min"></script>
 
+<style>
+    .container{
+        padding:0px !important;
+    }
+</style>
+
 @{
     var isEdit = !String.IsNullOrEmpty(Model.Id);
     var createOrEdit = isEdit ? "Edit" : "Create";
