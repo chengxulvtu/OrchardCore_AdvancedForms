@@ -139,6 +139,7 @@
                         formJsonElement.appendChild(document.createTextNode(JSON.stringify(builder.schema, null, 4)));
                     }
                 });
+                this.updatePanels(builder);
             });
     };
 
@@ -149,6 +150,18 @@
             subJsonElement.appendChild(document.createTextNode(JSON.stringify(form.submission, null, 4)));
         });
     };
+
+    function updatePanels(builder) {
+        var formElement = document.getElementById('formio');
+        formElement.innerHTML = '';
+        var formJsonElement = document.getElementById('formJson');
+        formElement.innerHTML = '';
+        formJsonElement.innerHTML = '';
+        if (builder.form.components) {
+            Formio.createForm(formElement, builder.form).then(onForm);
+            formJsonElement.appendChild(document.createTextNode(JSON.stringify(builder.schema, null, 4)));
+        }
+    }
 
     function onFormSubmit(form) {
         debugger;
