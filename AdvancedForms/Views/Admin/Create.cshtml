@@ -278,12 +278,11 @@
 <br />
 
 <button form="main" type="submit" name="submit.Publish" class="publish-button btn btn-success" value="submit.Publish">@T["Publish"]</button>
+<button form="main" type="submit" name="submit.Save" class="primaryAction btn btn-primary" value="submit.Save">@T["Save Draft"]</button>
 
-@if (isEdit)
-{
+@{
     var returnUrl = Context.Request.Query["returnUrl"];
-    <button form="main" type="submit" name="submit.Save" class="primaryAction btn btn-primary" value="submit.Save">@T["Save Draft"]</button>
-    @if (!String.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
+    @if (isEdit && !String.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
     {
         <a id="button-cancel" href="@returnUrl" class="btn btn-secondary">@T["Cancel"]</a>
     }

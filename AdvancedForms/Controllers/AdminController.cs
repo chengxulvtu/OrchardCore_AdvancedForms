@@ -100,6 +100,31 @@ namespace AdvancedForms.Controllers
             });
         }
 
+        [HttpPost, ActionName("Create")]
+        [FormValueRequired("submit.Save")]
+        public async Task<IActionResult> CreateAndSavePOST(AdvancedFormViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+
+            // pass a dummy content to the authorization check to check for "own" variations
+            var dummyContent = await _contentManager.NewAsync(_id);
+
+            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageAdvancedForms, dummyContent))
+            {
+                return Unauthorized();
+            }
+
+            return await CreatePOST(viewModel, async contentItem =>
+            {
+                var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
+                _notifier.Success(T["Your Adavanced Form has been saved on draft."]);
+            });
+        }
+
         private async Task<IActionResult> CreatePOST(AdvancedFormViewModel viewModel, Func<ContentItem, Task> conditionallyPublish)
         {
             var contentItem = await _contentManager.NewAsync(_id);
