@@ -1,4 +1,5 @@
 ﻿@model AdvancedForms.ViewModels.AdvancedFormViewModel
+@using System.Web
 
 
 <style asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" debug-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></style>
@@ -78,18 +79,18 @@
         margin: auto;
     }
 
-    .error-box {
+    /*.error-box {
         border: 1px solid red;
     }
 
     .form-control.input-validation-error {
         border-color: #ccc;
-    }
+    }*/
 
-        .form-control.input-validation-error:focus {
+    /*.form-control.input-validation-error:focus {
             border-color: #ccc;
             box-shadow: none;
-        }
+        }*/
 
     .trumbowyg-button-pane {
         z-index: 0;
@@ -97,6 +98,46 @@
 
     .formcomponents {
         z-index: 99;
+    }
+
+    h1 {
+        margin: 0;
+        font-weight: 500;
+        margin-bottom: 0.8rem;
+    }
+
+    label {
+        display: inline-block;
+        margin-bottom: 0.5rem !important;
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+    }
+
+    .validation-summary-errors {
+        padding: 15px 15px 5px;
+        font-size: 15px;
+    }
+
+    .field-validation-error {
+        color: #721c24;
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 1.5;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    }
+
+    .validation-summary-errors {
+        margin-bottom: 20px;
+    }
+    #notifyError{
+        display:none;
+    }
+    .editor-error {
+        border: #dc3545 1px solid;
+        box-shadow: 0px 0px 1px #dc3545;
     }
 </style>
 
@@ -168,40 +209,67 @@
         var isValidate = true;
         if (form.Title.value == '') {
             isValidate = false;
-            document.getElementById('TitleError').innerHTML = "The Title field is required.";
-            document.getElementById("TitleError").classList.add('field-validation-error');
+            document.getElementById("TitleError").style.display = "list-item";
+            document.getElementById("Title").classList.add("input-validation-error");
         } else {
-            document.getElementById('TitleError').innerHTML = "";
+            document.getElementById("TitleError").style.display = "none";
+            document.getElementById("Title").classList.remove("input-validation-error");
         }
         if (form.Description.value == '') {
             isValidate = false;
-            document.getElementById('DescriptionError').innerHTML = "The Description field is required.";
-            document.getElementById("DescriptionError").classList.add('field-validation-error');
+            document.getElementById("DescriptionError").style.display = "list-item";
+            document.querySelector('.description .trumbowyg-editor').classList.add("editor-error");
         } else {
-            document.getElementById('DescriptionError').innerHTML = "";
+            document.getElementById("DescriptionError").style.display = "none";
+            document.querySelector('.description .trumbowyg-editor').classList.remove("editor-error");
         }
         if (form.Container.value == '') {
             isValidate = false;
-            document.getElementById('ContainerError').innerHTML = "Form components is Required";
-            document.getElementById("ContainerError").classList.add('field-validation-error');
+            document.getElementById("ContainerError").style.display = "list-item";
+            document.querySelector('.formarea').classList.add("editor-error");
         } else {
-            document.getElementById('ContainerError').innerHTML = "";
+            document.getElementById("ContainerError").style.display = "none";
+            document.querySelector('.formarea').classList.remove("editor-error");
         }
         document.documentElement.scrollTop = 0;
+        if (isValidate) {
+            document.getElementById("notifyError").style.display = "none";
+        } else {
+            document.getElementById("notifyError").style.display = "block";
+        }
         return isValidate;
     }
 
 </script>
 
 <h1>@T["Advanced Form Module"]</h1>
-<br />
+@{
+    var errors = ViewData.ModelState.Where(n => n.Value.Errors.Count > 0).ToList();
+    if (errors.Count > 0)
+    {
+        <div class="validation-summary-errors" data-valmsg-summary="true">
+            <ul>
+                @foreach (var item in errors)
+                {
+                    <li><span class="field-validation-error">@item.Value.Errors[0].ErrorMessage.ToString()</span></li>
+                }
+            </ul>
+        </div>
+    }
+}
+<div class="validation-summary-errors" data-valmsg-summary="true" id="notifyError">
+    <ul>
+        <li id="TitleError"><span class="field-validation-error">@T["The Title field is Required."]</span></li>
+        <li id="DescriptionError"><span class="field-validation-error">@T["The Description field is required."]</span></li>
+        <li id="ContainerError"><span class="field-validation-error">@T["Form components is Required."]</span></li>
+    </ul>
+</div>
 
 <form enctype="multipart/form-data" asp-action="@createOrEdit" method="post" id="main" onsubmit="return onFormSubmit(this)"></form>
 
 <div>
     <label asp-for="Title">@T["Title"]</label>
     <input asp-for="Title" class="form-control content-preview-text content-caption-text" autofocus="autofocus" form="main" />
-    <span id="TitleError" asp-validation-for="Title"></span>
     <span class="hint">@T["The title of the form."]</span>
     <br />
     <br />
@@ -210,7 +278,6 @@
 <div class="description">
     <label asp-for="Description">@T["Description"]</label>
     <textarea asp-for="Description" class="form-control content-preview-text content-caption-text" form="main"></textarea>
-    <span id="DescriptionError" asp-validation-for="Description"></span>
     <span class="hint">@T["The Description of the form."]</span>
     <br />
     <br />
@@ -270,7 +337,6 @@
             <br />
         </div>
     </div>
-    <span id="ContainerError" asp-validation-for="Container"></span>
 </div>
 <input type="hidden" asp-for="Container" form="main" />
 
