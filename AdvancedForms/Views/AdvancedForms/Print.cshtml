@@ -61,9 +61,16 @@
 
 <div class="container" id="containerID">
     <div class="row">
-        @Html.Raw(Model.Header)
-        <h2 style="text-align:center;">@Model.Title</h2>
+        <div class="col-md-12">
+            @Html.Raw(Model.Header)
+        </div>
+        <div class="col-md-12">
+            <h2 style="text-align:center;">@Model.Title</h2>
+        </div>
+        
         <div id='formio'></div>
-        @Html.Raw(Model.Footer)
+        <div class="col-md-12">
+            @Html.Raw(Model.Footer)
+        </div>
     </div>
 </div>
