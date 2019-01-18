@@ -28,11 +28,9 @@
     <PackageReference Include="OrchardCore.Data.Abstractions" Version="1.0.0-beta2-69590" />
     <PackageReference Include="OrchardCore.Environment.Navigation" Version="1.0.0-beta2-69590" />
     <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-beta2-69590" />
-    <PackageReference Include="OrchardCore.Mvc.Abstractions" Version="1.0.0-beta2-69590" />
     <PackageReference Include="OrchardCore.Recipes.Abstractions" Version="1.0.0-beta2-69590" />
     <PackageReference Include="OrchardCore.ResourceManagement" Version="1.0.0-beta2-69590" />
     <PackageReference Include="OrchardCore.Scripting.Abstractions" Version="1.0.0-beta2-69590" />
-    <PackageReference Include="OrchardCore.Security" Version="1.0.0-beta2-69590" />
     <PackageReference Include="OrchardCore.Security.Abstractions" Version="1.0.0-beta2-69590" />
     <PackageReference Include="OrchardCore.Settings" Version="1.0.0-beta2-69590" />
     <PackageReference Include="OrchardCore.Users.Abstractions" Version="1.0.0-beta2-69590" />
