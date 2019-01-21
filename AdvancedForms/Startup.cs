@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Builder;
 using OrchardCore.Modules;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
-using OrchardCore.Environment.Navigation;
 using OrchardCore.Security.Permissions;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Data.Migration;
+using OrchardCore.Navigation;
 
 namespace AdvancedForms
 {

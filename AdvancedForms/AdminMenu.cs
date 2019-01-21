@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Localization;
 using System;
 using System.Threading.Tasks;
-using OrchardCore.Environment.Navigation;
+using OrchardCore.Navigation;
 
 namespace AdvancedForms
 {
@@ -14,11 +14,11 @@ namespace AdvancedForms
 
         public IStringLocalizer T { get; set; }
 
-        public void BuildNavigation(string name, NavigationBuilder builder)
+        public Task BuildNavigationAsync(string name, NavigationBuilder builder)
         {
             if (!String.Equals(name, "admin", StringComparison.OrdinalIgnoreCase))
             {
-                return;
+                return Task.CompletedTask;
             }
             builder
                 .Add(T["Advanced Forms"], "12", advancedForms => advancedForms
@@ -37,7 +37,7 @@ namespace AdvancedForms
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
                     ));
-            return;
+            return Task.CompletedTask;
         }
     }
 }
