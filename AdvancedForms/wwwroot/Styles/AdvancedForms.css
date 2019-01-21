@@ -1,0 +1,123 @@
+﻿.ta-navbar-brand {
+    font-size: 1.5rem;
+}
+
+.navbar-collapse {
+    display: flex !important;
+}
+
+    .navbar-collapse.collapse {
+        display: flex !important;
+    }
+
+.navbar-nav {
+    float: right !important;
+}
+
+.nav-link:hover {
+    background: none;
+}
+
+.nav-link {
+    display: block;
+    text-decoration: none;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    padding: 0.5rem 1rem !important;
+    font-size: 16px;
+}
+
+.btn-link {
+    text-decoration: none !important;
+}
+
+.menu label {
+    font-weight: 100;
+    font-size: 1.1em;
+}
+
+.workflows {
+    font-weight: 100;
+    font-size: 1.05em;
+}
+
+#ta-left-sidebar #left-nav ul li {
+    line-height: 2.8em;
+}
+
+#ta-left-sidebar .icon {
+    font-weight: 100;
+    font-size: 1.07em;
+}
+
+.invalid-feedback, .field-validation-error {
+    display: block;
+}
+
+.trumbowyg-box, .trumbowyg-editor {
+    margin: auto;
+}
+
+/*.error-box {
+        border: 1px solid red;
+    }
+
+    .form-control.input-validation-error {
+        border-color: #ccc;
+    }*/
+
+/*.form-control.input-validation-error:focus {
+            border-color: #ccc;
+            box-shadow: none;
+        }*/
+
+.trumbowyg-button-pane {
+    z-index: 0;
+}
+
+.formcomponents {
+    z-index: 99;
+}
+
+h1 {
+    margin: 0;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0.5rem !important;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+}
+
+.validation-summary-errors {
+    padding: 15px 15px 5px;
+    font-size: 15px;
+}
+
+.field-validation-error {
+    color: #721c24;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.validation-summary-errors {
+    margin-bottom: 20px;
+}
+
+#notifyError {
+    display: none;
+}
+
+.editor-error {
+    border: #dc3545 1px solid;
+    box-shadow: 0px 0px 1px #dc3545;
+}
+

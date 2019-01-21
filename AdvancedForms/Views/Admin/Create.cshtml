@@ -1,145 +1,21 @@
 ﻿@model AdvancedForms.ViewModels.AdvancedFormViewModel
 @using System.Web
-
-
-<style asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" debug-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></style>
-@*<style asp-src="https://unpkg.com/formiojs@latest/dist/formio.full.min.css" debug-src="https://unpkg.com/formiojs@latest/dist/formio.full.min.css"></style>*@
-@*<script asp-src="https://unpkg.com/formiojs@latest/dist/formio.full.min.js" debug-src="https://unpkg.com/formiojs@latest/dist/formio.full.min.js" at="Head" asp-name="formio.full.min"></script>*@
-
+@* Css Files  *@
+<style asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+       debug-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></style>
 <style asp-src="/AdvancedForms/Styles/formio.full.min.css"></style>
+<style asp-src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
+       debug-src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></style>
+<style name="trumbowyg" asp-src="/OrchardCore.Resources/Styles/trumbowyg.min.css" 
+       debug-src="/OrchardCore.Resources/Styles/trumbowyg.css"></style>
+<style asp-src="/AdvancedForms/Styles/AdvancedForms.css"></style>
+@* JS Files  *@
 <script asp-src="/AdvancedForms/Scripts/formio.full.min.js" at="Head" asp-name="formio.full.min"></script>
-
-
 <script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
 <script asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" at="Head"></script>
-
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
-<script name="trumbowyg" depends-on="admin" asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js" debug-src="/OrchardCore.Resources/Scripts/trumbowyg.js" at="Foot"></script>
-<style name="trumbowyg" asp-src="/OrchardCore.Resources/Styles/trumbowyg.min.css" debug-src="/OrchardCore.Resources/Styles/trumbowyg.css"></style>
-
-<style>
-    .ta-navbar-brand {
-        font-size: 1.5rem;
-    }
-
-    .navbar-collapse {
-        display: flex !important;
-    }
-
-        .navbar-collapse.collapse {
-            display: flex !important;
-        }
-
-    .navbar-nav {
-        float: right !important;
-    }
-
-    .nav-link:hover {
-        background: none;
-    }
-
-    .nav-link {
-        display: block;
-        text-decoration: none;
-        padding-right: 0.5rem;
-        padding-left: 0.5rem;
-        padding: 0.5rem 1rem !important;
-        font-size: 16px;
-    }
-
-    .btn-link {
-        text-decoration: none !important;
-    }
-
-    .menu label {
-        font-weight: 100;
-        font-size: 1.1em;
-    }
-
-    .workflows {
-        font-weight: 100;
-        font-size: 1.05em;
-    }
-
-    #ta-left-sidebar #left-nav ul li {
-        line-height: 2.8em;
-    }
-
-    #ta-left-sidebar .icon {
-        font-weight: 100;
-        font-size: 1.07em;
-    }
-
-    .invalid-feedback, .field-validation-error {
-        display: block;
-    }
-
-    .trumbowyg-box, .trumbowyg-editor {
-        margin: auto;
-    }
-
-    /*.error-box {
-        border: 1px solid red;
-    }
-
-    .form-control.input-validation-error {
-        border-color: #ccc;
-    }*/
-
-    /*.form-control.input-validation-error:focus {
-            border-color: #ccc;
-            box-shadow: none;
-        }*/
-
-    .trumbowyg-button-pane {
-        z-index: 0;
-    }
-
-    .formcomponents {
-        z-index: 99;
-    }
-
-    h1 {
-        margin: 0;
-        font-weight: 500;
-        margin-bottom: 0.8rem;
-    }
-
-    label {
-        display: inline-block;
-        margin-bottom: 0.5rem !important;
-        font-size: 1.5rem;
-        font-weight: 400;
-        line-height: 1.5;
-        color: #212529;
-        text-align: left;
-    }
-
-    .validation-summary-errors {
-        padding: 15px 15px 5px;
-        font-size: 15px;
-    }
-
-    .field-validation-error {
-        color: #721c24;
-        font-size: 1.6rem;
-        font-weight: 400;
-        line-height: 1.5;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    }
-
-    .validation-summary-errors {
-        margin-bottom: 20px;
-    }
-    #notifyError{
-        display:none;
-    }
-    .editor-error {
-        border: #dc3545 1px solid;
-        box-shadow: 0px 0px 1px #dc3545;
-    }
-</style>
+<script name="trumbowyg" depends-on="admin" asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js" 
+        debug-src="/OrchardCore.Resources/Scripts/trumbowyg.js" at="Foot"></script>
+<script asp-src="/AdvancedForms/Scripts/AdvancedForms.js" at="Head" asp-name="AdvancedForms"></script>
 
 
 @{
@@ -149,107 +25,13 @@
 }
 
 <script type='text/javascript' at="Head">
-
     window.onload = function () {
         let formioComponents;
         Formio.builder(document.getElementById('builder'),
-
-                @if (String.IsNullOrEmpty(Model.Container))
-                {
-                   @standardComp
-                }
-                else
-                {
-                    @Html.Raw(Model.Container)
-                }
-            )
-            .then(function (builder) {
-                builder.on('change', function () {
-                    if (builder.schema != null && builder.schema.components != null && builder.schema.components.length > 1) {
-                        document.getElementById('Container').value = JSON.stringify(builder.schema);
-                    } else {
-                        document.getElementById('Container').value = null;
-                    }
-                    var formElement = document.getElementById('formio');
-                    formElement.innerHTML = '';
-                    var formJsonElement = document.getElementById('formJson');
-                    formElement.innerHTML = '';
-                    formJsonElement.innerHTML = '';
-                    if (builder.form.components) {
-                        Formio.createForm(formElement, builder.form).then(onForm);
-                        formJsonElement.appendChild(document.createTextNode(JSON.stringify(builder.schema, null, 4)));
-                    }
-                });
-                this.updatePanels(builder);
-            });
+        @if (String.IsNullOrEmpty(Model.Container)){@standardComp}
+         else{@Html.Raw(Model.Container)}
+         ).then(builderChange);
     };
-
-    var onForm = function (form) {
-        form.on('change', function () {
-            var subJsonElement = document.getElementById('subJson');
-            subJsonElement.innerHTML = '';
-            subJsonElement.appendChild(document.createTextNode(JSON.stringify(form.submission, null, 4)));
-        });
-    };
-
-    function updatePanels(builder) {
-        var formElement = document.getElementById('formio');
-        formElement.innerHTML = '';
-        var formJsonElement = document.getElementById('formJson');
-        formElement.innerHTML = '';
-        formJsonElement.innerHTML = '';
-        if (builder.form.components) {
-            Formio.createForm(formElement, builder.form).then(onForm);
-            formJsonElement.appendChild(document.createTextNode(JSON.stringify(builder.schema, null, 4)));
-        }
-    }
-
-    function onFormSubmit(form) {
-        debugger;
-        var isValidate = true;
-        if (form.Title.value == '') {
-            isValidate = false;
-            document.getElementById("TitleError").style.display = "list-item";
-            document.getElementById("Title").classList.add("input-validation-error");
-        } else {
-            document.getElementById("TitleError").style.display = "none";
-            document.getElementById("Title").classList.remove("input-validation-error");
-        }
-
-        if (form.Tag.value == '') {
-            isValidate = false;
-            document.getElementById("TagError").style.display = "list-item";
-            document.getElementById("Tag").classList.add("input-validation-error");
-        } else {
-            document.getElementById("TagError").style.display = "none";
-            document.getElementById("Tag").classList.remove("input-validation-error");
-        }
-
-        if (form.Description.value == '') {
-            isValidate = false;
-            document.getElementById("DescriptionError").style.display = "list-item";
-            document.querySelector('.description .trumbowyg-editor').classList.add("editor-error");
-        } else {
-            document.getElementById("DescriptionError").style.display = "none";
-            document.querySelector('.description .trumbowyg-editor').classList.remove("editor-error");
-        }
-        if (form.Container.value == '') {
-            isValidate = false;
-            document.getElementById("ContainerError").style.display = "list-item";
-            document.querySelector('.formarea').classList.add("editor-error");
-        } else {
-            document.getElementById("ContainerError").style.display = "none";
-            document.querySelector('.formarea').classList.remove("editor-error");
-        }
-        document.documentElement.scrollTop = 0;
-        if (isValidate) {
-            document.getElementById("notifyError").style.display = "none";
-        } else {
-            document.getElementById("notifyError").style.display = "block";
-        }
-        return isValidate;
-    }
-
 </script>
 
 <h1>@T["Advanced Form Module"]</h1>
@@ -373,21 +155,3 @@
     }
 }
 <input type="hidden" asp-for="Id" form="main" />
-
-<script at="Foot">
-    $(function () {
-        $('#Footer').trumbowyg().on('tbwchange', function () {
-            $(document).trigger('contentpreview:render');
-        });
-        $('#Header').trumbowyg().on('tbwchange', function () {
-            $(document).trigger('contentpreview:render');
-        });
-        $('#Description').trumbowyg().on('tbwchange', function () {
-            $(document).trigger('contentpreview:render');
-        });
-        $('#Instructions').trumbowyg().on('tbwchange', function () {
-            $(document).trigger('contentpreview:render');
-        });
-    });
-</script>
-
