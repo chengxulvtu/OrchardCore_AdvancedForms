@@ -1,1252 +1,262 @@
 ﻿{
   "steps": [
     {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "AdvancedForm",
+          "DisplayName": "Advanced Form",
+          "Settings": {
+            "Creatable": "False",
+            "Draftable": "True",
+            "Versionable": "True",
+            "Listable": "True",
+            "Securable": "True",
+            "Stereotype": null
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "AdvancedForm",
+              "Name": "AdvancedForm",
+              "Settings": {
+                "Position": "2"
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "Position": "0"
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "Position": "1",
+                "Pattern": null,
+                "AllowCustomPath": "True",
+                "ShowHomepageOption": "False",
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "AdvancedFormSubmissions",
+          "DisplayName": "Advanced Form Submissions",
+          "Settings": {
+            "Creatable": "False",
+            "Draftable": "True",
+            "Versionable": "True",
+            "Listable": "True",
+            "Securable": "True",
+            "Stereotype": null
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "AdvancedFormSubmissions",
+              "Name": "AdvancedFormSubmissions",
+              "Settings": {
+                "Position": "2"
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "Position": "0"
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "Position": "1"
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "TitlePart",
+          "Settings": {
+            "Attachable": "True",
+            "Description": "Provides a Title for your content item."
+          },
+          "ContentPartFieldDefinitionRecords": []
+        },
+        {
+          "Name": "AdvancedForm",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "HtmlField",
+              "Name": "Description",
+              "Settings": {
+                "DisplayName": "Description",
+                "Hint": null,
+                "Editor": "Wysiwyg",
+                "ContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Analyzed": false,
+                  "Sanitized": false,
+                  "Tokenized": false,
+                  "Template": null
+                },
+                "Position": "1"
+              }
+            },
+            {
+              "FieldName": "HtmlField",
+              "Name": "Instructions",
+              "Settings": {
+                "DisplayName": "Instructions",
+                "Hint": null,
+                "Editor": "Wysiwyg",
+                "ContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Analyzed": false,
+                  "Sanitized": false,
+                  "Tokenized": false,
+                  "Template": null
+                },
+                "Position": "2"
+              }
+            },
+            {
+              "FieldName": "HtmlField",
+              "Name": "Container",
+              "Settings": {
+                "DisplayName": "Container",
+                "Hint": null,
+                "Editor": "Wysiwyg",
+                "ContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Analyzed": false,
+                  "Sanitized": false,
+                  "Tokenized": false,
+                  "Template": null
+                },
+                "Position": "3"
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Tag",
+              "Settings": {
+                "DisplayName": "Tag",
+                "Editor": null,
+                "DisplayMode": null,
+                "Hint": null,
+                "Required": true,
+                "ContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Analyzed": false,
+                  "Sanitized": false,
+                  "Tokenized": false,
+                  "Template": null
+                },
+                "Position": "0"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "AdvancedFormSubmissions",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "HtmlField",
+              "Name": "Submission",
+              "Settings": {
+                "DisplayName": "Submission",
+                "Hint": null,
+                "Editor": "Multiline",
+                "ContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Analyzed": false,
+                  "Sanitized": false,
+                  "Tokenized": false,
+                  "Template": null
+                },
+                "Position": "1"
+              }
+            },
+            {
+              "FieldName": "HtmlField",
+              "Name": "Metadata",
+              "Settings": {
+                "DisplayName": "Metadata",
+                "Hint": null,
+                "Editor": "Wysiwyg",
+                "ContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Analyzed": false,
+                  "Sanitized": false,
+                  "Tokenized": false,
+                  "Template": null
+                },
+                "Position": "3"
+              }
+            },
+            {
+              "FieldName": "HtmlField",
+              "Name": "Container",
+              "Settings": {
+                "DisplayName": "Container",
+                "Hint": null,
+                "Editor": "Wysiwyg",
+                "ContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Analyzed": false,
+                  "Sanitized": false,
+                  "Tokenized": false,
+                  "Template": null
+                },
+                "Position": "2"
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Tag",
+              "Settings": {
+                "DisplayName": "Tag",
+                "Editor": null,
+                "DisplayMode": null,
+                "Hint": null,
+                "Required": true,
+                "ContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Analyzed": false,
+                  "Sanitized": false,
+                  "Tokenized": false,
+                  "Template": null
+                },
+                "Position": "0"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "content",
       "data": [
-        {
-          "ContentItemId": "4e46f80cg7wgn00xbasfn46sc4",
-          "ContentItemVersionId": "44ayzk2v1r8hn7yp5384gwwpd3",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-10-14T22:41:43.2840033Z",
-          "PublishedUtc": "2018-10-14T22:41:43.3030597Z",
-          "CreatedUtc": "2018-10-14T22:37:42.3814322Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "AdvancedForm": {
-            "Description": {
-              "Html": "test desc2"
-            },
-            "Title": "test title",
-            "Instructions": {
-              "Html": "test ins2"
-            },
-            "Container": {
-              "Html": null
-            }
-          },
-          "TitlePart": {
-            "Title": "test title2"
-          }
-        },
-        {
-          "ContentItemId": "4475mqptp63x4r47c16x8dh1xy",
-          "ContentItemVersionId": "47t8zvwyydtex3b032mwc7ptcr",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-10-15T22:21:27.1815398Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-10-15T22:21:27.1815398Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedForm": {
-            "Description": {
-              "Text": "test desc"
-            },
-            "Instructions": {
-              "Text": "test ins"
-            },
-            "Container": {
-              "Text": null
-            }
-          },
-          "TitlePart": {
-            "Title": "test title"
-          }
-        },
-        {
-          "ContentItemId": "4d7hp5dztcmm30agz39wztgemn",
-          "ContentItemVersionId": "4eett34b1vmvq3s5vqdew8q5mr",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-10-15T22:25:30.2586209Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-10-15T22:25:30.2586209Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedForm": {
-            "Description": {
-              "Text": "test desc 3"
-            },
-            "Instructions": {
-              "Text": "test ins 3"
-            },
-            "Container": {
-              "Text": null
-            },
-            "Title": "Test Title 3"
-          },
-          "TitlePart": {
-            "Title": "Test Title 3"
-          }
-        },
-        {
-          "ContentItemId": "4bfc7jaggsstj6zzkybnnvw957",
-          "ContentItemVersionId": "4778wdyyfhsd34pbm0fb9ghsmd",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-10-16T03:00:12.3735431Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-10-16T03:00:12.3735431Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedForm": {
-            "Description": {
-              "Text": null
-            },
-            "Instructions": {
-              "Text": null
-            },
-            "Container": {
-              "Text": "{\"components\":[{\"label\":\"First Name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"textField\",\"widget\":{\"type\":\"\"}},{\"label\":\"Last Name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"lastName\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": null
-          },
-          "TitlePart": {
-            "Title": null
-          }
-        },
-        {
-          "ContentItemId": "468dqwbjv6hxhye3zmet6nejwb",
-          "ContentItemVersionId": "4kx0m4asvh16v53kv92svz8bx6",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-10-17T14:15:26.8046164Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-10-17T14:15:26.8046164Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "AdvancedForm": {
-            "Description": {
-              "Text": "test des"
-            },
-            "Instructions": {
-              "Text": "test ins"
-            },
-            "Container": {
-              "Text": "{\"components\":[{\"label\":\"Text Field\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"textField\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "test title"
-          },
-          "TitlePart": {
-            "Title": "test title"
-          }
-        },
-        {
-          "ContentItemId": "4bn0ee0w2vs2j6fevqfg7k2wcp",
-          "ContentItemVersionId": "4540hkdd9bfadyhbd0a69zgf4x",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-10-17T21:05:44.6905215Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-10-17T21:05:44.6905215Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "AdvancedForm": {
-            "Description": {
-              "Text": "Test Desc"
-            },
-            "Instructions": {
-              "Text": "Test Ins"
-            },
-            "Container": {
-              "Text": "{\"components\":[{\"label\":\"First Name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"firstName\",\"widget\":{\"type\":\"\"}},{\"label\":\"Last Name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"lastName\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "Test Title"
-          },
-          "TitlePart": {
-            "Title": "Test Title"
-          }
-        },
-        {
-          "ContentItemId": "40dgd52431h5v0c9a7a25bw0cm",
-          "ContentItemVersionId": "4nrfpjbhhzjk2x9kcjs5vbajxc",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-10-18T15:52:00.5994551Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-10-18T15:52:00.5994551Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "AdvancedForm": {
-            "Description": {
-              "Text": "test desc"
-            },
-            "Instructions": {
-              "Text": "Test ins"
-            },
-            "Container": {
-              "Text": "{\"components\":[{\"label\":\"First Name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"firstName\",\"defaultValue\":\"\",\"validate\":{\"unique\":false,\"customMessage\":\"\",\"json\":\"\"},\"conditional\":{\"show\":\"\",\"json\":\"\",\"when\":\"\"},\"inputFormat\":\"plain\",\"properties\":{},\"tags\":[],\"customConditional\":\"\",\"logic\":[],\"widget\":{\"type\":\"\"}},{\"columns\":[{\"components\":[],\"width\":6,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"},{\"components\":[],\"width\":6,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"}],\"label\":\"Columns\",\"mask\":false,\"tableView\":false,\"type\":\"columns\",\"input\":false,\"key\":\"columns\"},{\"label\":\"Signature\",\"mask\":false,\"tableView\":true,\"type\":\"signature\",\"input\":true,\"key\":\"signature\"},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "test title"
-          },
-          "TitlePart": {
-            "Title": "test title"
-          }
-        },
-        {
-          "ContentItemId": "4np0wgzhh9q8g500vhjh2dy754",
-          "ContentItemVersionId": "498gxjm9cm8sc0htt2cvv10d40",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-10-20T17:23:09.0033658Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-10-20T17:23:09.0033658Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "AdvancedForm": {
-            "Description": {
-              "Html": "test desc"
-            },
-            "Instructions": {
-              "Html": "test ins"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"first name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"firstName\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "test title"
-          },
-          "TitlePart": {
-            "Title": "test title"
-          }
-        },
-        {
-          "ContentItemId": "4475mfmhv1f2b68k7x2kw4g7cg",
-          "ContentItemVersionId": "4fgk2kmaddemm4rcc2y3tpea40",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-10-20T17:23:49.7542688Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-10-20T17:23:49.7542688Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "AdvancedForm": {
-            "Description": {
-              "Html": "test desc"
-            },
-            "Instructions": {
-              "Html": "test ins"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"first name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"firstName\",\"widget\":{\"type\":\"\"}},{\"input\":false,\"key\":\"columns\",\"tableView\":false,\"label\":\"Columns\",\"type\":\"columns\",\"columns\":[{\"components\":[{\"label\":\"Last Name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"lastName\",\"widget\":{\"type\":\"\"}}],\"width\":6,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"},{\"components\":[],\"width\":6,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"}]},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "test title"
-          },
-          "TitlePart": {
-            "Title": "test title"
-          }
-        },
-        {
-          "ContentItemId": "4rawfe4vgjh1zxkq1bnff2zjnh",
-          "ContentItemVersionId": "477pncfgzty8r1ymp02a4fx746",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-10-21T21:11:27.712195Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-10-21T21:11:27.712195Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "AdvancedForm": {
-            "Description": {
-              "Html": "Cr Desc"
-            },
-            "Instructions": {
-              "Html": "cre ins edit3"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"Edit\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"create\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "Create Title edit"
-          },
-          "TitlePart": {
-            "Title": "Create Title edit"
-          }
-        },
-        {
-          "ContentItemId": "45t6f6c3wepvmxahrc5j9kej42",
-          "ContentItemVersionId": "4r210kg8f3taatsxt70cd42dnb",
-          "ContentType": "AdvancedForm",
-          "Latest": false,
-          "Published": true,
-          "ModifiedUtc": "2018-10-21T21:15:51.930501Z",
-          "PublishedUtc": "2018-10-21T21:15:52.7811992Z",
-          "CreatedUtc": "2018-10-21T03:34:20.5499123Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedForm": {
-            "Description": {
-              "Html": "Cr Desc"
-            },
-            "Instructions": {
-              "Html": "cre ins edit3"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"Edit\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"create\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "Create Title edit"
-          },
-          "TitlePart": {
-            "Title": "Create Title edit"
-          }
-        },
-        {
-          "ContentItemId": "4gfh3anknpndgt93bmxf0xyj4v",
-          "ContentItemVersionId": "4pgmz5qvbhg7k0ymek90h7pp5b",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-10-22T00:57:41.6654351Z",
-          "PublishedUtc": "2018-10-22T00:57:42.0902845Z",
-          "CreatedUtc": "2018-10-22T00:57:42.0902845Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "AdvancedForm": {
-            "Description": {
-              "Html": "test desc"
-            },
-            "Instructions": {
-              "Html": "test ins"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"Text Field\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"textField\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "route test title"
-          },
-          "TitlePart": {
-            "Title": "route test title"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/route-test-title",
-            "SetHomepage": false
-          }
-        },
-        {
-          "ContentItemId": "4ty33ts6m2vc311n478b3csmc6",
-          "ContentItemVersionId": "4dbyv7448nf317w0mt0gpgcp4a",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-10-23T03:02:10.9229015Z",
-          "PublishedUtc": "2018-10-23T03:02:11.749142Z",
-          "CreatedUtc": "2018-10-21T22:11:57.4422981Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "AdvancedForm": {
-            "Description": {
-              "Html": "auto route desc"
-            },
-            "Instructions": {
-              "Html": "autoe route ins"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"User Name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"userName\",\"widget\":{\"type\":\"\"}},{\"input\":true,\"key\":\"password\",\"tableView\":true,\"label\":\"Password\",\"type\":\"password\"},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "Autoroute test title"
-          },
-          "TitlePart": {
-            "Title": "Autoroute test title"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/autoroute",
-            "SetHomepage": false
-          }
-        },
-        {
-          "ContentItemId": "44xb73ks499k8zep0cfbgd914k",
-          "ContentItemVersionId": "4keg9jze1jk74w2crfdsehjkcs",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-10-26T00:09:31.4518519Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-10-26T00:09:31.4518519Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "AdvancedForm": {
-            "Description": {
-              "Html": "test desc"
-            },
-            "Instructions": {
-              "Html": "test ins"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"Upload\",\"mask\":false,\"tableView\":true,\"type\":\"file\",\"input\":true,\"key\":\"upload\",\"image\":true,\"storage\":\"base64\",\"dir\":\"\",\"webcam\":true,\"webcamSize\":\"\",\"imageSize\":\"\"},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "test form upload"
-          },
-          "TitlePart": {
-            "Title": "test form upload"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/test-form-upload",
-            "SetHomepage": false
-          }
-        },
-        {
-          "ContentItemId": "464tsyz7rw3pc1bc62m7qn625x",
-          "ContentItemVersionId": "4cgn9j59af4594z9zswpfn78xv",
-          "ContentType": "AdvancedFormSubmissions",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-10-30T03:30:06.4265144Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-10-30T03:30:06.4265144Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedFormSubmissions": {
-            "Submission": {
-              "Html": "{\r\n  \"textField\": \"test text field\",\r\n  \"submit\": true\r\n}"
-            },
-            "Metadata": {
-              "Html": "{\r\n  \"timezone\": \"America/Chicago\",\r\n  \"offset\": -300,\r\n  \"referrer\": \"\",\r\n  \"browserName\": \"Netscape\",\r\n  \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36\",\r\n  \"pathName\": \"/advancedforms/route-test-title\",\r\n  \"onLine\": true\r\n}"
-            },
-            "Title": "route test title_10/30/2018 3:28:53 AM"
-          },
-          "TitlePart": {
-            "Title": "route test title_10/30/2018 3:28:53 AM"
-          }
-        },
-        {
-          "ContentItemId": "4zsye64mej45fw0dw8yqnyr1xf",
-          "ContentItemVersionId": "4yeddjxsp8ats09xc1kqxappcc",
-          "ContentType": "AdvancedFormSubmissions",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-10-30T03:35:12.3557179Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-10-30T03:35:12.3557179Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedFormSubmissions": {
-            "Submission": {
-              "Html": "{\r\n  \"upload\": [\r\n    {\r\n      \"storage\": \"base64\",\r\n      \"name\": \"billsynder-a33b08b1-4bfe-4b04-9fc9-8e61dbdd62dc.jpg\",\r\n      \"url\": \"data:image/jpeg;base64,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\",\r\n      \"size\": 5124,\r\n      \"type\": \"image/jpeg\",\r\n      \"data\": \"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\",\r\n      \"originalName\": \"billsynder.jpg\"\r\n    }\r\n  ],\r\n  \"submit\": true\r\n}"
-            },
-            "Metadata": {
-              "Html": "{\r\n  \"timezone\": \"America/Chicago\",\r\n  \"offset\": -300,\r\n  \"referrer\": \"https://localhost:44386/Admin/Contents/ContentItems\",\r\n  \"browserName\": \"Netscape\",\r\n  \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36\",\r\n  \"pathName\": \"/AdvancedForms/test-form-upload\",\r\n  \"onLine\": true\r\n}"
-            },
-            "Title": "test form upload_10/30/2018 3:35:06 AM"
-          },
-          "TitlePart": {
-            "Title": "test form upload_10/30/2018 3:35:06 AM"
-          }
-        },
-        {
-          "ContentItemId": "42m16samrqvgf4fnrsekxsee4v",
-          "ContentItemVersionId": "4jmv8tt0gbjaxrasy57v0rtzdq",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-01T17:26:23.8909291Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-11-01T17:26:23.8909291Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedForm": {
-            "Description": {
-              "Html": "Test Description"
-            },
-            "Instructions": {
-              "Html": "Some ins"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"First Name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"firstName\",\"validate\":{\"unique\":false,\"customMessage\":\"\",\"json\":\"\"},\"widget\":{\"type\":\"\"}},{\"input\":true,\"key\":\"signature\",\"tableView\":true,\"label\":\"Signature\",\"type\":\"signature\"},{\"input\":false,\"key\":\"columns\",\"tableView\":false,\"label\":\"Columns\",\"type\":\"columns\",\"columns\":[{\"components\":[{\"label\":\"My Number\",\"mask\":false,\"tableView\":true,\"type\":\"number\",\"input\":true,\"key\":\"myNumber\"}],\"width\":6,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"},{\"components\":[{\"label\":\"My Checkbox\",\"shortcut\":\"\",\"mask\":false,\"tableView\":true,\"type\":\"checkbox\",\"input\":true,\"key\":\"myCheckbox\"}],\"width\":6,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"}]},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "Matt's Testing Title"
-          },
-          "TitlePart": {
-            "Title": "Matt's Testing Title"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/Matt's-Testing-Title"
-          }
-        },
-        {
-          "ContentItemId": "4tcm7bc957mzx5a887cwkwz15d",
-          "ContentItemVersionId": "4xqnq0tax0hfmskbs2rbp4gr5v",
-          "ContentType": "AdvancedFormSubmissions",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-03T19:49:27.4819492Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-11-03T19:49:27.4819492Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedFormSubmissions": {
-            "Submission": {
-              "Html": "{\r\n  \"textField\": \"my test\",\r\n  \"submit\": true\r\n}"
-            },
-            "Metadata": {
-              "Html": "{\r\n  \"timezone\": \"America/Chicago\",\r\n  \"offset\": -300,\r\n  \"referrer\": \"\",\r\n  \"browserName\": \"Netscape\",\r\n  \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36\",\r\n  \"pathName\": \"/advancedforms/route-test-title\",\r\n  \"onLine\": true\r\n}"
-            },
-            "Title": "route test title_11/3/2018 7:49:27 PM"
-          },
-          "TitlePart": {
-            "Title": "route test title_11/3/2018 7:49:27 PM"
-          }
-        },
-        {
-          "ContentItemId": "4p9y3xfz641xk2tvfegf9xyrmh",
-          "ContentItemVersionId": "454yd1wrktgczx3jqdwgckqc5k",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-03T19:57:55.5892078Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-11-03T19:57:55.5892078Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedForm": {
-            "Description": {
-              "Html": null
-            },
-            "Instructions": {
-              "Html": "Fill in and Sign"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"First Name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"firstName\",\"widget\":{\"type\":\"\"}},{\"label\":\"Last Name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"lastName\",\"widget\":{\"type\":\"\"}},{\"input\":true,\"key\":\"signature\",\"tableView\":true,\"label\":\"Signature\",\"type\":\"signature\"},{\"columns\":[{\"components\":[{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}],\"width\":3,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"},{\"components\":[{\"label\":\"Reset\",\"action\":\"reset\",\"shortcut\":\"\",\"mask\":false,\"tableView\":true,\"type\":\"button\",\"input\":true,\"key\":\"reset\",\"showValidations\":false}],\"width\":3,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"},{\"width\":6,\"type\":\"column\",\"input\":true,\"key\":\"\",\"placeholder\":\"\",\"prefix\":\"\",\"customClass\":\"\",\"suffix\":\"\",\"multiple\":false,\"defaultValue\":null,\"protected\":false,\"unique\":false,\"persistent\":true,\"hidden\":false,\"clearOnHide\":true,\"tableView\":true,\"dataGridLabel\":false,\"label\":\"\",\"labelPosition\":\"top\",\"labelWidth\":30,\"labelMargin\":3,\"description\":\"\",\"errorLabel\":\"\",\"tooltip\":\"\",\"hideLabel\":false,\"tabindex\":\"\",\"disabled\":false,\"autofocus\":false,\"dbIndex\":false,\"customDefaultValue\":\"\",\"calculateValue\":\"\",\"widget\":null,\"refreshOn\":\"\",\"clearOnRefresh\":false,\"validateOn\":\"change\",\"validate\":{\"required\":false,\"custom\":\"\",\"customPrivate\":false},\"conditional\":{\"show\":null,\"when\":null,\"eq\":\"\"},\"id\":\"ej8qq0o\"}],\"label\":\"Columns\",\"mask\":false,\"tableView\":false,\"type\":\"columns\",\"input\":false,\"key\":\"columns\"}]}"
-            },
-            "Title": "Signature Form"
-          },
-          "TitlePart": {
-            "Title": "Signature Form"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/Signature-Form"
-          }
-        },
-        {
-          "ContentItemId": "4pq13v1ps40sdvp6zptqfkt9cs",
-          "ContentItemVersionId": "4d0dqme2216g4wp3mpbk29y9db",
-          "ContentType": "AdvancedFormSubmissions",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-03T19:59:26.2215932Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-11-03T19:59:26.2215932Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedFormSubmissions": {
-            "Submission": {
-              "Html": "{\r\n  \"firstName\": \"Form.IO\",\r\n  \"lastName\": \"Is Cool\",\r\n  \"signature\": \"data:image/png;base64,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\",\r\n  \"submit\": true\r\n}"
-            },
-            "Metadata": {
-              "Html": "{\r\n  \"timezone\": \"America/Chicago\",\r\n  \"offset\": -300,\r\n  \"referrer\": \"https://localhost:44386/Admin/Contents/ContentItems\",\r\n  \"browserName\": \"Netscape\",\r\n  \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36\",\r\n  \"pathName\": \"/AdvancedForms/Signature-Form\",\r\n  \"onLine\": true\r\n}"
-            },
-            "Title": "Signature Form_11/3/2018 7:59:26 PM"
-          },
-          "TitlePart": {
-            "Title": "Signature Form_11/3/2018 7:59:26 PM"
-          }
-        },
-        {
-          "ContentItemId": "4j5g0sw0m9r7p12yqr3b1mx2c2",
-          "ContentItemVersionId": "42qwrx1rddz0nr9p9p0v2y2c5y",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-03T20:26:18.4527397Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-11-03T20:26:18.4527397Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedForm": {
-            "Description": {
-              "Html": "Description of Form"
-            },
-            "Instructions": {
-              "Html": "Instructions for form"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"First Name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"firstName\",\"widget\":{\"type\":\"\"}},{\"label\":\"Last Name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"lastName\",\"widget\":{\"type\":\"\"}},{\"input\":true,\"key\":\"signature\",\"tableView\":true,\"label\":\"Signature\",\"type\":\"signature\"},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "Signature Form demo"
-          },
-          "TitlePart": {
-            "Title": "Signature Form demo"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/Signature-Form-demo"
-          }
-        },
-        {
-          "ContentItemId": "4tzr8e7q51frwth12h7ndge4ct",
-          "ContentItemVersionId": "4ff6zbw45r1wa58z121hy6e1m5",
-          "ContentType": "AdvancedFormSubmissions",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-08T04:28:37.283545Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-11-08T04:28:37.283545Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedFormSubmissions": {
-            "Submission": {
-              "Html": "{\r\n  \"textField\": \"test2\",\r\n  \"submit\": true\r\n}"
-            },
-            "Metadata": {
-              "Html": "{\r\n  \"timezone\": \"America/Chicago\",\r\n  \"offset\": -360,\r\n  \"referrer\": \"\",\r\n  \"browserName\": \"Netscape\",\r\n  \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36\",\r\n  \"pathName\": \"/AdvancedForms/route-test-title/\",\r\n  \"onLine\": true\r\n}"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"Text Field\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"textField\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "route test title 11/8/2018 4:28:29 AM 4tzr8e7q51frwth12h7ndge4ct"
-          },
-          "TitlePart": {
-            "Title": "route test title 11/8/2018 4:28:29 AM 4tzr8e7q51frwth12h7ndge4ct"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/route-test-title/View/4tzr8e7q51frwth12h7ndge4ct"
-          }
-        },
-        {
-          "ContentItemId": "4b937kmma3ght5wbdq1kkn69da",
-          "ContentItemVersionId": "41x9c459cc58733be1gg7rhmn3",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-09T02:32:01.5410051Z",
-          "PublishedUtc": "2018-11-09T02:32:01.5720813Z",
-          "CreatedUtc": "2018-11-09T02:18:17.137165Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "AdvancedForm": {
-            "Description": {
-              "Html": "View all the columns"
-            },
-            "Instructions": {
-              "Html": "Enter all fields in Orchard Core"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"columns\":[{\"components\":[{\"label\":\"First Name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"firstName\",\"widget\":{\"type\":\"\"}}],\"width\":4,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"},{\"components\":[{\"label\":\"Middle Name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"middleName\",\"widget\":{\"type\":\"\"}}],\"width\":4,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"},{\"width\":4,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\",\"components\":[{\"label\":\"Last Name\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"lastName\",\"widget\":{\"type\":\"\"}}]}],\"label\":\"Columns\",\"autoAdjust\":true,\"mask\":false,\"tableView\":false,\"type\":\"columns\",\"input\":false,\"key\":\"columns\"},{\"columns\":[{\"components\":[{\"input\":true,\"key\":\"phoneNumber\",\"tableView\":true,\"label\":\"Phone Number\",\"type\":\"phoneNumber\"},{\"label\":\"Address\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"address\",\"widget\":{\"type\":\"\"}}],\"width\":6,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"},{\"components\":[{\"input\":true,\"key\":\"email\",\"tableView\":true,\"label\":\"Email\",\"type\":\"email\"},{\"label\":\"Address 2\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"address2\",\"widget\":{\"type\":\"\"}}],\"width\":6,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"}],\"label\":\"Columns\",\"mask\":false,\"tableView\":false,\"type\":\"columns\",\"input\":false,\"key\":\"columns\"},{\"columns\":[{\"components\":[{\"label\":\"State\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"state\",\"widget\":{\"type\":\"\"}}],\"width\":4,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"},{\"components\":[{\"label\":\"Zip Code\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"zipCode\",\"widget\":{\"type\":\"\"}}],\"width\":2,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"},{\"width\":2,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\",\"components\":[{\"label\":\"4 Digit Code\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"4DigitCode\",\"widget\":{\"type\":\"\"}}]},{\"width\":4,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\",\"components\":[{\"label\":\"Country Code\",\"mask\":false,\"tableView\":true,\"type\":\"select\",\"input\":true,\"key\":\"countryCode\",\"data\":{\"values\":[]},\"valueProperty\":\"value\"}]}],\"label\":\"Columns\",\"mask\":false,\"tableView\":false,\"type\":\"columns\",\"input\":false,\"key\":\"columns\"},{\"label\":\"Description\",\"className\":\"\",\"refreshOnChange\":false,\"mask\":false,\"tableView\":true,\"type\":\"content\",\"input\":false,\"key\":\"description\"},{\"label\":\"File Upload Or Camera\",\"mask\":false,\"tableView\":true,\"type\":\"file\",\"input\":true,\"key\":\"upload\",\"image\":true,\"storage\":\"base64\",\"dir\":\"\",\"webcam\":true,\"webcamSize\":\"\",\"imageSize\":\"\"},{\"components\":[{\"label\":\"Account Info\",\"key\":\"accountInfo\",\"components\":[{\"inputsLabelPosition\":\"top\",\"label\":\"Birthday\",\"hideInputLabels\":false,\"fields\":{\"day\":{\"hide\":false,\"type\":\"number\"},\"month\":{\"hide\":false,\"type\":\"select\"},\"year\":{\"hide\":false,\"type\":\"number\"}},\"useLocaleSettings\":false,\"mask\":false,\"tableView\":true,\"type\":\"day\",\"input\":true,\"key\":\"birthday2\",\"tab\":0}]},{\"label\":\"Additional Info\",\"key\":\"additionalInfo\",\"components\":[]}],\"label\":\"Type Tab\",\"mask\":false,\"tableView\":true,\"type\":\"tabs\",\"input\":false,\"key\":\"typeTab\"},{\"columns\":[{\"components\":[{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}],\"width\":1,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"},{\"components\":[{\"label\":\"Reset\",\"action\":\"reset\",\"shortcut\":\"\",\"mask\":false,\"tableView\":true,\"type\":\"button\",\"input\":true,\"key\":\"reset\",\"showValidations\":false}],\"width\":1,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"}],\"label\":\"Columns\",\"autoAdjust\":true,\"mask\":false,\"tableView\":false,\"type\":\"columns\",\"input\":false,\"key\":\"columns\"}]}"
-            },
-            "Title": "Multi Column Form"
-          },
-          "TitlePart": {
-            "Title": "Multi Column Form"
-          },
-          "AutoroutePart": {
-            "Path": null,
-            "SetHomepage": false
-          }
-        },
-        {
-          "ContentItemId": "4zeq0bzwtzd3d01d4j3f0tdkdv",
-          "ContentItemVersionId": "434v98h2eas90wvwbycw69x6wq",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-09T04:07:00.2493693Z",
-          "PublishedUtc": "2018-11-09T04:06:42.9316735Z",
-          "CreatedUtc": "2018-11-09T03:16:40.6905051Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedForm": {
-            "Description": {
-              "Html": "test draft"
-            },
-            "Instructions": {
-              "Html": null
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"Show Always (Type \\\"KSU\\\" to show Wildcat box)\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"showAlwaysTypeKsuToShowWildcatBox\",\"widget\":{\"type\":\"\"}},{\"label\":\"KSU Showing\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"textField\",\"conditional\":{\"show\":true,\"when\":\"showAlwaysTypeKsuToShowWildcatBox\",\"eq\":\"KSU\",\"json\":\"\"},\"customConditional\":\"\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "Conditional Form Example"
-          },
-          "TitlePart": {
-            "Title": "Conditional Form Example"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/Conditional-Form-Example"
-          }
-        },
-        {
-          "ContentItemId": "4gk4znn1vy13m0w0ffmnbj4sca",
-          "ContentItemVersionId": "4494qcrngmkzc2zrmjpd19czm1",
-          "ContentType": "AdvancedFormSubmissions",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-11T21:18:57.9720812Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-11-11T21:18:57.9720812Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedFormSubmissions": {
-            "Submission": {
-              "Html": "{\r\n  \"textField\": \"submission confirmation test\",\r\n  \"submit\": true\r\n}"
-            },
-            "Metadata": {
-              "Html": "{\r\n  \"timezone\": \"America/Chicago\",\r\n  \"offset\": -360,\r\n  \"referrer\": \"\",\r\n  \"browserName\": \"Netscape\",\r\n  \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36\",\r\n  \"pathName\": \"/advancedforms/route-test-title\",\r\n  \"onLine\": true\r\n}"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"Text Field\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"textField\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "route test title 11/11/2018 9:18:57 PM 4gk4znn1vy13m0w0ffmnbj4sca"
-          },
-          "TitlePart": {
-            "Title": "route test title 11/11/2018 9:18:57 PM 4gk4znn1vy13m0w0ffmnbj4sca"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/route-test-title/View/4gk4znn1vy13m0w0ffmnbj4sca"
-          }
-        },
-        {
-          "ContentItemId": "48ggd2w14hkvfv0gf9jtqmgade",
-          "ContentItemVersionId": "4s681qymhce974zv3zyjebr0mn",
-          "ContentType": "AdvancedFormSubmissions",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-11T21:22:40.3620031Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-11-11T21:22:40.3620031Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedFormSubmissions": {
-            "Submission": {
-              "Html": "{\r\n  \"textField\": \"sub com3\",\r\n  \"submit\": true\r\n}"
-            },
-            "Metadata": {
-              "Html": "{\r\n  \"timezone\": \"America/Chicago\",\r\n  \"offset\": -360,\r\n  \"referrer\": \"\",\r\n  \"browserName\": \"Netscape\",\r\n  \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36\",\r\n  \"pathName\": \"/advancedforms/route-test-title\",\r\n  \"onLine\": true\r\n}"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"Text Field\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"textField\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "route test title 11/11/2018 9:22:40 PM 48ggd2w14hkvfv0gf9jtqmgade"
-          },
-          "TitlePart": {
-            "Title": "route test title 11/11/2018 9:22:40 PM 48ggd2w14hkvfv0gf9jtqmgade"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/route-test-title/View/48ggd2w14hkvfv0gf9jtqmgade"
-          }
-        },
-        {
-          "ContentItemId": "4076cavy4twf0vhkdbmg47k7wm",
-          "ContentItemVersionId": "4h1nthythv87trzhj2ytkt3vwq",
-          "ContentType": "AdvancedFormSubmissions",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-11T21:29:06.803365Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-11-11T21:29:06.803365Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedFormSubmissions": {
-            "Submission": {
-              "Html": "{\r\n  \"textField\": \"sub conf 4\",\r\n  \"submit\": true\r\n}"
-            },
-            "Metadata": {
-              "Html": "{\r\n  \"timezone\": \"America/Chicago\",\r\n  \"offset\": -360,\r\n  \"referrer\": \"\",\r\n  \"browserName\": \"Netscape\",\r\n  \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36\",\r\n  \"pathName\": \"/advancedforms/route-test-title\",\r\n  \"onLine\": true\r\n}"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"Text Field\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"textField\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "route test title 11/11/2018 9:29:06 PM 4076cavy4twf0vhkdbmg47k7wm"
-          },
-          "TitlePart": {
-            "Title": "route test title 11/11/2018 9:29:06 PM 4076cavy4twf0vhkdbmg47k7wm"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/route-test-title/View/4076cavy4twf0vhkdbmg47k7wm"
-          }
-        },
-        {
-          "ContentItemId": "42bnpj79nbxn1r2b98v3ynzdnf",
-          "ContentItemVersionId": "4xxjtd30skhx80rqg0w8q755xw",
-          "ContentType": "AdvancedFormSubmissions",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-11T21:31:58.0869708Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-11-11T21:31:58.0869708Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedFormSubmissions": {
-            "Submission": {
-              "Html": "{\r\n  \"textField\": \"sub conf5\",\r\n  \"submit\": true\r\n}"
-            },
-            "Metadata": {
-              "Html": "{\r\n  \"timezone\": \"America/Chicago\",\r\n  \"offset\": -360,\r\n  \"referrer\": \"\",\r\n  \"browserName\": \"Netscape\",\r\n  \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36\",\r\n  \"pathName\": \"/advancedforms/route-test-title\",\r\n  \"onLine\": true\r\n}"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"Text Field\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"textField\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "route test title 11/11/2018 9:31:58 PM 42bnpj79nbxn1r2b98v3ynzdnf"
-          },
-          "TitlePart": {
-            "Title": "route test title 11/11/2018 9:31:58 PM 42bnpj79nbxn1r2b98v3ynzdnf"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/route-test-title/View/42bnpj79nbxn1r2b98v3ynzdnf"
-          }
-        },
-        {
-          "ContentItemId": "458z571q3gb0t6vy3ewx8jx8m2",
-          "ContentItemVersionId": "4ttbhwb91ezrt4z554jnd0sh5j",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-11T21:53:49.622253Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-11-11T21:53:49.622253Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedForm": {
-            "Description": {
-              "Html": null
-            },
-            "Instructions": {
-              "Html": null
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"test\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"test\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "Redirect to Edit Screen"
-          },
-          "TitlePart": {
-            "Title": "Redirect to Edit Screen"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/Redirect-to-Edit-Screen"
-          }
-        },
-        {
-          "ContentItemId": "4h2f0tvam0fz23fxz9jcvk9kc3",
-          "ContentItemVersionId": "44dd538p5xsfcywm7rk471554y",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-11T22:02:44.7189799Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-11-11T22:02:44.7189799Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedForm": {
-            "Description": {
-              "Html": null
-            },
-            "Instructions": {
-              "Html": null
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"Text Field\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"textField\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "Edit Form"
-          },
-          "TitlePart": {
-            "Title": "Edit Form"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/Edit-Form"
-          }
-        },
-        {
-          "ContentItemId": "4k8gjay68ewpqwk4vt5htg49na",
-          "ContentItemVersionId": "4dczrnkshv9v96ce8b0pw3wsde",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-11T22:05:49.7738791Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2018-11-11T22:05:49.7738791Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedForm": {
-            "Description": {
-              "Html": null
-            },
-            "Instructions": {
-              "Html": null
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"Text Field\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"textField\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "test title"
-          },
-          "TitlePart": {
-            "Title": "test title"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/test-title"
-          }
-        },
-        {
-          "ContentItemId": "41k9g4g4kq178771t6syj7705y",
-          "ContentItemVersionId": "4p4nc6trcn5ce57x22y1kk61n2",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-11T22:27:53.2401617Z",
-          "PublishedUtc": "2018-11-11T22:27:53.327349Z",
-          "CreatedUtc": "2018-11-11T22:26:46.9775399Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedForm": {
-            "Description": {
-              "Html": "edit2"
-            },
-            "Instructions": {
-              "Html": null
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"Text Field\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"textField\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "edit redirect 2"
-          },
-          "TitlePart": {
-            "Title": "edit redirect 2"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/edit-redirect-2"
-          }
-        },
-        {
-          "ContentItemId": "47njvnq8nwybhyz284jaq0x8nb",
-          "ContentItemVersionId": "4djezh8dd48zjx8k0s9m6kx74p",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2018-11-11T22:32:13.0617005Z",
-          "PublishedUtc": "2018-11-11T22:32:13.3178628Z",
-          "CreatedUtc": "2018-11-11T22:32:13.3178628Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedForm": {
-            "Description": {
-              "Html": "test edit"
-            },
-            "Instructions": {
-              "Html": "test edit ins"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"Text Field\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"textField\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "edit redirect test 2"
-          },
-          "TitlePart": {
-            "Title": "edit redirect test 2"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/edit-redirect-test-2"
-          }
-        },
-        {
-          "ContentItemId": "4fwmxpjf7wk110xjeqfdn8dc54",
-          "ContentItemVersionId": "4jdw4gw5zjm902yde9fsyq3r52",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2019-01-11T19:35:33.3336209Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2019-01-11T19:35:33.3336209Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedForm": {
-            "Description": {
-              "Html": "<p><strong>This is my Description in bold</strong></p>"
-            },
-            "Instructions": {
-              "Html": "<p><strong><del>This is my instructions in bold</del></strong></p>"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"test ins and header\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"testInsAndHeader\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "Test Mohit items1",
-            "Header": {
-              "Html": "<p style=\"text-align: center;\"><strong>Header in bold</strong></p>"
-            },
-            "Footer": {
-              "Html": "<p><del></del></p><p><hr></p><del>Footer strikethrough</del>"
-            }
-          },
-          "TitlePart": {
-            "Title": "Test Mohit items1"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/Test-Mohit-items1"
-          }
-        },
-        {
-          "ContentItemId": "42rahxpyqfe1kwz91yeqk02bc6",
-          "ContentItemVersionId": "4ah8mq835qb4n3z0me8h7nrncg",
-          "ContentType": "AdvancedFormSubmissions",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2019-01-11T19:36:25.8948319Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2019-01-11T19:36:25.8948319Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedFormSubmissions": {
-            "Submission": {
-              "Html": "{\r\n  \"testInsAndHeader\": \"test\",\r\n  \"submit\": true\r\n}"
-            },
-            "Metadata": {
-              "Html": "{\r\n  \"timezone\": \"America/Chicago\",\r\n  \"offset\": -360,\r\n  \"referrer\": \"https://localhost:44386/Admin/Contents/ContentItems\",\r\n  \"browserName\": \"Netscape\",\r\n  \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36\",\r\n  \"pathName\": \"/AdvancedForms/Test-Mohit-items1\",\r\n  \"onLine\": true\r\n}"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"test ins and header\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"testInsAndHeader\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Header": {
-              "Html": "&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;Header in bold&lt;/strong&gt;&lt;/p&gt;"
-            },
-            "Footer": {
-              "Html": "&lt;p&gt;&lt;del&gt;&lt;/del&gt;&lt;/p&gt;&lt;p&gt;&lt;hr&gt;&lt;/p&gt;&lt;del&gt;Footer strikethrough&lt;/del&gt;"
-            },
-            "Description": {
-              "Html": "&lt;p&gt;&lt;strong&gt;This is my Description in bold&lt;/strong&gt;&lt;/p&gt;"
-            },
-            "Title": "Test Mohit items1 1/11/2019 7:36:25 PM 42rahxpyqfe1kwz91yeqk02bc6"
-          },
-          "TitlePart": {
-            "Title": "Test Mohit items1 1/11/2019 7:36:25 PM 42rahxpyqfe1kwz91yeqk02bc6"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/Test-Mohit-items1/View/42rahxpyqfe1kwz91yeqk02bc6"
-          }
-        },
-        {
-          "ContentItemId": "49p7zhetqw937430ppaxxfsqcb",
-          "ContentItemVersionId": "4abycsg9tpfb7sfh1w3dk5zjcx",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2019-01-12T04:35:49.5426949Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2019-01-12T04:35:49.5426949Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedForm": {
-            "Description": {
-              "Html": null
-            },
-            "Instructions": {
-              "Html": null
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"null test\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"nullTest\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "my test of null header and footer",
-            "Header": {
-              "Html": null
-            },
-            "Footer": {
-              "Html": null
-            }
-          },
-          "TitlePart": {
-            "Title": "my test of null header and footer"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/my-test-of-null-header-and-footer"
-          }
-        },
-        {
-          "ContentItemId": "41bw4n59zfkqr53db6gk06zzwm",
-          "ContentItemVersionId": "4vx005scn8gma6ayjaz77qr9m1",
-          "ContentType": "AdvancedFormSubmissions",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2019-01-12T04:36:25.448106Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2019-01-12T04:36:25.448106Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedFormSubmissions": {
-            "Submission": {
-              "Html": "{\r\n  \"nullTest\": \"testasdf\",\r\n  \"submit\": true\r\n}"
-            },
-            "Metadata": {
-              "Html": "{\r\n  \"timezone\": \"America/Chicago\",\r\n  \"offset\": -360,\r\n  \"referrer\": \"https://localhost:44386/Admin/Contents/ContentItems\",\r\n  \"browserName\": \"Netscape\",\r\n  \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36\",\r\n  \"pathName\": \"/AdvancedForms/my-test-of-null-header-and-footer\",\r\n  \"onLine\": true\r\n}"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"null test\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"nullTest\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Header": {
-              "Html": null
-            },
-            "Footer": {
-              "Html": null
-            },
-            "Description": {
-              "Html": null
-            },
-            "Title": "my test of null header and footer 1/12/2019 4:36:25 AM 41bw4n59zfkqr53db6gk06zzwm"
-          },
-          "TitlePart": {
-            "Title": "my test of null header and footer 1/12/2019 4:36:25 AM 41bw4n59zfkqr53db6gk06zzwm"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/my-test-of-null-header-and-footer/View/41bw4n59zfkqr53db6gk06zzwm"
-          }
-        },
-        {
-          "ContentItemId": "459pk365mmh3x20gp36826rwm7",
-          "ContentItemVersionId": "4vmd7c5naa29qrza4rja4fxm4g",
-          "ContentType": "AdvancedFormSubmissions",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2019-01-13T03:15:27.4863841Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2019-01-13T03:15:27.4863841Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedFormSubmissions": {
-            "Submission": {
-              "Html": "{\r\n  \"testInsAndHeader\": \"test entry\",\r\n  \"submit\": true\r\n}"
-            },
-            "Metadata": {
-              "Html": "{\r\n  \"timezone\": \"America/Chicago\",\r\n  \"offset\": -360,\r\n  \"referrer\": \"\",\r\n  \"browserName\": \"Netscape\",\r\n  \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36\",\r\n  \"pathName\": \"/advancedforms/test-mohit-items1/\",\r\n  \"onLine\": true\r\n}"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"test ins and header\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"testInsAndHeader\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Header": {
-              "Html": "&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;Header in bold&lt;/strong&gt;&lt;/p&gt;"
-            },
-            "Footer": {
-              "Html": "&lt;p&gt;&lt;del&gt;&lt;/del&gt;&lt;/p&gt;&lt;p&gt;&lt;hr&gt;&lt;/p&gt;&lt;del&gt;Footer strikethrough&lt;/del&gt;"
-            },
-            "Description": {
-              "Html": "&lt;p&gt;&lt;strong&gt;This is my Description in bold&lt;/strong&gt;&lt;/p&gt;"
-            },
-            "Title": "Test Mohit items1 1/13/2019 3:15:27 AM 459pk365mmh3x20gp36826rwm7"
-          },
-          "TitlePart": {
-            "Title": "Test Mohit items1 1/13/2019 3:15:27 AM 459pk365mmh3x20gp36826rwm7"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/Test-Mohit-items1/View/459pk365mmh3x20gp36826rwm7"
-          }
-        },
-        {
-          "ContentItemId": "4kxdyv5s6nnt50kqjje47pm150",
-          "ContentItemVersionId": "4p9j3tk5pjahz0bgapr12z66x8",
-          "ContentType": "AdvancedFormSubmissions",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2019-01-13T03:21:52.2261929Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2019-01-13T03:21:52.2261929Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedFormSubmissions": {
-            "Submission": {
-              "Html": "{\r\n  \"textField\": \"test text field 23 should be in number field\",\r\n  \"numberField\": 23,\r\n  \"submit\": true\r\n}"
-            },
-            "Metadata": {
-              "Html": "{\r\n  \"timezone\": \"America/Chicago\",\r\n  \"offset\": -360,\r\n  \"referrer\": \"https://localhost:44386/Admin/Contents/ContentItems\",\r\n  \"browserName\": \"Netscape\",\r\n  \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36\",\r\n  \"pathName\": \"/AdvancedForms/Test-form-creation-after-.net-Core-Upgrade\",\r\n  \"onLine\": true\r\n}"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"input\":false,\"key\":\"columns\",\"tableView\":false,\"label\":\"Columns\",\"type\":\"columns\",\"columns\":[{\"components\":[{\"label\":\"Number field\",\"mask\":false,\"tableView\":true,\"type\":\"number\",\"input\":true,\"key\":\"numberField\"}],\"width\":6,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"},{\"components\":[{\"label\":\"Text Field\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"textField\",\"widget\":{\"type\":\"\"}}],\"width\":6,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"}]},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Header": {
-              "Html": "&lt;p style=&quot;text-align: center;&quot;&gt;Header text centered&lt;/p&gt;"
-            },
-            "Footer": {
-              "Html": "&lt;p&gt;&amp;lt;style&amp;gt;&lt;/p&gt;&lt;p&gt;table {&lt;/p&gt;&lt;p&gt;&amp;nbsp; font-family: arial, sans-serif;&lt;/p&gt;&lt;p&gt;&amp;nbsp; border-collapse: collapse;&lt;/p&gt;&lt;p&gt;&amp;nbsp; width: 100%;&lt;/p&gt;&lt;p&gt;}&lt;/p&gt;&lt;br&gt;&lt;p&gt;td, th {&lt;/p&gt;&lt;p&gt;&amp;nbsp; border: 1px solid #dddddd;&lt;/p&gt;&lt;p&gt;&amp;nbsp; text-align: left;&lt;/p&gt;&lt;p&gt;&amp;nbsp; padding: 8px;&lt;/p&gt;&lt;p&gt;}&lt;/p&gt;&lt;br&gt;&lt;p&gt;tr:nth-child(even) {&lt;/p&gt;&lt;p&gt;&amp;nbsp; background-color: #dddddd;&lt;/p&gt;&lt;p&gt;}&lt;/p&gt;&lt;p&gt;&amp;lt;/style&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;lt;h2&amp;gt;HTML Table footer&amp;lt;/h2&amp;gt;&lt;/p&gt;&lt;br&gt;&lt;p&gt;&amp;lt;table&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;lt;tr&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;th&amp;gt;Company&amp;lt;/th&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;th&amp;gt;Contact&amp;lt;/th&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;th&amp;gt;Country&amp;lt;/th&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;lt;/tr&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;lt;tr&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Alfreds Futterkiste&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Maria Anders&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Germany&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;lt;/tr&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;lt;tr&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Centro comercial Moctezuma&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Francisco Chang&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Mexico&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;lt;/tr&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;lt;tr&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Ernst Handel&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Roland Mendel&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Austria&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;lt;/tr&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;lt;tr&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Island Trading&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Helen Bennett&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;UK&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;lt;/tr&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;lt;tr&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Laughing Bacchus Winecellars&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Yoshi Tannamuri&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Canada&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;lt;/tr&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;lt;tr&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Magazzini Alimentari Riuniti&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Giovanni Rovelli&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;lt;td&amp;gt;Italy&amp;lt;/td&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;nbsp; &amp;lt;/tr&amp;gt;&lt;/p&gt;&lt;p&gt;&amp;lt;/table&amp;gt;&lt;/p&gt;"
-            },
-            "Description": {
-              "Html": "&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/p&gt;"
-            },
-            "Title": "Test form creation after .net Core Upgrade 1/13/2019 3:21:52 AM 4kxdyv5s6nnt50kqjje47pm150"
-          },
-          "TitlePart": {
-            "Title": "Test form creation after .net Core Upgrade 1/13/2019 3:21:52 AM 4kxdyv5s6nnt50kqjje47pm150"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/Test-form-creation-after-.net-Core-Upgrade/View/4kxdyv5s6nnt50kqjje47pm150"
-          }
-        },
-        {
-          "ContentItemId": "4mq4pmpcjaktxw0s9jna0g0ec7",
-          "ContentItemVersionId": "42zhqzsz4ayqs7b2v3d4baqpx1",
-          "ContentType": "AdvancedForm",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2019-01-13T03:23:50.4111206Z",
-          "PublishedUtc": "2019-01-13T03:24:23.988425Z",
-          "CreatedUtc": "2019-01-13T03:24:23.988425Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedForm": {
-            "Description": {
-              "Html": "<p><strong>Description</strong></p>"
-            },
-            "Instructions": {
-              "Html": "<ul><li>Bullet 1</li><li>Instruction bullet 2</li></ul>"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"input\":false,\"key\":\"columns\",\"tableView\":false,\"label\":\"Columns\",\"type\":\"columns\",\"columns\":[{\"components\":[{\"label\":\"Number field\",\"mask\":false,\"tableView\":true,\"type\":\"number\",\"input\":true,\"key\":\"numberField\"}],\"width\":6,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"},{\"components\":[{\"label\":\"Text Field\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"textField\",\"widget\":{\"type\":\"\"}}],\"width\":6,\"offset\":0,\"push\":0,\"pull\":0,\"type\":\"column\",\"input\":true,\"key\":\"\",\"tableView\":true,\"label\":\"\"}]},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Title": "Test form creation after .net Core Upgrade",
-            "Header": {
-              "Html": "<p style=\"text-align: center;\">Header text centered</p>"
-            },
-            "Footer": {
-              "Html": "<style>\r\n\r\ntable {\r\n\r\n  font-family: arial, sans-serif;\r\n\r\n  border-collapse: collapse;\r\n\r\n  width: 100%;\r\n\r\n}\r\n\r\n\r\ntd, th {\r\n\r\n  border: 1px solid #dddddd;\r\n\r\n  text-align: left;\r\n\r\n  padding: 8px;\r\n\r\n}\r\n\r\n\r\ntr:nth-child(even) {\r\n\r\n  background-color: #dddddd;\r\n\r\n}\r\n\r\n</style>\r\n\r\n<h2>HTML Table footer</h2>\r\n\r\n\r\n<table>\r\n\r\n  <tbody><tr>\r\n\r\n    <th>Company</th>\r\n\r\n    <th>Contact</th>\r\n\r\n    <th>Country</th>\r\n\r\n  </tr>\r\n\r\n  <tr>\r\n\r\n    <td>Alfreds Futterkiste</td>\r\n\r\n    <td>Maria Anders</td>\r\n\r\n    <td>Germany</td>\r\n\r\n  </tr>\r\n\r\n  <tr>\r\n\r\n    <td>Centro comercial Moctezuma</td>\r\n\r\n    <td>Francisco Chang</td>\r\n\r\n    <td>Mexico</td>\r\n\r\n  </tr>\r\n\r\n  <tr>\r\n\r\n    <td>Ernst Handel</td>\r\n\r\n    <td>Roland Mendel</td>\r\n\r\n    <td>Austria</td>\r\n\r\n  </tr>\r\n\r\n  <tr>\r\n\r\n    <td>Island Trading</td>\r\n\r\n    <td>Helen Bennett</td>\r\n\r\n    <td>UK</td>\r\n\r\n  </tr>\r\n\r\n  <tr>\r\n\r\n    <td>Laughing Bacchus Winecellars</td>\r\n\r\n    <td>Yoshi Tannamuri</td>\r\n\r\n    <td>Canada</td>\r\n\r\n  </tr>\r\n\r\n  <tr>\r\n\r\n    <td>Magazzini Alimentari Riuniti</td>\r\n\r\n    <td>Giovanni Rovelli</td>\r\n\r\n    <td>Italy</td>\r\n\r\n  </tr>\r\n\r\n</tbody></table>"
-            }
-          },
-          "TitlePart": {
-            "Title": "Test form creation after .net Core Upgrade"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/Test-form-creation-after-.net-Core-Upgrade"
-          }
-        },
-        {
-          "ContentItemId": "4f6hkhkrj8k4g3b72b1jkjztnf",
-          "ContentItemVersionId": "4ccmcv3903tpn00n2rmbdpp55v",
-          "ContentType": "AdvancedFormSubmissions",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2019-01-14T09:07:00.8493085Z",
-          "PublishedUtc": null,
-          "CreatedUtc": "2019-01-14T09:07:00.8493085Z",
-          "Owner": "admin",
-          "Author": null,
-          "AdvancedFormSubmissions": {
-            "Submission": {
-              "Html": "{\r\n  \"nullTest\": \"TEst\",\r\n  \"submit\": true\r\n}"
-            },
-            "Metadata": {
-              "Html": "{\r\n  \"timezone\": \"Asia/Calcutta\",\r\n  \"offset\": 330,\r\n  \"referrer\": \"https://localhost:5001/Admin/Contents/ContentItems\",\r\n  \"browserName\": \"Netscape\",\r\n  \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36\",\r\n  \"pathName\": \"/AdvancedForms/my-test-of-null-header-and-footer\",\r\n  \"onLine\": true\r\n}"
-            },
-            "Container": {
-              "Html": "{\"components\":[{\"label\":\"null test\",\"allowMultipleMasks\":false,\"showWordCount\":false,\"showCharCount\":false,\"tableView\":true,\"type\":\"textfield\",\"input\":true,\"key\":\"nullTest\",\"widget\":{\"type\":\"\"}},{\"type\":\"button\",\"label\":\"Submit\",\"key\":\"submit\",\"disableOnInvalid\":true,\"theme\":\"primary\",\"input\":true,\"tableView\":true}]}"
-            },
-            "Header": {
-              "Html": null
-            },
-            "Footer": {
-              "Html": null
-            },
-            "Description": {
-              "Html": null
-            },
-            "Title": "my test of null header and footer 14-Jan-19 9:07:00 AM 4f6hkhkrj8k4g3b72b1jkjztnf"
-          },
-          "TitlePart": {
-            "Title": "my test of null header and footer 14-Jan-19 9:07:00 AM 4f6hkhkrj8k4g3b72b1jkjztnf"
-          },
-          "AutoroutePart": {
-            "Path": "AdvancedForms/my-test-of-null-header-and-footer/View/4f6hkhkrj8k4g3b72b1jkjztnf"
-          }
-        },
-
         {
           "ContentItemId": "4bvcs583pwkmbvx550jkn7r6c6",
           "ContentItemVersionId": "45n45q1srn9jfzz35h3xreehct",
           "ContentType": "LiquidPage",
+          "DisplayText": "ADVANCED FORMS",
           "Latest": true,
           "Published": true,
           "ModifiedUtc": "2019-01-16T11:18:57.7007276Z",
@@ -1260,30 +270,7 @@
             "SetHomepage": false
           },
           "LiquidPart": {
-            "Liquid": "{% assign allAdvancedForms = Queries.AllAdvancedForms | query %}\r\n\r\n<div class=\"col-lg-12 text-center\">\r\n  <h2 class=\"section-heading text-uppercase\">ADVANCED FORMS</h2>\r\n</div>\r\n<div class=\"col-md-12\">\r\n  <div class=\"list-group\">\r\n    {% for item in allAdvancedForms %}\r\n    <a href=\"{{ item | display_url  }}\" class=\"list-group-item list-group-item-action\">\r\n      <div>\r\n        <strong>{{ item | display_text }} </strong>\r\n        <br/>\r\n        {{ item.Content.AdvancedForm.Description.Html | raw }}\r\n      </div>\r\n    </a>\r\n    {% endfor %}\r\n</div>\r\n</div>"
-          },
-          "TitlePart": {
-            "Title": "Available Online Forms"
-          }
-        },
-        {
-          "ContentItemId": "4bvcs583pwkmbvx550jkn7r6c6",
-          "ContentItemVersionId": "4e3m27wxr5hcb6g0k66g911bxh",
-          "ContentType": "LiquidPage",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2019-01-16T10:12:31.6661341Z",
-          "PublishedUtc": "2019-01-16T10:12:31.6824368Z",
-          "CreatedUtc": "2019-01-15T10:32:32.4034983Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "LiquidPage": {},
-          "AutoroutePart": {
-            "Path": "Advancedforms",
-            "SetHomepage": false
-          },
-          "LiquidPart": {
-            "Liquid": "<style>\r\n  .masthead {\r\n        background-image: url(/media/header-bg.jpg) !important;\r\n    }\r\n</style>\r\n\r\n{% assign allAdvancedForms = Queries.AllAdvancedForms | query %}\r\n<div class=\"col-md-6\">\r\n  <h5>ADVANCED FORMS</h5>      \r\n  <ul>\r\n    {% for item in allAdvancedForms %}\r\n    <li>\r\n      \r\n      <a href=\"{{ item | display_url  }}\">\r\n      {{ item | display_text }}\r\n      </a>\r\n    </li>\r\n    {% endfor %}\r\n  </ul>\r\n</div>"
+            "Liquid": "<style>\r\n  .masthead {\r\n        background-image: url(/media/header-bg.jpg) !important;\r\n    }\r\n  section{\r\n      padding: 50px 0;\r\n  }\r\n</style>\r\n\r\n{% assign allAdvancedForms = Queries.AllAdvancedForms | query %}\r\n\r\n<div class=\"col-lg-12 text-center\">\r\n  <h2 class=\"section-heading text-uppercase\">ADVANCED FORMS</h2>\r\n</div>\r\n<div class=\"col-md-12\">\r\n  <div class=\"list-group\">\r\n    {% for item in allAdvancedForms %}\r\n    <a href=\"{{ item | display_url  }}\" class=\"list-group-item list-group-item-action\">\r\n      <div>\r\n        <strong>{{ item | display_text }} </strong>\r\n        <br/>\r\n        {{ item.Content.AdvancedForm.Description.Html | raw }}\r\n      </div>\r\n    </a>\r\n    {% endfor %}\r\n</div>\r\n</div>"
           },
           "TitlePart": {
             "Title": "Available Online Forms"
@@ -1291,15 +278,16 @@
         },
         {
           "ContentItemId": "40txqffy68pt3wy2qvy6z2yfnr",
-          "ContentItemVersionId": "4emhzj7yt08832dg3arpe2bfx5",
+          "ContentItemVersionId": "43xect5jt84h079n4nap24rfwa",
           "ContentType": "AdvancedForm",
+          "DisplayText": "Request For Permit Extension",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2019-01-17T07:14:07.9147414Z",
-          "PublishedUtc": "2019-01-17T07:14:07.9323872Z",
+          "ModifiedUtc": "2019-01-21T08:07:21.4836414Z",
+          "PublishedUtc": "2019-01-21T08:07:21.715158Z",
           "CreatedUtc": "2019-01-16T21:07:00.7992448Z",
           "Owner": "admin",
-          "Author": "admin",
+          "Author": "Admin",
           "AdvancedForm": {
             "Description": {
               "Html": "<p>FBC 105.3.2 Time limitation of Application</p><p>An application for a permit for any proposed work shall be deemed to have been abandoned 180 days after the date of filing, unless such application has been pursued in good faith or a permit has been issued; except that the building official is authorized to grant one or more extensions of time for additional periods not exceeding 90 days each. The extension shall be required in writing and justifiable cause demonstrated.</p><p>**PERMIT MUST BE IN GOOD STANDING AT TIME OF THE REQUEST. IF PERMIT HAS EXPIRED, A NEW PERMIT MAY BE REQUIRED.&nbsp;</p>"
@@ -1316,6 +304,9 @@
             },
             "Footer": {
               "Html": null
+            },
+            "Tag": {
+              "Text": "Advanced Form"
             }
           },
           "TitlePart": {
@@ -1326,11 +317,11 @@
             "SetHomepage": false
           }
         },
-
         {
           "ContentItemId": "4zzphjn2vzhavz9fkg6r7y7gws",
           "ContentItemVersionId": "4c22mrnhnmc00wwze7vtbncnd9",
           "ContentType": "Page",
+          "DisplayText": "Thank You",
           "Latest": true,
           "Published": true,
           "ModifiedUtc": "2019-01-16T10:16:24.6798193Z",
@@ -1407,6 +398,19 @@
           "Source": "Sql"
         }
       ]
+    },
+    {
+      "name": "Templates",
+      "Templates": {
+        "Content__LandingPage": {
+          "Content": "{% zone \"Header\" %}\r\n<!-- Header -->\r\n<header class=\"masthead\" style=\"background-image: url({{ '/header-bg.jpg' | asset_url }})\">\r\n    <div class=\"container\">\r\n        <div class=\"intro-text\">\r\n            <div class=\"intro-lead-in\">Training Software Platform</div>\r\n            <div class=\"intro-heading text-uppercase\">Making Interactions Easier</div>\r\n            <a class=\"btn btn-primary btn-xl text-uppercase js-scroll-trigger\" href=\"#services\">Tell Me More</a>\r\n        </div>\r\n    </div>\r\n</header>\r\n{% endzone %}\r\n\r\n{% if Model.ContentItem.Content.Services.ContentItems.size > 0 %}\r\n<!-- Services -->\r\n<section id=\"services\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12 text-center\">\r\n                <h2 class=\"section-heading text-uppercase\">Services</h2>\r\n                <h3 class=\"section-subheading text-muted\">How Can we help you?</h3>\r\n            </div>\r\n        </div>\r\n        <div class=\"row text-center\">\r\n            {% for service in Model.ContentItem.Content.Services.ContentItems %}\r\n            <div class=\"col-md-4\">\r\n                <span class=\"fa-stack fa-4x\">\r\n                    <i class=\"fa fa-circle fa-stack-2x text-primary\"></i>\r\n                    <i class=\"fa {{ service.Service.IconClass.Text }} fa-stack-1x fa-inverse\"></i>\r\n                </span>\r\n                <h4 class=\"service-heading\">{{ service.TitlePart.Title }}</h4>\r\n                <p class=\"text-muted\">{{ service.HtmlBodyPart.Body | raw }}</p>\r\n            </div>\r\n            {% endfor %}\r\n        </div>\r\n    </div>\r\n</section>\r\n{% endif %}\r\n\r\n{% if Model.ContentItem.Content.Portfolio.ContentItems.size > 0 %}\r\n<!-- Portfolio Grid -->\r\n<section class=\"bg-light\" id=\"portfolio\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12 text-center\">\r\n                <h2 class=\"section-heading text-uppercase\">Portfolio</h2>\r\n                <h3 class=\"section-subheading text-muted\">Lorem ipsum dolor sit amet consectetur.</h3>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            {% for project in Model.ContentItem.Content.Portfolio.ContentItems %}\r\n            <div class=\"col-md-4 col-sm-6 portfolio-item\">\r\n                <div class=\"portfolio-link\" data-toggle=\"modal\" href=\"#portfolioModal{{ forloop.index }}\">\r\n                    <div class=\"portfolio-hover\">\r\n                        <div class=\"portfolio-hover-content\">\r\n                            <i class=\"fa fa-plus fa-3x\"></i>\r\n                        </div>\r\n                    </div>\r\n                    <img class=\"img-fluid\" src=\"{{ project.Project.Image.Paths.first | asset_url | resize_url: width:400, height: 300, mode: 'stretch' }}\" alt=\"{{ project.TitlePart.Title }}\">\r\n                </div>\r\n                <div class=\"portfolio-caption\">\r\n                    <h4>{{ project.TitlePart.Title }}</h4>\r\n                    <p class=\"text-muted\">{{ project.Project.Category.Text }}</p>\r\n                </div>\r\n            </div>\r\n            {% endfor %}\r\n        </div>\r\n    </div>\r\n</section>\r\n{% endif %}\r\n\r\n{% if Model.ContentItem.Content.About.ContentItems.size > 0 %}\r\n<!-- About -->\r\n<section id=\"about\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12 text-center\">\r\n                <h2 class=\"section-heading text-uppercase\">About</h2>\r\n                <h3 class=\"section-subheading text-muted\">Lorem ipsum dolor sit amet consectetur.</h3>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12\">\r\n                <ul class=\"timeline\">\r\n                    {% for milestone in Model.ContentItem.Content.About.ContentItems %}\r\n                    <li class=\"{% cycle '', 'timeline-inverted' %}\">\r\n                        <div class=\"timeline-image\">\r\n                            <img class=\"rounded-circle img-fluid\" src=\"{{ milestone.Milestone.Image.Paths.first | asset_url | resize_url: width:160, height: 160, mode: 'stretch' }}\" alt=\"\">\r\n                        </div>\r\n                        <div class=\"timeline-panel\">\r\n                            <div class=\"timeline-heading\">\r\n                                <h4>{{ milestone.Milestone.Date.Text }}</h4>\r\n                                <h4 class=\"subheading\">{{ milestone.TitlePart.Title }}</h4>\r\n                            </div>\r\n                            <div class=\"timeline-body\">\r\n                                <p class=\"text-muted\">{{ milestone.HtmlBodyPart.Body }}</p>\r\n                            </div>\r\n                        </div>\r\n                    </li>\r\n                    {% endfor %}\r\n                    <li class=\"timeline-inverted\">\r\n                        <div class=\"timeline-image\">\r\n                            <h4>\r\n                                Be Part\r\n                                <br>Of Our\r\n                                <br>Story!\r\n                            </h4>\r\n                        </div>\r\n                    </li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</section>\r\n{% endif %}\r\n\r\n{% if Model.ContentItem.Content.Team.ContentItems.size > 0 %}\r\n<!-- Team -->\r\n<section class=\"bg-light\" id=\"team\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12 text-center\">\r\n                <h2 class=\"section-heading text-uppercase\">Our Amazing Team</h2>\r\n                <h3 class=\"section-subheading text-muted\">Lorem ipsum dolor sit amet consectetur.</h3>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            {% for member in Model.ContentItem.Content.Team.ContentItems %}\r\n            <div class=\"col-sm-4\">\r\n                <div class=\"team-member\">\r\n                    <img class=\"mx-auto rounded-circle\" src=\"{{ member.TeamMember.Picture.Paths.first | asset_url | resize_url: width:240, height: 240, mode: 'stretch' }}\" alt=\"\">\r\n                    <h4>{{ member.TitlePart.Title }}</h4>\r\n                    <p class=\"text-muted\">{{ member.TeamMember.Occupation.Text }}</p>\r\n                    <ul class=\"list-inline social-buttons\">\r\n                        {% if member.TeamMember.Twitter.Text.size > 0 %}\r\n                        <li class=\"list-inline-item\">\r\n                            <a href=\"https://www.twitter.com/{{ member.TeamMember.Twitter.Text }}\">\r\n                                <i class=\"fa fa-twitter\"></i>\r\n                            </a>\r\n                        </li>\r\n                        {% endif %}\r\n                        {% if member.TeamMember.Facebook.Text.size > 0 %}\r\n                        <li class=\"list-inline-item\">\r\n                            <a href=\"https://www.facebook.com/{{ member.TeamMember.Facebook.Text }}\">\r\n                                <i class=\"fa fa-facebook\"></i>\r\n                            </a>\r\n                        </li>\r\n                        {% endif %}\r\n                        {% if member.TeamMember.LinkedIn.Text.size > 0 %}\r\n                        <li class=\"list-inline-item\">\r\n                            <a href=\"https://www.linkedin.com/in/{{ member.TeamMember.LinkedIn.Text }}\">\r\n                                <i class=\"fa fa-linkedin\"></i>\r\n                            </a>\r\n                        </li>\r\n                        {% endif %}\r\n                    </ul>\r\n                </div>\r\n            </div>\r\n            {% endfor %}\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-8 mx-auto text-center\">\r\n                <p class=\"large text-muted\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</section>\r\n{% endif %}\r\n\r\n{% if Model.ContentItem.Content.Clients.ContentItems.size > 0 %}\r\n<!-- Clients -->\r\n<section class=\"py-5\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            {% for client in Model.ContentItem.Content.Clients.ContentItems %}\r\n            <div class=\"col-md-3 col-sm-6\">\r\n                <a href=\"{{ client.Client.Url.Text }}\">\r\n                    <img class=\"img-fluid d-block mx-auto\" src=\"{{ client.Client.Logo.Paths.first | asset_url }}\" alt=\"\">\r\n                </a>\r\n            </div>\r\n            {% endfor %}\r\n        </div>\r\n    </div>\r\n</section>\r\n{% endif %}\r\n\r\n<!-- Contact -->\r\n<section id=\"contact\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12 text-center\">\r\n                <h2 class=\"section-heading text-uppercase\">Contact Us</h2>\r\n                <h3 class=\"section-subheading text-muted\">Lorem ipsum dolor sit amet consectetur.</h3>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12\">\r\n                <form id=\"contactForm\" name=\"sentMessage\" novalidate>\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-6\">\r\n                            <div class=\"form-group\">\r\n                                <input class=\"form-control\" id=\"name\" type=\"text\" placeholder=\"Your Name *\" required data-validation-required-message=\"Please enter your name.\">\r\n                                <p class=\"help-block text-danger\"></p>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <input class=\"form-control\" id=\"email\" type=\"email\" placeholder=\"Your Email *\" required data-validation-required-message=\"Please enter your email address.\">\r\n                                <p class=\"help-block text-danger\"></p>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <input class=\"form-control\" id=\"phone\" type=\"tel\" placeholder=\"Your Phone *\" required data-validation-required-message=\"Please enter your phone number.\">\r\n                                <p class=\"help-block text-danger\"></p>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"col-md-6\">\r\n                            <div class=\"form-group\">\r\n                                <textarea class=\"form-control\" id=\"message\" placeholder=\"Your Message *\" required data-validation-required-message=\"Please enter a message.\"></textarea>\r\n                                <p class=\"help-block text-danger\"></p>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"clearfix\"></div>\r\n                        <div class=\"col-lg-12 text-center\">\r\n                            <div id=\"success\"></div>\r\n                            <button id=\"sendMessageButton\" class=\"btn btn-primary btn-xl text-uppercase\" type=\"submit\">Send Message</button>\r\n                        </div>\r\n                    </div>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</section>\r\n\r\n<!-- Modals -->\r\n{% for project in Model.ContentItem.Content.Portfolio.ContentItems %}\r\n<div class=\"portfolio-modal modal fade\" id=\"portfolioModal{{ forloop.index }}\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"close-modal\" data-dismiss=\"modal\">\r\n                <div class=\"lr\">\r\n                    <div class=\"rl\"></div>\r\n                </div>\r\n            </div>\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-lg-8 mx-auto\">\r\n                        <div class=\"modal-body\">\r\n                            <!-- Project Details Go Here -->\r\n                            <h2 class=\"text-uppercase\">{{ project.TitlePart.Title }}</h2>\r\n                            <p class=\"item-intro text-muted\">{{ project.Project.Category.Text }}</p>\r\n                            <img class=\"img-fluid d-block mx-auto\" src=\"{{ project.Project.Image.Paths.first | asset_url | resize_url: width:400, height: 300, mode: 'stretch' }}\" alt=\"{{ project.TitlePart.Title }}\">\r\n                            <p>{{ project.HtmlBodyPart.Body | raw }}</p>\r\n                            {% comment %}\r\n                            <ul class=\"list-inline\">\r\n                                <li>Date: January 2017</li>\r\n                                <li>Client: Threads</li>\r\n                                <li>Category: Illustration</li>\r\n                            </ul>\r\n                            {% endcomment %}\r\n                            <button class=\"btn btn-primary\" data-dismiss=\"modal\" type=\"button\">\r\n                                <i class=\"fa fa-times\"></i>\r\n                                Close Project\r\n                            </button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n{% endfor %}",
+          "Description": "A template for the Landing Page content type"
+        },
+        "Content": {
+          "Content": "{% zone \"Header\" %}\r\n<header class=\"masthead\" style=\"background-image: url({{ '/header-bg.jpg' | asset_url }})\">\r\n    <div class=\"container\">\r\n        <div class=\"intro-text\">\r\n            <div class=\"intro-lead-in\"></div>\r\n            <div class=\"intro-heading text-uppercase\">{{ Model.ContentItem | display_text }}</div>\r\n      </div>\r\n    </div>\r\n</header>\r\n{% endzone %}\r\n\r\n<section>\r\n  <div class=\"container\">\r\n      {{ Model.Content | shape_render }}\r\n  </div>\r\n</section>\r\n",
+          "Description": "Main content template for liquid file for all pages "
+        }
+      }
     }
   ]
 }

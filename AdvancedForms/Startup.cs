@@ -21,7 +21,7 @@ namespace AdvancedForms
 
         public override void ConfigureServices(IServiceCollection services)
         {
-            //services.AddScoped<IDataMigration, Migrations>();
+            services.AddScoped<IDataMigration, Migrations>();
             services.AddScoped<IPermissionProvider, Permissions>();
             services.AddScoped<INavigationProvider, AdminMenu>();
         }

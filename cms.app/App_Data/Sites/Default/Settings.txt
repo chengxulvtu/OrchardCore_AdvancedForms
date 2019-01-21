@@ -1,8 +1,0 @@
-Default:
-  RequestUrlHost: &665025147 ~
-  RequestUrlPrefix: ~
-  DatabaseProvider: Sqlite
-  TablePrefix: ~
-  ConnectionString: ~
-  State: Running
-...

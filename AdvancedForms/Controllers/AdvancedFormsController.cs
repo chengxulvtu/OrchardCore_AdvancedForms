@@ -66,7 +66,7 @@ namespace AdvancedForms.Controllers
             var model = new AdvancedFormViewModel
             {
                 Id = contentItemId,
-                Title = contentItem.Content.AdvancedForm.Title,
+                Title = contentItem.DisplayText,
                 Tag = contentItem.Content.AdvancedForm.Tag.Text,
                 Container = contentItem.Content.AdvancedForm.Container.Html,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
@@ -95,10 +95,8 @@ namespace AdvancedForms.Controllers
             string subTitle = title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid; 
             var advFormSub = new AdvancedFormSubmissions(subObject["data"].ToString(), 
                 subObject["metadata"].ToString(), subTitle, container, header, footer, description, tag);
-            var titlePart = new TitlePart(subTitle);
-
             contentItem.Content.AdvancedFormSubmissions = JToken.FromObject(advFormSub);
-            contentItem.Content.TitlePart = JToken.FromObject(titlePart);
+            contentItem.DisplayText = subTitle;
             contentItem.Content.AutoroutePart.Path = CreatePath(title, guid);
 
             if (!ModelState.IsValid)
@@ -167,7 +165,7 @@ namespace AdvancedForms.Controllers
             var model = new AdvancedFormViewModel
             {
                 Id = contentItemId,
-                Title = contentItem.Content.AdvancedForm.Title,
+                Title = contentItem.DisplayText,
                 Tag = contentItem.Content.AdvancedForm.Tag.Text,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,

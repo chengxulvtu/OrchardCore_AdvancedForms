@@ -136,9 +136,8 @@ namespace AdvancedForms.Controllers
 
             var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions, 
                 viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Tag);
-            var titlePart = new TitlePart(viewModel.Title);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
-            contentItem.Content.TitlePart = JToken.FromObject(titlePart);
+            contentItem.DisplayText = viewModel.Title;
             contentItem.Content.AutoroutePart.Path = CreatePath(viewModel.Title);
             if (!ModelState.IsValid)
             {
@@ -172,7 +171,7 @@ namespace AdvancedForms.Controllers
             {
                 Id = contentItemId,
                 EntryType = Enums.EntryType.Edit,
-                Title = contentItem.Content.AdvancedForm.Title,
+                Title = contentItem.DisplayText,
                 Container = contentItem.Content.AdvancedForm.Container.Html,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
@@ -252,15 +251,14 @@ namespace AdvancedForms.Controllers
 
             var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions,
                 viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Tag);
-            var titlePart = new TitlePart(viewModel.Title);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
-            contentItem.Content.TitlePart = JToken.FromObject(titlePart);
+            contentItem.DisplayText = viewModel.Title;
             contentItem.Content.AutoroutePart.Path = CreatePath(viewModel.Title);
 
             var model = new AdvancedFormViewModel
             {
                 Id = viewModel.Id,
-                Title = contentItem.Content.AdvancedForm.Title,
+                Title = contentItem.DisplayText,
                 Container = contentItem.Content.AdvancedForm.Container.Html,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
