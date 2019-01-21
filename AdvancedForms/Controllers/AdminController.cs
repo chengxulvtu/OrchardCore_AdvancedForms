@@ -135,7 +135,7 @@ namespace AdvancedForms.Controllers
             }
 
             var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions, 
-                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer);
+                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Tag);
             var titlePart = new TitlePart(viewModel.Title);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.Content.TitlePart = JToken.FromObject(titlePart);
@@ -178,6 +178,7 @@ namespace AdvancedForms.Controllers
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
+                Tag = contentItem.Content.AdvancedForm.Tag.Text
             };
 
             return View("Create", model);
@@ -250,7 +251,7 @@ namespace AdvancedForms.Controllers
             }
 
             var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions,
-                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer);
+                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Tag);
             var titlePart = new TitlePart(viewModel.Title);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.Content.TitlePart = JToken.FromObject(titlePart);
@@ -264,7 +265,8 @@ namespace AdvancedForms.Controllers
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
-                Footer = contentItem.Content.AdvancedForm.Footer.Html
+                Footer = contentItem.Content.AdvancedForm.Footer.Html,
+                Tag = contentItem.Content.AdvancedForm.Tag.Text
             };               
 
             if (!ModelState.IsValid)

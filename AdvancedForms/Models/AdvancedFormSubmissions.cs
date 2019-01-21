@@ -8,9 +8,10 @@ namespace AdvancedForms.Models
     {
         public EditorPart Submission;
         public string Title { get; set; }
+        public string Tag { get; set; }
         public EditorPart Metadata, Container, Header, Footer, Description;
        
-        public AdvancedFormSubmissions(string submission, string metadata, string title, string container, string header, string footer, string description)
+        public AdvancedFormSubmissions(string submission, string metadata, string title, string container, string header, string footer, string description, string tag)
         {
             Submission = new EditorPart(submission);
             Title = title;
@@ -19,6 +20,7 @@ namespace AdvancedForms.Models
             Header = new EditorPart(header);
             Footer = new EditorPart(footer);
             Description = new EditorPart(description);
+            Tag = tag;
         }
 
     }

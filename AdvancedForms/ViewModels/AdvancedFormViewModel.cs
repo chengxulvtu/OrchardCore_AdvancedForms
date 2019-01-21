@@ -9,6 +9,8 @@ namespace AdvancedForms.ViewModels
         public string Id { get; set; }
         [Required]
         public string Title { get; set; }
+        [Required]
+        public string Tag { get; set; }
         public string Header { get; set; }
         public string Footer { get; set; }
         [Required]

@@ -67,6 +67,7 @@ namespace AdvancedForms.Controllers
             {
                 Id = contentItemId,
                 Title = contentItem.Content.AdvancedForm.Title,
+                Tag = contentItem.Content.AdvancedForm.Tag.Text,
                 Container = contentItem.Content.AdvancedForm.Container.Html,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
@@ -80,7 +81,7 @@ namespace AdvancedForms.Controllers
 
         [HttpPost]
         [Route("AdvancedForms/Entry")]
-        public async Task<IActionResult> Entry(string submission, string title, string id, string container, string header, string footer, string description)
+        public async Task<IActionResult> Entry(string submission, string title, string id, string container, string header, string footer, string description, string tag)
         {
             var contentItem = await _contentManager.NewAsync(_id);
 
@@ -93,7 +94,7 @@ namespace AdvancedForms.Controllers
             string guid = contentItem.ContentItemId;
             string subTitle = title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid; 
             var advFormSub = new AdvancedFormSubmissions(subObject["data"].ToString(), 
-                subObject["metadata"].ToString(), subTitle, container, header, footer, description);
+                subObject["metadata"].ToString(), subTitle, container, header, footer, description, tag);
             var titlePart = new TitlePart(subTitle);
 
             contentItem.Content.AdvancedFormSubmissions = JToken.FromObject(advFormSub);
@@ -167,6 +168,7 @@ namespace AdvancedForms.Controllers
             {
                 Id = contentItemId,
                 Title = contentItem.Content.AdvancedForm.Title,
+                Tag = contentItem.Content.AdvancedForm.Tag.Text,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 Container = subContentItem.Content.AdvancedFormSubmissions.Container.Html,

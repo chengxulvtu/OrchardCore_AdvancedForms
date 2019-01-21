@@ -215,6 +215,16 @@
             document.getElementById("TitleError").style.display = "none";
             document.getElementById("Title").classList.remove("input-validation-error");
         }
+
+        if (form.Tag.value == '') {
+            isValidate = false;
+            document.getElementById("TagError").style.display = "list-item";
+            document.getElementById("Tag").classList.add("input-validation-error");
+        } else {
+            document.getElementById("TagError").style.display = "none";
+            document.getElementById("Tag").classList.remove("input-validation-error");
+        }
+
         if (form.Description.value == '') {
             isValidate = false;
             document.getElementById("DescriptionError").style.display = "list-item";
@@ -260,6 +270,7 @@
 <div class="validation-summary-errors" data-valmsg-summary="true" id="notifyError">
     <ul>
         <li id="TitleError"><span class="field-validation-error">@T["The Title field is Required."]</span></li>
+        <li id="TagError"><span class="field-validation-error">@T["The Tag field is Required."]</span></li>
         <li id="DescriptionError"><span class="field-validation-error">@T["The Description field is required."]</span></li>
         <li id="ContainerError"><span class="field-validation-error">@T["Form components is Required."]</span></li>
     </ul>
@@ -271,6 +282,14 @@
     <label asp-for="Title">@T["Title"]</label>
     <input asp-for="Title" class="form-control content-preview-text content-caption-text" autofocus="autofocus" form="main" />
     <span class="hint">@T["The title of the form."]</span>
+    <br />
+    <br />
+</div>
+
+<div>
+    <label asp-for="Tag">@T["Tag"]</label>
+    <input asp-for="Tag" class="form-control content-preview-text content-caption-text" autofocus="autofocus" form="main" />
+    <span class="hint">@T["The tag of the form."]</span>
     <br />
     <br />
 </div>

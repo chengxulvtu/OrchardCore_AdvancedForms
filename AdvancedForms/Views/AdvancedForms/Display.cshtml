@@ -51,7 +51,8 @@
                       container: document.getElementById('Container').value,
                       header: '@Model.Header',
                       footer: '@Model.Footer',
-                      description: '@Model.Description'
+                      description: '@Model.Description',
+                      tag: '@Model.Tag'
                   },
                   success: function (data) {
                       window.location.replace("/submission-confirmation");
@@ -86,6 +87,7 @@
 <div>
     @if (!string.IsNullOrEmpty(Model.Description))
     {
+
         @Html.LabelFor(model => model.Description)
         <br />
         @Html.Raw(Model.Description)
