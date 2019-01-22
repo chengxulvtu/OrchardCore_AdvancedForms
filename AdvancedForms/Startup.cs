@@ -26,7 +26,7 @@ namespace AdvancedForms
             services.AddScoped<IDataMigration, Migrations>();
             services.AddScoped<IPermissionProvider, Permissions>();
             services.AddScoped<INavigationProvider, AdminMenu>();
-            //services.AddScoped<IContentPartHandler, ListPartHandler>();
+            services.AddScoped<IContentPartHandler, ListPartHandler>();
             services.AddScoped<IContentHandler, ContentsHandler>();
         }
 
