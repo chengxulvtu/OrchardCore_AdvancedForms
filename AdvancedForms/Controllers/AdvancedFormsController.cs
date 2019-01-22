@@ -86,7 +86,7 @@ namespace AdvancedForms.Controllers
             ContentItem contentItem;
             if (!string.IsNullOrWhiteSpace(submissionId))
             {
-                contentItem = await _contentManager.GetAsync(submissionId);
+                contentItem = await _contentManager.GetAsync(submissionId, VersionOptions.Latest);
             }
             else
             {
