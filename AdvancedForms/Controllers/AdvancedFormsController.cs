@@ -81,10 +81,17 @@ namespace AdvancedForms.Controllers
 
         [HttpPost]
         [Route("AdvancedForms/Entry")]
-        public async Task<IActionResult> Entry(string submission, string title, string id, string container, string header, string footer, string description, string tag)
+        public async Task<IActionResult> Entry(string submission, string title, string id, string container, string header, string footer, string description, string tag, string submissionId)
         {
-            var contentItem = await _contentManager.NewAsync(_id);
-
+            ContentItem contentItem;
+            if (!string.IsNullOrWhiteSpace(submissionId))
+            {
+                contentItem = await _contentManager.GetAsync(submissionId);
+            }
+            else
+            {
+                contentItem = await _contentManager.NewAsync(_id);
+            }
             if (!await _authorizationService.AuthorizeAsync(User, Permissions.SubmitForm, contentItem))
             {
                 return Unauthorized();
@@ -105,7 +112,14 @@ namespace AdvancedForms.Controllers
                 return StatusCode(StatusCodes.Status406NotAcceptable);
             }
 
-            await _contentManager.CreateAsync(contentItem, VersionOptions.Draft);
+            if (!string.IsNullOrWhiteSpace(submissionId))
+            {
+                await _contentManager.UpdateAsync(contentItem);
+            }
+            else
+            {
+                await _contentManager.CreateAsync(contentItem, VersionOptions.Draft);
+            }
 
             await _contentManager.PublishAsync(contentItem);
             return StatusCode(StatusCodes.Status201Created);  
