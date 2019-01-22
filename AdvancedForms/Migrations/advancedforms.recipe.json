@@ -411,6 +411,15 @@
           "Description": "Main content template for liquid file for all pages "
         }
       }
+    },
+    {
+      "name": "media",
+      "Files": [
+        {
+          "TargetPath": "header-bg.jpg",
+          "SourcePath": "../wwwroot/Image/header-bg.jpg"
+        }
+      ]
     }
   ]
 }
