@@ -7,6 +7,8 @@ using OrchardCore.Security.Permissions;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Data.Migration;
 using OrchardCore.Navigation;
+using AdvancedForms.Handlers;
+using OrchardCore.ContentManagement.Handlers;
 
 namespace AdvancedForms
 {
@@ -24,6 +26,8 @@ namespace AdvancedForms
             services.AddScoped<IDataMigration, Migrations>();
             services.AddScoped<IPermissionProvider, Permissions>();
             services.AddScoped<INavigationProvider, AdminMenu>();
+            //services.AddScoped<IContentPartHandler, ListPartHandler>();
+            services.AddScoped<IContentHandler, ContentsHandler>();
         }
 
         public override void Configure(IApplicationBuilder builder, IRouteBuilder routes, IServiceProvider serviceProvider)

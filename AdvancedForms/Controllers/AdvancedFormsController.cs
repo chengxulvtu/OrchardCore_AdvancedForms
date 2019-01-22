@@ -81,7 +81,7 @@ namespace AdvancedForms.Controllers
 
         [HttpPost]
         [Route("AdvancedForms/Entry")]
-        public async Task<IActionResult> Entry(string submission, string title, string id, string container, string header, string footer, string description, string tag, string submissionId)
+        public async Task<IActionResult> Entry(string submission, string title, string id, string container, string header, string footer, string description, string tag, string submissionId, string instructions)
         {
             ContentItem contentItem;
             if (!string.IsNullOrWhiteSpace(submissionId))
@@ -101,7 +101,7 @@ namespace AdvancedForms.Controllers
             string guid = contentItem.ContentItemId;
             string subTitle = title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid; 
             var advFormSub = new AdvancedFormSubmissions(subObject["data"].ToString(), 
-                subObject["metadata"].ToString(), subTitle, container, header, footer, description, tag);
+                subObject["metadata"].ToString(), subTitle, container, header, footer, description, tag, instructions);
             contentItem.Content.AdvancedFormSubmissions = JToken.FromObject(advFormSub);
             contentItem.DisplayText = subTitle;
             contentItem.Content.AutoroutePart.Path = CreatePath(title, guid);
