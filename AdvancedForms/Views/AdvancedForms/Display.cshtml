@@ -11,6 +11,20 @@
     #mainNav {
         background-color: #212529 !important;
     }
+    button {
+        color: #fff;
+        background-color: #5bc0de !important;
+        border-color: #46b8da !important;
+    }
+    .print-btn {
+        color: #286090 !important;
+    }
+    .print-btn:hover {
+        color: #204d74 !important;
+    }
+        button:disabled {
+            cursor: no-drop;
+        }
 </style>
 
 @{
@@ -80,11 +94,11 @@
 <form enctype="multipart/form-data" asp-action="@createOrEdit" method="post" id="main"></form>
 
 <div>
-    <h1>
+    <h1 style="font-weight: 600;font-size: 30px;">
         @Model.Title
         @if (Model.EntryType == AdvancedForms.Enums.EntryType.View || Model.EntryType == AdvancedForms.Enums.EntryType.Edit)
         {
-            <a class="fa fa-print" style="font-size:36px;text-decoration:none !important;" onclick="printButton();" href="#"></a>
+            <a class="fa fa-print print-btn" style="font-size:27px;text-decoration:none !important;" onclick="printButton();" href="#"></a>
         }
     </h1>
 </div>
