@@ -60,6 +60,33 @@ namespace AdvancedForms.Handlers
                     {
                     }
                 }
+
+                if (metadata.AdminRouteValues == null && context.ContentItem.ContentType == "AdvancedForm")
+                {
+                    metadata.AdminRouteValues = new RouteValueDictionary {
+                        {"Area", "AdvancedForms"},
+                        {"Controller", "Admin"},
+                        {"Action", "Edit"},
+                        {"ContentItemId", context.ContentItem.ContentItemId}
+                    };
+                }
+
+                if (metadata.AdminRouteValues == null && context.ContentItem.ContentType == "AdvancedFormSubmissions")
+                {
+                    try
+                    {
+                        string path = context.ContentItem.Content.AutoroutePart.Path.ToString().Split("/")[1];
+                        metadata.AdminRouteValues = new RouteValueDictionary {
+                            {"Area", "AdvancedForms"},
+                            {"Controller", path},
+                            {"Action", "Edit"},
+                            {"id", context.ContentItem.ContentItemId}
+                        };
+                    }
+                    catch
+                    {
+                    }
+                }
             });
 
             return Task.CompletedTask;
