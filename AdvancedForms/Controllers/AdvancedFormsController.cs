@@ -12,6 +12,9 @@ using Newtonsoft.Json.Linq;
 using AdvancedForms.Models;
 using Microsoft.AspNetCore.Http;
 using AdvancedForms.Enums;
+using OrchardCore.ContentManagement.Metadata;
+using OrchardCore.DisplayManagement.Notify;
+using Microsoft.AspNetCore.Mvc.Localization;
 
 namespace AdvancedForms.Controllers
 {
@@ -22,6 +25,8 @@ namespace AdvancedForms.Controllers
         private readonly IContentItemDisplayManager _contentItemDisplayManager;
         private readonly IAuthorizationService _authorizationService;
         private readonly IContentAliasManager _contentAliasManager;
+        private readonly IContentDefinitionManager _contentDefinitionManager;
+        private readonly INotifier _notifier;
         private readonly YesSql.ISession _session;
         private const string _id = "AdvancedFormSubmissions";
 
@@ -30,16 +35,23 @@ namespace AdvancedForms.Controllers
             IContentItemDisplayManager contentItemDisplayManager,
             IAuthorizationService authorizationService,
             IContentAliasManager contentAliasManager,
-            YesSql.ISession session
+            INotifier notifier,
+            YesSql.ISession session,
+            IContentDefinitionManager contentDefinitionManager,
+            IHtmlLocalizer<AdvancedFormsController> localizer
             )
         {
             _authorizationService = authorizationService;
             _contentItemDisplayManager = contentItemDisplayManager;
             _contentManager = contentManager;
+            _notifier = notifier;
             _contentAliasManager = contentAliasManager;
             _session = session;
+            _contentDefinitionManager = contentDefinitionManager;
+            T = localizer;
         }
 
+        public IHtmlLocalizer T { get; }
 
         [Route("AdvancedForms/{alias}")]
         public async Task<IActionResult> Display(string alias)
@@ -48,7 +60,7 @@ namespace AdvancedForms.Controllers
             {
                 return Redirect("/");
             }
-      
+
             var contentItemId = await _contentAliasManager.GetContentItemIdAsync("slug:AdvancedForms/" + alias);
 
             var contentItem = await _contentManager.GetAsync(contentItemId, VersionOptions.Published);
@@ -83,46 +95,64 @@ namespace AdvancedForms.Controllers
         [Route("AdvancedForms/Entry")]
         public async Task<IActionResult> Entry(string submission, string title, string id, string container, string header, string footer, string description, string tag, string submissionId, string instructions)
         {
-            ContentItem contentItem;
+            ContentItem content;
             if (!string.IsNullOrWhiteSpace(submissionId))
             {
-                contentItem = await _contentManager.GetAsync(submissionId, VersionOptions.Latest);
+                content = await _contentManager.GetAsync(submissionId, VersionOptions.Latest);
             }
             else
             {
-                contentItem = await _contentManager.NewAsync(_id);
+                content = await _contentManager.NewAsync(_id);
+                await _contentManager.CreateAsync(content, VersionOptions.Draft);
             }
-            if (!await _authorizationService.AuthorizeAsync(User, Permissions.SubmitForm, contentItem))
+            string guid = content.ContentItemId;
+            string subTitle = title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
+            var subObject = JObject.Parse(submission);
+            var viewModel = new AdvancedFormSubmissions(subObject["data"].ToString(),
+            subObject["metadata"].ToString(), subTitle, container, header, footer, description, tag, instructions);
+
+            return await EditPOST(content.ContentItemId, title, viewModel, async contentItem =>
+            {
+                await _contentManager.PublishAsync(contentItem);
+
+                var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
+
+                _notifier.Success(string.IsNullOrWhiteSpace(typeDefinition.DisplayName)
+                    ? T["Your content has been published."]
+                    : T["Your {0} has been published.", typeDefinition.DisplayName]);
+            });
+        }
+
+
+        private async Task<IActionResult> EditPOST(string contentItemId, string title, AdvancedFormSubmissions viewModel, Func<ContentItem, Task> conditionallyPublish)
+        {
+
+            var contentItem = await _contentManager.GetAsync(contentItemId, VersionOptions.DraftRequired);
+
+            if (contentItem == null)
+            {
+                return NotFound();
+            }
+
+            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageAdvancedForms, contentItem))
             {
                 return Unauthorized();
             }
 
-            var subObject = JObject.Parse(submission);
             string guid = contentItem.ContentItemId;
-            string subTitle = title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid; 
-            var advFormSub = new AdvancedFormSubmissions(subObject["data"].ToString(), 
-                subObject["metadata"].ToString(), subTitle, container, header, footer, description, tag, instructions);
-            contentItem.Content.AdvancedFormSubmissions = JToken.FromObject(advFormSub);
-            contentItem.DisplayText = subTitle;
+            contentItem.Content.AdvancedFormSubmissions = JToken.FromObject(viewModel);
+            contentItem.DisplayText = viewModel.Title;
             contentItem.Content.AutoroutePart.Path = CreatePath(title, guid);
 
-            if (!ModelState.IsValid)
-            {
-                _session.Cancel();
-                return StatusCode(StatusCodes.Status406NotAcceptable);
-            }
+            await conditionallyPublish(contentItem);
 
-            if (!string.IsNullOrWhiteSpace(submissionId))
-            {
-                await _contentManager.UpdateAsync(contentItem);
-            }
-            else
-            {
-                await _contentManager.CreateAsync(contentItem, VersionOptions.Draft);
-            }
+            // The content item needs to be marked as saved (again) in case the drivers or the handlers have
+            // executed some query which would flush the saved entities. In this case the changes happening in handlers 
+            // would not be taken into account.
+            _session.Save(contentItem);
 
-            await _contentManager.PublishAsync(contentItem);
-            return StatusCode(StatusCodes.Status201Created);  
+            var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
+            return StatusCode(StatusCodes.Status201Created);
         }
 
         [Route("AdvancedForms/{alias}/Edit/{id}")]
@@ -156,10 +186,10 @@ namespace AdvancedForms.Controllers
 
             var contentItemId = await _contentAliasManager.GetContentItemIdAsync("slug:AdvancedForms/" + alias);
             var contentItem = await _contentManager.GetAsync(contentItemId, VersionOptions.Published);
-            var subContentItem = await _contentManager.GetAsync(id, VersionOptions.Latest);
+            var subContentItem = await _contentManager.GetAsync(id, VersionOptions.Published);
             var viewName = entryType == EntryType.Print ? "Print" : "Display";
 
-            if (contentItem == null)
+            if (subContentItem == null)
             {
                 return NotFound();
             }
@@ -169,21 +199,21 @@ namespace AdvancedForms.Controllers
                 if (!await _authorizationService.AuthorizeAsync(User, Permissions.ViewContent, subContentItem))
                 {
                     return Unauthorized();
-                }               
+                }
             }
             else if (!await _authorizationService.AuthorizeAsync(User, Permissions.SubmitForm, subContentItem))
             {
-               return Unauthorized();
+                return Unauthorized();
             }
 
             var model = new AdvancedFormViewModel
             {
-                Id = contentItemId,
+                Id = id,
                 Title = contentItem.DisplayText,
                 Tag = contentItem.Content.AdvancedForm.Tag.Text,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
-                Container = subContentItem.Content.AdvancedFormSubmissions.Container.Html,
+                Container = contentItem.Content.AdvancedForm.Container.Html,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 SubmissionId = subContentItem.ContentItemId,
