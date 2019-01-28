@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="Views\Admin\Submission.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Assets\" />
   </ItemGroup>
 

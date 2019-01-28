@@ -35,6 +35,7 @@ namespace AdvancedForms.Controllers
         private readonly INotifier _notifier;
         private readonly IAuthorizationService _authorizationService;
         private readonly ILogger _logger;
+        private readonly IContentAliasManager _contentAliasManager;
 
         public AdminController(
             IContentManager contentManager,
@@ -46,7 +47,8 @@ namespace AdvancedForms.Controllers
             IShapeFactory shapeFactory,
             ILogger<AdminController> logger,
             IHtmlLocalizer<AdminController> localizer,
-            IAuthorizationService authorizationService
+            IAuthorizationService authorizationService,
+            IContentAliasManager contentAliasManager
             )
         {
             _authorizationService = authorizationService;
@@ -58,13 +60,16 @@ namespace AdvancedForms.Controllers
             _contentDefinitionManager = contentDefinitionManager;
             _logger = logger; 
             T = localizer;
+            _contentAliasManager = contentAliasManager;
         }
 
         public IHtmlLocalizer T { get; }
 
+        #region "   Create/Edit Form    "
+
         public async Task<IActionResult> Create()
         {
-            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageOwnAdvancedForms))
+            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageAdvancedForms))
             {
                 return Unauthorized();
             }
@@ -292,6 +297,56 @@ namespace AdvancedForms.Controllers
             }
         }
 
+        #endregion
+
+        #region "   Admin Form Submission Screen    "
+
+        [Route("AdvancedForms/admin/{alias}/Submission/{id}")]
+        public async Task<IActionResult> Submission(string alias, string id)
+        {
+            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageAdvancedForms))
+            {
+                return Unauthorized();
+            }
+
+            if (String.IsNullOrWhiteSpace(alias))
+            {
+                return Redirect("/");
+            }
+            else if (String.IsNullOrWhiteSpace(id))
+            {
+                return NotFound();
+            }
+
+            var contentItemId = await _contentAliasManager.GetContentItemIdAsync("slug:AdvancedForms/" + alias);
+            var contentItem = await _contentManager.GetAsync(contentItemId, VersionOptions.Published);
+            var subContentItem = await _contentManager.GetAsync(id, VersionOptions.Published);
+            
+            if (subContentItem == null)
+            {
+                return NotFound();
+            }
+
+            var model = new AdvancedFormViewModel
+            {
+                Id = id,
+                Title = contentItem.DisplayText,
+                Tag = contentItem.Content.AdvancedForm.Tag.Text,
+                Header = contentItem.Content.AdvancedForm.Header.Html,
+                Footer = contentItem.Content.AdvancedForm.Footer.Html,
+                Container = contentItem.Content.AdvancedForm.Container.Html,
+                Description = contentItem.Content.AdvancedForm.Description.Html,
+                Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
+                SubmissionId = subContentItem.ContentItemId,
+                Submission = subContentItem.Content.AdvancedFormSubmissions.Submission.Html
+            };
+
+            return View("Submission", model);
+
+        }
+        #endregion
+
+
         private string CreatePath(string title)
         {
             if (!string.IsNullOrEmpty(title))
@@ -300,5 +355,6 @@ namespace AdvancedForms.Controllers
             }
             return title; 
         }
-    }               
+    }    
+    
 }
