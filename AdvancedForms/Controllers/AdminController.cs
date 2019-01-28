@@ -19,6 +19,7 @@ using AdvancedForms.Models;
 using Newtonsoft.Json.Linq;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using Microsoft.AspNetCore.Routing;
+using System.Collections.Generic;
 
 namespace AdvancedForms.Controllers
 {
@@ -140,7 +141,7 @@ namespace AdvancedForms.Controllers
             }
 
             var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions, 
-                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Tag);
+                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.DisplayText = viewModel.Title;
             contentItem.Content.AutoroutePart.Path = CreatePath(viewModel.Title);
@@ -172,6 +173,22 @@ namespace AdvancedForms.Controllers
                 return Unauthorized();
             }
 
+            var selectedContent = await _contentManager.GetAsync(contentItem.Content.AdvancedForm.Type.Text.ToString(), VersionOptions.Published);
+
+            if(selectedContent == null)
+            {
+                selectedContent = await _contentManager.GetAsync(contentItem.Content.AdvancedForm.Type.Text.ToString(), VersionOptions.DraftRequired);
+            }
+
+            List<ContentPickerItemViewModel> lst = new List<ContentPickerItemViewModel>();
+            if (selectedContent != null)
+            {
+                ContentPickerItemViewModel contentPick = new ContentPickerItemViewModel();
+                contentPick.ContentItemId = selectedContent.ContentItemId;
+                contentPick.DisplayText = selectedContent.DisplayText;
+                contentPick.HasPublished = selectedContent.Published;
+                lst.Add(contentPick);
+            }
             var model = new AdvancedFormViewModel
             {
                 Id = contentItemId,
@@ -182,7 +199,9 @@ namespace AdvancedForms.Controllers
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
-                Tag = contentItem.Content.AdvancedForm.Tag.Text
+                Type = contentItem.Content.AdvancedForm.Tag.Text,
+                SelectedItems = lst 
+
             };
 
             return View("Create", model);
@@ -255,7 +274,7 @@ namespace AdvancedForms.Controllers
             }
 
             var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions,
-                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Tag);
+                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.DisplayText = viewModel.Title;
             contentItem.Content.AutoroutePart.Path = CreatePath(viewModel.Title);
@@ -269,7 +288,7 @@ namespace AdvancedForms.Controllers
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
-                Tag = contentItem.Content.AdvancedForm.Tag.Text
+                Type = contentItem.Content.AdvancedForm.Type.Text
             };               
 
             if (!ModelState.IsValid)
@@ -331,7 +350,7 @@ namespace AdvancedForms.Controllers
             {
                 Id = id,
                 Title = contentItem.DisplayText,
-                Tag = contentItem.Content.AdvancedForm.Tag.Text,
+                Type = contentItem.Content.AdvancedForm.Type.Text,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 Container = contentItem.Content.AdvancedForm.Container.Html,

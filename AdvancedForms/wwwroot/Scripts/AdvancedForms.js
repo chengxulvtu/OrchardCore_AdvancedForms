@@ -53,10 +53,10 @@ function onFormSubmit(form) {
     if (form.Tag.value == '') {
         isValidate = false;
         document.getElementById("TagError").style.display = "list-item";
-        document.getElementById("Tag").classList.add("input-validation-error");
+        document.getElementById("multiselect_Div").classList.add("editor-error");
     } else {
         document.getElementById("TagError").style.display = "none";
-        document.getElementById("Tag").classList.remove("input-validation-error");
+        document.getElementById("multiselect_Div").classList.remove("editor-error");
     }
 
     if (form.Description.value == '') {

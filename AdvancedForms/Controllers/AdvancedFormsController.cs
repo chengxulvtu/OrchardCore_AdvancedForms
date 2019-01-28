@@ -79,7 +79,7 @@ namespace AdvancedForms.Controllers
             {
                 Id = contentItemId,
                 Title = contentItem.DisplayText,
-                Tag = contentItem.Content.AdvancedForm.Tag.Text,
+                Type = contentItem.Content.AdvancedForm.Type.Text,
                 Container = contentItem.Content.AdvancedForm.Container.Html,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
@@ -93,7 +93,7 @@ namespace AdvancedForms.Controllers
 
         [HttpPost]
         [Route("AdvancedForms/Entry")]
-        public async Task<IActionResult> Entry(string submission, string title, string id, string container, string header, string footer, string description, string tag, string submissionId, string instructions)
+        public async Task<IActionResult> Entry(string submission, string title, string id, string container, string header, string footer, string description, string type, string submissionId, string instructions)
         {
             ContentItem content;
             if (!string.IsNullOrWhiteSpace(submissionId))
@@ -109,7 +109,7 @@ namespace AdvancedForms.Controllers
             string subTitle = title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
             var subObject = JObject.Parse(submission);
             var viewModel = new AdvancedFormSubmissions(subObject["data"].ToString(),
-            subObject["metadata"].ToString(), subTitle, container, header, footer, description, tag, instructions);
+            subObject["metadata"].ToString(), subTitle, container, header, footer, description, type, instructions);
 
             return await EditPOST(content.ContentItemId, title, viewModel, async contentItem =>
             {
@@ -210,7 +210,7 @@ namespace AdvancedForms.Controllers
             {
                 Id = id,
                 Title = contentItem.DisplayText,
-                Tag = contentItem.Content.AdvancedForm.Tag.Text,
+                Type = contentItem.Content.AdvancedForm.Type.Text,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 Container = contentItem.Content.AdvancedForm.Container.Html,

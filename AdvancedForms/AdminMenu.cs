@@ -36,6 +36,10 @@ namespace AdvancedForms
                         .Url("Admin/Contents/ContentItems?id=AdvancedFormSubmissions&active=AdvancedForms")
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
+                    ).Add(T["Form Type"], layers => layers
+                        .Url("/Admin/Contents/ContentTypes/AdvancedFormTypes/Create")
+                        .Permission(Permissions.ManageOwnAdvancedForms)
+                        .LocalNav()
                     ));
             return Task.CompletedTask;
         }

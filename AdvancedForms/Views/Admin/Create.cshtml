@@ -1,22 +1,47 @@
 ﻿@model AdvancedForms.ViewModels.AdvancedFormViewModel
 @using System.Web
+@using Newtonsoft.Json;
+@using Newtonsoft.Json.Serialization;
 @* Css Files  *@
 <style asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
        debug-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" at="Head"></style>
 <style asp-src="/AdvancedForms/Styles/formio.full.min.css"></style>
-<style asp-src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
+<style asp-src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
        debug-src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></style>
-<style name="trumbowyg" asp-src="/OrchardCore.Resources/Styles/trumbowyg.min.css" 
+<style name="trumbowyg" asp-src="/OrchardCore.Resources/Styles/trumbowyg.min.css"
        debug-src="/OrchardCore.Resources/Styles/trumbowyg.css"></style>
 <style asp-src="/AdvancedForms/Styles/AdvancedForms.css"></style>
 @* JS Files  *@
 <script asp-src="/AdvancedForms/Scripts/formio.full.min.js" at="Head" asp-name="formio.full.min"></script>
 <script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
 <script asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" at="Head"></script>
-<script name="trumbowyg" depends-on="admin" asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js" 
+<script name="trumbowyg" depends-on="admin" asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js"
         debug-src="/OrchardCore.Resources/Scripts/trumbowyg.js" at="Foot"></script>
 <script asp-src="/AdvancedForms/Scripts/AdvancedForms.js" at="Head" asp-name="AdvancedForms"></script>
 
+
+<script asp-src="~/OrchardCore.ContentFields/Scripts/contentPicker.js" asp-name="contentPicker" at="Foot" depends-on="vuejs, vuemultiselect"></script>
+<style asp-src="~/OrchardCore.ContentFields/Styles/contentPicker.min.css" debug-src="~/OrchardCore.ContentFields/Styles/contentPicker.css"></style>
+<script asp-src="https://vuejs.org/js/vue.min.js" debug-src="https://vuejs.org/js/vue.js" asp-name="vuejs" at="Foot"></script>
+<script asp-src="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.js" asp-name="vuemultiselect" at="Foot"></script>
+<style asp-src="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css"></style>
+<script asp-src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.min.js" debug-src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.js" asp-name="sortable" at="Foot"></script>
+<script asp-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.min.js" debug-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.js" asp-name="vuedraggable" depends-on="vuejs, sortable" at="Foot"></script>
+
+<style>
+    label {
+        margin-bottom: 0px !important;
+        padding-bottom: 10px;
+    }
+
+    div > label {
+        padding-bottom: 0px;
+    }
+
+    .btn-group-sm > .btn, .btn-sm {
+        padding: 2px 8px;
+    }
+</style>
 
 @{
     var standardComp = "{components:this.formioComponents}";
@@ -68,12 +93,53 @@
     <br />
 </div>
 
-<div>
-    <label asp-for="Tag">@T["Tag"]</label>
-    <input asp-for="Tag" class="form-control content-preview-text content-caption-text" autofocus="autofocus" form="main" />
-    <span class="hint">@T["The tag of the form."]</span>
-    <br />
-    <br />
+@*<div>
+        <label asp-for="Tag">@T["Tag"]</label>
+        <input asp-for="Tag" class="form-control content-preview-text content-caption-text" autofocus="autofocus" form="main" />
+        <span class="hint">@T["The tag of the form."]</span>
+        <br />
+        <br />
+    </div>*@
+
+<div style="margin-bottom: 2rem;">
+    <label asp-for="Title">@T["Type"]</label>
+    <div id="ContentPicker_PickerType_Type" class="content-picker-default">
+        <fieldset class="">
+            <ul class="list-group col-xl-12 content-picker-default__list" v-show="arrayOfItems.length" v-cloak>
+                <draggable v-model="arrayOfItems">
+                    <li v-for="(item, i) in arrayOfItems"
+                        class="list-group-item content-picker-default__list-item"
+                        :key="item.contentItemId">
+                        {{ item.displayText }} <span v-show="!item.hasPublished" class="text-muted small">(@T["Not published"])</span>
+                        <input asp-for="Type" type="hidden" v-model="item.contentItemId" form="main" />
+                        <div class="btn-group btn-group-sm float-right" role="group">
+                            <button v-on:click="remove(item)" type="button" class="btn btn-secondary content-picker-default__list-item__delete"><i class="fa fa-trash fa-sm" aria-hidden="true"></i></button>
+                        </div>
+                    </li>
+                </draggable>
+            </ul>
+        </fieldset>
+        <fieldset class="row">
+            <div class="col-xl-12">
+                <div id="multiselect_Div">
+                    <vue-multiselect v-model="value" :options="options" track-by="contentItemId"
+                                     label="displayText" placeholder="@T["Type to search"]"
+                                     @@search-change="asyncFind" @@select="onSelect"
+                                     :searchable="true" :close-on-select="true" :reset-after="true"
+                                     :show-labels="true"
+                                     :disabled="isDisabled"
+                                     select-label="@T["Select"]" deselect-label="@T["Remove"]">
+                        <template slot="option" slot-scope="props">
+                            <div v-cloak><span>{{ props.option.displayText }}</span><span class="small ml-2" v-show="!props.option.hasPublished">(@T["Not published"])</span></div>
+                        </template>
+                    </vue-multiselect>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <span class="hint">@T["The type of the form."]</span>
+            </div>
+        </fieldset>
+    </div>
 </div>
 
 <div class="description">
@@ -155,3 +221,20 @@
     }
 }
 <input type="hidden" asp-for="Id" form="main" />
+
+
+@if (Model.SelectedItems != null && Model.SelectedItems.Count > 0)
+{
+    var selectedItems = Html.Raw(JsonConvert.SerializeObject(Model.SelectedItems, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }));
+    <script at="Foot">
+        initializeContentPickerFieldEditor('ContentPicker_PickerType_Type', @selectedItems, '', 'PickerType', 'Type', false);
+    </script>
+}
+else
+{
+    <script at="Foot">
+        initializeContentPickerFieldEditor('ContentPicker_PickerType_Type', [], '', 'PickerType', 'Type', false);
+    </script>
+}
+
+

@@ -1,5 +1,7 @@
 ﻿
 
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace AdvancedForms.ViewModels
@@ -10,7 +12,7 @@ namespace AdvancedForms.ViewModels
         [Required]
         public string Title { get; set; }
         [Required]
-        public string Tag { get; set; }
+        public string Type { get; set; }
         public string Header { get; set; }
         public string Footer { get; set; }
         [Required]
@@ -21,5 +23,8 @@ namespace AdvancedForms.ViewModels
         public string Submission { get; set; }
         public string SubmissionId { get; set; }
         public Enums.EntryType EntryType { get; set; }
+
+        [BindNever]
+        public IList<ContentPickerItemViewModel> SelectedItems { get; set; }
     }
 }
