@@ -199,7 +199,7 @@ namespace AdvancedForms.Controllers
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
-                Type = contentItem.Content.AdvancedForm.Tag.Text,
+                Type = contentItem.Content.AdvancedForm.Type.Text,
                 SelectedItems = lst 
 
             };

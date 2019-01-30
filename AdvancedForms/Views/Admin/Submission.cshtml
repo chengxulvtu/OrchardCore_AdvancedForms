@@ -66,40 +66,11 @@
 
                 // Register for the submit event to get the completed submission.
                 form.on('submit', function(submission) {
-                    console.log('Submission was made!', submission);
-
-                $.ajax({
-                  url: '/AdvancedForms/Entry',
-                  method: 'POST',
-                  data: {
-                      __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
-                      submission: JSON.stringify(submission),
-                      title: '@Model.Title',
-                      id: '@Model.Id',
-                      container: document.getElementById('Container').value,
-                      header: '@Model.Header',
-                      footer: '@Model.Footer',
-                      description: '@Model.Description',
-                      tag: '@Model.Tag',
-                      submissionId: '@Model.SubmissionId',
-                      instructions : '@Model.Instructions'
-                  },
-                  success: function (data) {
-                      window.location.replace("/submission-confirmation");
-                 },
-                  error: function (error) {
-                            var errorMsg = @T["'Unable to Save. Try again later.'"];
-                      $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
-                        }
-                    });
-
+                    console.log('No changes allowed', submission);
                 });
             });
       };
 
-    function printButton() {
-        window.open(window.location.href.toLowerCase().replace('/edit/', '/print/').replace('/view/', '/print/'), '_blank');
-    };
 </script>
 
 @{
@@ -107,7 +78,12 @@
     var createOrEdit = isEdit ? "Edit" : "Create";
 }
 
-<h1>@T["Advanced Form Module - Submission Edit"]</h1>
+<div>
+    <h1 style="font-weight: 600;font-size: 30px;">
+        @Model.Title @T[" - Submission Edit"]
+    </h1>
+</div>
+
 @{
     var errors = ViewData.ModelState.Where(n => n.Value.Errors.Count > 0).ToList();
     if (errors.Count > 0)
@@ -135,19 +111,9 @@
 <form enctype="multipart/form-data" asp-action="@createOrEdit" method="post" id="main"></form>
 
 <div>
-    <h1 style="font-weight: 600;font-size: 30px;">
-        @Model.Title
-        @if (Model.EntryType == AdvancedForms.Enums.EntryType.View || Model.EntryType == AdvancedForms.Enums.EntryType.Edit)
-        {
-            <a class="fa fa-print print-btn" style="font-size:27px;text-decoration:none !important;" onclick="printButton();" href="#"></a>
-        }
-    </h1>
-</div>
-
-<div>
-    <label asp-for="Instructions">@T["Instructions"]</label>
-    <textarea asp-for="Instructions" class="form-control content-preview-text content-caption-text" form="main"></textarea>
-    <span class="hint">@T["The instructions for the form."]</span>
+    <label @*asp-for="Author"*@>@T["Author"]</label>
+    <label @*asp-for="CreatedUtc"*@>@T["Created Date"]</label>
+    <label @*asp-for="Status"*@>@T["Status"]</label>
     <br />
     <br />
 </div>
