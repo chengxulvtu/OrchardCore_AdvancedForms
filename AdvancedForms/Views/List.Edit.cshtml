@@ -1,0 +1,25 @@
+﻿@model ProfileViewModel
+
+<style>
+    .btn-group{
+        display : none;
+    }
+</style>
+
+@if (Model.ContentItemSummaries.Count > 0)
+{
+    <ul class="list-group">
+        @foreach (var contentItemSummary in Model.ContentItemSummaries)
+        {
+            <li class="list-group-item">
+                @await DisplayAsync(contentItemSummary)
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <div class="alert alert-info">
+        @T["No result found."]
+    </div>
+}

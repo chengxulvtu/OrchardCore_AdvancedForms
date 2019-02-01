@@ -9,6 +9,11 @@ using OrchardCore.Data.Migration;
 using OrchardCore.Navigation;
 using AdvancedForms.Handlers;
 using OrchardCore.ContentManagement.Handlers;
+using UserProfile;
+using AdvancedForms.Service;
+using AdvancedForms.Drivers;
+using OrchardCore.DisplayManagement.Handlers;
+using OrchardCore.DisplayManagement;
 
 namespace AdvancedForms
 {
@@ -27,6 +32,10 @@ namespace AdvancedForms
             services.AddScoped<IPermissionProvider, Permissions>();
             services.AddScoped<INavigationProvider, AdminMenu>();
             services.AddScoped<IContentHandler, ContentsHandler>();
+
+            services.AddSingleton<IProfileService, ProfileService>();
+            services.AddScoped<IDisplayManager<IProfile>, DisplayManager<IProfile>>();
+            services.AddScoped<IDisplayDriver<IProfile>, DefaultProfileDisplayDriver>();
         }
 
         public override void Configure(IApplicationBuilder builder, IRouteBuilder routes, IServiceProvider serviceProvider)
@@ -36,6 +45,20 @@ namespace AdvancedForms
                 areaName: "AdvancedForms",
                 template: "AdvancedForms/{alias}",
                 defaults: new { controller = "AdvancedForms", action = "Display" }
+            );
+
+            routes.MapAreaRoute(
+                name: "EndUserProfileWithGroupId",
+                areaName: "UserProfile",
+                template: "Profile/{groupId}",
+                defaults: new { controller = "Profile", action = "Index" }
+            );
+
+            routes.MapAreaRoute(
+                name: "EndUserProfile",
+                areaName: "UserProfile",
+                template: "Profile",
+                defaults: new { controller = "Profile", action = "Index" }
             );
         }
     }

@@ -23,11 +23,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Antiforgery" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.0" />
-    <PackageReference Include="OrchardCore.Application.Cms.Targets" Version="1.0.0-beta3-70528" />
+    <PackageReference Include="OrchardCore.Application.Cms.Targets" Version="1.0.0-beta3-70605" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AdvancedForms\AdvancedForms.csproj" />
+    <ProjectReference Include="..\UserProfile\UserProfile.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,1438 @@
+{
+  "Id": 0,
+  "ContentTypeDefinitionRecords": [
+    {
+      "Name": "Menu",
+      "DisplayName": "Menu",
+      "Settings": {
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "True"
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "Position": "0"
+          }
+        },
+        {
+          "PartName": "AliasPart",
+          "Name": "AliasPart",
+          "Settings": {
+            "Position": "1",
+            "AliasPartSettings": {
+              "Pattern": "{{ ContentItem | display_text | slugify }}"
+            }
+          }
+        },
+        {
+          "PartName": "MenuPart",
+          "Name": "MenuPart",
+          "Settings": {
+            "Position": "2"
+          }
+        },
+        {
+          "PartName": "MenuItemsListPart",
+          "Name": "MenuItemsListPart",
+          "Settings": {
+            "Position": "3"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "LinkMenuItem",
+      "DisplayName": "Link Menu Item",
+      "Settings": {
+        "Stereotype": "MenuItem"
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "LinkMenuItemPart",
+          "Name": "LinkMenuItemPart",
+          "Settings": {
+            "Position": "0"
+          }
+        },
+        {
+          "PartName": "LinkMenuItem",
+          "Name": "LinkMenuItem",
+          "Settings": {
+            "Position": "1"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "LiquidPage",
+      "DisplayName": "Liquid Page",
+      "Settings": {
+        "Creatable": "True",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "True",
+        "Securable": "False",
+        "Stereotype": null
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "LiquidPage",
+          "Name": "LiquidPage",
+          "Settings": {
+            "Position": "2"
+          }
+        },
+        {
+          "PartName": "AutoroutePart",
+          "Name": "AutoroutePart",
+          "Settings": {
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Pattern": "{{ ContentItem | display_text | slugify }}",
+            "AllowCustomPath": "True",
+            "ShowHomepageOption": "True",
+            "Position": "1"
+          }
+        },
+        {
+          "PartName": "LiquidPart",
+          "Name": "LiquidPart",
+          "Settings": {
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "3"
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "HtmlWidget",
+      "DisplayName": "Html",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "False",
+        "Securable": "True",
+        "Stereotype": "Widget"
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "HtmlWidget",
+          "Name": "HtmlWidget",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Page",
+      "DisplayName": "Page",
+      "Settings": {
+        "Creatable": "True",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "True",
+        "Securable": "True",
+        "Stereotype": null
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Page",
+          "Name": "Page",
+          "Settings": {
+            "Position": "3"
+          }
+        },
+        {
+          "PartName": "AutoroutePart",
+          "Name": "AutoroutePart",
+          "Settings": {
+            "Position": "1",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Pattern": "{{ ContentItem | display_text | slugify }}",
+            "AllowCustomPath": "True",
+            "ShowHomepageOption": "True"
+          }
+        },
+        {
+          "PartName": "FlowPart",
+          "Name": "FlowPart",
+          "Settings": {
+            "Position": "2"
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "LandingPage",
+      "DisplayName": "Landing Page",
+      "Settings": {
+        "Creatable": "True",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "True",
+        "Securable": "True",
+        "Stereotype": null
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "LandingPage",
+          "Name": "LandingPage",
+          "Settings": {
+            "Position": "8"
+          }
+        },
+        {
+          "PartName": "AutoroutePart",
+          "Name": "AutoroutePart",
+          "Settings": {
+            "Pattern": "{{ ContentItem | display_text | slugify }}",
+            "AllowCustomPath": "True",
+            "ShowHomepageOption": "True",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "1"
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "Position": "0"
+          }
+        },
+        {
+          "PartName": "BagPart",
+          "Name": "Services",
+          "Settings": {
+            "DisplayName": "Services",
+            "Description": "Provides a collection behavior for your content item.",
+            "Position": "3",
+            "ContainedContentTypes": [
+              "Service"
+            ],
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            }
+          }
+        },
+        {
+          "PartName": "BagPart",
+          "Name": "Portfolio",
+          "Settings": {
+            "DisplayName": "Portfolio",
+            "Description": "Provides a collection behavior for your content item.",
+            "ContainedContentTypes": [
+              "Project"
+            ],
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "4"
+          }
+        },
+        {
+          "PartName": "BagPart",
+          "Name": "About",
+          "Settings": {
+            "DisplayName": "About",
+            "Description": "A collection of milestones",
+            "Position": "5",
+            "ContainedContentTypes": [
+              "Milestone"
+            ],
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            }
+          }
+        },
+        {
+          "PartName": "BagPart",
+          "Name": "Team",
+          "Settings": {
+            "DisplayName": "Team",
+            "Description": "Team members",
+            "Position": "6",
+            "ContainedContentTypes": [
+              "TeamMember"
+            ],
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            }
+          }
+        },
+        {
+          "PartName": "BagPart",
+          "Name": "Clients",
+          "Settings": {
+            "DisplayName": "Clients",
+            "Description": "Provides a collection behavior for your content item.",
+            "Position": "7",
+            "ContainedContentTypes": [
+              "Client"
+            ],
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Service",
+      "DisplayName": "Service",
+      "Settings": {},
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Service",
+          "Name": "Service",
+          "Settings": {
+            "Position": "2"
+          }
+        },
+        {
+          "PartName": "HtmlBodyPart",
+          "Name": "HtmlBodyPart",
+          "Settings": {
+            "Position": "1"
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Project",
+      "DisplayName": "Project",
+      "Settings": {},
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Project",
+          "Name": "Project",
+          "Settings": {
+            "Position": "2"
+          }
+        },
+        {
+          "PartName": "HtmlBodyPart",
+          "Name": "HtmlBodyPart",
+          "Settings": {
+            "Position": "1"
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Milestone",
+      "DisplayName": "Milestone",
+      "Settings": {},
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Milestone",
+          "Name": "Milestone",
+          "Settings": {
+            "Position": "0"
+          }
+        },
+        {
+          "PartName": "HtmlBodyPart",
+          "Name": "HtmlBodyPart",
+          "Settings": {
+            "Position": "2"
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "Position": "1"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "TeamMember",
+      "DisplayName": "Team Member",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "False",
+        "Versionable": "False",
+        "Listable": "False",
+        "Securable": "False",
+        "Stereotype": null
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "TeamMember",
+          "Name": "TeamMember",
+          "Settings": {
+            "Position": "1"
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Client",
+      "DisplayName": "Client",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "False",
+        "Versionable": "False",
+        "Listable": "False",
+        "Securable": "False",
+        "Stereotype": null
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Client",
+          "Name": "Client",
+          "Settings": {
+            "Position": "1"
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Container",
+      "DisplayName": "Container",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "False",
+        "Securable": "True",
+        "Stereotype": "Widget"
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Container",
+          "Name": "Container",
+          "Settings": {
+            "Position": "0"
+          }
+        },
+        {
+          "PartName": "FlowPart",
+          "Name": "FlowPart",
+          "Settings": {
+            "Position": "1"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Blockquote",
+      "DisplayName": "Blockquote",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "False",
+        "Securable": "True",
+        "Stereotype": "Widget"
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Blockquote",
+          "Name": "Blockquote",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "ImageWidget",
+      "DisplayName": "Image",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "False",
+        "Securable": "True",
+        "Stereotype": "Widget"
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Image",
+          "Name": "Image",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "LiquidWidget",
+      "DisplayName": "Liquid",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "True",
+        "Securable": "True",
+        "Stereotype": "Widget"
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "LiquidPart",
+          "Name": "LiquidPart",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Image",
+      "DisplayName": "Image",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "False",
+        "Versionable": "True",
+        "Listable": "False",
+        "Securable": "False",
+        "Stereotype": null
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Image",
+          "Name": "Image",
+          "Settings": {
+            "Position": "0"
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Paragraph",
+      "DisplayName": "Paragraph",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "False",
+        "Securable": "True",
+        "Stereotype": "Widget"
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "Paragraph",
+          "Name": "Paragraph",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "AdvancedForm",
+      "DisplayName": "Advanced Form",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "True",
+        "Securable": "True",
+        "Stereotype": null
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "AdvancedForm",
+          "Name": "AdvancedForm",
+          "Settings": {
+            "Position": "2"
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "Position": "0"
+          }
+        },
+        {
+          "PartName": "AutoroutePart",
+          "Name": "AutoroutePart",
+          "Settings": {
+            "Position": "1",
+            "Pattern": null,
+            "AllowCustomPath": "True",
+            "ShowHomepageOption": "False",
+            "ContentIndexSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "AdvancedFormSubmissions",
+      "DisplayName": "Advanced Form Submissions",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "True",
+        "Securable": "True",
+        "Stereotype": null
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "AdvancedFormSubmissions",
+          "Name": "AdvancedFormSubmissions",
+          "Settings": {
+            "Position": "2"
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "Position": "0"
+          }
+        },
+        {
+          "PartName": "AutoroutePart",
+          "Name": "AutoroutePart",
+          "Settings": {
+            "Position": "1"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "AdvancedFormTypes",
+      "DisplayName": "Advanced Form Types",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "True",
+        "Securable": "True",
+        "Stereotype": null
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "AdvancedFormTypes",
+          "Name": "AdvancedFormTypes",
+          "Settings": {
+            "Position": "1"
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "DisplayName": null,
+            "Description": null,
+            "Editor": null,
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "PickerType",
+      "DisplayName": "PickerType",
+      "Settings": {
+        "Creatable": "True",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "True",
+        "Securable": "True",
+        "Stereotype": null
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "PickerType",
+          "Name": "PickerType",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
+    }
+  ],
+  "ContentPartDefinitionRecords": [
+    {
+      "Name": "CommonPart",
+      "Settings": {
+        "Attachable": "True",
+        "Description": "Provides an editor for the common properties of a content item."
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "LiquidPart",
+      "Settings": {
+        "Attachable": "True",
+        "Description": "Provides a Liquid formatted body for your content item."
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "AliasPart",
+      "Settings": {
+        "Attachable": "True",
+        "Description": "Provides a way to define custom aliases for content items."
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "AutoroutePart",
+      "Settings": {
+        "Attachable": "True",
+        "Description": "Provides a custom url for your content item."
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "WidgetsListPart",
+      "Settings": {
+        "Attachable": "True",
+        "Description": "Provides a way to add widgets per content items."
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "FlowPart",
+      "Settings": {
+        "Attachable": "True",
+        "Description": "Provides a customizable body for your content item."
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "BagPart",
+      "Settings": {
+        "Attachable": "True",
+        "Reusable": "True",
+        "Description": "Provides a collection behavior for your content item."
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "HtmlBodyPart",
+      "Settings": {
+        "Attachable": "True",
+        "Description": "Provides an HTML Body for your content item."
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "ListPart",
+      "Settings": {
+        "Attachable": "True",
+        "Description": "Add a list behavior."
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "MarkdownBodyPart",
+      "Settings": {
+        "Attachable": "True",
+        "Description": "Provides a Markdown formatted body for your content item."
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "TitlePart",
+      "Settings": {
+        "Attachable": "True",
+        "Description": "Provides a Title for your content item.",
+        "DefaultPosition": "0"
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "HtmlWidget",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "HtmlField",
+          "Name": "Content",
+          "Settings": {
+            "DisplayName": "Content",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false
+            },
+            "Hint": null,
+            "Editor": "Multiline",
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "MenuItem",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Link",
+          "Settings": {
+            "DisplayName": "Link",
+            "Hint": null,
+            "Editor": null,
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Service",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "IconClass",
+          "Settings": {
+            "DisplayName": "Icon Class",
+            "Hint": "The icon css class from font-awesome. e.g., fa-laptop, fa-shopping-cart, fa-lock",
+            "Editor": null,
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Project",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "MediaField",
+          "Name": "Image",
+          "Settings": {
+            "DisplayName": "Image",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Hint": null,
+            "Required": true,
+            "Multiple": false,
+            "Position": "1"
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Category",
+          "Settings": {
+            "DisplayName": "Category",
+            "Hint": "The category that is displayed below the title",
+            "Editor": null,
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Milestone",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Date",
+          "Settings": {
+            "DisplayName": "Date",
+            "Hint": null,
+            "Editor": null,
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "0"
+          }
+        },
+        {
+          "FieldName": "MediaField",
+          "Name": "Image",
+          "Settings": {
+            "DisplayName": "Image",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Hint": null,
+            "Required": true,
+            "Multiple": false,
+            "Position": "1"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "TeamMember",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Occupation",
+          "Settings": {
+            "DisplayName": "Occupation",
+            "Hint": null,
+            "Editor": null,
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "0"
+          }
+        },
+        {
+          "FieldName": "MediaField",
+          "Name": "Picture",
+          "Settings": {
+            "DisplayName": "Picture",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Hint": null,
+            "Required": true,
+            "Multiple": false,
+            "Position": "1"
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Twitter",
+          "Settings": {
+            "DisplayName": "Twitter",
+            "Hint": "Twitter handle, e.g. @BillGates",
+            "Editor": null,
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "2"
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Facebook",
+          "Settings": {
+            "DisplayName": "Facebook",
+            "Hint": "Facebook handle",
+            "Editor": null,
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "3"
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "LinkedIn",
+          "Settings": {
+            "DisplayName": "LinkedIn",
+            "Hint": "LinkedIn handle",
+            "Editor": null,
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "4"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Client",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "MediaField",
+          "Name": "Logo",
+          "Settings": {
+            "DisplayName": "Logo",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Hint": null,
+            "Required": true,
+            "Multiple": false,
+            "Position": "0"
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Url",
+          "Settings": {
+            "DisplayName": "Url",
+            "Hint": null,
+            "Editor": null,
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "1"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Blockquote",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Quote",
+          "Settings": {
+            "DisplayName": "Quote",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false
+            },
+            "Hint": null,
+            "Editor": "TextArea",
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Image",
+      "Settings": {
+        "Attachable": true
+      },
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "MediaField",
+          "Name": "Media",
+          "Settings": {
+            "DisplayName": "Image",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false
+            },
+            "Hint": null,
+            "Editor": null,
+            "Position": "0",
+            "Multiple": false,
+            "Required": true
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Caption",
+          "Settings": {
+            "DisplayName": "Caption",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Hint": "A description of the image used as title or alternate text",
+            "Editor": null,
+            "Position": "1"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Paragraph",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "HtmlField",
+          "Name": "Content",
+          "Settings": {
+            "DisplayName": "Content",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false
+            },
+            "Hint": null,
+            "Editor": "Wysiwyg",
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "AdvancedForm",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "HtmlField",
+          "Name": "Description",
+          "Settings": {
+            "DisplayName": "Description",
+            "Hint": null,
+            "Editor": "Wysiwyg",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "1"
+          }
+        },
+        {
+          "FieldName": "HtmlField",
+          "Name": "Instructions",
+          "Settings": {
+            "DisplayName": "Instructions",
+            "Hint": null,
+            "Editor": "Wysiwyg",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "2"
+          }
+        },
+        {
+          "FieldName": "HtmlField",
+          "Name": "Container",
+          "Settings": {
+            "DisplayName": "Container",
+            "Hint": null,
+            "Editor": "Wysiwyg",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "3"
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Tag",
+          "Settings": {
+            "DisplayName": "Tag",
+            "Editor": null,
+            "DisplayMode": null,
+            "Hint": null,
+            "Required": true,
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "AdvancedFormSubmissions",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "HtmlField",
+          "Name": "Submission",
+          "Settings": {
+            "DisplayName": "Submission",
+            "Hint": null,
+            "Editor": "Multiline",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "1"
+          }
+        },
+        {
+          "FieldName": "HtmlField",
+          "Name": "Metadata",
+          "Settings": {
+            "DisplayName": "Metadata",
+            "Hint": null,
+            "Editor": "Wysiwyg",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "3"
+          }
+        },
+        {
+          "FieldName": "HtmlField",
+          "Name": "Container",
+          "Settings": {
+            "DisplayName": "Container",
+            "Hint": null,
+            "Editor": "Wysiwyg",
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "2"
+          }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Tag",
+          "Settings": {
+            "DisplayName": "Tag",
+            "Editor": null,
+            "DisplayMode": null,
+            "Hint": null,
+            "Required": true,
+            "ContentIndexSettings": {
+              "Included": false,
+              "Stored": false,
+              "Analyzed": false,
+              "Sanitized": false,
+              "Tokenized": false,
+              "Template": null
+            },
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "AdvancedFormTypes",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Type",
+          "Settings": {
+            "DisplayName": "Type",
+            "Editor": null,
+            "DisplayMode": null,
+            "Hint": null,
+            "Required": true,
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "PickerType",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "Type",
+          "Settings": {
+            "DisplayName": "Text",
+            "Editor": null,
+            "DisplayMode": null,
+            "Hint": null,
+            "Required": false,
+            "Multiple": false,
+            "DisplayedContentTypes": [
+              "AdvancedFormTypes"
+            ],
+            "Position": "0"
+          }
+        }
+      ]
+    }
+  ],
+  "Serial": 68
+}
