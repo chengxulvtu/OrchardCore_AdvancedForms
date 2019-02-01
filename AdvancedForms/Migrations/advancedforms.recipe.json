@@ -93,7 +93,7 @@
               "PartName": "AdvancedFormTypes",
               "Name": "AdvancedFormTypes",
               "Settings": {
-                "Position": "0"
+                "Position": "1"
               }
             },
             {
@@ -103,7 +103,7 @@
                 "DisplayName": null,
                 "Description": null,
                 "Editor": null,
-                "Position": "1"
+                "Position": "0"
               }
             }
           ]
