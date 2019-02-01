@@ -46,11 +46,11 @@ namespace AdvancedForms
                 },
                  new PermissionStereotype {
                     Name = "Authenticated",
-                    Permissions = new[] {ViewContent, SubmitForm }
+                    Permissions = new[] { ManageAdvancedForms, SubmitForm }
                 },
                 new PermissionStereotype {
                     Name = "Anonymous",
-                    Permissions = new[] {ViewContent}
+                    Permissions = new[] { ManageAdvancedForms, ViewContent }
                 }
             };
         }

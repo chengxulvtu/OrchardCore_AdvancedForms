@@ -70,7 +70,8 @@
                       description: '@Model.Description',
                       type: '@Model.Type',
                       submissionId: '@Model.SubmissionId',
-                      instructions : '@Model.Instructions'
+                      instructions: '@Model.Instructions',
+                      owner: '@Model.Owner'
                   },
                   success: function (data) {
                       window.location.replace("/submission-confirmation");
@@ -90,8 +91,8 @@
     };
 </script>
 
-
 <form enctype="multipart/form-data" asp-action="@createOrEdit" method="post" id="main"></form>
+<a style="float:right;" href="/profile">Go To Profile</a>
 
 <div>
     <h1 style="font-weight: 600;font-size: 30px;">

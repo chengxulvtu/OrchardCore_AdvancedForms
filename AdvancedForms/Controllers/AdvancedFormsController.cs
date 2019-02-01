@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc.Localization;
 
 namespace AdvancedForms.Controllers
 {
+    [Authorize]
     public class AdvancedFormsController : Controller, IUpdateModel
     {
 
@@ -93,7 +94,7 @@ namespace AdvancedForms.Controllers
 
         [HttpPost]
         [Route("AdvancedForms/Entry")]
-        public async Task<IActionResult> Entry(string submission, string title, string id, string container, string header, string footer, string description, string type, string submissionId, string instructions)
+        public async Task<IActionResult> Entry(string submission, string title, string id, string container, string header, string footer, string description, string type, string submissionId, string instructions, string owner)
         {
             ContentItem content;
             if (!string.IsNullOrWhiteSpace(submissionId))
@@ -105,11 +106,17 @@ namespace AdvancedForms.Controllers
                 content = await _contentManager.NewAsync(_id);
                 await _contentManager.CreateAsync(content, VersionOptions.Draft);
             }
+
+            if (string.IsNullOrWhiteSpace(owner))
+            {
+                owner = User.Identity.Name;
+            }
+
             string guid = content.ContentItemId;
             string subTitle = title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
             var subObject = JObject.Parse(submission);
             var viewModel = new AdvancedFormSubmissions(subObject["data"].ToString(),
-            subObject["metadata"].ToString(), subTitle, container, header, footer, description, type, instructions);
+            subObject["metadata"].ToString(), subTitle, container, header, footer, description, type, instructions, owner);
 
             return await EditPOST(content.ContentItemId, title, viewModel, async contentItem =>
             {
@@ -134,14 +141,16 @@ namespace AdvancedForms.Controllers
                 return NotFound();
             }
 
-            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageAdvancedForms, contentItem))
-            {
-                return Unauthorized();
-            }
+            //if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageAdvancedForms, contentItem))
+            //{
+            //    return Unauthorized();
+            //}
 
             string guid = contentItem.ContentItemId;
             contentItem.Content.AdvancedFormSubmissions = JToken.FromObject(viewModel);
             contentItem.DisplayText = viewModel.Title;
+            contentItem.Author = User.Identity.Name;
+            contentItem.Owner = viewModel.Owner;
             contentItem.Content.AutoroutePart.Path = CreatePath(title, guid);
 
             await conditionallyPublish(contentItem);
@@ -209,6 +218,7 @@ namespace AdvancedForms.Controllers
             var model = new AdvancedFormViewModel
             {
                 Id = id,
+                Owner = subContentItem.Owner,
                 Title = contentItem.DisplayText,
                 Type = contentItem.Content.AdvancedForm.Type.Text,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
