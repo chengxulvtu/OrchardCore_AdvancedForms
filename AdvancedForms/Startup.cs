@@ -46,20 +46,7 @@ namespace AdvancedForms
                 template: "AdvancedForms/{alias}",
                 defaults: new { controller = "AdvancedForms", action = "Display" }
             );
-
-            routes.MapAreaRoute(
-                name: "EndOrchardCore.ProfileWithGroupId",
-                areaName: "OrchardCore.Profile",
-                template: "Profile/{groupId}",
-                defaults: new { controller = "Profile", action = "Index" }
-            );
-
-            routes.MapAreaRoute(
-                name: "EndOrchardCore.Profile",
-                areaName: "OrchardCore.Profile",
-                template: "Profile",
-                defaults: new { controller = "Profile", action = "Index" }
-            );
+                        
         }
     }
 }

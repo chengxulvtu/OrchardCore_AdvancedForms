@@ -24,7 +24,19 @@ namespace OrchardCore.Profile
 
         public override void Configure(IApplicationBuilder builder, IRouteBuilder routes, IServiceProvider serviceProvider)
         {
-            
+            routes.MapAreaRoute(
+                name: "EndOrchardCore.ProfileWithGroupId",
+                areaName: "OrchardCore.Profile",
+                template: "Profile/{groupId}",
+                defaults: new { controller = "Profile", action = "Index" }
+            );
+
+            routes.MapAreaRoute(
+                name: "EndOrchardCore.Profile",
+                areaName: "OrchardCore.Profile",
+                template: "Profile",
+                defaults: new { controller = "Profile", action = "Index" }
+            );
         }
     }
 }
