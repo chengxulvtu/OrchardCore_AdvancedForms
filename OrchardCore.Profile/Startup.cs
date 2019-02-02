@@ -4,14 +4,7 @@ using OrchardCore.Modules;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OrchardCore.DisplayManagement;
-using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.Security.Permissions;
-using OrchardCore.Navigation;
-using OrchardCore.Settings;
-using OrchardCore.Scripting;
-using OrchardCore.Recipes;
-using OrchardCore.Profile.ViewModels;
 
 namespace OrchardCore.Profile
 {

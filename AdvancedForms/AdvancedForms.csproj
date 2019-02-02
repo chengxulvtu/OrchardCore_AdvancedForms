@@ -40,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UserProfile\OrchardCore.Profile.csproj" />
+    <ProjectReference Include="..\OrchardCore.Profile\OrchardCore.Profile.csproj" />
   </ItemGroup>
 
 </Project>
