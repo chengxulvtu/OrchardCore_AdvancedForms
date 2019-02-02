@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Extensions.Primitives;
 
-namespace UserProfile
+namespace OrchardCore.Profile
 {
     public interface IProfileService
     {

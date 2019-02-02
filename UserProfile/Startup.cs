@@ -11,9 +11,9 @@ using OrchardCore.Navigation;
 using OrchardCore.Settings;
 using OrchardCore.Scripting;
 using OrchardCore.Recipes;
-using UserProfile.ViewModels;
+using OrchardCore.Profile.ViewModels;
 
-namespace UserProfile
+namespace OrchardCore.Profile
 {
     public class Startup : StartupBase
     {

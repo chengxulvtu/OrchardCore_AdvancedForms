@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Primitives;
 using OrchardCore.Environment.Cache;
 using OrchardCore.Modules;
-using UserProfile;
+using OrchardCore.Profile;
 using YesSql;
 
 

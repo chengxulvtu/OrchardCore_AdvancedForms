@@ -15,7 +15,7 @@ using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Notify;
 using OrchardCore.DisplayManagement.Views;
 using OrchardCore.Environment.Shell;
-using UserProfile;
+using OrchardCore.Profile;
 using YesSql;
 
 namespace AdvancedForms.Drivers

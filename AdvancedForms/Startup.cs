@@ -9,7 +9,7 @@ using OrchardCore.Data.Migration;
 using OrchardCore.Navigation;
 using AdvancedForms.Handlers;
 using OrchardCore.ContentManagement.Handlers;
-using UserProfile;
+using OrchardCore.Profile;
 using AdvancedForms.Service;
 using AdvancedForms.Drivers;
 using OrchardCore.DisplayManagement.Handlers;
@@ -48,15 +48,15 @@ namespace AdvancedForms
             );
 
             routes.MapAreaRoute(
-                name: "EndUserProfileWithGroupId",
-                areaName: "UserProfile",
+                name: "EndOrchardCore.ProfileWithGroupId",
+                areaName: "OrchardCore.Profile",
                 template: "Profile/{groupId}",
                 defaults: new { controller = "Profile", action = "Index" }
             );
 
             routes.MapAreaRoute(
-                name: "EndUserProfile",
-                areaName: "UserProfile",
+                name: "EndOrchardCore.Profile",
+                areaName: "OrchardCore.Profile",
                 template: "Profile",
                 defaults: new { controller = "Profile", action = "Index" }
             );

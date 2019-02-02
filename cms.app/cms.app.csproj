@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdvancedForms\AdvancedForms.csproj" />
-    <ProjectReference Include="..\UserProfile\UserProfile.csproj" />
+    <ProjectReference Include="..\UserProfile\OrchardCore.Profile.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Routing;
 using OrchardCore.Entities;
 
-namespace UserProfile
+namespace OrchardCore.Profile
 {
     public interface IProfile : IEntity
     {

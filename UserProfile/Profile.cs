@@ -1,6 +1,6 @@
 ﻿using OrchardCore.Entities;
 
-namespace UserProfile
+namespace OrchardCore.Profile
 {
     public class Profile : Entity, IProfile
     {

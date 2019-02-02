@@ -1,25 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.Extensions.Localization;
-using Newtonsoft.Json;
-using OrchardCore.ContentManagement;
-using OrchardCore.ContentManagement.Display;
-using OrchardCore.ContentManagement.Records;
 using OrchardCore.DisplayManagement;
 using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Notify;
-using OrchardCore.Settings;
-using UserProfile.ViewModels;
-using YesSql;
+using OrchardCore.Profile.ViewModels;
 
-namespace UserProfile.Controllers
+namespace OrchardCore.Profile.Controllers
 {
     [Authorize]
     public class ProfileController : Controller, IUpdateModel

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using OrchardCore.Security.Permissions;
 
-namespace UserProfile
+namespace OrchardCore.Profile
 {
     public class Permissions : IPermissionProvider
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace UserProfile.ViewModels
+namespace OrchardCore.Profile.ViewModels
 {
     public class ProfileIndexViewModel
     {

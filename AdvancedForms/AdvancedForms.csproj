@@ -36,11 +36,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UserProfile\UserProfile.csproj" />
+    <Content Remove="Views\List.Edit.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Views\List.Edit.cshtml" />
+    <ProjectReference Include="..\UserProfile\OrchardCore.Profile.csproj" />
   </ItemGroup>
 
 </Project>
