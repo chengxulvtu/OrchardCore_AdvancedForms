@@ -5,6 +5,10 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Security.Permissions;
+using OrchardCore.Profile.Service;
+using OrchardCore.DisplayManagement.Handlers;
+using OrchardCore.DisplayManagement;
+using OrchardCore.Profile.Drivers; 
 
 namespace OrchardCore.Profile
 {
@@ -20,6 +24,9 @@ namespace OrchardCore.Profile
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IPermissionProvider, Permissions>();
+            services.AddSingleton<IProfileService, ProfileService>();
+            services.AddScoped<IDisplayManager<IProfile>, DisplayManager<IProfile>>();
+            services.AddScoped<IDisplayDriver<IProfile>, DefaultProfileDisplayDriver>();
         }
 
         public override void Configure(IApplicationBuilder builder, IRouteBuilder routes, IServiceProvider serviceProvider)
