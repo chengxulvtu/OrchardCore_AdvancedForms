@@ -20,6 +20,8 @@ using Newtonsoft.Json.Linq;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using Microsoft.AspNetCore.Routing;
 using System.Collections.Generic;
+using OrchardCore.ContentManagement.Records;
+using OrchardCore.Navigation;
 
 namespace AdvancedForms.Controllers
 {
@@ -59,12 +61,14 @@ namespace AdvancedForms.Controllers
             _siteService = siteService;
             _contentManager = contentManager;
             _contentDefinitionManager = contentDefinitionManager;
-            _logger = logger; 
+            _logger = logger;
             T = localizer;
             _contentAliasManager = contentAliasManager;
         }
 
         public IHtmlLocalizer T { get; }
+
+        public dynamic New { get; set; }
 
         #region "   Create/Edit Form    "
 
@@ -140,7 +144,7 @@ namespace AdvancedForms.Controllers
                 return Unauthorized();
             }
 
-            var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions, 
+            var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions,
                 viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.DisplayText = viewModel.Title;
@@ -152,13 +156,13 @@ namespace AdvancedForms.Controllers
             }
 
             await _contentManager.CreateAsync(contentItem, VersionOptions.Draft);
-           
+
             await conditionallyPublish(contentItem);
 
             return RedirectToAction("Edit", new RouteValueDictionary { { "ContentItemId", contentItem.ContentItemId } });
         }
 
-        
+
         public async Task<IActionResult> Edit(string contentItemId, string returnUrl)
         {
             var contentItem = await _contentManager.GetAsync(contentItemId, VersionOptions.Latest);
@@ -175,7 +179,7 @@ namespace AdvancedForms.Controllers
 
             var selectedContent = await _contentManager.GetAsync(contentItem.Content.AdvancedForm.Type.Text.ToString(), VersionOptions.Published);
 
-            if(selectedContent == null)
+            if (selectedContent == null)
             {
                 selectedContent = await _contentManager.GetAsync(contentItem.Content.AdvancedForm.Type.Text.ToString(), VersionOptions.DraftRequired);
             }
@@ -200,7 +204,7 @@ namespace AdvancedForms.Controllers
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 Type = contentItem.Content.AdvancedForm.Type.Text,
-                SelectedItems = lst 
+                SelectedItems = lst
 
             };
 
@@ -289,7 +293,7 @@ namespace AdvancedForms.Controllers
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 Type = contentItem.Content.AdvancedForm.Type.Text
-            };               
+            };
 
             if (!ModelState.IsValid)
             {
@@ -303,7 +307,7 @@ namespace AdvancedForms.Controllers
             // executed some query which would flush the saved entities. In this case the changes happening in handlers 
             // would not be taken into account.
             _session.Save(contentItem);
-            
+
             var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
 
             if (returnUrl == null)
@@ -340,7 +344,7 @@ namespace AdvancedForms.Controllers
             var contentItemId = await _contentAliasManager.GetContentItemIdAsync("slug:AdvancedForms/" + alias);
             var contentItem = await _contentManager.GetAsync(contentItemId, VersionOptions.Published);
             var subContentItem = await _contentManager.GetAsync(id, VersionOptions.Published);
-            
+
             if (subContentItem == null)
             {
                 return NotFound();
@@ -363,6 +367,20 @@ namespace AdvancedForms.Controllers
             return View("Submission", model);
 
         }
+
+        public async Task<IActionResult> Submissions()
+        {
+            var query = _session.Query<ContentItem, ContentItemIndex>();
+            var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" &&(o.Latest || o.Published)).ListAsync();
+            var contentItemSummaries = new List<dynamic>();
+            foreach (var contentItem in pageOfContentItems)
+            {
+                contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, this, "Submission_ListItem"));
+            }
+            return View(contentItemSummaries);
+        }
+
+
         #endregion
 
 
@@ -370,10 +388,10 @@ namespace AdvancedForms.Controllers
         {
             if (!string.IsNullOrEmpty(title))
             {
-                title = "AdvancedForms" + "/" + title.Replace(" ","-");
+                title = "AdvancedForms" + "/" + title.Replace(" ", "-");
             }
-            return title; 
+            return title;
         }
-    }    
-    
+    }
+
 }

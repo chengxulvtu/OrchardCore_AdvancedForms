@@ -1,0 +1,103 @@
+﻿@using OrchardCore.ContentManagement
+@inject IContentManager ContentManager
+
+@{
+    ContentItem contentItem = Model.ContentItem;
+    var hasPublished = await ContentManager.HasPublishedVersionAsync(contentItem);
+    var hasDraft = contentItem.HasDraft();
+    string action = contentItem.Content.AutoroutePart.Path.ToString().Split("/")[1];;
+}
+<tr>
+    <td>
+        <div>
+            <label>@contentItem.DisplayText</label>
+        </div>
+    </td>
+    <td>
+        @if (hasPublished)
+        {
+        <span class="badge badge-success" title="@T["Published"]">
+            <i class="fa fa-check" aria-hidden="true"></i> @T["Published"]
+        </span>
+        }
+
+        @if (hasDraft)
+        {
+        <span class="badge badge-primary" title="@T["Draft"]">
+            <i class="fa fa-pencil" aria-hidden="true"></i> @T["Draft"]
+        </span>
+        }
+    </td>
+    <td>
+        @if (contentItem.ModifiedUtc.HasValue)
+{
+        <div>
+            <span>@await DisplayAsync(await New.DateTime(Utc: contentItem.ModifiedUtc))</span>
+        </div>
+}
+    </td>
+    <td>
+        <label>@contentItem.Owner</label>
+    </td>
+    <td>
+        <a href="/AdvancedForms/@action/Edit/@contentItem.ContentItemId" class="btn btn-primary btn-sm">@T["Edit"]</a>
+        @if (hasPublished)
+        {
+        <a href="/@contentItem.Content.AutoroutePart.Path" class="btn btn-success btn-sm" itemprop="">@T["View"]</a>
+        }
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @T["Actions"]
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+
+                @if (hasDraft)
+        {
+                <a asp-action="Publish" asp-controller="Admin" asp-route-area="OrchardCore.Contents" asp-route-contentItemId="@contentItem.ContentItemId" asp-route-returnUrl="@FullRequestPath" itemprop="UnsafeUrl" class="dropdown-item btn-sm">@T["Publish Draft"]</a>
+                <a asp-action="Preview" asp-controller="Item" asp-route-area="OrchardCore.Contents" asp-route-contentItemId="@contentItem.ContentItemId" class="dropdown-item btn-sm">@T["Preview Draft"]</a>
+
+                <div class="dropdown-divider"></div>
+        }
+
+                @if (hasDraft && hasPublished)
+        {
+                <a asp-action="DiscardDraft" asp-controller="Admin" asp-route-area="OrchardCore.Contents" asp-route-contentItemId="@contentItem.ContentItemId" asp-route-returnUrl="@FullRequestPath" itemprop="UnsafeUrl RemoveUrl" class="dropdown-item btn-sm">@T["Discard Draft"]</a>
+        }
+
+                @if (hasPublished)
+        {
+                <a asp-action="Unpublish" asp-controller="Admin" asp-route-area="OrchardCore.Contents" asp-route-contentItemId="@contentItem.ContentItemId" asp-route-returnUrl="@FullRequestPath" itemprop="UnsafeUrl RemoveUrl" class="dropdown-item btn-sm">@T["Unpublish"]</a>
+        }
+
+                @if (hasDraft || hasPublished)
+        {
+                <a asp-action="Remove" asp-controller="Admin" asp-route-area="OrchardCore.Contents" asp-route-contentItemId="@contentItem.ContentItemId" asp-route-returnUrl="@FullRequestPath" class="dropdown-item btn-sm" itemprop="RemoveUrl UnsafeUrl">@T["Delete"]</a>
+        }
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+@*<label>@contentItem.Id</label>
+
+
+    <div class="properties">
+        <div class="custom-control custom-checkbox float-left">
+            <input type="checkbox" class="custom-control-input" value="@contentItem.Id" name="itemIds" id="itemIds-@contentItem.Id">
+            <label class="custom-control-label" for="itemIds-@contentItem.Id">&nbsp;</label>
+        </div>
+
+        <a admin-for="@contentItem.DisplayText" asp-route-returnUrl="@FullRequestPath" /> - <small class="text-muted">@contentItem.ContentType</small>
+
+
+        @if (contentItem.ModifiedUtc.HasValue)
+    {
+        <div>
+            <span class="hint">@T["Last modified {0} by {1}", (object)(await DisplayAsync(await New.TimeSpan(Utc: contentItem.ModifiedUtc))), contentItem.Author]</span>
+        </div>
+    }
+    </div>*@
+
