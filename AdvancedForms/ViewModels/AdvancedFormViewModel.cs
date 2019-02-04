@@ -1,6 +1,7 @@
 ﻿
 
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -11,6 +12,7 @@ namespace AdvancedForms.ViewModels
         public string Id { get; set; }
         [Required]
         public string Owner { get; set; }
+        public DateTime? ModifiedUtc { get; set; }
         [Required]
         public string Title { get; set; }
         [Required]

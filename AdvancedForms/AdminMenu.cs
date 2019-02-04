@@ -41,7 +41,11 @@ namespace AdvancedForms
                         .Url("/Admin/Contents/ContentTypes/AdvancedFormTypes/Create")
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
-                    ));
+                    ).Add(T["Form Status"], layers => layers
+                        .Url("/Admin/Contents/ContentTypes/AdvancedFormStatus/Create")
+                        .Permission(Permissions.ManageOwnAdvancedForms)
+                        .LocalNav()
+                     ));
             return Task.CompletedTask;
         }
     }

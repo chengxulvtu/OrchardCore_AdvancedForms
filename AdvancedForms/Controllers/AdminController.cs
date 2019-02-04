@@ -353,6 +353,8 @@ namespace AdvancedForms.Controllers
             var model = new AdvancedFormViewModel
             {
                 Id = id,
+                Owner = contentItem.Owner,
+                ModifiedUtc = contentItem.ModifiedUtc,
                 Title = contentItem.DisplayText,
                 Type = contentItem.Content.AdvancedForm.Type.Text,
                 Header = contentItem.Content.AdvancedForm.Header.Html,

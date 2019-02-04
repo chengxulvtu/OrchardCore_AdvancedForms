@@ -8,7 +8,6 @@ using OrchardCore.Security.Permissions;
 using OrchardCore.Profile.Service;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.DisplayManagement;
-using OrchardCore.Profile.Drivers; 
 
 namespace OrchardCore.Profile
 {
@@ -26,7 +25,6 @@ namespace OrchardCore.Profile
             services.AddScoped<IPermissionProvider, Permissions>();
             services.AddSingleton<IProfileService, ProfileService>();
             services.AddScoped<IDisplayManager<IProfile>, DisplayManager<IProfile>>();
-            services.AddScoped<IDisplayDriver<IProfile>, DefaultProfileDisplayDriver>();
         }
 
         public override void Configure(IApplicationBuilder builder, IRouteBuilder routes, IServiceProvider serviceProvider)

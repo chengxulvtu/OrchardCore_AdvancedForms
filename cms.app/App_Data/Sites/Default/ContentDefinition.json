@@ -752,6 +752,34 @@
           }
         }
       ]
+    },
+    {
+      "Name": "AdvancedFormStatus",
+      "DisplayName": "Advanced Form Status",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "True",
+        "Securable": "True",
+        "Stereotype": null
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "AdvancedFormStatus",
+          "Name": "AdvancedFormStatus",
+          "Settings": {
+            "Position": "1"
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
     }
   ],
   "ContentPartDefinitionRecords": [
@@ -1234,6 +1262,24 @@
       ]
     },
     {
+      "Name": "AdvancedFormStatus",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Status",
+          "Settings": {
+            "DisplayName": "Status",
+            "Editor": null,
+            "DisplayMode": null,
+            "Hint": null,
+            "Required": true,
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
       "Name": "AdvancedForm",
       "Settings": {},
       "ContentPartFieldDefinitionRecords": [
@@ -1434,5 +1480,5 @@
       ]
     }
   ],
-  "Serial": 68
+  "Serial": 71
 }

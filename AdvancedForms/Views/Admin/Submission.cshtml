@@ -19,9 +19,9 @@
 <script asp-src="/AdvancedForms/Scripts/AdvancedForms.js" at="Head" asp-name="AdvancedForms"></script>
 
 <style>
-    #main {
+    /*#main {
         padding-top: 70px;
-    }
+    }*/
 
     #mainNav {
         background-color: #212529 !important;
@@ -83,7 +83,7 @@
         @Model.Title @T[" - Submission Edit"]
     </h1>
 </div>
-
+<hr/>
 @{
     var errors = ViewData.ModelState.Where(n => n.Value.Errors.Count > 0).ToList();
     if (errors.Count > 0)
@@ -108,9 +108,17 @@
 <form enctype="multipart/form-data" asp-action="@createOrEdit" method="post" id="main"></form>
 
 <div>
-    <label @*asp-for="Author"*@>@T["Author"]</label>
-    <label @*asp-for="CreatedUtc"*@>@T["Created Date"]</label>
-    <label @*asp-for="Status"*@>@T["Status"]</label>
+    <label @*asp-for="Author" *@>@T["Author"]</label> : <label><strong>@Model.Owner</strong> </label><br />
+    <label @*asp-for="CreatedUtc" *@>@T["Created Date"]</label> :
+    @if (Model.ModifiedUtc.HasValue)
+    {
+        <label>
+            <strong>
+                @await DisplayAsync(await New.DateTime(Utc: Model.ModifiedUtc.Value))
+            </strong>
+        </label>
+    }<br/>
+    <label @*asp-for="Status" *@>@T["Status"]</label> : 
     <br />
     <br />
 </div>
