@@ -9,30 +9,26 @@
 }
 <tr>
     <td>
-        <div>
-            <label>@contentItem.DisplayText</label>
-        </div>
-    </td>
-    <td>
-        @if (hasPublished)
-        {
-        <span class="badge badge-success" title="@T["Published"]">
-            <i class="fa fa-check" aria-hidden="true"></i> @T["Published"]
-        </span>
-        }
+            <label>@contentItem.DisplayText</label><br />
+            @if (hasPublished)
+            {
+                <span class="badge badge-success" title="@T["Published"]">
+                    <i class="fa fa-check" aria-hidden="true"></i> @T["Published"]
+                </span>
+            }
 
-        @if (hasDraft)
-        {
-        <span class="badge badge-primary" title="@T["Draft"]">
-            <i class="fa fa-pencil" aria-hidden="true"></i> @T["Draft"]
-        </span>
-        }
+            @if (hasDraft)
+            {
+                <span class="badge badge-primary" title="@T["Draft"]">
+                    <i class="fa fa-pencil" aria-hidden="true"></i> @T["Draft"]
+                </span>
+            }
     </td>
     <td>
         @if (contentItem.ModifiedUtc.HasValue)
 {
         <div>
-            <span>@await DisplayAsync(await New.DateTime(Utc: contentItem.ModifiedUtc))</span>
+            <span>@contentItem.ModifiedUtc.Value.ToString("MM/dd/yyyy")</span>
         </div>
 }
     </td>
