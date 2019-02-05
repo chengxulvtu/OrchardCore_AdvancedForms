@@ -15,6 +15,8 @@ using AdvancedForms.Enums;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.DisplayManagement.Notify;
 using Microsoft.AspNetCore.Mvc.Localization;
+using OrchardCore.ContentManagement.Records;
+using YesSql;
 
 namespace AdvancedForms.Controllers
 {
@@ -76,6 +78,15 @@ namespace AdvancedForms.Controllers
                 return Unauthorized();
             }
 
+            var query = _session.Query<ContentItem, ContentItemIndex>();
+            var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormStatus" && o.DisplayText == "Submitted" && (o.Latest || o.Published)).ListAsync();
+            string status = "";
+            foreach (var item in pageOfContentItems)
+            {
+                status = item.ContentItemId;
+            }
+
+
             var model = new AdvancedFormViewModel
             {
                 Id = contentItemId,
@@ -85,16 +96,46 @@ namespace AdvancedForms.Controllers
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
-                Footer = contentItem.Content.AdvancedForm.Footer.Html
+                Footer = contentItem.Content.AdvancedForm.Footer.Html,
+                Status = status
             };
-
             return View(model);
+        }
 
+        [HttpPost]
+        [Route("AdvancedForms/Comment")]
+        public async Task<IActionResult> Comment(string id, string comment)
+        {
+            var contentItem = await _contentManager.NewAsync("AdminComment");
+
+            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageAdvancedForms, contentItem))
+            {
+                return Unauthorized();
+            }
+            contentItem.Content.AdminComment = comment;
+            contentItem.Owner = User.Identity.Name;
+            contentItem.DisplayText = id;
+
+            await _contentManager.CreateAsync(contentItem, VersionOptions.Draft);
+
+            await _contentManager.PublishAsync(contentItem);
+
+            return Ok(StatusCodes.Status200OK);
+        }
+
+        [HttpGet]
+        [Route("AdvancedForms/GetAdminComments")]
+        public async Task<IActionResult> GetAdminComments(string id)
+        {
+            var query = _session.Query<ContentItem, ContentItemIndex>();
+            var comments = await query.Where(o => o.ContentType == "AdminComment" && o.DisplayText == id && (o.Latest || o.Published)).ListAsync();
+            return Ok(comments);
         }
 
         [HttpPost]
         [Route("AdvancedForms/Entry")]
-        public async Task<IActionResult> Entry(string submission, string title, string id, string container, string header, string footer, string description, string type, string submissionId, string instructions, string owner)
+        public async Task<IActionResult> Entry(string submission, string title, string id, string container, 
+            string header, string footer, string description, string type, string submissionId, string instructions, string owner, string status)
         {
             ContentItem content;
             if (!string.IsNullOrWhiteSpace(submissionId))
@@ -116,7 +157,7 @@ namespace AdvancedForms.Controllers
             string subTitle = title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
             var subObject = JObject.Parse(submission);
             var viewModel = new AdvancedFormSubmissions(subObject["data"].ToString(),
-            subObject["metadata"].ToString(), subTitle, container, header, footer, description, type, instructions, owner);
+            subObject["metadata"].ToString(), subTitle, container, header, footer, description, type, instructions, owner, status);
 
             return await EditPOST(content.ContentItemId, title, viewModel, async contentItem =>
             {
@@ -128,6 +169,46 @@ namespace AdvancedForms.Controllers
                     ? T["Your content has been published."]
                     : T["Your {0} has been published.", typeDefinition.DisplayName]);
             });
+        }
+
+        [HttpPost]
+        [Route("AdvancedForms/SubmissionEdit")]
+        public async Task<IActionResult> SubmissionEdit(AdvancedFormViewModel model)
+        {
+            ContentItem content;
+            if (!string.IsNullOrWhiteSpace(model.SubmissionId))
+            {
+                content = await _contentManager.GetAsync(model.SubmissionId, VersionOptions.Latest);
+            }
+            else
+            {
+                content = await _contentManager.NewAsync(_id);
+                await _contentManager.CreateAsync(content, VersionOptions.Draft);
+            }
+
+            if (string.IsNullOrWhiteSpace(model.Owner))
+            {
+                model.Owner = User.Identity.Name;
+            }
+
+            string guid = content.ContentItemId;
+            string subTitle = model.Title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
+            var subObject = JObject.Parse(model.Submission);
+            var viewModel = new AdvancedFormSubmissions(model.Submission,
+            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status);
+
+            await EditPOST(content.ContentItemId, model.Title, viewModel, async contentItem =>
+            {
+                await _contentManager.PublishAsync(contentItem);
+
+                var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
+
+                _notifier.Success(string.IsNullOrWhiteSpace(typeDefinition.DisplayName)
+                    ? T["Your content has been published."]
+                    : T["Your {0} has been published.", typeDefinition.DisplayName]);
+            });
+
+            return Redirect("/AdvancedForms/Admin/Submissions");
         }
 
 
@@ -233,7 +314,8 @@ namespace AdvancedForms.Controllers
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 SubmissionId = subContentItem.ContentItemId,
                 Submission = subContentItem.Content.AdvancedFormSubmissions.Submission.Html,
-                EntryType = entryType
+                EntryType = entryType,
+                Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text
             };
 
             return View(viewName, model);

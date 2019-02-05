@@ -4,7 +4,7 @@
     ContentItem contentItem = Model.ContentItem;
     var hasPublished = await ContentManager.HasPublishedVersionAsync(contentItem);
     var hasDraft = contentItem.HasDraft();
-    string action = contentItem.Content.AutoroutePart.Path.ToString().Split("/")[1]; ;
+    string action = contentItem.Content.AutoroutePart.Path.ToString().Split("/")[1];
 }
 
 <li class="list-group-item">
@@ -46,7 +46,7 @@
             <input type="checkbox" class="custom-control-input" value="@contentItem.Id" name="itemIds" id="itemIds-@contentItem.Id" />
             <label class="custom-control-label" for="itemIds-@contentItem.Id">&nbsp;</label>
         </div>
-        <a href="/AdvancedForms/admin/@action/submission/@contentItem.ContentItemId">@action.Replace("-"," ")</a> - <small class="text-muted">@contentItem.ContentType</small> <br />
+        <a href="/AdvancedForms/admin/@action/submission/@contentItem.ContentItemId">@action.Replace("-", " ")</a> - <small class="text-muted">@contentItem.ContentType</small> <br />
         <div class="metadata">
             @if (hasPublished)
             {
@@ -59,18 +59,14 @@
                 <span class="badge badge-primary" title="@T["Draft"]">
                     <i class="fa fa-pencil" aria-hidden="true"></i> @T["Draft"]
                 </span>
-            }
+            }<br />
             @if (!string.IsNullOrWhiteSpace(contentItem.Owner))
             {
-                <div>
-                    <span class="hint">@T["Submitted By : <b>{0}</b>", contentItem.Owner]</span>
-                </div>
+                <span class="hint">@T["Submitted By : <b>{0}</b>,", contentItem.Owner]</span>
             }
             @if (contentItem.CreatedUtc.HasValue)
             {
-                <div>
-                    <span class="hint">@T["Submitted Date : {0}", (object)(await DisplayAsync(contentItem.ModifiedUtc.Value.ToString("MM/dd/yyyy")))]</span>
-                </div>
+                <span class="hint">@T["Submitted Date : <b>{0}</b>", (object)(await DisplayAsync(contentItem.ModifiedUtc.Value.ToString("MM/dd/yyyy")))]</span>
             }
         </div>
     </div>

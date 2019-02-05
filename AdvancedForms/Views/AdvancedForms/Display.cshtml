@@ -8,23 +8,28 @@
     #main {
         padding-top: 70px;
     }
+
     #mainNav {
         background-color: #212529 !important;
     }
+
     #formio button {
         color: #fff;
         background-color: #5bc0de !important;
         border-color: #46b8da !important;
     }
+
     .print-btn {
         color: #286090 !important;
     }
-    .print-btn:hover {
-        color: #204d74 !important;
-    }
-        button:disabled {
-            cursor: no-drop;
+
+        .print-btn:hover {
+            color: #204d74 !important;
         }
+
+    button:disabled {
+        cursor: no-drop;
+    }
 </style>
 
 @{
@@ -71,7 +76,8 @@
                       type: '@Model.Type',
                       submissionId: '@Model.SubmissionId',
                       instructions: '@Model.Instructions',
-                      owner: '@Model.Owner'
+                      owner: '@Model.Owner',
+                      status : '@Model.Status'
                   },
                   success: function (data) {
                       window.location.replace("/submission-confirmation");
@@ -81,7 +87,6 @@
                       $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
                         }
                     });
-
                 });
             });
       };

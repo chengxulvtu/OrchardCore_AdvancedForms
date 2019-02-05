@@ -355,6 +355,25 @@ namespace AdvancedForms.Controllers
                 return NotFound();
             }
 
+            var selectedContent = await _contentManager.GetAsync(subContentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.Published);
+
+            if (selectedContent == null)
+            {
+                selectedContent = await _contentManager.GetAsync(subContentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.DraftRequired);
+            }
+
+            List<ContentPickerItemViewModel> lst = new List<ContentPickerItemViewModel>();
+            if (selectedContent != null)
+            {
+                ContentPickerItemViewModel contentPick = new ContentPickerItemViewModel();
+                contentPick.ContentItemId = selectedContent.ContentItemId;
+                contentPick.DisplayText = selectedContent.DisplayText;
+                contentPick.HasPublished = selectedContent.Published;
+                lst.Add(contentPick);
+            }
+
+
+
             var model = new AdvancedFormViewModel
             {
                 Id = id,
@@ -368,7 +387,10 @@ namespace AdvancedForms.Controllers
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 SubmissionId = subContentItem.ContentItemId,
-                Submission = subContentItem.Content.AdvancedFormSubmissions.Submission.Html
+                Submission = subContentItem.Content.AdvancedFormSubmissions.Submission.Html,
+                Metadata = subContentItem.Content.AdvancedFormSubmissions.Metadata.Html,
+                Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text,
+                SelectedItems = lst
             };
 
             return View("Submission", model);

@@ -780,6 +780,27 @@
           }
         }
       ]
+    },
+    {
+      "Name": "PickerStatus",
+      "DisplayName": "Picker Status",
+      "Settings": {
+        "Creatable": "True",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "True",
+        "Securable": "True",
+        "Stereotype": null
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "PickerStatus",
+          "Name": "PickerStatus",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
     }
   ],
   "ContentPartDefinitionRecords": [
@@ -1478,7 +1499,29 @@
           }
         }
       ]
+    },
+    {
+      "Name": "PickerStatus",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "Status",
+          "Settings": {
+            "DisplayName": "Status",
+            "Editor": null,
+            "DisplayMode": null,
+            "Hint": null,
+            "Required": false,
+            "Multiple": false,
+            "DisplayedContentTypes": [
+              "AdvancedFormStatus"
+            ],
+            "Position": "0"
+          }
+        }
+      ]
     }
   ],
-  "Serial": 71
+  "Serial": 87
 }

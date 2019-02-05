@@ -1,5 +1,7 @@
 ﻿@model AdvancedForms.ViewModels.AdvancedFormViewModel
 @using System.Web
+@using Newtonsoft.Json;
+@using Newtonsoft.Json.Serialization;
 @* Css Files  *@
 <style asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
        debug-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" at="Head"></style>
@@ -16,7 +18,16 @@
 <script asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" at="Head"></script>
 <script name="trumbowyg" depends-on="admin" asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js"
         debug-src="/OrchardCore.Resources/Scripts/trumbowyg.js" at="Foot"></script>
-<script asp-src="/AdvancedForms/Scripts/AdvancedForms.js" at="Head" asp-name="AdvancedForms"></script>
+
+
+<script asp-src="~/OrchardCore.ContentFields/Scripts/contentPicker.js" asp-name="contentPicker" at="Foot" depends-on="vuejs, vuemultiselect"></script>
+<style asp-src="~/OrchardCore.ContentFields/Styles/contentPicker.min.css" debug-src="~/OrchardCore.ContentFields/Styles/contentPicker.css"></style>
+<script asp-src="https://vuejs.org/js/vue.min.js" debug-src="https://vuejs.org/js/vue.js" asp-name="vuejs" at="Foot"></script>
+<script asp-src="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.js" asp-name="vuemultiselect" at="Foot"></script>
+<style asp-src="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css"></style>
+<script asp-src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.min.js" debug-src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.js" asp-name="sortable" at="Foot"></script>
+<script asp-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.min.js" debug-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.js" asp-name="vuedraggable" depends-on="vuejs, sortable" at="Foot"></script>
+
 
 <style>
     /*#main {
@@ -44,6 +55,23 @@
     button:disabled {
         cursor: no-drop;
     }
+
+    label {
+        margin-bottom: 0px !important;
+        padding-bottom: 10px;
+    }
+
+    div > label {
+        padding-bottom: 0px;
+    }
+
+    .btn-group-sm > .btn, .btn-sm {
+        padding: 2px 8px;
+    }
+
+    .trumbowyg-box, .trumbowyg-editor {
+        min-height: 100px;
+    }
 </style>
 
 <script type='text/javascript' at="Head">
@@ -69,21 +97,43 @@
                     console.log('No changes allowed', submission);
                 });
             });
-      };
+    };
+
+    function onSubmissionFormSubmit(form) {
+        debugger;
+        var isValidate = true;
+        if (form.Status == undefined || form.Status.value == '') {
+            isValidate = false;
+            document.getElementById("StatusError").style.display = "list-item";
+            document.getElementById("multiselect_Div").classList.add("editor-error");
+        } else {
+            document.getElementById("StatusError").style.display = "none";
+            document.getElementById("multiselect_Div").classList.remove("editor-error");
+        }
+
+        document.documentElement.scrollTop = 0;
+        if (isValidate) {
+            document.getElementById("notifyError").style.display = "none";
+        } else {
+            document.getElementById("notifyError").style.display = "block";
+        }
+        return isValidate;
+    }
 
 </script>
 
-@{
-    var isEdit = !String.IsNullOrEmpty(Model.Id);
-    var createOrEdit = isEdit ? "Edit" : "Create";
-}
+<div class="validation-summary-errors" data-valmsg-summary="true" id="notifyError">
+    <ul>
+        <li id="StatusError"><span class="field-validation-error">@T["The Status field is Required."]</span></li>
+    </ul>
+</div>
 
 <div>
     <h1 style="font-weight: 600;font-size: 30px;">
         @Model.Title @T[" - Submission Edit"]
     </h1>
 </div>
-<hr/>
+<hr />
 @{
     var errors = ViewData.ModelState.Where(n => n.Value.Errors.Count > 0).ToList();
     if (errors.Count > 0)
@@ -99,13 +149,7 @@
     }
 }
 
-<div class="validation-summary-errors" data-valmsg-summary="true" id="notifyError">
-    <ul>
-        <li id="TitleError"><span class="field-validation-error">@T["The Title field is Required."]</span></li>
-    </ul>
-</div>
-
-<form enctype="multipart/form-data" method="post" id="main"></form>
+<form enctype="multipart/form-data" asp-action="SubmissionEdit" onsubmit="return onSubmissionFormSubmit(this)" asp-controller="AdvancedForms" method="post" id="main"></form>
 
 <div>
     <label @*asp-for="Author" *@>@T["Author"]</label> : <label><strong>@Model.Owner</strong> </label><br />
@@ -117,11 +161,53 @@
                 @await DisplayAsync(await New.DateTime(Utc: Model.ModifiedUtc.Value))
             </strong>
         </label>
-    }<br/>
-    <label @*asp-for="Status" *@>@T["Status"]</label> : 
-    <br />
+    }<br />
     <br />
 </div>
+
+
+<div style="margin-bottom: 2rem;">
+    <label asp-for="Title">@T["Status"]</label>
+    <div id="ContentPicker_PickerStatus_Status" class="content-picker-default">
+        <fieldset class="">
+            <ul class="list-group col-xl-12 content-picker-default__list" v-show="arrayOfItems.length" v-cloak>
+                <draggable v-model="arrayOfItems">
+                    <li v-for="(item, i) in arrayOfItems"
+                        class="list-group-item content-picker-default__list-item"
+                        :key="item.contentItemId">
+                        {{ item.displayText }} <span v-show="!item.hasPublished" class="text-muted small">(@T["Not published"])</span>
+                        <input asp-for="Status" type="hidden" v-model="item.contentItemId" form="main" />
+                        <div class="btn-group btn-group-sm float-right" role="group">
+                            <button v-on:click="remove(item)" type="button" class="btn btn-secondary content-picker-default__list-item__delete"><i class="fa fa-trash fa-sm" aria-hidden="true"></i></button>
+                        </div>
+                    </li>
+                </draggable>
+            </ul>
+        </fieldset>
+        <fieldset class="row">
+            <div class="col-xl-12">
+                <div id="multiselect_Div">
+                    <vue-multiselect v-model="value" :options="options" track-by="contentItemId"
+                                     label="displayText" placeholder="@T["Type to search"]"
+                                     @@search-change="asyncFind" @@select="onSelect"
+                                     :searchable="true" :close-on-select="true" :reset-after="true"
+                                     :show-labels="true"
+                                     :disabled="isDisabled"
+                                     select-label="@T["Select"]" deselect-label="@T["Remove"]">
+                        <template slot="option" slot-scope="props">
+                            <div v-cloak><span>{{ props.option.displayText }}</span><span class="small ml-2" v-show="!props.option.hasPublished">(@T["Not published"])</span></div>
+                        </template>
+                    </vue-multiselect>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <span class="hint">@T["The Status of the form."]</span>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+
 
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#formPreview" class="active show">@T["Submission"]</a></li>
@@ -136,14 +222,18 @@
         <div id="advancedForm-errors"></div>
         <div id='formio'></div>
     </div>
-    <div id="AdminComments" class="tab-pane fade">
+    <div id="AdminComments" class="tab-pane fade"><br/>
+        <div id="comments">
+        </div>
         <br />
         <div>
-            <textarea asp-for="Header" class="form-control content-preview-text content-caption-text" form="main"></textarea>
-            <span class="hint">@T["These comments are private for admins only."]</span>
-            <br />
-            <br />
+            <textarea id="AdminComment" class="form-control content-preview-text content-caption-text"></textarea>
+            <span class="hint">@T["These comments are private for admins only."]</span><br />
+            <button class="publish-button btn btn-success" onclick="submitAdminComment()" value="submit.Publish">@T["Save"]</button>
         </div>
+        <br />
+        <br />
+        <hr />
     </div>
     <div id="formAdminFields" class="tab-pane fade">
         <br />
@@ -161,8 +251,20 @@
         </div>
     </div>
 </div>
+<input type="hidden" asp-for="Id" form="main" />
+<input type="hidden" asp-for="Owner" form="main" />
+<input type="hidden" asp-for="Title" form="main" />
+<input type="hidden" asp-for="Type" form="main" />
+<input type="hidden" asp-for="Header" form="main" />
+<input type="hidden" asp-for="Footer" form="main" />
 <input type="hidden" asp-for="Container" form="main" />
-
+<input type="hidden" asp-for="Description" form="main" />
+<input type="hidden" asp-for="Instructions" form="main" />
+<input type="hidden" asp-for="Container" form="main" />
+<input type="hidden" asp-for="SubmissionId" form="main" />
+<input type="hidden" asp-for="Submission" form="main" />
+<input type="hidden" asp-for="Metadata" form="main" />
+<input type="hidden" asp-for="EntryType" form="main" />
 <br />
 <br />
 
@@ -171,9 +273,81 @@
 
 @{
     var returnUrl = Context.Request.Query["returnUrl"];
-    @if (isEdit && !String.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
-    {
-        <a id="button-cancel" href="@returnUrl" class="btn btn-secondary">@T["Cancel"]</a>
-    }
+    <a id="button-cancel" href="@returnUrl" class="btn btn-secondary">@T["Cancel"]</a>
 }
 <input type="hidden" asp-for="Id" form="main" />
+
+@if (Model.SelectedItems != null && Model.SelectedItems.Count > 0)
+{
+    var selectedItems = Html.Raw(JsonConvert.SerializeObject(Model.SelectedItems, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }));
+    <script at="Foot">
+        initializeContentPickerFieldEditor('ContentPicker_PickerStatus_Status', @selectedItems, '', 'PickerStatus', 'Status', false);
+    </script>
+}
+else
+{
+    <script at="Foot">
+        initializeContentPickerFieldEditor('ContentPicker_PickerStatus_Status', [], '', 'PickerStatus', 'Status', false);
+    </script>
+}
+
+
+<script type="text/javascript">
+    $(function () {
+        renderAdminComment();
+        GetAdminComments();
+    });
+
+    function renderAdminComment() {
+        $('#AdminComment').trumbowyg().on('tbwchange', function () {
+            $(document).trigger('contentpreview:render');
+        });
+    }
+
+    function submitAdminComment() {
+        $.ajax({
+        url: '/AdvancedForms/Comment',
+        method: 'POST',
+        data: {
+            __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+            id: '@Model.Id',
+            comment: $("#AdminComment")[0].value
+        },
+        success: function (data) {
+            renderAdminComment();
+            GetAdminComments();
+        },
+        error: function (error) {
+                var errorMsg = @T["'Unable to Save. Try again later.'"];
+            $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
+            }
+        });
+    }
+
+    function GetAdminComments() {
+        $.ajax({
+        url: '/AdvancedForms/GetAdminComments',
+        method: 'GET',
+        data: {
+            id: '@Model.Id'
+        },
+        success: function (data) {
+            if (data != null) {
+                var comments = "";
+                $.each(data, function (index, value) {
+                    comments += '<div class="panel panel-default">';
+                    comments += '<div class="panel-heading"><b>' + value.Owner + '</b> ' + new Date(value.CreatedUtc) +'</div>';
+                    comments += '<div class="panel-body">' + value.AdminComment+'</div>';
+                    comments += '</div>';
+                    console.log(value);
+                });
+                $("#comments").html(comments);
+            }
+        },
+        error: function (error) {
+                var errorMsg = @T["'Unable to Save. Try again later.'"];
+            $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
+            }
+        });
+    }
+</script>
