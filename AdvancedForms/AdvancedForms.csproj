@@ -7,6 +7,7 @@
   <ItemGroup>
     <EmbeddedResource Remove="Views\Admin\Submission.cshtml" />
     <EmbeddedResource Remove="Views\Admin\Submissions.cshtml" />
+    <EmbeddedResource Remove="Views\AdvancedForms\Contents-Meta.SummaryAdmin.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

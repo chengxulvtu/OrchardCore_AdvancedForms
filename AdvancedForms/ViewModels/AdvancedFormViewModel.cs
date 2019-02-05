@@ -10,7 +10,6 @@ namespace AdvancedForms.ViewModels
     public class AdvancedFormViewModel
     {
         public string Id { get; set; }
-        [Required]
         public string Owner { get; set; }
         public DateTime? ModifiedUtc { get; set; }
         [Required]

@@ -200,6 +200,11 @@ namespace AdvancedForms.Controllers
 
             if (subContentItem == null)
             {
+                subContentItem = await _contentManager.GetAsync(id, VersionOptions.Draft);
+            }
+
+            if (subContentItem == null)
+            {
                 return NotFound();
             }
 

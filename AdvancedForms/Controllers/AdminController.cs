@@ -347,6 +347,11 @@ namespace AdvancedForms.Controllers
 
             if (subContentItem == null)
             {
+                subContentItem = await _contentManager.GetAsync(id, VersionOptions.Draft);
+            }
+
+            if (subContentItem == null)
+            {
                 return NotFound();
             }
 
@@ -372,14 +377,33 @@ namespace AdvancedForms.Controllers
 
         public async Task<IActionResult> Submissions()
         {
+            SubmissionsViewModel model = new SubmissionsViewModel();
             var query = _session.Query<ContentItem, ContentItemIndex>();
-            var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" &&(o.Latest || o.Published)).ListAsync();
+            var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).ListAsync();
             var contentItemSummaries = new List<dynamic>();
             foreach (var contentItem in pageOfContentItems)
             {
                 contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, this, "Submission_ListItem"));
             }
-            return View(contentItemSummaries);
+            model.ContentItemSummaries = contentItemSummaries;
+            return View(model);
+        }
+
+        [HttpPost, ActionName("Submissions")]
+        public async Task<IActionResult> SubmissionsFilter(string DisplayText = "")
+        {
+            DisplayText = string.IsNullOrEmpty(DisplayText) ? "" : DisplayText;
+            SubmissionsViewModel model = new SubmissionsViewModel();
+            var query = _session.Query<ContentItem, ContentItemIndex>();
+            var pageOfContentItems = await query.Where(o => o.DisplayText.Contains(DisplayText) && o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).ListAsync();
+            var contentItemSummaries = new List<dynamic>();
+            foreach (var contentItem in pageOfContentItems)
+            {
+                contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, this, "Submission_ListItem"));
+            }
+            model.ContentItemSummaries = contentItemSummaries;
+            model.DisplayText = DisplayText;
+            return View(model);
         }
 
 

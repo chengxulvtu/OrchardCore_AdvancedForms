@@ -50,7 +50,7 @@ function onFormSubmit(form) {
         document.getElementById("Title").classList.remove("input-validation-error");
     }
 
-    if (form.Tag.value == '') {
+    if (form.Type == undefined || form.Type.value == '') {
         isValidate = false;
         document.getElementById("TagError").style.display = "list-item";
         document.getElementById("multiselect_Div").classList.add("editor-error");
