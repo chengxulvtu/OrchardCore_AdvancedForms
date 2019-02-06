@@ -34,7 +34,7 @@ namespace AdvancedForms.Handlers
         {
             context.For<ContentItemMetadata>(metadata =>
             {
-                if (metadata.EditorRouteValues == null && context.ContentItem.ContentType == "AdvancedForm")
+                if (context.ContentItem.ContentType == "AdvancedForm")
                 {
                     metadata.EditorRouteValues = new RouteValueDictionary {
                             {"Area", "AdvancedForms"},
@@ -44,7 +44,7 @@ namespace AdvancedForms.Handlers
                         };
                 }
 
-                if (metadata.EditorRouteValues == null && context.ContentItem.ContentType == "AdvancedFormSubmissions")
+                if (context.ContentItem.ContentType == "AdvancedFormSubmissions")
                 {
                     try
                     {
@@ -61,7 +61,7 @@ namespace AdvancedForms.Handlers
                     }
                 }
 
-                if (metadata.AdminRouteValues == null && context.ContentItem.ContentType == "AdvancedForm")
+                if (context.ContentItem.ContentType == "AdvancedForm")
                 {
                     metadata.AdminRouteValues = new RouteValueDictionary {
                         {"Area", "AdvancedForms"},
@@ -71,7 +71,7 @@ namespace AdvancedForms.Handlers
                     };
                 }
 
-                if (metadata.AdminRouteValues == null && context.ContentItem.ContentType == "AdvancedFormSubmissions")
+                if (context.ContentItem.ContentType == "AdvancedFormSubmissions")
                 {
                     try
                     {
