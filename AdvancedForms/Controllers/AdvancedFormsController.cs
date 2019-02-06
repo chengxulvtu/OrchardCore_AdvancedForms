@@ -104,8 +104,8 @@ namespace AdvancedForms.Controllers
         }
 
         [HttpPost]
-        [Route("AdvancedForms/Comment")]
-        public async Task<IActionResult> Comment(string id, string comment)
+        [Route("AdvancedForms/SaveAdminComment")]
+        public async Task<IActionResult> SaveAdminComment(string id, string comment)
         {
             var contentItem = await _contentManager.NewAsync("AdminComment");
 
@@ -130,6 +130,36 @@ namespace AdvancedForms.Controllers
         {
             var query = _session.Query<ContentItem, ContentItemIndex>();
             var comments = await query.Where(o => o.ContentType == "AdminComment" && o.DisplayText == id && (o.Latest || o.Published)).ListAsync();
+            return Ok(comments);
+        }
+
+        [HttpPost]
+        [Route("AdvancedForms/SavePublicComment")]
+        public async Task<IActionResult> SavePublicComment(string id, string comment)
+        {
+            var contentItem = await _contentManager.NewAsync("PublicComment");
+
+            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageAdvancedForms, contentItem))
+            {
+                return Unauthorized();
+            }
+            contentItem.Content.AdminComment = comment;
+            contentItem.Owner = User.Identity.Name;
+            contentItem.DisplayText = id;
+
+            await _contentManager.CreateAsync(contentItem, VersionOptions.Draft);
+
+            await _contentManager.PublishAsync(contentItem);
+
+            return Ok(StatusCodes.Status200OK);
+        }
+
+        [HttpGet]
+        [Route("AdvancedForms/GetPublicComments")]
+        public async Task<IActionResult> GetPublicComments(string id)
+        {
+            var query = _session.Query<ContentItem, ContentItemIndex>();
+            var comments = await query.Where(o => o.ContentType == "PublicComment" && o.DisplayText == id && (o.Latest || o.Published)).ListAsync();
             return Ok(comments);
         }
 

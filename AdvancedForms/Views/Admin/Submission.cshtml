@@ -211,9 +211,9 @@
 
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#formPreview" class="active show">@T["Submission"]</a></li>
-    <li><a data-toggle="tab" href="#AdminComments">@T["Admin Comments"]</a></li>
+    <li><a data-toggle="tab" onclick="GetAdminComments()" href="#AdminComments">@T["Admin Comments"]</a></li>
     <li><a data-toggle="tab" href="#formAdminFields">@T["Admin Fields"]</a></li>
-    <li><a data-toggle="tab" href="#publicComments">@T["Public Comments"]</a></li>
+    <li><a data-toggle="tab" onclick="GetPublicComments()" href="#publicComments">@T["Public Comments"]</a></li>
 </ul>
 
 <div class="tab-content">
@@ -222,14 +222,15 @@
         <div id="advancedForm-errors"></div>
         <div id='formio'></div>
     </div>
-    <div id="AdminComments" class="tab-pane fade"><br/>
-        <div id="comments">
+    <div id="AdminComments" class="tab-pane fade">
+        <br />
+        <div id="AdminCommentsPanels">
         </div>
         <br />
         <div>
             <textarea id="AdminComment" class="form-control content-preview-text content-caption-text"></textarea>
             <span class="hint">@T["These comments are private for admins only."]</span><br />
-            <button class="publish-button btn btn-success" onclick="submitAdminComment()" value="submit.Publish">@T["Save"]</button>
+            <button class="publish-button btn btn-success" onclick="submitAdminComment()">@T["Save"]</button>
         </div>
         <br />
         <br />
@@ -242,13 +243,17 @@
     </div>
     <div id="publicComments" class="tab-pane fade">
         <br />
-
-        <div>
-            <textarea asp-for="Footer" class="form-control content-preview-text content-caption-text" form="main"></textarea>
-            <span class="hint">@T["These comments will be displayed to the submitter and are not private."]</span>
-            <br />
-            <br />
+        <div id="PublicCommentsPanels">
         </div>
+        <br />
+        <div>
+            <textarea id="PublicComment" class="form-control content-preview-text content-caption-text"></textarea>
+            <span class="hint">@T["These comments will be displayed to the submitter and are not private."]</span> <br/>
+            <button class="publish-button btn btn-success" onclick="submitPublicComment()">@T["Save"]</button>
+        </div>
+        <br />
+        <br />
+        <hr />
     </div>
 </div>
 <input type="hidden" asp-for="Id" form="main" />
@@ -294,19 +299,25 @@ else
 
 <script type="text/javascript">
     $(function () {
-        renderAdminComment();
-        GetAdminComments();
+        renderCommentEditors();
     });
 
-    function renderAdminComment() {
-        $('#AdminComment').trumbowyg().on('tbwchange', function () {
-            $(document).trigger('contentpreview:render');
-        });
+    function renderCommentEditors() {
+        $('#AdminComment').trumbowyg();
+        $('#PublicComment').trumbowyg();
+    }
+
+    function clearEditors() {
+        $('#AdminComment').trumbowyg('empty');
+        $('#PublicComment').trumbowyg('empty');
     }
 
     function submitAdminComment() {
+        if ($("#AdminComment")[0].value == null) {
+            return;
+        }
         $.ajax({
-        url: '/AdvancedForms/Comment',
+        url: '/AdvancedForms/SaveAdminComment',
         method: 'POST',
         data: {
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
@@ -314,8 +325,31 @@ else
             comment: $("#AdminComment")[0].value
         },
         success: function (data) {
-            renderAdminComment();
+            clearEditors();
             GetAdminComments();
+        },
+        error: function (error) {
+                var errorMsg = @T["'Unable to Save. Try again later.'"];
+            $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
+            }
+        });
+    }
+
+    function submitPublicComment() {
+        if ($("#PublicComment")[0].value == null) {
+            return;
+        }
+        $.ajax({
+        url: '/AdvancedForms/SavePublicComment',
+        method: 'POST',
+        data: {
+            __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+            id: '@Model.Id',
+            comment: $("#PublicComment")[0].value
+        },
+        success: function (data) {
+            clearEditors();
+            GetPublicComments();
         },
         error: function (error) {
                 var errorMsg = @T["'Unable to Save. Try again later.'"];
@@ -334,14 +368,45 @@ else
         success: function (data) {
             if (data != null) {
                 var comments = "";
+                var date = new Date();
                 $.each(data, function (index, value) {
+                    date = new Date(value.CreatedUtc);
                     comments += '<div class="panel panel-default">';
-                    comments += '<div class="panel-heading"><b>' + value.Owner + '</b> ' + new Date(value.CreatedUtc) +'</div>';
+                    comments += '<div class="panel-heading"><b>' + value.Owner + '</b> ' + date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear() + ' ' + date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) + '</div>';
                     comments += '<div class="panel-body">' + value.AdminComment+'</div>';
                     comments += '</div>';
                     console.log(value);
                 });
-                $("#comments").html(comments);
+                $("#AdminCommentsPanels").html(comments);
+            }
+        },
+        error: function (error) {
+                var errorMsg = @T["'Unable to Save. Try again later.'"];
+            $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
+            }
+        });
+    }
+
+    function GetPublicComments() {
+        $.ajax({
+        url: '/AdvancedForms/GetPublicComments',
+        method: 'GET',
+        data: {
+            id: '@Model.Id'
+        },
+        success: function (data) {
+            if (data != null) {
+                var comments = "";
+                var date = new Date();
+                $.each(data, function (index, value) {
+                    date = new Date(value.CreatedUtc);
+                    comments += '<div class="panel panel-default">';
+                    comments += '<div class="panel-heading"><b>' + value.Owner + '</b> ' + date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear() + ' ' + date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })+'</div>';
+                    comments += '<div class="panel-body">' + value.AdminComment+'</div>';
+                    comments += '</div>';
+                    console.log(value);
+                });
+                $("#PublicCommentsPanels").html(comments);
             }
         },
         error: function (error) {
