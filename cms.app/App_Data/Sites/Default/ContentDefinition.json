@@ -805,18 +805,18 @@
   ],
   "ContentPartDefinitionRecords": [
     {
-      "Name": "CommonPart",
-      "Settings": {
-        "Attachable": "True",
-        "Description": "Provides an editor for the common properties of a content item."
-      },
-      "ContentPartFieldDefinitionRecords": []
-    },
-    {
       "Name": "LiquidPart",
       "Settings": {
         "Attachable": "True",
         "Description": "Provides a Liquid formatted body for your content item."
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "CommonPart",
+      "Settings": {
+        "Attachable": "True",
+        "Description": "Provides an editor for the common properties of a content item."
       },
       "ContentPartFieldDefinitionRecords": []
     },
@@ -1377,6 +1377,11 @@
             },
             "Position": "0"
           }
+        },
+        {
+          "FieldName": null,
+          "Name": "PickerStatus",
+          "Settings": {}
         }
       ]
     },
@@ -1499,29 +1504,7 @@
           }
         }
       ]
-    },
-    {
-      "Name": "PickerStatus",
-      "Settings": {},
-      "ContentPartFieldDefinitionRecords": [
-        {
-          "FieldName": "ContentPickerField",
-          "Name": "Status",
-          "Settings": {
-            "DisplayName": "Status",
-            "Editor": null,
-            "DisplayMode": null,
-            "Hint": null,
-            "Required": false,
-            "Multiple": false,
-            "DisplayedContentTypes": [
-              "AdvancedFormStatus"
-            ],
-            "Position": "0"
-          }
-        }
-      ]
     }
   ],
-  "Serial": 87
+  "Serial": 91
 }

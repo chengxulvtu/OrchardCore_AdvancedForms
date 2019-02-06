@@ -771,6 +771,15 @@
           "SourcePath": "../wwwroot/Image/header-bg.jpg"
         }
       ]
+    },
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        "OrchardCore.Liquid",
+        "OrchardCore.Queries",
+        "OrchardCore.Queries.Sql"
+      ]
     }
   ]
 }

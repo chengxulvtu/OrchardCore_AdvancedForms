@@ -21,5 +21,13 @@ namespace AdvancedForms
 
             return 1;
         }
+
+        public async Task<int> UpdateFrom1Async()
+        {
+            await _recipeMigrator.ExecuteAsync("advancedforms.recipe.json", this);
+
+            return 2;
+        }
+
     }
 }
