@@ -134,3 +134,8 @@ label {
 #ta-left-sidebar #left-nav > ul.menu-admin .item-label > span.title {
     padding-top: 7px !important;
 }
+@media (max-width: 768px) {
+    .collapse:not(.show) {
+        display: none !important;
+    }
+}
