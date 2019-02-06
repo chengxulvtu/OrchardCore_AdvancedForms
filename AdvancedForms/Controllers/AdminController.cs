@@ -397,11 +397,12 @@ namespace AdvancedForms.Controllers
 
         }
 
+
         public async Task<IActionResult> Submissions()
         {
             SubmissionsViewModel model = new SubmissionsViewModel();
             var query = _session.Query<ContentItem, ContentItemIndex>();
-            var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).ListAsync();
+            var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).OrderByDescending(o=>o.CreatedUtc).ListAsync();
             var contentItemSummaries = new List<dynamic>();
             foreach (var contentItem in pageOfContentItems)
             {
@@ -417,7 +418,7 @@ namespace AdvancedForms.Controllers
             DisplayText = string.IsNullOrEmpty(DisplayText) ? "" : DisplayText;
             SubmissionsViewModel model = new SubmissionsViewModel();
             var query = _session.Query<ContentItem, ContentItemIndex>();
-            var pageOfContentItems = await query.Where(o => o.DisplayText.Contains(DisplayText) && o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).ListAsync();
+            var pageOfContentItems = await query.Where(o => o.DisplayText.Contains(DisplayText) && o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).OrderByDescending(o => o.CreatedUtc).ListAsync();
             var contentItemSummaries = new List<dynamic>();
             foreach (var contentItem in pageOfContentItems)
             {

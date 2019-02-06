@@ -149,7 +149,7 @@
     }
 }
 
-<form enctype="multipart/form-data" asp-action="SubmissionEdit" onsubmit="return onSubmissionFormSubmit(this)" asp-controller="AdvancedForms" method="post" id="main"></form>
+<form enctype="multipart/form-data" onsubmit="return onSubmissionFormSubmit(this)" method="post" id="main"></form>
 
 <div>
     <label @*asp-for="Author" *@>@T["Author"]</label> : <label><strong>@Model.Owner</strong> </label><br />
