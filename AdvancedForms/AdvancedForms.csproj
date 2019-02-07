@@ -71,4 +71,20 @@
     <Content Remove="wwwroot\Scripts\Submission.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\Scripts\Submission.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Admin\Submission.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\NavigationItemText-manualForms.Id.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\NavigationItemText-manualForms.Id.cshtml" />
+  </ItemGroup>
+
 </Project>

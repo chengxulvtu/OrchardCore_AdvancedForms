@@ -801,6 +801,34 @@
           }
         }
       ]
+    },
+    {
+      "Name": "ManualForm",
+      "DisplayName": "Manual Form",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "True",
+        "Securable": "True",
+        "Stereotype": null
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "ManualForm",
+          "Name": "ManualForm",
+          "Settings": {
+            "Position": "1"
+          }
+        },
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
     }
   ],
   "ContentPartDefinitionRecords": [
@@ -1504,7 +1532,75 @@
           }
         }
       ]
+    },
+    {
+      "Name": "PickerStatus",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "Status",
+          "Settings": {
+            "DisplayName": "Status",
+            "Editor": null,
+            "DisplayMode": null,
+            "Hint": null,
+            "Required": false,
+            "Multiple": false,
+            "DisplayedContentTypes": [
+              "AdvancedFormStatus"
+            ],
+            "Position": "0"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "ManualForm",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "HtmlField",
+          "Name": "Description",
+          "Settings": {
+            "DisplayName": "Description",
+            "Editor": "Wysiwyg",
+            "DisplayMode": null,
+            "Hint": null,
+            "Position": "0"
+          }
+        },
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "FormType",
+          "Settings": {
+            "DisplayName": "FormType",
+            "Editor": null,
+            "DisplayMode": null,
+            "Hint": null,
+            "Required": false,
+            "Multiple": false,
+            "DisplayedContentTypes": [
+              "AdvancedFormTypes"
+            ],
+            "Position": "1"
+          }
+        },
+        {
+          "FieldName": "MediaField",
+          "Name": "UploadFile",
+          "Settings": {
+            "DisplayName": "UploadFile",
+            "Editor": null,
+            "DisplayMode": null,
+            "Hint": null,
+            "Required": false,
+            "Multiple": false,
+            "Position": "2"
+          }
+        }
+      ]
     }
   ],
-  "Serial": 91
+  "Serial": 99
 }

@@ -136,7 +136,7 @@
             "Creatable": "False",
             "Draftable": "True",
             "Versionable": "True",
-            "Listable": "True", 
+            "Listable": "True",
             "Securable": "True",
             "Stereotype": null
           },
@@ -172,6 +172,34 @@
             {
               "PartName": "PickerStatus",
               "Name": "PickerStatus",
+              "Settings": {
+                "Position": "0"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ManualForm",
+          "DisplayName": "Manual Form",
+          "Settings": {
+            "Creatable": "False",
+            "Draftable": "True",
+            "Versionable": "True",
+            "Listable": "True",
+            "Securable": "True",
+            "Stereotype": null
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ManualForm",
+              "Name": "ManualForm",
+              "Settings": {
+                "Position": "1"
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
               "Settings": {
                 "Position": "0"
               }
@@ -446,6 +474,52 @@
                   "AdvancedFormStatus"
                 ],
                 "Position": "0"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ManualForm",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "HtmlField",
+              "Name": "Description",
+              "Settings": {
+                "DisplayName": "Description",
+                "Editor": "Wysiwyg",
+                "DisplayMode": null,
+                "Hint": null,
+                "Position": "0"
+              }
+            },
+            {
+              "FieldName": "ContentPickerField",
+              "Name": "FormType",
+              "Settings": {
+                "DisplayName": "FormType",
+                "Editor": null,
+                "DisplayMode": null,
+                "Hint": null,
+                "Required": false,
+                "Multiple": false,
+                "DisplayedContentTypes": [
+                  "AdvancedFormTypes"
+                ],
+                "Position": "1"
+              }
+            },
+            {
+              "FieldName": "MediaField",
+              "Name": "UploadFile",
+              "Settings": {
+                "DisplayName": "UploadFile",
+                "Editor": null,
+                "DisplayMode": null,
+                "Hint": null,
+                "Required": false,
+                "Multiple": false,
+                "Position": "2"
               }
             }
           ]
@@ -751,6 +825,30 @@
           "TitlePart": {
             "Title": "Issues Found"
           }
+        },
+        {
+          "ContentItemId": "4efjq18rm858w6pvqq9y2wa3mz",
+          "ContentItemVersionId": "4xvfaxe5t2sqww8pexbby74sx3",
+          "ContentType": "LiquidPage",
+          "DisplayText": "Manual Forms",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2019-02-07T12:27:00.3876631Z",
+          "PublishedUtc": "2019-02-07T12:27:00.489835Z",
+          "CreatedUtc": "2019-02-07T11:36:07.9440027Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "LiquidPage": {},
+          "AutoroutePart": {
+            "Path": "ManualForm",
+            "SetHomepage": false
+          },
+          "LiquidPart": {
+            "Liquid": "<style>\r\n  #mainNav{\r\n      background-color: #212529 !important;\r\n      padding-top: 0px;\r\n    padding-bottom: 0px;\r\n  } \r\n  .section-heading{\r\n  margin-top:35px !important;\r\n  }\r\n  header.masthead{\r\n  \tdisplay:none;\r\n  }\r\n  section{\r\n      padding: 50px 0;\r\n  }\r\n  .panel-body {\r\n    padding: 0px;\r\n  border-radius: 0px;\r\n}\r\n  .panel-heading{\r\n      padding: 10px 10px;\r\n    background: #eee;\r\n    margin-top: 20px;\r\n    border: 1px solid rgba(0, 0, 0, 0.125);\r\n    font-size: 18px;\r\n  }\r\n</style>\r\n\r\n<div class=\"row\">\r\n\t<div class=\"col-lg-12 text-center\">\r\n  \t\t<h2 class=\"section-heading text-uppercase\">MANUAL FORMS</h2>\r\n\t</div>\r\n</div>\r\n<div class=\"row\">\r\n  {% assign allManualForms = Queries.AllManualForms | query %}\r\n  {% assign allFormType = Queries.GetAllAdvancedFormType | query %}\r\n  {% assign addedType = '' %}\r\n  {% for item in allFormType %}\r\n  \t{% for form in allManualForms %}\r\n  \t\r\n  \r\n  \t{% if item.ContentItemId == form.Content.ManualForm.FormType.ContentItemIds %}\r\n  \t{% if addedType != form.Content.ManualForm.FormType.ContentItemIds %}\r\n  \t{% assign addedType = form.Content.ManualForm.FormType.ContentItemIds %}\r\n\t<div class=\"col-md-6\">\r\n\t\t<div class=\"panel panel-default\">\r\n        \t<div class=\"panel-heading\">{{item}}</div>\r\n    \t\t<div class=\"panel-body list-group-item list-group-item-action\" style=\"padding:10px;\">\r\n              \r\n              \t{% for form in allManualForms %}\r\n              \t{% if item.ContentItemId == form.Content.ManualForm.FormType.ContentItemIds %}\r\n                  <div><strong>{{ form | display_text }} </strong><br/>\r\n                \t{{ form.Content.ManualForm.Description.Html | raw }}\r\n                </div>\r\n              <a href=\"/media/{{ form.Content.ManualForm.UploadFile.Paths  }}\" download class=\"btn btn-success\">\r\n                Download\r\n                </a>\r\n              \t{% endif %}\r\n              \t{% endfor %}\r\n              \r\n          \t</div>\r\n       \t</div>\r\n   \t</div>\r\n  \t{% endif %}\r\n  \t{% endif %}\r\n  \t{% endfor %}\r\n  {% endfor %}\r\n</div>\r\n\r\n"
+          },
+          "TitlePart": {
+            "Title": "Manual Forms"
+          }
         }
       ]
     },
@@ -767,6 +865,13 @@
           "Template": "select DocumentId\r\nfrom ContentItemIndex \r\nwhere Published = true \r\nand ContentType = 'AdvancedFormTypes'",
           "ReturnDocuments": true,
           "Name": "GetAllAdvancedFormType",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "select DocumentId\r\nfrom ContentItemIndex \r\nwhere Published = true and ContentType = 'ManualForm'",
+          "ReturnDocuments": true,
+          "Name": "AllManualForms",
           "Source": "Sql",
           "Schema": null
         }
