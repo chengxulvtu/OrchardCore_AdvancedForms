@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <EmbeddedResource Remove="Views\AdvancedForms\Contents-Meta.SummaryAdmin.cshtml" />
+    <EmbeddedResource Remove="wwwroot\Styles\Submission.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -64,6 +65,10 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\Scripts\formio.full.min.3.13.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Scripts\Submission.js" />
   </ItemGroup>
 
 </Project>
