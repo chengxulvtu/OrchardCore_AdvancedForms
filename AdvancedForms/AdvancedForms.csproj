@@ -5,10 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Remove="Views\Admin\Submission.cshtml" />
-    <EmbeddedResource Remove="Views\Admin\Submissions.cshtml" />
     <EmbeddedResource Remove="Views\AdvancedForms\Contents-Meta.SummaryAdmin.cshtml" />
-    <EmbeddedResource Remove="wwwroot\Scripts\formio.full.min.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,6 +44,26 @@
 
   <ItemGroup>
     <Content Remove="Views\Content.Submission.ListItem.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Admin\Submissions.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Admin\Submission.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Admin\Submission.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Admin\Submissions.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Scripts\formio.full.min.3.13.js" />
   </ItemGroup>
 
 </Project>
