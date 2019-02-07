@@ -126,11 +126,10 @@ label {
 }
 
 #ta-left-sidebar #left-nav > ul > li > label {
-    padding: 6px 0px !important;
+    padding: 8px 0px !important;
     margin-bottom: 0px !important;
     font-weight: 400 !important;
     background-color: #eaeaea !important;
-    padding-bottom:0px;
 }
 
 #ta-left-sidebar #left-nav > ul.menu-admin > .item-label > span.title {
@@ -150,4 +149,8 @@ label {
 }
 .menu-admin {
     background-color: #eaeaea !important;
+}
+
+body:not(.left-sidebar-compact) #ta-left-sidebar #left-nav > ul.menu-admin .item-label > span.title {
+    padding-top: 6px !important;
 }
