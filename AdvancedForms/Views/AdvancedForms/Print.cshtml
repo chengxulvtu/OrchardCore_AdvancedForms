@@ -4,8 +4,8 @@
        debug-src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" media="all">
 <link rel="stylesheet" href="/AdvancedForms/Styles/formio.full.min.css" type="text/css" media="all">
-@*<script src="/AdvancedForms/Scripts/formio.full.min.js"></script>*@
-<script asp-src="/AdvancedForms/Scripts/formio.full.min.v3.13.10.js" at="Head" asp-name="formio.full.min"></script>
+<script src="/AdvancedForms/Scripts/formio.full.min.js"></script>
+
 
 <style>
     .wrapper {
@@ -35,13 +35,10 @@
 
 <script type='text/javascript'>
     window.onload = function () {
-        debugger;
         Formio.createForm(document.getElementById('formio'),
-            //create the form from saved data
             @Html.Raw(Model.Container)
            ,{readOnly: true}
         ).then(function(form) {
-            //fill form data
             form.submission = {
                 @if (!String.IsNullOrEmpty(Model.SubmissionId))
                 {

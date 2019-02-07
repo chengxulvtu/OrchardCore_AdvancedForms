@@ -39,7 +39,6 @@ function updatePanels(builder) {
 }
 
 function onFormSubmit(form) {
-    debugger;
     var isValidate = true;
     if (form.Title.value == '') {
         isValidate = false;

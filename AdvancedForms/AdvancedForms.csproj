@@ -8,7 +8,7 @@
     <EmbeddedResource Remove="Views\Admin\Submission.cshtml" />
     <EmbeddedResource Remove="Views\Admin\Submissions.cshtml" />
     <EmbeddedResource Remove="Views\AdvancedForms\Contents-Meta.SummaryAdmin.cshtml" />
-    <EmbeddedResource Remove="wwwroot\Scripts\formio.full.min.v3.13.10.js" />
+    <EmbeddedResource Remove="wwwroot\Scripts\formio.full.min.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,7 +21,6 @@
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
       <Pack>true</Pack>
     </None>
-    <None Include="wwwroot\Scripts\formio.full.min.js" />
     <None Include="wwwroot\Styles\formio.full.min.css" />
   </ItemGroup>
 
