@@ -129,13 +129,25 @@ label {
     padding: 6px 0px !important;
     margin-bottom: 0px !important;
     font-weight: 400 !important;
+    background-color: #eaeaea !important;
+    padding-bottom:0px;
 }
 
-#ta-left-sidebar #left-nav > ul.menu-admin .item-label > span.title {
+#ta-left-sidebar #left-nav > ul.menu-admin > .item-label > span.title {
     padding-top: 7px !important;
+}
+
+#ta-left-sidebar #left-nav > ul.menu-admin > .item-label > span.icon {
+    background-color: #eaeaea !important;
+}
+.left-sidebar-compact #ta-left-sidebar #left-nav > ul > li > .item-label .icon:hover {
+    background-color: #eaeaea !important;
 }
 @media (max-width: 768px) {
     .collapse:not(.show) {
         display: none !important;
     }
+}
+.menu-admin {
+    background-color: #eaeaea !important;
 }
