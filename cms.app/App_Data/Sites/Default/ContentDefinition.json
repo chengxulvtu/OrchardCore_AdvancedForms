@@ -1578,7 +1578,7 @@
             "Editor": null,
             "DisplayMode": null,
             "Hint": null,
-            "Required": false,
+            "Required": true,
             "Multiple": false,
             "DisplayedContentTypes": [
               "AdvancedFormTypes"
@@ -1594,7 +1594,7 @@
             "Editor": null,
             "DisplayMode": null,
             "Hint": null,
-            "Required": false,
+            "Required": true,
             "Multiple": false,
             "Position": "2"
           }
@@ -1602,5 +1602,5 @@
       ]
     }
   ],
-  "Serial": 99
+  "Serial": 105
 }
