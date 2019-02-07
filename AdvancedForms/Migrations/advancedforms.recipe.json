@@ -136,7 +136,7 @@
             "Creatable": "False",
             "Draftable": "True",
             "Versionable": "True",
-            "Listable": "True",
+            "Listable": "True", 
             "Securable": "True",
             "Stereotype": null
           },
@@ -422,6 +422,28 @@
                 "Multiple": false,
                 "DisplayedContentTypes": [
                   "AdvancedFormTypes"
+                ],
+                "Position": "0"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "PickerStatus",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "ContentPickerField",
+              "Name": "Status",
+              "Settings": {
+                "DisplayName": "Status",
+                "Editor": null,
+                "DisplayMode": null,
+                "Hint": null,
+                "Required": false,
+                "Multiple": false,
+                "DisplayedContentTypes": [
+                  "AdvancedFormStatus"
                 ],
                 "Position": "0"
               }
