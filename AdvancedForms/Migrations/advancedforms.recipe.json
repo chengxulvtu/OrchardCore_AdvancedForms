@@ -179,8 +179,8 @@
           ]
         },
         {
-          "Name": "ManualForm",
-          "DisplayName": "Manual Form",
+          "Name": "DownloadableForm",
+          "DisplayName": "Downloadable Form",
           "Settings": {
             "Creatable": "False",
             "Draftable": "True",
@@ -191,8 +191,8 @@
           },
           "ContentTypePartDefinitionRecords": [
             {
-              "PartName": "ManualForm",
-              "Name": "ManualForm",
+              "PartName": "DownloadableForm",
+              "Name": "DownloadableForm",
               "Settings": {
                 "Position": "1"
               }
@@ -543,7 +543,7 @@
           ]
         },
         {
-          "Name": "ManualForm",
+          "Name": "DownloadableForm",
           "Settings": {},
           "ContentPartFieldDefinitionRecords": [
             {
@@ -554,7 +554,7 @@
                 "Editor": "Wysiwyg",
                 "DisplayMode": null,
                 "Hint": null,
-                "Position": "0"
+                "Position": "1"
               }
             },
             {
@@ -570,7 +570,7 @@
                 "DisplayedContentTypes": [
                   "AdvancedFormTypes"
                 ],
-                "Position": "1"
+                "Position": "0"
               }
             },
             {
@@ -902,7 +902,7 @@
           "ContentItemId": "4efjq18rm858w6pvqq9y2wa3mz",
           "ContentItemVersionId": "4xvfaxe5t2sqww8pexbby74sx3",
           "ContentType": "LiquidPage",
-          "DisplayText": "Manual Forms",
+          "DisplayText": "Downloadable Forms",
           "Latest": true,
           "Published": true,
           "ModifiedUtc": "2019-02-07T12:27:00.3876631Z",
@@ -912,14 +912,14 @@
           "Author": "admin",
           "LiquidPage": {},
           "AutoroutePart": {
-            "Path": "ManualForm",
+            "Path": "DownloadableForms",
             "SetHomepage": false
           },
           "LiquidPart": {
-            "Liquid": "<style>\r\n  #mainNav{\r\n      background-color: #212529 !important;\r\n      padding-top: 0px;\r\n    padding-bottom: 0px;\r\n  } \r\n  .section-heading{\r\n  margin-top:35px !important;\r\n  }\r\n  header.masthead{\r\n  \tdisplay:none;\r\n  }\r\n  section{\r\n      padding: 50px 0;\r\n  }\r\n  .panel-body {\r\n    padding: 0px;\r\n  border-radius: 0px;\r\n}\r\n  .panel-heading{\r\n      padding: 10px 10px;\r\n    background: #eee;\r\n    margin-top: 20px;\r\n    border: 1px solid rgba(0, 0, 0, 0.125);\r\n    font-size: 18px;\r\n  }\r\n</style>\r\n\r\n<div class=\"row\">\r\n\t<div class=\"col-lg-12 text-center\">\r\n  \t\t<h2 class=\"section-heading text-uppercase\">MANUAL FORMS</h2>\r\n\t</div>\r\n</div>\r\n<div class=\"row\">\r\n  {% assign allManualForms = Queries.AllManualForms | query %}\r\n  {% assign allFormType = Queries.GetAllAdvancedFormType | query %}\r\n  {% assign addedType = '' %}\r\n  {% for item in allFormType %}\r\n  \t{% for form in allManualForms %}\r\n  \t\r\n  \r\n  \t{% if item.ContentItemId == form.Content.ManualForm.FormType.ContentItemIds %}\r\n  \t{% if addedType != form.Content.ManualForm.FormType.ContentItemIds %}\r\n  \t{% assign addedType = form.Content.ManualForm.FormType.ContentItemIds %}\r\n\t<div class=\"col-md-6\">\r\n\t\t<div class=\"panel panel-default\">\r\n        \t<div class=\"panel-heading\">{{item}}</div>\r\n    \t\t<div class=\"panel-body list-group-item list-group-item-action\" style=\"padding:10px;\">\r\n              \r\n              \t{% for form in allManualForms %}\r\n              \t{% if item.ContentItemId == form.Content.ManualForm.FormType.ContentItemIds %}\r\n                  <div><strong>{{ form | display_text }} </strong><br/>\r\n                \t{{ form.Content.ManualForm.Description.Html | raw }}\r\n                </div>\r\n              <a href=\"/media/{{ form.Content.ManualForm.UploadFile.Paths  }}\" download class=\"btn btn-success\">\r\n                Download\r\n                </a>\r\n              \t{% endif %}\r\n              \t{% endfor %}\r\n              \r\n          \t</div>\r\n       \t</div>\r\n   \t</div>\r\n  \t{% endif %}\r\n  \t{% endif %}\r\n  \t{% endfor %}\r\n  {% endfor %}\r\n</div>\r\n\r\n"
+            "Liquid": "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\r\n<style>\r\n  #mainNav{\r\n      background-color: #212529 !important;\r\n      padding-top: 0px;\r\n    padding-bottom: 0px;\r\n  } \r\n  .section-heading{\r\n  margin-top:35px !important;\r\n  }\r\n  header.masthead{\r\n  \tdisplay:none;\r\n  }\r\n  section{\r\n      padding: 50px 0;\r\n  }\r\n  .panel-body {\r\n    padding: 0px;\r\n  border-radius: 0px;\r\n}\r\n  .panel-heading{\r\n      padding: 10px 10px;\r\n    background: #eee;\r\n    margin-top: 20px;\r\n    border: 1px solid rgba(0, 0, 0, 0.125);\r\n    font-size: 18px;\r\n  }\r\n</style>\r\n\r\n<div class=\"row\">\r\n\t<div class=\"col-lg-12 text-center\">\r\n  \t\t<h2 class=\"section-heading text-uppercase\">DOWNLOADABLE FORMS</h2>\r\n\t</div>\r\n</div>\r\n<div class=\"row\">\r\n  {% assign allDownloadableForms = Queries.AllDownloadableForms | query %}\r\n  {% assign allFormType = Queries.GetAllAdvancedFormType | query %}\r\n  {% assign addedType = '' %}\r\n  {% for item in allFormType %}\r\n  \t{% for form in allDownloadableForms %}\r\n  \t{% if item.ContentItemId | slugify == form.Content.DownloadableForm.FormType.ContentItemIds | slugify %}\r\n  {% if addedType | slugify != form.Content.DownloadableForm.FormType.ContentItemIds | slugify %}\r\n  \t{% assign addedType = form.Content.DownloadableForm.FormType.ContentItemIds %}\r\n\t<div class=\"col-md-6\">\r\n\t\t<div class=\"panel panel-default\">\r\n        \t<div class=\"panel-heading\">{{item}}</div>\r\n    \t\t<div class=\"panel-body\">\r\n              \t{% for form in allDownloadableForms %}\r\n              \t{% if item.ContentItemId == form.Content.DownloadableForm.FormType.ContentItemIds %}\r\n              <a class=\"list-group-item list-group-item-action\" href=\"/media/{{ form.Content.DownloadableForm.UploadFile.Paths  }}\" download>    \r\n              <div>\r\n                <strong>{{ form | display_text }} </strong>\r\n                <i class=\"fa fa-info-circle\" data-toggle=\"tooltip\" title=\"Click title to download form\" style=\"float:right\"></i>\r\n                <br/>\r\n                \t{{ form.Content.DownloadableForm.Description.Html | raw }}\r\n                </div>\r\n                </a>\r\n              \t{% endif %}\r\n              \t{% endfor %}\r\n              \r\n          \t</div>\r\n       \t</div>\r\n   \t</div>\r\n  \t{% endif %}\r\n  \t{% endif %}\r\n  \t{% endfor %}\r\n  {% endfor %}\r\n</div>\r\n<script>\r\n$(document).ready(function(){\r\n  $('[data-toggle=\"tooltip\"]').tooltip();   \r\n});\r\n</script>\r\n"
           },
           "TitlePart": {
-            "Title": "Manual Forms"
+            "Title": "Downloadable Forms"
           }
         }
       ]
@@ -941,9 +941,9 @@
           "Schema": null
         },
         {
-          "Template": "select DocumentId\r\nfrom ContentItemIndex \r\nwhere Published = true and ContentType = 'ManualForm'",
+          "Template": "select DocumentId\r\nfrom ContentItemIndex \r\nwhere Published = true and ContentType = 'DownloadableForm'",
           "ReturnDocuments": true,
-          "Name": "AllManualForms",
+          "Name": "AllDownloadableForms",
           "Source": "Sql",
           "Schema": null
         }

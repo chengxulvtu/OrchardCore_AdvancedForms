@@ -803,8 +803,8 @@
       ]
     },
     {
-      "Name": "ManualForm",
-      "DisplayName": "Manual Form",
+      "Name": "DownloadableForm",
+      "DisplayName": "Downloadable Form",
       "Settings": {
         "Creatable": "False",
         "Draftable": "True",
@@ -815,8 +815,8 @@
       },
       "ContentTypePartDefinitionRecords": [
         {
-          "PartName": "ManualForm",
-          "Name": "ManualForm",
+          "PartName": "DownloadableForm",
+          "Name": "DownloadableForm",
           "Settings": {
             "Position": "1"
           }
@@ -1620,7 +1620,7 @@
       ]
     },
     {
-      "Name": "ManualForm",
+      "Name": "DownloadableForm",
       "Settings": {},
       "ContentPartFieldDefinitionRecords": [
         {
@@ -1631,7 +1631,7 @@
             "Editor": "Wysiwyg",
             "DisplayMode": null,
             "Hint": null,
-            "Position": "0"
+            "Position": "1"
           }
         },
         {
@@ -1647,7 +1647,7 @@
             "DisplayedContentTypes": [
               "AdvancedFormTypes"
             ],
-            "Position": "1"
+            "Position": "0"
           }
         },
         {

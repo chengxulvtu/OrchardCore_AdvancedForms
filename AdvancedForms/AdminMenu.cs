@@ -33,8 +33,11 @@ namespace AdvancedForms
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
                     ).Add(T["Submissions"], layers => layers
-                        //.Url("Admin/Contents/ContentItems?id=AdvancedFormSubmissions&active=AdvancedForms")
                         .Action("Submissions", "Admin", new { area = "AdvancedForms" })
+                        .Permission(Permissions.ManageOwnAdvancedForms)
+                        .LocalNav()
+                    ).Add(T["Downloadable Forms"], layers => layers
+                        .Url("/Admin/Contents/ContentTypes/DownloadableForm/Create")
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
                     ).Add(T["Form Type"], layers => layers
@@ -45,15 +48,7 @@ namespace AdvancedForms
                         .Url("/Admin/Contents/ContentTypes/AdvancedFormStatus/Create")
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
-                     ))
-                .Add(T["Manual Forms"], "13", manualForms => manualForms
-                    .AddClass("manualForms").Id("manualForms")
-                    .AddClass("Active")
-                    .Add(T["New"], layers => layers
-                        .Url("/Admin/Contents/ContentTypes/ManualForm/Create")
-                        .Permission(Permissions.ManageOwnAdvancedForms)
-                        .LocalNav()
-                    ));
+                     ));
             return Task.CompletedTask;
         }
     }
