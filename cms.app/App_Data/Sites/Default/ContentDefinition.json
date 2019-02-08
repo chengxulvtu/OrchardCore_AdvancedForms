@@ -829,6 +829,70 @@
           }
         }
       ]
+    },
+    {
+      "Name": "PublicComment",
+      "DisplayName": "Public Comment ",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "True",
+        "Securable": "True",
+        "Stereotype": null
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "PublicComment",
+          "Name": "PublicComment",
+          "Settings": {
+            "Position": "1"
+          }
+        },
+        {
+          "PartName": "HtmlBodyPart",
+          "Name": "HtmlBodyPart",
+          "Settings": {
+            "Position": "0",
+            "DisplayName": null,
+            "Description": null,
+            "Editor": "Wysiwyg",
+            "HtmlBodyPartSettings": {}
+          }
+        }
+      ]
+    },
+    {
+      "Name": "AdminComment",
+      "DisplayName": "Admin Comment",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "True",
+        "Securable": "True",
+        "Stereotype": null
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "AdminComment",
+          "Name": "AdminComment",
+          "Settings": {
+            "Position": "0"
+          }
+        },
+        {
+          "PartName": "HtmlBodyPart",
+          "Name": "HtmlBodyPart",
+          "Settings": {
+            "DisplayName": null,
+            "Description": null,
+            "Editor": "Wysiwyg",
+            "HtmlBodyPartSettings": {},
+            "Position": "1"
+          }
+        }
+      ]
     }
   ],
   "ContentPartDefinitionRecords": [
@@ -1602,5 +1666,5 @@
       ]
     }
   ],
-  "Serial": 105
+  "Serial": 109
 }

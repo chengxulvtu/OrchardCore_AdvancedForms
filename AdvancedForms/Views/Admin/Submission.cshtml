@@ -189,9 +189,9 @@
 
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#formPreview" class="active show">@T["Submission"]</a></li>
-    <li><a data-toggle="tab" onclick="GetAdminComments()" href="#AdminComments">@T["Admin Comments"]</a></li>
+    <li><a data-toggle="tab" onclick="GetAdminComments('@Model.Id')" href="#AdminComments">@T["Admin Comments"]</a></li>
     <li><a data-toggle="tab" href="#formAdminFields">@T["Admin Fields"]</a></li>
-    <li><a data-toggle="tab" onclick="GetPublicComments()" href="#publicComments">@T["Public Comments"]</a></li>
+    <li><a data-toggle="tab" onclick="GetPublicComments('@Model.Id')" href="#publicComments">@T["Public Comments"]</a></li>
 </ul>
 
 <div class="tab-content">
@@ -208,7 +208,7 @@
         <div>
             <textarea id="AdminComment" class="form-control content-preview-text content-caption-text"></textarea>
             <span class="hint">@T["These comments are private for admins only."]</span><br />
-            <button class="publish-button btn btn-success" onclick="submitAdminComment()">@T["Save"]</button>
+            <button class="publish-button btn btn-success" onclick="submitAdminComment('@Model.Id')">@T["Save"]</button>
         </div>
         <br />
         <br />
@@ -227,7 +227,7 @@
         <div>
             <textarea id="PublicComment" class="form-control content-preview-text content-caption-text"></textarea>
             <span class="hint">@T["These comments will be displayed to the submitter and are not private."]</span> <br />
-            <button class="publish-button btn btn-success" onclick="submitPublicComment()">@T["Save"]</button>
+            <button class="publish-button btn btn-success" onclick="submitPublicComment('@Model.Id')">@T["Save"]</button>
         </div>
         <br />
         <br />

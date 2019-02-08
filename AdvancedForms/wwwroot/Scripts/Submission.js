@@ -12,7 +12,7 @@ function clearEditors() {
     $('#PublicComment').trumbowyg('empty');
 }
 
-function submitAdminComment() {
+function submitAdminComment(id) {
     if ($("#AdminComment")[0].value == null) {
         return;
     }
@@ -21,12 +21,12 @@ function submitAdminComment() {
         method: 'POST',
         data: {
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
-            id: '@Model.Id',
+            id: id,
             comment: $("#AdminComment")[0].value
         },
         success: function (data) {
             clearEditors();
-            GetAdminComments();
+            GetAdminComments(id);
         },
         error: function (error) {
             var errorMsg = "Unable to Save. Try again later.";
@@ -35,7 +35,7 @@ function submitAdminComment() {
     });
 }
 
-function submitPublicComment() {
+function submitPublicComment(id) {
     if ($("#PublicComment")[0].value == null) {
         return;
     }
@@ -44,12 +44,12 @@ function submitPublicComment() {
         method: 'POST',
         data: {
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
-            id: '@Model.Id',
+            id: id,
             comment: $("#PublicComment")[0].value
         },
         success: function (data) {
             clearEditors();
-            GetPublicComments();
+            GetPublicComments(id);
         },
         error: function (error) {
             var errorMsg = "Unable to Save. Try again later.";
@@ -58,12 +58,12 @@ function submitPublicComment() {
     });
 }
 
-function GetAdminComments() {
+function GetAdminComments(id) {
     $.ajax({
         url: '/AdvancedForms/GetAdminComments',
         method: 'GET',
         data: {
-            id: '@Model.Id'
+            id: id
         },
         success: function (data) {
             if (data != null) {
@@ -87,12 +87,12 @@ function GetAdminComments() {
     });
 }
 
-function GetPublicComments() {
+function GetPublicComments(id) {
     $.ajax({
         url: '/AdvancedForms/GetPublicComments',
         method: 'GET',
         data: {
-            id: '@Model.Id'
+            id: id
         },
         success: function (data) {
             if (data != null) {
