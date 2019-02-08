@@ -135,3 +135,21 @@ function onSubmissionFormSubmit(form) {
     }
     return isValidate;
 }
+
+function builderAdminFieldsChange(builder) {
+    builder.on('change', function () {
+        if (builder.schema != null && builder.schema.components != null) {
+            document.getElementById('AdminContainer').value = JSON.stringify(builder.schema);
+        } else {
+            document.getElementById('AdminContainer').value = null;
+        }
+
+        if (builder.data != null) {
+            debugger;
+            document.getElementById('AdminSubmission').value = JSON.stringify(builder.data);
+        } else {
+            debugger;
+            document.getElementById('AdminSubmission').value = null;
+        }
+    });
+}

@@ -74,29 +74,41 @@
     }
 </style>
 
+@{
+    var standardAdminComp = "{components:[{type:well }]}";
+}
+
 <script type='text/javascript' at="Head">
-    window.onload = function() {
+    window.onload = function () {
+        let well = "well";
         Formio.createForm(document.getElementById('formio'),
-            //create the form from saved data
-            @Html.Raw(Model.Container)
-
-            , { readOnly: true }
-
+            @Html.Raw(Model.Container), { readOnly: true }
         ).then(function(form) {
-                //fill form data
-                form.submission = {
-                    @if (!String.IsNullOrEmpty(Model.SubmissionId))
-                    {
-                        string submission = "data:" + Html.Raw(Model.Submission);
-                        @Html.Raw(submission);
-                    }
-                };
-
-                // Register for the submit event to get the completed submission.
-                form.on('submit', function(submission) {
-                    console.log('No changes allowed', submission);
-                });
+            form.submission = {
+                @if (!String.IsNullOrEmpty(Model.SubmissionId))
+                {
+                    string submission = "data:" + Html.Raw(Model.Submission);
+                    @Html.Raw(submission);
+                }
+            };
+            form.on('submit', function(submission) {
+                console.log('No changes allowed', submission);
             });
+            });
+
+        Formio.createForm(document.getElementById('builderAdminFields'),
+        @if (String.IsNullOrEmpty(Model.AdminContainer)){@standardAdminComp}
+         else{@Html.Raw(Model.AdminContainer)}
+        ).then(function (form) { 
+            form.submission = {
+                @if (!String.IsNullOrEmpty(Model.SubmissionId) && !String.IsNullOrEmpty(Model.AdminSubmission))
+                {
+                    string adminsubmission = "data:" + Html.Raw(Model.AdminSubmission);
+                    @Html.Raw(adminsubmission);
+                }
+            };
+            builderAdminFieldsChange(form);
+        });
     };
 </script>
 
@@ -216,7 +228,7 @@
     </div>
     <div id="formAdminFields" class="tab-pane fade">
         <br />
-        @T["Admin Fields Coming Soon"]
+        <div id='builderAdminFields'></div>
         <br />
     </div>
     <div id="publicComments" class="tab-pane fade">
@@ -246,8 +258,10 @@
 <input type="hidden" asp-for="Container" form="main" />
 <input type="hidden" asp-for="SubmissionId" form="main" />
 <input type="hidden" asp-for="Submission" form="main" />
+<input type="hidden" asp-for="AdminSubmission" form="main" />
 <input type="hidden" asp-for="Metadata" form="main" />
 <input type="hidden" asp-for="EntryType" form="main" />
+<input type="hidden" asp-for="AdminContainer" form="main" />
 <br />
 <br />
 

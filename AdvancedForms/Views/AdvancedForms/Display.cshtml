@@ -79,7 +79,8 @@
                       instructions: '@Model.Instructions',
                       owner: '@Model.Owner',
                       status: '@Model.Status',
-                      adminContainer: '@Model.AdminContainer'
+                      adminContainer: '@Model.AdminContainer',
+                      adminSubmission: document.getElementById('AdminSubmission').value
                   },
                   success: function (data) {
                       window.location.replace("/submission-confirmation");
@@ -139,5 +140,6 @@
 <div id='formio'></div>
 
 <input type="hidden" asp-for="Container" form="main" />
+<input type="hidden" asp-for="AdminSubmission" form="main" />
 <input type="hidden" asp-for="Id" form="main" />
 

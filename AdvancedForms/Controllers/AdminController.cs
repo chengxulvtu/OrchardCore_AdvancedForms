@@ -391,6 +391,7 @@ namespace AdvancedForms.Controllers
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 SubmissionId = subContentItem.ContentItemId,
                 Submission = subContentItem.Content.AdvancedFormSubmissions.Submission.Html,
+                AdminSubmission = subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html,
                 Metadata = subContentItem.Content.AdvancedFormSubmissions.Metadata.Html,
                 Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text,
                 SelectedItems = lst
