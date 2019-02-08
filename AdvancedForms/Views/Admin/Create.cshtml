@@ -45,6 +45,7 @@
 
 @{
     var standardComp = "{components:this.formioComponents}";
+    var standardAdminComp = "{components:[{type:well }]}";
     var isEdit = !String.IsNullOrEmpty(Model.Id);
     var createOrEdit = isEdit ? "Edit" : "Create";
 }
@@ -52,10 +53,16 @@
 <script type='text/javascript' at="Head">
     window.onload = function () {
         let formioComponents;
+        let well = "well";
         Formio.builder(document.getElementById('builder'),
         @if (String.IsNullOrEmpty(Model.Container)){@standardComp}
          else{@Html.Raw(Model.Container)}
-         ).then(builderChange);
+        ).then(builderChange);
+
+        Formio.builder(document.getElementById('builderAdminFields'),
+        @if (String.IsNullOrEmpty(Model.AdminContainer)){@standardAdminComp}
+         else{@Html.Raw(Model.AdminContainer)}
+         ).then(builderAdminFieldsChange);
     };
 </script>
 
@@ -161,9 +168,10 @@
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#formBuilder">@T["Form Builder"]</a></li>
     <li><a data-toggle="tab" href="#formPreview">@T["Preview"]</a></li>
-    <li><a data-toggle="tab" href="#formJsonTab">@T["Form JSON"]</a></li>
-    <li><a data-toggle="tab" href="#subJsonTab">@T["Subumssion JSON"]</a></li>
     <li><a data-toggle="tab" href="#printTab">@T["Print"]</a></li>
+    <li><a data-toggle="tab" href="#adminFields">@T["Admin Fields"]</a></li>
+    <li><a data-toggle="tab" href="#subJsonTab">@T["Subumssion JSON"]</a></li>
+    <li><a data-toggle="tab" href="#formJsonTab">@T["Form JSON"]</a></li>
 </ul>
 
 <div class="tab-content">
@@ -174,18 +182,6 @@
     <div id="formPreview" class="tab-pane fade">
         <br />
         <div id='formio'></div>
-    </div>
-    <div id="formJsonTab" class="tab-pane fade">
-        <br />
-        <div class="card card-body bg-light jsonviewer">
-            <pre id="formJson"></pre>
-        </div>
-    </div>
-    <div id="subJsonTab" class="tab-pane fade">
-        <br />
-        <div class="card card-body bg-light jsonviewer">
-            <pre id="subJson"></pre>
-        </div>
     </div>
     <div id="printTab" class="tab-pane fade">
         <br />
@@ -204,8 +200,25 @@
             <br />
         </div>
     </div>
+    <div id="adminFields" class="tab-pane fade">
+        <br />
+        <div id='builderAdminFields'></div>
+    </div>
+    <div id="subJsonTab" class="tab-pane fade">
+        <br />
+        <div class="card card-body bg-light jsonviewer">
+            <pre id="subJson"></pre>
+        </div>
+    </div>
+    <div id="formJsonTab" class="tab-pane fade">
+        <br />
+        <div class="card card-body bg-light jsonviewer">
+            <pre id="formJson"></pre>
+        </div>
+    </div>
 </div>
 <input type="hidden" asp-for="Container" form="main" />
+<input type="hidden" asp-for="AdminContainer" form="main" />
 
 <br />
 <br />

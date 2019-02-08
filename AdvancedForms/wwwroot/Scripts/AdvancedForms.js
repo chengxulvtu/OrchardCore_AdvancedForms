@@ -18,6 +18,16 @@
     this.updatePanels(builder);
 }
 
+function builderAdminFieldsChange(builder) {
+    builder.on('change', function () {
+        if (builder.schema != null && builder.schema.components != null) {
+            document.getElementById('AdminContainer').value = JSON.stringify(builder.schema);
+        } else {
+            document.getElementById('AdminContainer').value = null;
+        }
+    });
+}
+
 var onForm = function (form) {
     form.on('change', function () {
         var subJsonElement = document.getElementById('subJson');

@@ -145,7 +145,7 @@ namespace AdvancedForms.Controllers
             }
 
             var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions,
-                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type);
+                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type, viewModel.AdminContainer);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.DisplayText = viewModel.Title;
             contentItem.Content.AutoroutePart.Path = CreatePath(viewModel.Title);
@@ -199,6 +199,7 @@ namespace AdvancedForms.Controllers
                 EntryType = Enums.EntryType.Edit,
                 Title = contentItem.DisplayText,
                 Container = contentItem.Content.AdvancedForm.Container.Html,
+                AdminContainer = contentItem.Content.AdvancedForm.AdminContainer.Html,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
@@ -278,7 +279,7 @@ namespace AdvancedForms.Controllers
             }
 
             var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions,
-                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type);
+                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type, viewModel.AdminContainer);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.DisplayText = viewModel.Title;
             contentItem.Content.AutoroutePart.Path = CreatePath(viewModel.Title);
@@ -288,6 +289,7 @@ namespace AdvancedForms.Controllers
                 Id = viewModel.Id,
                 Title = contentItem.DisplayText,
                 Container = contentItem.Content.AdvancedForm.Container.Html,
+                AdminContainer = contentItem.Content.AdvancedForm.AdminContainer.Html,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
@@ -384,6 +386,7 @@ namespace AdvancedForms.Controllers
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 Container = contentItem.Content.AdvancedForm.Container.Html,
+                AdminContainer = contentItem.Content.AdvancedForm.AdminContainer.Html,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 SubmissionId = subContentItem.ContentItemId,

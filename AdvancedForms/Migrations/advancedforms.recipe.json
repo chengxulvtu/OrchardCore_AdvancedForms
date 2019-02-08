@@ -317,7 +317,7 @@
                   "Tokenized": false,
                   "Template": null
                 },
-                "Position": "1"
+                "Position": "2"
               }
             },
             {
@@ -335,7 +335,7 @@
                   "Tokenized": false,
                   "Template": null
                 },
-                "Position": "2"
+                "Position": "3"
               }
             },
             {
@@ -353,7 +353,7 @@
                   "Tokenized": false,
                   "Template": null
                 },
-                "Position": "3"
+                "Position": "4"
               }
             },
             {
@@ -377,26 +377,31 @@
               }
             },
             {
-              "Name": "PickerStatus",
-              "Settings": {},
-              "ContentPartFieldDefinitionRecords": [
-                {
-                  "FieldName": "ContentPickerField",
-                  "Name": "Status",
-                  "Settings": {
-                    "DisplayName": "Status",
-                    "Editor": null,
-                    "DisplayMode": null,
-                    "Hint": null,
-                    "Required": false,
-                    "Multiple": false,
-                    "DisplayedContentTypes": [
-                      "AdvancedFormStatus"
-                    ],
-                    "Position": "0"
-                  }
-                }
-              ]
+              "FieldName": "ContentPickerField",
+              "Name": "FormType",
+              "Settings": {
+                "DisplayName": "FormType",
+                "Editor": null,
+                "DisplayMode": null,
+                "Hint": null,
+                "Required": false,
+                "Multiple": false,
+                "DisplayedContentTypes": [
+                  "AdvancedFormTypes"
+                ],
+                "Position": "1"
+              }
+            },
+            {
+              "FieldName": "HtmlField",
+              "Name": "AdminContainer",
+              "Settings": {
+                "DisplayName": "AdminContainer",
+                "Editor": "Wysiwyg",
+                "DisplayMode": null,
+                "Hint": null,
+                "Position": "5"
+              }
             }
           ]
         },

@@ -11,14 +11,16 @@ namespace AdvancedForms.Models
         public string Owner { get; set; }
         public TextPart Type { get; set; }
         public TextPart Status { get; set; }
-        public EditorPart Metadata, Container, Header, Footer, Description, Instructions;
+        public EditorPart Metadata, Container, Header, Footer, Description, Instructions, AdminContainer;
        
-        public AdvancedFormSubmissions(string submission, string metadata, string title, string container, string header, string footer, string description, string type, string instructions, string owner, string status)
+        public AdvancedFormSubmissions(string submission, string metadata, string title, string container, string header, 
+            string footer, string description, string type, string instructions, string owner, string status, string adminContainer)
         {
             Submission = new EditorPart(submission);
             Title = title;
             Metadata = new EditorPart(metadata);
             Container = new EditorPart(container);
+            AdminContainer = new EditorPart(adminContainer);
             Header = new EditorPart(header);
             Footer = new EditorPart(footer);
             Description = new EditorPart(description);
