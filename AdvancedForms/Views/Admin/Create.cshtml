@@ -87,7 +87,7 @@
 
 <div>
     <label asp-for="Title">@T["Title"]</label>
-    <input asp-for="Title" class="form-control content-preview-text content-caption-text" autofocus="autofocus" form="main" />
+    <input asp-for="Title" class="form-control content-preview-text content-caption-text" autofocus="autofocus" form="main" tabindex="1" />
     <span class="hint">@T["The title of the form."]</span>
     <br />
     <br />
@@ -121,7 +121,7 @@
         </fieldset>
         <fieldset class="row">
             <div class="col-xl-12">
-                <div id="multiselect_Div">
+                <div id="multiselect_Div" :tabindex="2">
                     <vue-multiselect v-model="value" :options="options" track-by="contentItemId"
                                      label="displayText" placeholder="@T["Type to search"]"
                                      @@search-change="asyncFind" @@select="onSelect"
