@@ -12,6 +12,7 @@ namespace AdvancedForms.ViewModels
         public string Id { get; set; }
         public string Owner { get; set; }
         public DateTime? ModifiedUtc { get; set; }
+        public DateTime? CreatedUtc { get; set; }
         [Required]
         public string Title { get; set; }
         [Required]

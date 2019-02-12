@@ -29,50 +29,6 @@
 <script asp-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.min.js" debug-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.js" asp-name="vuedraggable" depends-on="vuejs, sortable" at="Foot"></script>
 <script asp-src="/AdvancedForms/Scripts/Submission.js" at="Foot" asp-name="advancedforms.submission"></script>
 
-<style>
-    /*#main {
-        padding-top: 70px;
-    }*/
-
-    #mainNav {
-        background-color: #212529 !important;
-    }
-
-    #formio button {
-        color: #fff;
-        background-color: #5bc0de !important;
-        border-color: #46b8da !important;
-    }
-
-    .print-btn {
-        color: #286090 !important;
-    }
-
-        .print-btn:hover {
-            color: #204d74 !important;
-        }
-
-    button:disabled {
-        cursor: no-drop;
-    }
-
-    label {
-        margin-bottom: 0px !important;
-        padding-bottom: 10px;
-    }
-
-    div > label {
-        padding-bottom: 0px;
-    }
-
-    .btn-group-sm > .btn, .btn-sm {
-        padding: 2px 8px;
-    }
-
-    .trumbowyg-box, .trumbowyg-editor {
-        min-height: 100px;
-    }
-</style>
 
 @{
     var standardAdminComp = "{components:[{type:well }]}";
@@ -144,11 +100,11 @@
 <div>
     <label @*asp-for="Author" *@>@T["Author"]</label> : <label><strong>@Model.Owner</strong> </label><br />
     <label @*asp-for="CreatedUtc" *@>@T["Created Date"]</label> :
-    @if (Model.ModifiedUtc.HasValue)
+    @if (Model.CreatedUtc.HasValue)
     {
         <label>
             <strong>
-                @await DisplayAsync(await New.DateTime(Utc: Model.ModifiedUtc.Value))
+                @await DisplayAsync(await New.TimeSpan(Utc: Model.CreatedUtc.Value))
             </strong>
         </label>
     }<br />

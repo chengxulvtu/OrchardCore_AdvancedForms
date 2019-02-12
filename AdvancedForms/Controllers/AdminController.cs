@@ -25,7 +25,6 @@ using OrchardCore.Navigation;
 
 namespace AdvancedForms.Controllers
 {
-
     [Admin]
     public class AdminController : Controller, IUpdateModel
     {
@@ -160,6 +159,15 @@ namespace AdvancedForms.Controllers
             await conditionallyPublish(contentItem);
 
             return RedirectToAction("Edit", new RouteValueDictionary { { "ContentItemId", contentItem.ContentItemId } });
+        }
+
+        [HttpGet]
+        [Route("AdvancedForms/GetAdminComments")]
+        public async Task<IActionResult> GetAdminComments(string id)
+        {
+            var query = _session.Query<ContentItem, ContentItemIndex>();
+            var comments = await query.Where(o => o.ContentType == "AdminComment" && o.DisplayText == id && (o.Latest || o.Published)).ListAsync();
+            return Ok(comments);
         }
 
 
@@ -380,7 +388,8 @@ namespace AdvancedForms.Controllers
             {
                 Id = id,
                 Owner = contentItem.Owner,
-                ModifiedUtc = contentItem.ModifiedUtc,
+                ModifiedUtc = subContentItem.ModifiedUtc,
+                CreatedUtc = subContentItem.CreatedUtc,
                 Title = contentItem.DisplayText,
                 Type = contentItem.Content.AdvancedForm.Type.Text,
                 Header = contentItem.Content.AdvancedForm.Header.Html,

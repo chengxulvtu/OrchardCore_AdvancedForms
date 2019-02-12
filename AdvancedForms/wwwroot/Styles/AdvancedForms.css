@@ -154,3 +154,43 @@ label {
 body:not(.left-sidebar-compact) #ta-left-sidebar #left-nav > ul.menu-admin .item-label > span.title {
     padding-top: 6px !important;
 }
+
+
+#mainNav {
+    background-color: #212529 !important;
+}
+
+#formio button {
+    color: #fff;
+    background-color: #5bc0de !important;
+    border-color: #46b8da !important;
+}
+
+.print-btn {
+    color: #286090 !important;
+}
+
+    .print-btn:hover {
+        color: #204d74 !important;
+    }
+
+button:disabled {
+    cursor: no-drop;
+}
+
+label {
+    margin-bottom: 0px !important;
+    padding-bottom: 10px;
+}
+
+div > label {
+    padding-bottom: 0px;
+}
+
+.btn-group-sm > .btn, .btn-sm {
+    padding: 2px 8px;
+}
+
+.trumbowyg-box, .trumbowyg-editor {
+    min-height: 100px;
+}

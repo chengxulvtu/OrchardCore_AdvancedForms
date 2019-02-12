@@ -68,14 +68,8 @@ function GetAdminComments(id) {
         success: function (data) {
             if (data != null) {
                 var comments = "";
-                var date = new Date();
                 $.each(data, function (index, value) {
-                    date = new Date(value.CreatedUtc);
-                    comments += '<div class="panel panel-default">';
-                    comments += '<div class="panel-heading"><b>' + value.Owner + '</b> ' + date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear() + ' ' + date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) + '</div>';
-                    comments += '<div class="panel-body">' + value.AdminComment + '</div>';
-                    comments += '</div>';
-                    console.log(value);
+                    comments += getPanel(value);
                 });
                 $("#AdminCommentsPanels").html(comments);
             }
@@ -97,14 +91,8 @@ function GetPublicComments(id) {
         success: function (data) {
             if (data != null) {
                 var comments = "";
-                var date = new Date();
                 $.each(data, function (index, value) {
-                    date = new Date(value.CreatedUtc);
-                    comments += '<div class="panel panel-default">';
-                    comments += '<div class="panel-heading"><b>' + value.Owner + '</b> ' + date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear() + ' ' + date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) + '</div>';
-                    comments += '<div class="panel-body">' + value.AdminComment + '</div>';
-                    comments += '</div>';
-                    console.log(value);
+                    comments += getPanel(value);
                 });
                 $("#PublicCommentsPanels").html(comments);
             }
@@ -114,6 +102,22 @@ function GetPublicComments(id) {
             $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
         }
     });
+}
+
+function getPanel(value) {
+    debugger;
+    var panel = "";
+    panel += '<div class="panel panel-default">';
+    panel += '<div class="panel-heading"><b>' + value.Owner + '</b> ' + getDateString(value.CreatedUtc) + ' </div>';
+    panel += '<div class="panel-body">' + value.HtmlBodyPart.Html + '</div>';
+    panel += '</div>';
+    return panel;
+}
+
+function getDateString(value) {
+    debugger;
+    date = new Date(value);
+    return date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear() + ' ' + date.toLocaleTimeString().replace(/:\d{2}\s/, ' ');
 }
 
 function onSubmissionFormSubmit(form) {

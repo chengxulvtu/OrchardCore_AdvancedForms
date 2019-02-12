@@ -46,7 +46,6 @@ namespace AdvancedForms
                 template: "AdvancedForms/{alias}",
                 defaults: new { controller = "AdvancedForms", action = "Display" }
             );
-                        
         }
     }
 }

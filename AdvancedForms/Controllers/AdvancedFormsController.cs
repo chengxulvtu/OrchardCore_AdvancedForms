@@ -114,7 +114,7 @@ namespace AdvancedForms.Controllers
             {
                 return Unauthorized();
             }
-            contentItem.Content.AdminComment = comment;
+            contentItem.Content.HtmlBodyPart.Html = comment;
             contentItem.Owner = User.Identity.Name;
             contentItem.DisplayText = id;
 
@@ -125,14 +125,7 @@ namespace AdvancedForms.Controllers
             return Ok(StatusCodes.Status200OK);
         }
 
-        [HttpGet]
-        [Route("AdvancedForms/GetAdminComments")]
-        public async Task<IActionResult> GetAdminComments(string id)
-        {
-            var query = _session.Query<ContentItem, ContentItemIndex>();
-            var comments = await query.Where(o => o.ContentType == "AdminComment" && o.DisplayText == id && (o.Latest || o.Published)).ListAsync();
-            return Ok(comments);
-        }
+        
 
         [HttpPost]
         [Route("AdvancedForms/SavePublicComment")]
@@ -144,7 +137,7 @@ namespace AdvancedForms.Controllers
             {
                 return Unauthorized();
             }
-            contentItem.Content.AdminComment = comment;
+            contentItem.Content.HtmlBodyPart.Html = comment;
             contentItem.Owner = User.Identity.Name;
             contentItem.DisplayText = id;
 
