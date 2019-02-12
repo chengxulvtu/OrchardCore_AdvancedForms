@@ -1,8 +1,5 @@
 ﻿@model AdvancedForms.ViewModels.AdvancedFormViewModel
 
-
-<style name="trumbowyg" asp-src="/OrchardCore.Resources/Styles/trumbowyg.min.css"
-       debug-src="/OrchardCore.Resources/Styles/trumbowyg.css"></style>
 <style asp-src="/AdvancedForms/Styles/formio.full.min.css"></style>
 <script asp-src="/AdvancedForms/Scripts/formio.full.min.3.13.js" at="Head" asp-name="formio.full.min"></script>
 
@@ -192,7 +189,7 @@
         </div>
         <br />
         <div>
-            <textarea id="PublicComment" class="form-control content-preview-text content-caption-text"></textarea>
+            @await Html.PartialAsync("HTMLField", Model.PublicEditor)
             <button class="publish-button btn btn-success" onclick="submitPublicComment('@Model.Id')">@T["Save"]</button>
         </div>
         <br />
@@ -200,15 +197,10 @@
         <hr />
     </div>
 }
-<script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
-<script asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js"></script>
+
 <script asp-src="/AdvancedForms/Scripts/Submission.js" at="Head"></script>
 <script type="text/javascript">
     GetPublicComments('@Model.Id');
-</script>
-<script type="text/javascript">
-    renderCommentEditors();
     function clearEditors() {
-        //$("#trumbowyg-editor").innerHtml = '';
     }
 </script>

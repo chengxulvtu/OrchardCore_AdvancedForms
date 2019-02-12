@@ -4,8 +4,8 @@
 }
 
 function clearEditors() {
-    alert('ehllo');
     $('#PublicComment').trumbowyg('empty');
+    $('#AdminComment').trumbowyg('empty');
 }
 
 function submitAdminComment(id) {
@@ -143,10 +143,8 @@ function builderAdminFieldsChange(builder) {
         }
 
         if (builder.data != null) {
-            debugger;
             document.getElementById('AdminSubmission').value = JSON.stringify(builder.data);
         } else {
-            debugger;
             document.getElementById('AdminSubmission').value = null;
         }
     });

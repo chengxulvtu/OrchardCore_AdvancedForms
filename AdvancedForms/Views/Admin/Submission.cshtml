@@ -8,17 +8,12 @@
 <style asp-src="/AdvancedForms/Styles/formio.full.min.css"></style>
 <style asp-src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
        debug-src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></style>
-<style name="trumbowyg" asp-src="/OrchardCore.Resources/Styles/trumbowyg.min.css"
-       debug-src="/OrchardCore.Resources/Styles/trumbowyg.css"></style>
 <style asp-src="/AdvancedForms/Styles/AdvancedForms.css"></style>
 
 @* JS Files  *@
 <script asp-src="/AdvancedForms/Scripts/formio.full.min.3.13.js" at="Head" asp-name="formio.full.min"></script>
 <script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
 <script asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" at="Head"></script>
-<script name="trumbowyg" depends-on="admin" asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js"
-        debug-src="/OrchardCore.Resources/Scripts/trumbowyg.js" at="Foot"></script>
-
 
 <script asp-src="~/OrchardCore.ContentFields/Scripts/contentPicker.js" asp-name="contentPicker" at="Foot" depends-on="vuejs, vuemultiselect"></script>
 <style asp-src="~/OrchardCore.ContentFields/Styles/contentPicker.min.css" debug-src="~/OrchardCore.ContentFields/Styles/contentPicker.css"></style>
@@ -174,7 +169,7 @@
         </div>
         <br />
         <div>
-            <textarea id="AdminComment" class="form-control content-preview-text content-caption-text"></textarea>
+            @await Html.PartialAsync("HTMLField", Model.AdminEditor)
             <span class="hint">@T["These comments are private for admins only."]</span><br />
             <button class="publish-button btn btn-success" onclick="submitAdminComment('@Model.Id')">@T["Save"]</button>
         </div>
@@ -193,7 +188,7 @@
         </div>
         <br />
         <div>
-            <textarea id="PublicComment" class="form-control content-preview-text content-caption-text"></textarea>
+            @await Html.PartialAsync("HTMLField", Model.PublicEditor)
             <span class="hint">@T["These comments will be displayed to the submitter and are not private."]</span> <br />
             <button class="publish-button btn btn-success" onclick="submitPublicComment('@Model.Id')">@T["Save"]</button>
         </div>
@@ -245,12 +240,7 @@ else
 }
 
 <script type="text/javascript">
-    $(function () {
-        renderCommentEditors();
-    });
-
-    function clearEditors() {
-        $('#PublicComment').trumbowyg('empty');
-        $('#AdminComment').trumbowyg('empty');
-    }
+    //$(function () {
+    //    renderCommentEditors();
+    //});
 </script>

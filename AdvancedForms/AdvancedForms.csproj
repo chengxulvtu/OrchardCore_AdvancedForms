@@ -87,4 +87,8 @@
     <Content Remove="Views\NavigationItemText-manualForms.Id.cshtml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\Shared\HTMLField.cshtml" />
+  </ItemGroup>
+
 </Project>

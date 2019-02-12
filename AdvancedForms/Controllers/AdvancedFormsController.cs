@@ -404,7 +404,9 @@ namespace AdvancedForms.Controllers
                 AdminSubmission = subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html,
                 EntryType = entryType,
                 Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text,
-                StatusText = statusText
+                StatusText = statusText,
+                PublicEditor = new HTMLFieldViewModel() { ID = "PublicComment" } 
+
             };
 
             return View(viewName, model);

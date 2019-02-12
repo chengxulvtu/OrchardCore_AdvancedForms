@@ -403,7 +403,9 @@ namespace AdvancedForms.Controllers
                 AdminSubmission = subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html,
                 Metadata = subContentItem.Content.AdvancedFormSubmissions.Metadata.Html,
                 Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text,
-                SelectedItems = lst
+                SelectedItems = lst,
+                AdminEditor = new HTMLFieldViewModel() { ID = "AdminComment" },
+                PublicEditor = new HTMLFieldViewModel() { ID = "PublicComment" }
             };
 
             return View("Submission", model);
