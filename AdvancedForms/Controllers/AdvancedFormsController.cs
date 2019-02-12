@@ -374,6 +374,19 @@ namespace AdvancedForms.Controllers
                 return Unauthorized();
             }
 
+            var selectedContent = await _contentManager.GetAsync(subContentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.Published);
+
+            if (selectedContent == null)
+            {
+                selectedContent = await _contentManager.GetAsync(subContentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.DraftRequired);
+            }
+            string statusText = string.Empty;
+            if(selectedContent != null)
+            {
+                statusText = selectedContent.DisplayText;
+            }
+
+
             var model = new AdvancedFormViewModel
             {
                 Id = id,
@@ -390,7 +403,8 @@ namespace AdvancedForms.Controllers
                 Submission = subContentItem.Content.AdvancedFormSubmissions.Submission.Html,
                 AdminSubmission = subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html,
                 EntryType = entryType,
-                Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text
+                Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text,
+                StatusText = statusText
             };
 
             return View(viewName, model);

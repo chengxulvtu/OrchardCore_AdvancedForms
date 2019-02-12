@@ -18,6 +18,7 @@ namespace AdvancedForms.ViewModels
         [Required]
         public string Type { get; set; }
         public string Status { get; set; }
+        public string StatusText { get; set; }
         public string Header { get; set; }
         public string Footer { get; set; }
         [Required]

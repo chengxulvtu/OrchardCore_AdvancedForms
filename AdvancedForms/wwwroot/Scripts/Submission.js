@@ -1,14 +1,10 @@
-﻿$(function () {
-    renderCommentEditors();
-});
-
-function renderCommentEditors() {
-    $('#AdminComment').trumbowyg();
+﻿function renderCommentEditors() {
     $('#PublicComment').trumbowyg();
+    $('#AdminComment').trumbowyg();
 }
 
 function clearEditors() {
-    $('#AdminComment').trumbowyg('empty');
+    alert('ehllo');
     $('#PublicComment').trumbowyg('empty');
 }
 
@@ -105,7 +101,6 @@ function GetPublicComments(id) {
 }
 
 function getPanel(value) {
-    debugger;
     var panel = "";
     panel += '<div class="panel panel-default">';
     panel += '<div class="panel-heading"><b>' + value.Owner + '</b> ' + getDateString(value.CreatedUtc) + ' </div>';
@@ -115,7 +110,6 @@ function getPanel(value) {
 }
 
 function getDateString(value) {
-    debugger;
     date = new Date(value);
     return date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear() + ' ' + date.toLocaleTimeString().replace(/:\d{2}\s/, ' ');
 }

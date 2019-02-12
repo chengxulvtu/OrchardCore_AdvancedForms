@@ -1,9 +1,10 @@
 ﻿@model AdvancedForms.ViewModels.AdvancedFormViewModel
 
 
+<style name="trumbowyg" asp-src="/OrchardCore.Resources/Styles/trumbowyg.min.css"
+       debug-src="/OrchardCore.Resources/Styles/trumbowyg.css"></style>
 <style asp-src="/AdvancedForms/Styles/formio.full.min.css"></style>
 <script asp-src="/AdvancedForms/Scripts/formio.full.min.3.13.js" at="Head" asp-name="formio.full.min"></script>
-
 
 <style>
     #main {
@@ -30,6 +31,36 @@
 
     button:disabled {
         cursor: no-drop;
+    }
+
+    .panel-default > .panel-heading {
+        color: #333;
+        background-color: #f5f5f5;
+        border-color: #ddd;
+    }
+
+    .panel-heading {
+        padding: 10px 15px;
+        border-bottom: 1px solid transparent;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+
+    .panel-default {
+        border-color: #ddd;
+    }
+
+    .panel {
+        margin-bottom: 20px;
+        background-color: #fff;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.38);
+    }
+
+    .panel-body {
+        padding: 15px;
     }
 </style>
 
@@ -112,6 +143,17 @@
     </h1>
 </div>
 <div>
+    @if (!string.IsNullOrEmpty(Model.StatusText))
+    {
+
+        @Html.LabelFor(model => model.Status)
+        <span>:</span>
+        <b>@Model.StatusText</b>
+        <br />
+        <br />
+    }
+</div>
+<div>
     @if (!string.IsNullOrEmpty(Model.Description))
     {
 
@@ -122,9 +164,7 @@
         <br />
     }
 </div>
-
 <div>
-
     @if (!string.IsNullOrEmpty(Model.Instructions))
     {
         @Html.LabelFor(model => model.Instructions)
@@ -143,3 +183,32 @@
 <input type="hidden" asp-for="AdminSubmission" form="main" />
 <input type="hidden" asp-for="Id" form="main" />
 
+@if (!string.IsNullOrWhiteSpace(Model.SubmissionId))
+{
+    <h4>Comments</h4><hr />
+    <div>
+        <br />
+        <div id="PublicCommentsPanels">
+        </div>
+        <br />
+        <div>
+            <textarea id="PublicComment" class="form-control content-preview-text content-caption-text"></textarea>
+            <button class="publish-button btn btn-success" onclick="submitPublicComment('@Model.Id')">@T["Save"]</button>
+        </div>
+        <br />
+        <br />
+        <hr />
+    </div>
+}
+<script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
+<script asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js"></script>
+<script asp-src="/AdvancedForms/Scripts/Submission.js" at="Head"></script>
+<script type="text/javascript">
+    GetPublicComments('@Model.Id');
+</script>
+<script type="text/javascript">
+    renderCommentEditors();
+    function clearEditors() {
+        //$("#trumbowyg-editor").innerHtml = '';
+    }
+</script>
