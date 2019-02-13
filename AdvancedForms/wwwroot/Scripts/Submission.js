@@ -4,12 +4,20 @@
 }
 
 function clearEditors() {
-    $('#PublicComment').trumbowyg('empty');
-    $('#AdminComment').trumbowyg('empty');
+    if ($("#PublicComment").parent().find(".trumbowyg-editor").length != 0) {
+        $("#PublicComment").parent().find(".trumbowyg-editor")[0].innerText = "";
+    }
+    if ($("#AdminComment").parent().find(".trumbowyg-editor").length != 0) {
+        $("#AdminComment").parent().find(".trumbowyg-editor")[0].innerText = "";
+    }
 }
 
 function submitAdminComment(id) {
-    if ($("#AdminComment")[0].value == null) {
+    if ($("#AdminComment").parent().find(".trumbowyg-editor").length == 0) {
+        return;
+    }
+    var content = $("#AdminComment").parent().find(".trumbowyg-editor")[0].textContent;
+    if (content == null) {
         return;
     }
     $.ajax({
@@ -18,7 +26,7 @@ function submitAdminComment(id) {
         data: {
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
             id: id,
-            comment: $("#AdminComment")[0].value
+            comment: content
         },
         success: function (data) {
             clearEditors();
@@ -32,7 +40,11 @@ function submitAdminComment(id) {
 }
 
 function submitPublicComment(id) {
-    if ($("#PublicComment")[0].value == null) {
+    if ($("#PublicComment").parent().find(".trumbowyg-editor").length == 0) {
+        return;
+    }
+    var content = $("#PublicComment").parent().find(".trumbowyg-editor")[0].textContent;
+    if (content == null) {
         return;
     }
     $.ajax({
@@ -41,7 +53,7 @@ function submitPublicComment(id) {
         data: {
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
             id: id,
-            comment: $("#PublicComment")[0].value
+            comment: content
         },
         success: function (data) {
             clearEditors();

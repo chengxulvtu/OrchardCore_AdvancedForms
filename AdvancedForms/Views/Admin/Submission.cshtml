@@ -50,7 +50,7 @@
         Formio.createForm(document.getElementById('builderAdminFields'),
         @if (String.IsNullOrEmpty(Model.AdminContainer)){@standardAdminComp}
          else{@Html.Raw(Model.AdminContainer)}
-        ).then(function (form) { 
+        ).then(function (form) {
             form.submission = {
                 @if (!String.IsNullOrEmpty(Model.SubmissionId) && !String.IsNullOrEmpty(Model.AdminSubmission))
                 {
@@ -179,7 +179,16 @@
     </div>
     <div id="formAdminFields" class="tab-pane fade">
         <br />
-        <div id='builderAdminFields'></div>
+        @if (!string.IsNullOrEmpty(Model.AdminContainer))
+        {
+            <div id='builderAdminFields'></div>
+        }
+        else
+        {
+            <div class="alert alert-info">
+                @T["No Admin Fields available."]
+            </div>
+        }
         <br />
     </div>
     <div id="publicComments" class="tab-pane fade">
@@ -238,9 +247,3 @@ else
         initializeContentPickerFieldEditor('ContentPicker_PickerStatus_Status', [], '', 'PickerStatus', 'Status', false);
     </script>
 }
-
-<script type="text/javascript">
-    //$(function () {
-    //    renderCommentEditors();
-    //});
-</script>
