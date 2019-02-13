@@ -3,6 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\Navigation-profile.cshtml" />
+    <EmbeddedResource Remove="Views\NavigationItem-profile.cshtml" />
+    <EmbeddedResource Remove="Views\NavigationItemLink-profile.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <Folder Include="Drivers\" />
     <Folder Include="wwwroot\" />
