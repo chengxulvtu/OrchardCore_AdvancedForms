@@ -22,6 +22,7 @@ using Microsoft.AspNetCore.Routing;
 using System.Collections.Generic;
 using OrchardCore.ContentManagement.Records;
 using OrchardCore.Navigation;
+using System.Text;
 
 namespace AdvancedForms.Controllers
 {
@@ -428,6 +429,7 @@ namespace AdvancedForms.Controllers
         }
 
         [HttpPost, ActionName("Submissions")]
+        [FormValueRequired("submit.Filter")]
         public async Task<IActionResult> SubmissionsFilter(string DisplayText = "")
         {
             DisplayText = string.IsNullOrEmpty(DisplayText) ? "" : DisplayText;
@@ -442,6 +444,38 @@ namespace AdvancedForms.Controllers
             model.ContentItemSummaries = contentItemSummaries;
             model.DisplayText = DisplayText;
             return View(model);
+        }
+
+        [HttpPost, ActionName("Submissions")]
+        [FormValueRequired("submit.Export")]
+        public async Task<FileContentResult> SubmissionsExport(string DisplayText = "")
+        {
+            DisplayText = string.IsNullOrEmpty(DisplayText) ? "" : DisplayText;
+            var query = _session.Query<ContentItem, ContentItemIndex>();
+            var pageOfContentItems = await query.Where(o => o.DisplayText.Contains(DisplayText) && o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).OrderByDescending(o => o.CreatedUtc).ListAsync();
+            dynamic selectedContent;
+            StringBuilder csv = new StringBuilder();
+            csv.Append("Form Name, Submitted Date, Created By, Status");
+            csv.AppendLine();
+
+            foreach (var contentItem in pageOfContentItems)
+            {
+                csv.Append(string.Format("{0},", contentItem.Content.AutoroutePart.Path.ToString().Split("/")[1].Replace("-", " ")));
+                csv.Append(string.Format("{0},", contentItem.CreatedUtc.Value));
+                csv.Append(string.Format("{0},", contentItem.Owner));
+                selectedContent = await _contentManager.GetAsync(contentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.Published);
+                if (selectedContent == null)
+                {
+                    selectedContent = await _contentManager.GetAsync(contentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.DraftRequired);
+                }
+                if (selectedContent != null)
+                {
+                    csv.Append(string.Format("{0},", selectedContent.DisplayText));
+                }
+                csv.AppendLine();
+            }
+            
+            return File(new System.Text.UTF8Encoding().GetBytes(csv.ToString()), "text/csv", "Submissions.csv");
         }
 
 

@@ -11,8 +11,14 @@
                 <input type="text" class="form-control" id="DisplayText" name="DisplayText" value="@Model.DisplayText" />
             </div>
             <div class="col-md-2 col-xl-1 form-group">
-                <button type="submit" class="btn btn-primary" name="submit.Filter">@T["Apply"]</button>
+                <button type="submit" class="btn btn-primary" value="submit.Filter" name="submit.Filter">@T["Apply"]</button>
             </div>
+            @if (Model.ContentItemSummaries.Count > 0)
+            {
+                <div class="col-md-4 col-xl-7">
+                    <button type="submit" class="btn btn-warning" style="float:right" value="submit.Export" name="submit.Export">@T["Export"]</button>
+                </div>
+            }
         </div>
     </fieldset>
 
