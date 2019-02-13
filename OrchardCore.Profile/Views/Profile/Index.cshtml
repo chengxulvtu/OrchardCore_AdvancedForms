@@ -45,6 +45,11 @@
             background-color: #003f84;
             border-color: #003f84;
         }
+
+    .status {
+        font-size: 14px;
+        color: #ffc600;
+    }
 </style>
 
 
@@ -71,7 +76,7 @@
         </div>
     </div>
     <div class="col-md-9">
-        <h2>Submitted Forms</h2>
+        <h2 style="font-size: 20px;">Submitted Forms</h2><hr/>
         @await DisplayAsync(Model.Shape)
     </div>
 </div>

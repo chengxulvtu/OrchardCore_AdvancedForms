@@ -59,7 +59,7 @@ namespace AdvancedForms.Drivers
             var contentItemSummaries = new List<dynamic>();
             foreach (var contentItem in pageOfContentItems)
             {
-                contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, updater, "SummaryAdmin"));
+                contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, updater, "SubmissionProfile_ListItem"));
             }
 
             return await Task.FromResult<IDisplayResult>(

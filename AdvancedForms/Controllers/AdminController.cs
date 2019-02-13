@@ -422,7 +422,7 @@ namespace AdvancedForms.Controllers
             var contentItemSummaries = new List<dynamic>();
             foreach (var contentItem in pageOfContentItems)
             {
-                contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, this, "Submission_ListItem"));
+                contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, this, "SubmissionAdmin_ListItem"));
             }
             model.ContentItemSummaries = contentItemSummaries;
             return View(model);
@@ -439,7 +439,7 @@ namespace AdvancedForms.Controllers
             var contentItemSummaries = new List<dynamic>();
             foreach (var contentItem in pageOfContentItems)
             {
-                contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, this, "Submission_ListItem"));
+                contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, this, "SubmissionAdmin_ListItem"));
             }
             model.ContentItemSummaries = contentItemSummaries;
             model.DisplayText = DisplayText;

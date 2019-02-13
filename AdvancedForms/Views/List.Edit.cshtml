@@ -11,9 +11,7 @@
     <ul class="list-group">
         @foreach (var contentItemSummary in Model.ContentItemSummaries)
         {
-            <li class="list-group-item">
                 @await DisplayAsync(contentItemSummary)
-            </li>
         }
     </ul>
 }
