@@ -484,16 +484,9 @@ namespace AdvancedForms.Controllers
                 }
                 for (int i = 4; i < column.Count; i++)
                 {
-                    try
-                    {
-                        value = string.Empty;
-                        submissionHtml.TryGetValue(column[i], out value);
-                        csv.Append(string.Format("{0},", value == null ? string.Empty : value.ToString().Replace(",", "").Replace("\r", "").Replace("\n", "")));
-                    }
-                    catch
-                    {
-                        csv.Append(",");
-                    }
+                    value = string.Empty;
+                    submissionHtml.TryGetValue(column[i], out value);
+                    csv.Append(string.Format("{0},", value == null ? string.Empty : value.ToString().Replace(",", "").Replace("\r", "").Replace("\n", "")));
                 }
                 csv.AppendLine();
             }

@@ -1,6 +1,5 @@
 ﻿function builderChange(builder) {
     builder.on('change', function () {
-        debugger;
         if (builder.schema != null && builder.schema.components != null && (builder.schema.display == "wizard" || builder.schema.components.length > 1)) {
             document.getElementById('Container').value = JSON.stringify(builder.schema);
         } else {
@@ -21,7 +20,6 @@
 
 function builderAdminFieldsChange(builder) {
     builder.on('change', function () {
-        debugger;
         if (builder.schema != null && builder.schema.components != null) {
             document.getElementById('AdminContainer').value = JSON.stringify(builder.schema);
         } else {

@@ -89,12 +89,10 @@
 
             // Register for the submit event to get the completed submission.
             form.on('submit', function (submission) {
-                debugger;
                 saveForm(submission, false);
             });
 
             form.on('change', function (submission) {
-                console.log('Form Change! ', submission);
                 DraftSubmission = submission;
             });
         });
@@ -105,7 +103,6 @@
     }
 
     function saveForm(submission, isDraft) {
-        debugger;
         $.ajax({
             url: '/AdvancedForms/Entry',
             method: 'POST',
