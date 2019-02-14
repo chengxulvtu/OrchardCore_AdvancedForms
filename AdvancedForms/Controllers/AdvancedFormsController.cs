@@ -125,7 +125,7 @@ namespace AdvancedForms.Controllers
             return Ok(StatusCodes.Status200OK);
         }
 
-        
+
 
         [HttpPost]
         [Route("AdvancedForms/SavePublicComment")]
@@ -159,8 +159,8 @@ namespace AdvancedForms.Controllers
 
         [HttpPost]
         [Route("AdvancedForms/Entry")]
-        public async Task<IActionResult> Entry(string submission, string title, string id, string container, 
-            string header, string footer, string description, string type, string submissionId, string instructions, string owner, string status, string adminContainer, string adminSubmission)
+        public async Task<IActionResult> Entry(string submission, string title, string id, string container,
+            string header, string footer, string description, string type, string submissionId, string instructions, string owner, string status, string adminContainer, string adminSubmission, bool isDraft)
         {
             ContentItem content;
             if (!string.IsNullOrWhiteSpace(submissionId))
@@ -173,19 +173,40 @@ namespace AdvancedForms.Controllers
                 await _contentManager.CreateAsync(content, VersionOptions.Draft);
             }
 
+            string metadata = string.Empty, data;
+            if (isDraft)
+            {
+                data = submission;
+                var query = _session.Query<ContentItem, ContentItemIndex>();
+                var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormStatus" && o.DisplayText == "Draft" && (o.Latest || o.Published)).ListAsync();
+                foreach (var item in pageOfContentItems)
+                {
+                    status = item.ContentItemId;
+                }
+            }
+            else
+            {
+                var subObject = JObject.Parse(submission);
+                metadata = subObject["metadata"].ToString();
+                data = subObject["data"].ToString();
+            }
+
             if (string.IsNullOrWhiteSpace(owner))
             {
                 owner = User.Identity.Name;
             }
             string guid = content.ContentItemId;
             string subTitle = title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
-            var subObject = JObject.Parse(submission);
-            var viewModel = new AdvancedFormSubmissions(subObject["data"].ToString(),
-            subObject["metadata"].ToString(), subTitle, container, header, footer, description, type, instructions, owner, status, adminContainer, adminSubmission);
+
+            var viewModel = new AdvancedFormSubmissions(data, metadata, subTitle, container, header, footer, description,
+                type, instructions, owner, status, adminContainer, adminSubmission);
 
             return await EditPOST(content.ContentItemId, title, viewModel, async contentItem =>
             {
-                await _contentManager.PublishAsync(contentItem);
+                if (!isDraft)
+                {
+                    await _contentManager.PublishAsync(contentItem);
+                }
 
                 var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
 
@@ -381,7 +402,7 @@ namespace AdvancedForms.Controllers
                 selectedContent = await _contentManager.GetAsync(subContentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.DraftRequired);
             }
             string statusText = string.Empty;
-            if(selectedContent != null)
+            if (selectedContent != null)
             {
                 statusText = selectedContent.DisplayText;
             }
@@ -405,7 +426,7 @@ namespace AdvancedForms.Controllers
                 EntryType = entryType,
                 Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text,
                 StatusText = statusText,
-                PublicEditor = new HTMLFieldViewModel() { ID = "PublicComment" } 
+                PublicEditor = new HTMLFieldViewModel() { ID = "PublicComment" }
 
             };
 

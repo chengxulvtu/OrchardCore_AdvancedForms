@@ -904,6 +904,27 @@
           }
         },
         {
+          "ContentItemId": "44mx5gzdqn323vbd6xt4v8zrcw",
+          "ContentItemVersionId": "4bzvpdg6jp35n41bttk62rf5we",
+          "ContentType": "AdvancedFormStatus",
+          "DisplayText": "Draft",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2019-02-14T11:31:14.0167911Z",
+          "PublishedUtc": "2019-02-14T11:31:14.0253376Z",
+          "CreatedUtc": "2019-02-14T11:31:14.0253376Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "AdvancedFormStatus": {
+            "Status": {
+              "Text": "Draft"
+            }
+          },
+          "TitlePart": {
+            "Title": "Draft"
+          }
+        },
+        {
           "ContentItemId": "4efjq18rm858w6pvqq9y2wa3mz",
           "ContentItemVersionId": "4xvfaxe5t2sqww8pexbby74sx3",
           "ContentType": "LiquidPage",

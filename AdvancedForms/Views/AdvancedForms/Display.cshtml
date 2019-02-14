@@ -67,6 +67,7 @@
 }
 
 <script type='text/javascript' at="Head">
+    var DraftSubmission;
     window.onload = function() {
         Formio.createForm(document.getElementById('formio'),
             //create the form from saved data
@@ -77,50 +78,64 @@
                 @Html.Raw(readOnly);
             }
         ).then(function(form) {
-                //fill form data
-                form.submission = {
-                    @if (!String.IsNullOrEmpty(Model.SubmissionId))
-                    {
-                        string submission = "data:" + Html.Raw(Model.Submission);
-                        @Html.Raw(submission);
-                    }
-                };
+            //fill form data
+            form.submission = {
+                @if (!String.IsNullOrEmpty(Model.SubmissionId))
+                {
+                    string submission = "data:" + Html.Raw(Model.Submission);
+                    @Html.Raw(submission);
+                }
+            };
 
-                // Register for the submit event to get the completed submission.
-                form.on('submit', function(submission) {
-                    console.log('Submission was made!', submission);
-
-                $.ajax({
-                  url: '/AdvancedForms/Entry',
-                  method: 'POST',
-                  data: {
-                      __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
-                      submission: JSON.stringify(submission),
-                      title: '@Model.Title',
-                      id: '@Model.Id',
-                      container: document.getElementById('Container').value,
-                      header: '@Model.Header',
-                      footer: '@Model.Footer',
-                      description: '@Model.Description',
-                      type: '@Model.Type',
-                      submissionId: '@Model.SubmissionId',
-                      instructions: '@Model.Instructions',
-                      owner: '@Model.Owner',
-                      status: '@Model.Status',
-                      adminContainer: '@Model.AdminContainer',
-                      adminSubmission: document.getElementById('AdminSubmission').value
-                  },
-                  success: function (data) {
-                      window.location.replace("/submission-confirmation");
-                 },
-                  error: function (error) {
-                            var errorMsg = @T["'Unable to Save. Try again later.'"];
-                      $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
-                        }
-                    });
-                });
+            // Register for the submit event to get the completed submission.
+            form.on('submit', function (submission) {
+                debugger;
+                saveForm(submission, false);
             });
-      };
+
+            form.on('change', function (submission) {
+                console.log('Form Change! ', submission);
+                DraftSubmission = submission;
+            });
+        });
+    };
+
+    function saveDraft() {
+        saveForm(DraftSubmission.data, true);
+    }
+
+    function saveForm(submission, isDraft) {
+        debugger;
+        $.ajax({
+            url: '/AdvancedForms/Entry',
+            method: 'POST',
+            data: {
+                __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+                submission: JSON.stringify(submission),
+                title: '@Model.Title',
+                id: '@Model.Id',
+                container: document.getElementById('Container').value,
+                header: '@Model.Header',
+                footer: '@Model.Footer',
+                description: '@Model.Description',
+                type: '@Model.Type',
+                submissionId: '@Model.SubmissionId',
+                instructions: '@Model.Instructions',
+                owner: '@Model.Owner',
+                status: '@Model.Status',
+                adminContainer: '@Model.AdminContainer',
+                adminSubmission: document.getElementById('AdminSubmission').value,
+                isDraft: isDraft
+            },
+            success: function (data) {
+                window.location.replace("/submission-confirmation");
+            },
+            error: function (error) {
+                    var errorMsg = @T["'Unable to Save. Try again later.'"];
+                $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
+                }
+            });
+        }
 
     function printButton() {
         window.open(window.location.href.toLowerCase().replace('/edit/', '/print/').replace('/view/', '/print/'), '_blank');
@@ -176,11 +191,15 @@
 
 <div id='formio'></div>
 
+@if (string.IsNullOrWhiteSpace(Model.StatusText) || Model.StatusText.Equals("Draft"))
+{
+    <button form="main" name="submit.Save" class="primaryAction btn btn-info" onclick="saveDraft()" value="submit.Save">@T["Save as Draft"]</button>
+}
 <input type="hidden" asp-for="Container" form="main" />
 <input type="hidden" asp-for="AdminSubmission" form="main" />
 <input type="hidden" asp-for="Id" form="main" />
 
-@if (!string.IsNullOrWhiteSpace(Model.SubmissionId))
+@if (!string.IsNullOrWhiteSpace(Model.SubmissionId) && !Model.StatusText.Equals("Draft"))
 {
     <h4>Comments</h4><hr />
     <div>
@@ -201,5 +220,5 @@
 <script asp-src="/AdvancedForms/Scripts/Submission.js" at="Head"></script>
 <script type="text/javascript">
     GetPublicComments('@Model.Id');
-    
+
 </script>
