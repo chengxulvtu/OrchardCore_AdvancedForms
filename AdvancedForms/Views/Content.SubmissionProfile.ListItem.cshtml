@@ -44,13 +44,10 @@
                     <i class="fa fa-pencil" aria-hidden="true"></i> @T["Draft"]
                 </span>
             }
-            <br />
+                <span class="badge badge-warning" title="@T["Status"]" style="color:#fff;"> @status </span>
             <div>
-                <span class="status">Status : @status</span>
+                <span class="hint">@T["Last modified {0} by {1}", (object)(await DisplayAsync(await New.TimeSpan(Utc: contentItem.ModifiedUtc))), contentItem.Author]</span>
             </div>
-             <div>
-                 <span class="hint">@T["Last modified {0} by {1}", (object)(await DisplayAsync(await New.TimeSpan(Utc: contentItem.ModifiedUtc))), contentItem.Author]</span>
-             </div>
         </div>
     </div>
 </li>

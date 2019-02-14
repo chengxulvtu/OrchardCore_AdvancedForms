@@ -64,12 +64,6 @@ namespace OrchardCore.Profile.Controllers
                 await _profileService.UpdateProfileAsync(profile);
             }
 
-
-            var test = _contentDefinitionManager
-                .ListTypeDefinitions()
-                .ToArray();
-
-
             var viewModel = new ProfileIndexViewModel
             {
                 GroupId = groupId,
