@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using OrchardCore.ContentManagement.Records;
 using OrchardCore.Navigation;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace AdvancedForms.Controllers
 {
@@ -418,7 +419,7 @@ namespace AdvancedForms.Controllers
         {
             SubmissionsViewModel model = new SubmissionsViewModel();
             var query = _session.Query<ContentItem, ContentItemIndex>();
-            var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).OrderByDescending(o=>o.CreatedUtc).ListAsync();
+            var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).OrderByDescending(o => o.CreatedUtc).ListAsync();
             var contentItemSummaries = new List<dynamic>();
             foreach (var contentItem in pageOfContentItems)
             {
@@ -454,10 +455,14 @@ namespace AdvancedForms.Controllers
             var query = _session.Query<ContentItem, ContentItemIndex>();
             var pageOfContentItems = await query.Where(o => o.DisplayText.Contains(DisplayText) && o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).OrderByDescending(o => o.CreatedUtc).ListAsync();
             dynamic selectedContent;
+            Dictionary<string, dynamic> submissionHtml;
+            List<string> column = new List<string>();
+            column.Add("Form Name");
+            column.Add("Submitted Date");
+            column.Add("Created By");
+            column.Add("Status");
             StringBuilder csv = new StringBuilder();
-            csv.Append("Form Name, Submitted Date, Created By, Status");
-            csv.AppendLine();
-
+            dynamic value;
             foreach (var contentItem in pageOfContentItems)
             {
                 csv.Append(string.Format("{0},", contentItem.Content.AutoroutePart.Path.ToString().Split("/")[1].Replace("-", " ")));
@@ -468,14 +473,34 @@ namespace AdvancedForms.Controllers
                 {
                     selectedContent = await _contentManager.GetAsync(contentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.DraftRequired);
                 }
-                if (selectedContent != null)
+                csv.Append(string.Format("{0},", selectedContent != null && selectedContent.DisplayText != null ? selectedContent.DisplayText : string.Empty));
+                submissionHtml = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(contentItem.Content.AdvancedFormSubmissions.Submission.Html.ToString());
+                foreach (var entry in submissionHtml)
                 {
-                    csv.Append(string.Format("{0},", selectedContent.DisplayText));
+                    if (!column.Contains(entry.Key))
+                    {
+                        column.Add(entry.Key);
+                    }
+                }
+                for (int i = 4; i < column.Count; i++)
+                {
+                    try
+                    {
+                        value = string.Empty;
+                        submissionHtml.TryGetValue(column[i], out value);
+                        csv.Append(string.Format("{0},", value == null ? string.Empty : value.ToString().Replace(",", "").Replace("\r", "").Replace("\n", "")));
+                    }
+                    catch
+                    {
+                        csv.Append(",");
+                    }
                 }
                 csv.AppendLine();
             }
-            
-            return File(new System.Text.UTF8Encoding().GetBytes(csv.ToString()), "text/csv", "Submissions.csv");
+            StringBuilder file = new StringBuilder(string.Join(",", column));
+            file.AppendLine();
+            file.Append(csv.ToString());
+            return File(new System.Text.UTF8Encoding().GetBytes(file.ToString()), "text/csv", "Submissions.csv");
         }
 
 
