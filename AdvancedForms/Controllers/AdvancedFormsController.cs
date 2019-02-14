@@ -79,15 +79,6 @@ namespace AdvancedForms.Controllers
                 return Unauthorized();
             }
 
-            var query = _session.Query<ContentItem, ContentItemIndex>();
-            var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormStatus" && o.DisplayText == "Submitted" && (o.Latest || o.Published)).ListAsync();
-            string status = "";
-            foreach (var item in pageOfContentItems)
-            {
-                status = item.ContentItemId;
-            }
-
-
             var model = new AdvancedFormViewModel
             {
                 Id = contentItemId,
@@ -98,8 +89,7 @@ namespace AdvancedForms.Controllers
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
-                Footer = contentItem.Content.AdvancedForm.Footer.Html,
-                Status = status
+                Footer = contentItem.Content.AdvancedForm.Footer.Html
             };
             return View(model);
         }
@@ -160,7 +150,7 @@ namespace AdvancedForms.Controllers
         [HttpPost]
         [Route("AdvancedForms/Entry")]
         public async Task<IActionResult> Entry(string submission, string title, string id, string container,
-            string header, string footer, string description, string type, string submissionId, string instructions, string owner, string status, string adminContainer, string adminSubmission, bool isDraft)
+            string header, string footer, string description, string type, string submissionId, string instructions, string owner, string adminContainer, string adminSubmission, bool isDraft)
         {
             ContentItem content;
             if (!string.IsNullOrWhiteSpace(submissionId))
@@ -173,11 +163,11 @@ namespace AdvancedForms.Controllers
                 await _contentManager.CreateAsync(content, VersionOptions.Draft);
             }
 
-            string metadata = string.Empty, data;
+            string metadata = string.Empty, data, status = string.Empty;
+            var query = _session.Query<ContentItem, ContentItemIndex>();
             if (isDraft)
             {
                 data = submission;
-                var query = _session.Query<ContentItem, ContentItemIndex>();
                 var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormStatus" && o.DisplayText == "Draft" && (o.Latest || o.Published)).ListAsync();
                 foreach (var item in pageOfContentItems)
                 {
@@ -189,6 +179,11 @@ namespace AdvancedForms.Controllers
                 var subObject = JObject.Parse(submission);
                 metadata = subObject["metadata"].ToString();
                 data = subObject["data"].ToString();
+                var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormStatus" && o.DisplayText == "Submitted" && (o.Latest || o.Published)).ListAsync();
+                foreach (var item in pageOfContentItems)
+                {
+                    status = item.ContentItemId;
+                }
             }
 
             if (string.IsNullOrWhiteSpace(owner))
