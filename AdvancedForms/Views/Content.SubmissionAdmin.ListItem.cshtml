@@ -5,6 +5,16 @@
     var hasPublished = await ContentManager.HasPublishedVersionAsync(contentItem);
     var hasDraft = contentItem.HasDraft();
     string action = contentItem.Content.AutoroutePart.Path.ToString().Split("/")[1];
+    string status = string.Empty;
+    dynamic selectedContent = await ContentManager.GetAsync(contentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.Published);
+    if (selectedContent == null)
+    {
+        selectedContent = await ContentManager.GetAsync(contentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.DraftRequired);
+    }
+    if (selectedContent != null)
+    {
+        status = selectedContent.DisplayText;
+    }
 }
 
 <li class="list-group-item">
@@ -59,7 +69,8 @@
                 <span class="badge badge-primary" title="@T["Draft"]">
                     <i class="fa fa-pencil" aria-hidden="true"></i> @T["Draft"]
                 </span>
-            }<br />
+            }<span class="badge badge-warning" title="@T["Status"]" style="color:#fff;"> @status </span>
+            <br />
             @if (!string.IsNullOrWhiteSpace(contentItem.Owner))
             {
                 <span class="hint">@T["Submitted By : <b>{0}</b>,", contentItem.Owner]</span>
