@@ -25,12 +25,9 @@
             {
                 <a href="/@contentItem.Content.AutoroutePart.Path" class="btn btn-success btn-sm" itemprop="">@T["View"]</a>
             }
-        </div>
-        <div class="custom-control custom-checkbox float-left">
-            <input type="checkbox" class="custom-control-input" value="@contentItem.Id" name="itemIds" id="itemIds-@contentItem.Id" />
-            <label class="custom-control-label" for="itemIds-@contentItem.Id">&nbsp;</label>
-        </div>
-        <a href="/AdvancedForms/@action/Edit/@contentItem.ContentItemId">@action.Replace("-", " ")</a> - <small class="text-muted">@contentItem.ContentType</small> <br />
+        </div>       
+        <a href="/AdvancedForms/@action/Edit/@contentItem.ContentItemId">@action.Replace("-", " ")</a> 
+        <br />
         <div class="metadata">
             @if (hasPublished)
             {
@@ -44,7 +41,7 @@
                     <i class="fa fa-pencil" aria-hidden="true"></i> @T["Draft"]
                 </span>
             }
-                <span class="badge badge-warning" title="@T["Status"]" style="color:#fff;"> @status </span>
+                <span class="badge badge-secondary" title="@T[@status]" style="color:#fff;"> @T["Status - " + @status]</span>
             <div>
                 <span class="hint">@T["Last modified {0} by {1}", (object)(await DisplayAsync(await New.TimeSpan(Utc: contentItem.ModifiedUtc))), contentItem.Author]</span>
             </div>

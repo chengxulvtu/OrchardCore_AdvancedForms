@@ -56,7 +56,8 @@
             <input type="checkbox" class="custom-control-input" value="@contentItem.Id" name="itemIds" id="itemIds-@contentItem.Id" />
             <label class="custom-control-label" for="itemIds-@contentItem.Id">&nbsp;</label>
         </div>
-        <a href="/AdvancedForms/admin/@action/submission/@contentItem.ContentItemId">@action.Replace("-", " ")</a> - <small class="text-muted">@contentItem.ContentType</small> <br />
+        <a href="/AdvancedForms/admin/@action/submission/@contentItem.ContentItemId">@action.Replace("-", " ")</a>
+        <br />
         <div class="metadata">
             @if (hasPublished)
             {
@@ -69,15 +70,21 @@
                 <span class="badge badge-primary" title="@T["Draft"]">
                     <i class="fa fa-pencil" aria-hidden="true"></i> @T["Draft"]
                 </span>
-            }<span class="badge badge-warning" title="@T["Status"]" style="color:#fff;"> @status </span>
+            }
+            <span class="badge badge-secondary" title="@T[@status]" style="color:#fff;"> @T["Status - " + @status]</span>
             <br />
             @if (!string.IsNullOrWhiteSpace(contentItem.Owner))
             {
-                <span class="hint">@T["Submitted By : <b>{0}</b>,", contentItem.Owner]</span>
-            }
-            @if (contentItem.CreatedUtc.HasValue)
+                <span class="hint">
+                    @T["Submitted By : <b>{0}</b>,", contentItem.Owner]
+                    @if (contentItem.CreatedUtc.HasValue)
+                    {
+                        @T["<b>{0}</b>", (object)(await DisplayAsync(await New.TimeSpan(Utc: contentItem.CreatedUtc.Value)))]
+                    }
+                </span>
+            } else if (contentItem.CreatedUtc.HasValue)
             {
-                <span class="hint">@T["Submitted Date : <b>{0}</b>", (object)(await DisplayAsync(await New.TimeSpan(Utc: contentItem.CreatedUtc.Value)))]</span>
+                <span class="hint">@T["Submitted: <b>{0}</b>", (object)(await DisplayAsync(await New.TimeSpan(Utc: contentItem.CreatedUtc.Value)))]</span>
             }
         </div>
     </div>
