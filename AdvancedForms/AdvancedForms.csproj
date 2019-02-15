@@ -7,6 +7,7 @@
   <ItemGroup>
     <EmbeddedResource Remove="Views\AdvancedForms\Contents-Meta.SummaryAdmin.cshtml" />
     <EmbeddedResource Remove="Views\AdvancedForms\Display.cshtml~RF1f203469.TMP" />
+    <EmbeddedResource Remove="wwwroot\Scripts\Display.js" />
     <EmbeddedResource Remove="wwwroot\Styles\Submission.js" />
   </ItemGroup>
 
@@ -20,7 +21,6 @@
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
       <Pack>true</Pack>
     </None>
-    <None Include="wwwroot\Styles\formio.full.min.css" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,10 +61,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\Scripts\formio.full.min.3.13.js" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Remove="wwwroot\Scripts\Submission.js" />
   </ItemGroup>
 
@@ -90,6 +86,22 @@
 
   <ItemGroup>
     <Content Remove="Views\Content.SubmissionProfile.ListItem.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Scripts\formio.full.min.3.15.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Scripts\formio.full.min.3.15.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Styles\formio.full.min.3.15.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Styles\formio.full.min.3.15.css" />
   </ItemGroup>
 
 </Project>
