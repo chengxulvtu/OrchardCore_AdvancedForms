@@ -17,13 +17,10 @@ using OrchardCore.Admin;
 using AdvancedForms.ViewModels;
 using AdvancedForms.Models;
 using Newtonsoft.Json.Linq;
-using OrchardCore.ContentManagement.Metadata.Settings;
 using Microsoft.AspNetCore.Routing;
 using System.Collections.Generic;
 using OrchardCore.ContentManagement.Records;
-using OrchardCore.Navigation;
-using System.Text;
-using Newtonsoft.Json;
+using AdvancedForms.Helper;
 
 namespace AdvancedForms.Controllers
 {
@@ -383,9 +380,6 @@ namespace AdvancedForms.Controllers
                 contentPick.HasPublished = selectedContent.Published;
                 lst.Add(contentPick);
             }
-
-
-
             var model = new AdvancedFormViewModel
             {
                 Id = id,
@@ -409,9 +403,7 @@ namespace AdvancedForms.Controllers
                 AdminEditor = new HTMLFieldViewModel() { ID = "AdminComment" },
                 PublicEditor = new HTMLFieldViewModel() { ID = "PublicComment" }
             };
-
             return View("Submission", model);
-
         }
 
 
@@ -454,49 +446,9 @@ namespace AdvancedForms.Controllers
             DisplayText = string.IsNullOrEmpty(DisplayText) ? "" : DisplayText;
             var query = _session.Query<ContentItem, ContentItemIndex>();
             var pageOfContentItems = await query.Where(o => o.DisplayText.Contains(DisplayText) && o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).OrderByDescending(o => o.CreatedUtc).ListAsync();
-            dynamic selectedContent;
-            Dictionary<string, dynamic> submissionHtml;
-            List<string> column = new List<string>();
-            column.Add("Form Name");
-            column.Add("Submitted Date");
-            column.Add("Created By");
-            column.Add("Status");
-            StringBuilder csv = new StringBuilder();
-            dynamic value;
-            foreach (var contentItem in pageOfContentItems)
-            {
-                csv.Append(string.Format("{0},", contentItem.Content.AutoroutePart.Path.ToString().Split("/")[1].Replace("-", " ")));
-                csv.Append(string.Format("{0},", contentItem.CreatedUtc.Value));
-                csv.Append(string.Format("{0},", contentItem.Owner));
-                selectedContent = await _contentManager.GetAsync(contentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.Published);
-                if (selectedContent == null)
-                {
-                    selectedContent = await _contentManager.GetAsync(contentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.DraftRequired);
-                }
-                csv.Append(string.Format("{0},", selectedContent != null && selectedContent.DisplayText != null ? selectedContent.DisplayText : string.Empty));
-                submissionHtml = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(contentItem.Content.AdvancedFormSubmissions.Submission.Html.ToString());
-                foreach (var entry in submissionHtml)
-                {
-                    if (!column.Contains(entry.Key))
-                    {
-                        column.Add(entry.Key);
-                    }
-                }
-                for (int i = 4; i < column.Count; i++)
-                {
-                    value = string.Empty;
-                    submissionHtml.TryGetValue(column[i], out value);
-                    csv.Append(string.Format("{0},", value == null ? string.Empty : value.ToString().Replace(",", "").Replace("\r", "").Replace("\n", "")));
-                }
-                csv.AppendLine();
-            }
-            StringBuilder file = new StringBuilder(string.Join(",", column));
-            file.AppendLine();
-            file.Append(csv.ToString());
-            return File(new System.Text.UTF8Encoding().GetBytes(file.ToString()), "text/csv", "Submissions.csv");
+            string file = await new CsvEtl(_contentManager).GetAdvFormSubmissionsCSVstring(pageOfContentItems);
+            return File(new System.Text.UTF8Encoding().GetBytes(file), "text/csv", "Submissions.csv");
         }
-
-
         #endregion
 
 
