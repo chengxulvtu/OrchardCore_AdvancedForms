@@ -88,20 +88,4 @@
     <Content Remove="Views\Content.SubmissionProfile.ListItem.cshtml" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Remove="wwwroot\Scripts\formio.full.min.3.15.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="wwwroot\Scripts\formio.full.min.3.15.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="wwwroot\Styles\formio.full.min.3.15.css" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="wwwroot\Styles\formio.full.min.3.15.css" />
-  </ItemGroup>
-
 </Project>

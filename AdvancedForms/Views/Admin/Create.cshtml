@@ -5,14 +5,14 @@
 @* Css Files  *@
 <style asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
        debug-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" at="Head"></style>
-<style asp-src="/AdvancedForms/Styles/formio.full.min.3.15.css"></style>
+<style asp-src="/AdvancedForms/Styles/formio.full.min.css"></style>
 <style asp-src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
        debug-src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></style>
 <style name="trumbowyg" asp-src="/OrchardCore.Resources/Styles/trumbowyg.min.css"
        debug-src="/OrchardCore.Resources/Styles/trumbowyg.css"></style>
 <style asp-src="/AdvancedForms/Styles/AdvancedForms.css"></style>
 @* JS Files  *@
-<script asp-src="/AdvancedForms/Scripts/formio.full.min.3.15.js" at="Head" asp-name="formio.full.min"></script>
+<script asp-src="/AdvancedForms/Scripts/formio.full.min.js" at="Head" asp-name="formio.full.min"></script>
 <script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
 <script asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" at="Head"></script>
 <script name="trumbowyg" depends-on="admin" asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js"
@@ -46,34 +46,37 @@
 </style>
 
 @{
-    var standardComp = "{display: displayType,components:this.formioComponents}";
+    var standardComp = "{display: displayType,components:formioComponents}";
     var standardAdminComp = "{components:[{type:well }]}";
     var isEdit = !String.IsNullOrEmpty(Model.Id);
     var createOrEdit = isEdit ? "Edit" : "Create";
 }
 
 <script type='text/javascript' at="Head">
-    window.onload = function () {
-        let formioComponents;
-        let well = "well";
-        let displayType = "form";
-        Formio.builder(document.getElementById('builder'),
-        @if (String.IsNullOrEmpty(Model.Container)){@standardComp}
-         else{@Html.Raw(Model.Container)}
-        ).then(builderChange);
+        window.onload = function () {
+            let formioComponents;
+            let well = "well";
+            let displayType = "form";
+            Formio.builder(document.getElementById('builder'),
+            @if (String.IsNullOrEmpty(Model.Container)){@standardComp}
+             else{@Html.Raw(Model.Container)}
+            ).then(builderChange);
 
-        Formio.builder(document.getElementById('builderAdminFields'),
-        @if (String.IsNullOrEmpty(Model.AdminContainer)){@standardAdminComp}
-         else{@Html.Raw(Model.AdminContainer)}
-         ).then(builderAdminFieldsChange);
-    };
+            Formio.builder(document.getElementById('builderAdminFields'),
+            @if (String.IsNullOrEmpty(Model.AdminContainer)){@standardAdminComp}
+             else{@Html.Raw(Model.AdminContainer)}
+             ).then(builderAdminFieldsChange);
+        };
 
-    function formIObyDisplayType(displayType) {
-        document.getElementById('Container').value = null;
-        Formio.builder(document.getElementById('builder'),
-        @standardComp
-        ).then(builderChange);
-    }
+        function formIObyDisplayType(displayType) {
+            var formJsonElement = document.getElementById('formJson');
+            var schema = JSON.parse(formJsonElement.innerText);
+            formioComponents = schema.components;
+            document.getElementById('Container').value = null;
+            Formio.builder(document.getElementById('builder'),
+            @standardComp
+            ).then(builderChange);
+        }
 </script>
 
 <h1>@T["Advanced Form Module"]</h1>
@@ -193,7 +196,6 @@
                     <button class="btn btn-primary active" onclick="formIObyDisplayType('form')">Form</button>
                     <button class="btn btn-default" onclick="formIObyDisplayType('wizard')">Wizard</button>
                 </div>
-
             </div>
         </div>
         <div id='builder'></div>
