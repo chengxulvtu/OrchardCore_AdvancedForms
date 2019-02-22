@@ -1,4 +1,12 @@
-﻿function renderCommentEditors() {
+﻿var currentUser;
+
+function setCurrentUser(user) {
+    debugger;
+    currentUser = user;
+}
+
+
+function renderCommentEditors() {
     $('#PublicComment').trumbowyg();
     $('#AdminComment').trumbowyg();
 }
@@ -6,9 +14,11 @@
 function clearEditors() {
     if ($("#PublicComment").parent().find(".trumbowyg-editor").length != 0) {
         $("#PublicComment").parent().find(".trumbowyg-editor")[0].innerText = "";
+        $('#PublicComment-ContentItmeID').parent().find(".publish-button")[0].textContent = "Save";
     }
     if ($("#AdminComment").parent().find(".trumbowyg-editor").length != 0) {
         $("#AdminComment").parent().find(".trumbowyg-editor")[0].innerText = "";
+        $('#AdminComment-ContentItmeID').parent().find(".publish-button")[0].textContent = "Save";
     }
 }
 
@@ -21,11 +31,12 @@ function submitAdminComment(id) {
         return;
     }
     $.ajax({
-        url: '/AdvancedForms/SaveAdminComment',
+        url: '/AdvancedForms/SaveUpdateAdminComment',
         method: 'POST',
         data: {
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
             id: id,
+            contentItemId: $("#AdminComment-ContentItmeID").val(),
             comment: content
         },
         success: function (data) {
@@ -48,11 +59,12 @@ function submitPublicComment(id) {
         return;
     }
     $.ajax({
-        url: '/AdvancedForms/SavePublicComment',
+        url: '/AdvancedForms/SaveUpdatePublicComment',
         method: 'POST',
         data: {
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
             id: id,
+            contentItemId: $("#PublicComment-ContentItmeID").val(),
             comment: content
         },
         success: function (data) {
@@ -113,13 +125,23 @@ function GetPublicComments(id) {
 }
 
 function getPanel(value, isPublic) {
+    debugger;
     var panel = "";
+    var editorSelect = "AdminComment";
     panel += '<div class="panel panel-default">';
-    panel += '<div class="panel-heading"><b>' + value.Owner + '</b> ' + getDateString(value.CreatedUtc) + ' </div>';
-    if (isPublic) 
-        panel += '<div class="panel-body">' + value.PublicComment.Comment.Html + '</div>';
+    var comment = '';
+    if (isPublic) {
+        editorSelect = "PublicComment";
+        comment = value.PublicComment.Comment.Html;
+    }
     else
-        panel += '<div class="panel-body">' + value.AdminComment.Comment.Html + '</div>';
+        comment = value.AdminComment.Comment.Html;
+    panel += '<div class="panel-heading"><b>' + value.Owner + '</b> ' + getDateString(value.CreatedUtc);
+    if (currentUser == value.Owner) {
+        panel += '<button class="pull-right btn btn-link" href="#" style="color:#007bff;" onclick="EditComment(\'' + value.ContentItemId + '\', \'' + comment + '\', \'' + editorSelect + '\')">Edit</button>';
+    }
+    panel += '</div>';
+    panel += '<div class="panel-body">' + comment + '</div>';
     panel += '</div>';
     return panel;
 }

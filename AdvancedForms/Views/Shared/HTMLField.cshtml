@@ -5,9 +5,22 @@
 <script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
 <script name="trumbowyg" depends-on="admin" asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js"
         debug-src="/OrchardCore.Resources/Scripts/trumbowyg.js" at="Head"></script>
+<script name="trumbowyg" depends-on="admin" asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js"
+        debug-src="/OrchardCore.Resources/Scripts/trumbowyg.js" at="Foot"></script>
 
 <textarea id="@Model.ID" class="form-control content-preview-text content-caption-text"></textarea>
+<input type="hidden" id="@Model.ID-ContentItmeID" />
 
 <script>
     $('#@Model.ID').trumbowyg();
+
+    function EditComment(id, comment, selector) {
+        debugger;
+        $('#' + selector).parent().find(".trumbowyg-editor")[0].textContent = comment;
+        $('#' + selector +'-ContentItmeID').val(id);
+        $('#' + selector +'-ContentItmeID').parent().find(".publish-button")[0].textContent = "Update";
+        var height = $(document).height() - 700;
+        $("html, body").animate({ scrollTop: height }, 800);
+    }
+
 </script>

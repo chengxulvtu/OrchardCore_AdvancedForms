@@ -95,49 +95,93 @@ namespace AdvancedForms.Controllers
         }
 
         [HttpPost]
-        [Route("AdvancedForms/SaveAdminComment")]
-        public async Task<IActionResult> SaveAdminComment(string id, string comment)
+        [Route("AdvancedForms/SaveUpdateAdminComment")]
+        public async Task<IActionResult> SaveAdminComment(string id, string contentItemId, string comment)
         {
-            var contentItem = await _contentManager.NewAsync("AdminComment");
-
-            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageAdvancedForms, contentItem))
+            ContentItem content;
+            if (!string.IsNullOrWhiteSpace(contentItemId))
             {
-                return Unauthorized();
+                content = await _contentManager.GetAsync(contentItemId, VersionOptions.Latest);
             }
+            else
+            {
+                content = await _contentManager.NewAsync("AdminComment");
+                await _contentManager.CreateAsync(content, VersionOptions.Draft);
+            }
+
             var model = new CommentPart(comment);
-            contentItem.Content.AdminComment = JToken.FromObject(model);
-            contentItem.Owner = User.Identity.Name;
-            contentItem.DisplayText = id;
 
-            await _contentManager.CreateAsync(contentItem, VersionOptions.Draft);
 
-            await _contentManager.PublishAsync(contentItem);
+            await _contentManager.PublishAsync(content);
 
-            return Ok(StatusCodes.Status200OK);
+            //return Ok(StatusCodes.Status200OK);
+            return await EditCommentPOST(content.ContentItemId, false, id, model, async contentItem =>
+            {
+                await _contentManager.PublishAsync(contentItem);
+                var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
+
+                _notifier.Success(string.IsNullOrWhiteSpace(typeDefinition.DisplayName)
+                    ? T["Your content has been published."]
+                    : T["Your {0} has been published.", typeDefinition.DisplayName]);
+            });
         }
 
 
 
         [HttpPost]
-        [Route("AdvancedForms/SavePublicComment")]
-        public async Task<IActionResult> SavePublicComment(string id, string comment)
+        [Route("AdvancedForms/SaveUpdatePublicComment")]
+        public async Task<IActionResult> SavePublicComment(string id, string contentItemId, string comment)
         {
-            var contentItem = await _contentManager.NewAsync("PublicComment");
-
-            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageAdvancedForms, contentItem))
+            ContentItem content;
+            if (!string.IsNullOrWhiteSpace(contentItemId))
             {
-                return Unauthorized();
+                content = await _contentManager.GetAsync(contentItemId, VersionOptions.Latest);
             }
+            else
+            {
+                content = await _contentManager.NewAsync("PublicComment");
+                await _contentManager.CreateAsync(content, VersionOptions.Draft);
+            }
+
             var model = new CommentPart(comment);
-            contentItem.Content.PublicComment = JToken.FromObject(model);
-            contentItem.Owner = User.Identity.Name;
-            contentItem.DisplayText = id;
 
-            await _contentManager.CreateAsync(contentItem, VersionOptions.Draft);
 
-            await _contentManager.PublishAsync(contentItem);
+            await _contentManager.PublishAsync(content);
 
-            return Ok(StatusCodes.Status200OK);
+            //return Ok(StatusCodes.Status200OK);
+            return await EditCommentPOST(content.ContentItemId, true, id, model, async contentItem =>
+            {
+                await _contentManager.PublishAsync(contentItem);
+                var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
+
+                _notifier.Success(string.IsNullOrWhiteSpace(typeDefinition.DisplayName)
+                    ? T["Your content has been published."]
+                    : T["Your {0} has been published.", typeDefinition.DisplayName]);
+            });
+        }
+
+        private async Task<IActionResult> EditCommentPOST(string contentItemId, bool isPublic, string id, CommentPart viewModel, Func<ContentItem, Task> conditionallyPublish)
+        {
+
+            var content = await _contentManager.GetAsync(contentItemId, VersionOptions.DraftRequired);
+
+            if (content == null)
+            {
+                return NotFound();
+            }
+            if (isPublic)
+                content.Content.PublicComment = JToken.FromObject(viewModel);
+            else
+                content.Content.AdminComment = JToken.FromObject(viewModel);
+            content.Owner = User.Identity.Name;
+            content.DisplayText = id;
+
+            await conditionallyPublish(content);
+
+            _session.Save(content);
+
+            var typeDefinition = _contentDefinitionManager.GetTypeDefinition(content.ContentType);
+            return StatusCode(StatusCodes.Status201Created);
         }
 
         [HttpGet]
