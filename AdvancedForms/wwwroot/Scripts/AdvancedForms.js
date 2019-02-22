@@ -1,21 +1,27 @@
 ﻿function builderChange(builder) {
     builder.on('change', function () {
-        if (builder.schema != null && builder.schema.components != null) {
-            document.getElementById('Container').value = JSON.stringify(builder.schema);
-        } else {
-            document.getElementById('Container').value = null;
-        }
-        var formElement = document.getElementById('formio');
-        formElement.innerHTML = '';
-        var formJsonElement = document.getElementById('formJson');
-        formElement.innerHTML = '';
-        formJsonElement.innerHTML = '';
-        if (builder.form.components) {
-            Formio.createForm(formElement, builder.form).then(onForm);
-            formJsonElement.appendChild(document.createTextNode(JSON.stringify(builder.schema, null, 4)));
-        }
+        this.updateContainer(builder);
     });
+    this.updateContainer(builder);
     this.updatePanels(builder);
+}
+
+function updateContainer(builder) {
+    debugger;
+    if (builder.schema != null && builder.schema.components != null) {
+        document.getElementById('Container').value = JSON.stringify(builder.schema);
+    } else {
+        document.getElementById('Container').value = null;
+    }
+    var formElement = document.getElementById('formio');
+    formElement.innerHTML = '';
+    var formJsonElement = document.getElementById('formJson');
+    formElement.innerHTML = '';
+    formJsonElement.innerHTML = '';
+    if (builder.form.components) {
+        Formio.createForm(formElement, builder.form).then(onForm);
+        formJsonElement.appendChild(document.createTextNode(JSON.stringify(builder.schema, null, 4)));
+    }
 }
 
 function builderAdminFieldsChange(builder) {
@@ -107,3 +113,15 @@ $(function () {
         $(document).trigger('contentpreview:render');
     });
 });
+
+function activeButton(displayType) {
+    $("#btnWizard").removeClass();
+    $("#btnForm").removeClass();
+    if (displayType == "wizard") {
+        $("#btnWizard").addClass("btn btn-primary active");
+        $("#btnForm").addClass("btn btn-default");
+    } else {
+        $("#btnWizard").addClass("btn btn-default");
+        $("#btnForm").addClass("btn btn-primary active");
+    }
+}

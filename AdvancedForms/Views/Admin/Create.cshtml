@@ -50,33 +50,47 @@
     var standardAdminComp = "{components:[{type:well }]}";
     var isEdit = !String.IsNullOrEmpty(Model.Id);
     var createOrEdit = isEdit ? "Edit" : "Create";
+    var displayType = "form";
 }
 
 <script type='text/javascript' at="Head">
         window.onload = function () {
             let formioComponents;
             let well = "well";
-            let displayType = "form";
+            let displayType = "@displayType";
             Formio.builder(document.getElementById('builder'),
-            @if (String.IsNullOrEmpty(Model.Container)){@standardComp}
-             else{@Html.Raw(Model.Container)}
+            @if (String.IsNullOrEmpty(Model.Container)){
+                @standardComp
+            }
+            else{
+                @Html.Raw(Model.Container)
+                if (Model.Container.Contains("\"display\":\"wizard\""))
+                {
+                    displayType = "wizard";
+                }
+            }
             ).then(builderChange);
+
+            displayType = "@displayType";
 
             Formio.builder(document.getElementById('builderAdminFields'),
             @if (String.IsNullOrEmpty(Model.AdminContainer)){@standardAdminComp}
              else{@Html.Raw(Model.AdminContainer)}
-             ).then(builderAdminFieldsChange);
+            ).then(builderAdminFieldsChange);
+
+            activeButton(displayType);
         };
 
-        function formIObyDisplayType(displayType) {
-            var formJsonElement = document.getElementById('formJson');
-            var schema = JSON.parse(formJsonElement.innerText);
-            formioComponents = schema.components;
-            document.getElementById('Container').value = null;
-            Formio.builder(document.getElementById('builder'),
-            @standardComp
-            ).then(builderChange);
-        }
+    function formIObyDisplayType(displayType) {
+        activeButton(displayType);
+        var formJsonElement = document.getElementById('formJson');
+        var schema = JSON.parse(formJsonElement.innerText);
+        formioComponents = schema.components;
+        document.getElementById('Container').value = null;
+        Formio.builder(document.getElementById('builder'),
+        @standardComp
+        ).then(builderChange);
+    }
 </script>
 
 <h1>@T["Advanced Form Module"]</h1>
@@ -193,8 +207,8 @@
         <div class="row">
             <div class="col-md-12" style="text-align: right;">
                 <div class="btn-group btn-toggle" id="toggleDiv">
-                    <button class="btn btn-primary active" onclick="formIObyDisplayType('form')">Form</button>
-                    <button class="btn btn-default" onclick="formIObyDisplayType('wizard')">Wizard</button>
+                    <button class="btn btn-primary active" id="btnForm" onclick="formIObyDisplayType('form')">Form</button>
+                    <button class="btn btn-default" id="btnWizard" onclick="formIObyDisplayType('wizard')">Wizard</button>
                 </div>
             </div>
         </div>
