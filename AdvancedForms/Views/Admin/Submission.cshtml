@@ -22,7 +22,7 @@
 <style asp-src="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css"></style>
 <script asp-src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.min.js" debug-src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.js" asp-name="sortable" at="Foot"></script>
 <script asp-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.min.js" debug-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.js" asp-name="vuedraggable" depends-on="vuejs, sortable" at="Foot"></script>
-<script asp-src="/AdvancedForms/Scripts/Submission.js" at="Foot" asp-name="advancedforms.submission"></script>
+<script asp-src="/AdvancedForms/Scripts/Submission.js" at="Head" asp-name="advancedforms.submission"></script>
 
 
 @{
@@ -59,9 +59,10 @@
                 }
             };
             builderAdminFieldsChange(form);
-        });
+            });
+        
     };
-    setCurrentUser('@User.Identity.Name');
+    setCurrentUser('@Model.Id', '@User.Identity.Name', true);
 </script>
 
 <div class="validation-summary-errors" data-valmsg-summary="true" id="notifyError">

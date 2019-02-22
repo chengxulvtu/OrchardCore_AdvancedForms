@@ -15,7 +15,6 @@
     $('#@Model.ID').trumbowyg();
 
     function EditComment(id, comment, selector) {
-        debugger;
         $('#' + selector).parent().find(".trumbowyg-editor")[0].textContent = comment;
         $('#' + selector +'-ContentItmeID').val(id);
         $('#' + selector +'-ContentItmeID').parent().find(".publish-button")[0].textContent = "Update";

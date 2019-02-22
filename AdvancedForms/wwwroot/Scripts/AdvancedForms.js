@@ -7,7 +7,6 @@
 }
 
 function updateContainer(builder) {
-    debugger;
     if (builder.schema != null && builder.schema.components != null) {
         document.getElementById('Container').value = JSON.stringify(builder.schema);
     } else {

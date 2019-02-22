@@ -1,8 +1,10 @@
-﻿var currentUser;
+﻿var CurrentUser, ID;
+var IsSubmission;
 
-function setCurrentUser(user) {
-    debugger;
+function setCurrentUser(id, user, isSubmission) {
     currentUser = user;
+    IsSubmission = isSubmission;
+    ID = id;
 }
 
 
@@ -78,6 +80,48 @@ function submitPublicComment(id) {
     });
 }
 
+function RemoveAdminComment(contentItemId) {
+    $.ajax({
+        url: '/AdvancedForms/SaveUpdateAdminComment',
+        method: 'POST',
+        data: {
+            __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+            id: ID,
+            contentItemId: contentItemId,
+            comment: "Comment removed by moderator"
+        },
+        success: function (data) {
+            clearEditors();
+            GetAdminComments(ID);
+        },
+        error: function (error) {
+            var errorMsg = "Unable to Save. Try again later.";
+            $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
+        }
+    });
+}
+
+function RemovePublicComment(contentItemId) {
+    $.ajax({
+        url: '/AdvancedForms/SaveUpdatePublicComment',
+        method: 'POST',
+        data: {
+            __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+            id: ID,
+            contentItemId: contentItemId,
+            comment: "Comment removed by moderator"
+        },
+        success: function (data) {
+            clearEditors();
+            GetPublicComments(ID);
+        },
+        error: function (error) {
+            var errorMsg = "Unable to Save. Try again later.";
+            $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
+        }
+    });
+}
+
 function GetAdminComments(id) {
     $.ajax({
         url: '/AdvancedForms/GetAdminComments',
@@ -125,7 +169,6 @@ function GetPublicComments(id) {
 }
 
 function getPanel(value, isPublic) {
-    debugger;
     var panel = "";
     var editorSelect = "AdminComment";
     panel += '<div class="panel panel-default">';
@@ -137,6 +180,15 @@ function getPanel(value, isPublic) {
     else
         comment = value.AdminComment.Comment.Html;
     panel += '<div class="panel-heading"><b>' + value.Owner + '</b> ' + getDateString(value.CreatedUtc);
+
+    if (IsSubmission) {
+        if (isPublic) {
+            panel += '<button class="pull-right btn btn-link" href="#" style="color:#007bff;" onclick="RemovePublicComment(\'' + value.ContentItemId + '\')">Admin Remove</button>';
+        } else {
+            panel += '<button class="pull-right btn btn-link" href="#" style="color:#007bff;" onclick="RemoveAdminComment(\'' + value.ContentItemId + '\')">Admin Remove</button>';
+        }
+    }
+
     if (currentUser == value.Owner) {
         panel += '<button class="pull-right btn btn-link" href="#" style="color:#007bff;" onclick="EditComment(\'' + value.ContentItemId + '\', \'' + comment + '\', \'' + editorSelect + '\')">Edit</button>';
     }

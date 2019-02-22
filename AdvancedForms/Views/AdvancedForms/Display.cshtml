@@ -89,7 +89,7 @@
         });
         initValue('@Model.Title','@Model.Id','@Model.Header','@Model.Footer','@Model.Description','@Model.Type','@Model.SubmissionId','@Model.Instructions','@Model.Owner','@Model.AdminContainer')
     };
-    setCurrentUser('@User.Identity.Name');
+    setCurrentUser('@Model.Id', '@User.Identity.Name', false);
 </script>
 
 <form enctype="multipart/form-data" asp-action="@createOrEdit" method="post" id="main"></form>
