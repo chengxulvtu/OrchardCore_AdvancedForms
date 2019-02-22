@@ -104,7 +104,8 @@ namespace AdvancedForms.Controllers
             {
                 return Unauthorized();
             }
-            contentItem.Content.HtmlBodyPart.Html = comment;
+            var model = new CommentPart(comment);
+            contentItem.Content.AdminComment = JToken.FromObject(model);
             contentItem.Owner = User.Identity.Name;
             contentItem.DisplayText = id;
 
@@ -127,7 +128,8 @@ namespace AdvancedForms.Controllers
             {
                 return Unauthorized();
             }
-            contentItem.Content.HtmlBodyPart.Html = comment;
+            var model = new CommentPart(comment);
+            contentItem.Content.PublicComment = JToken.FromObject(model);
             contentItem.Owner = User.Identity.Name;
             contentItem.DisplayText = id;
 

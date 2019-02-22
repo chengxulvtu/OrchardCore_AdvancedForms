@@ -77,7 +77,7 @@ function GetAdminComments(id) {
             if (data != null) {
                 var comments = "";
                 $.each(data, function (index, value) {
-                    comments += getPanel(value);
+                    comments += getPanel(value, false);
                 });
                 $("#AdminCommentsPanels").html(comments);
             }
@@ -100,7 +100,7 @@ function GetPublicComments(id) {
             if (data != null) {
                 var comments = "";
                 $.each(data, function (index, value) {
-                    comments += getPanel(value);
+                    comments += getPanel(value, true);
                 });
                 $("#PublicCommentsPanels").html(comments);
             }
@@ -112,11 +112,14 @@ function GetPublicComments(id) {
     });
 }
 
-function getPanel(value) {
+function getPanel(value, isPublic) {
     var panel = "";
     panel += '<div class="panel panel-default">';
     panel += '<div class="panel-heading"><b>' + value.Owner + '</b> ' + getDateString(value.CreatedUtc) + ' </div>';
-    panel += '<div class="panel-body">' + value.HtmlBodyPart.Html + '</div>';
+    if (isPublic) 
+        panel += '<div class="panel-body">' + value.PublicComment.Comment.Html + '</div>';
+    else
+        panel += '<div class="panel-body">' + value.AdminComment.Comment.Html + '</div>';
     panel += '</div>';
     return panel;
 }

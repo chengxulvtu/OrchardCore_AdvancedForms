@@ -213,7 +213,7 @@
             "Creatable": "False",
             "Draftable": "True",
             "Versionable": "True",
-            "Listable": "True",
+            "Listable": "False",
             "Securable": "True",
             "Stereotype": null
           },
@@ -222,18 +222,7 @@
               "PartName": "PublicComment",
               "Name": "PublicComment",
               "Settings": {
-                "Position": "1"
-              }
-            },
-            {
-              "PartName": "HtmlBodyPart",
-              "Name": "HtmlBodyPart",
-              "Settings": {
-                "Position": "0",
-                "DisplayName": null,
-                "Description": null,
-                "Editor": "Wysiwyg",
-                "HtmlBodyPartSettings": {}
+                "Position": "0"
               }
             }
           ]
@@ -245,7 +234,7 @@
             "Creatable": "False",
             "Draftable": "True",
             "Versionable": "True",
-            "Listable": "True",
+            "Listable": "False",
             "Securable": "True",
             "Stereotype": null
           },
@@ -255,17 +244,6 @@
               "Name": "AdminComment",
               "Settings": {
                 "Position": "0"
-              }
-            },
-            {
-              "PartName": "HtmlBodyPart",
-              "Name": "HtmlBodyPart",
-              "Settings": {
-                "DisplayName": null,
-                "Description": null,
-                "Editor": "Wysiwyg",
-                "HtmlBodyPartSettings": {},
-                "Position": "1"
               }
             }
           ]
@@ -600,6 +578,40 @@
             "Description": "Provides an HTML Body for your content item."
           },
           "ContentPartFieldDefinitionRecords": []
+        },
+        {
+          "Name": "AdminComment",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "HtmlField",
+              "Name": "Comment",
+              "Settings": {
+                "DisplayName": "Comment",
+                "Editor": "Wysiwyg",
+                "DisplayMode": null,
+                "Hint": null,
+                "Position": "0"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "PublicComment",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "HtmlField",
+              "Name": "Comment",
+              "Settings": {
+                "DisplayName": "Comment",
+                "Editor": "Wysiwyg",
+                "DisplayMode": null,
+                "Hint": null,
+                "Position": "0"
+              }
+            }
+          ]
         }
       ]
     },

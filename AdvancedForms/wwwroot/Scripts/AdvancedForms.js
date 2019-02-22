@@ -1,6 +1,6 @@
 ﻿function builderChange(builder) {
     builder.on('change', function () {
-        this.updateContainer(builder);
+        updateContainer(builder);
     });
     this.updateContainer(builder);
     this.updatePanels(builder);
