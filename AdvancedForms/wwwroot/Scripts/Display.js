@@ -1,7 +1,6 @@
 ﻿var Title, Id, Header, Footer, Description, Type, SubmissionId, Instructions, Owner, AdminContainer, DraftSubmission;
 
 function initValue(title, id, header, footer, description, type, submissionId, instructions, owner, adminContainer) {
-    debugger;
     Title = title;
     Id = id;
     Header = header;
@@ -19,7 +18,6 @@ function saveDraft() {
 }
 
 function saveForm(submission, isDraft) {
-    debugger;
     $.ajax({
         url: '/AdvancedForms/Entry',
         method: 'POST',
