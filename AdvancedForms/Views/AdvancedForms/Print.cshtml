@@ -36,6 +36,10 @@
 <script type='text/javascript'>
     window.onload = function () {
         Formio.createForm(document.getElementById('formio'),
+            @if (Model.Container.Contains("\"display\":\"wizard\""))
+            {
+                Model.Container = Model.Container.Replace("\"display\":\"wizard\"", "\"display\":\"form\"");
+            }
             @Html.Raw(Model.Container)
            ,{readOnly: true}
         ).then(function(form) {
