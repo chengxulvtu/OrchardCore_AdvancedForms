@@ -23,7 +23,7 @@ namespace AdvancedForms.Helper
 
         public async Task<string> GetAdvFormSubmissionsCSVstring(IEnumerable<ContentItem> pageOfContentItems)
         {
-            dynamic selectedContent;
+            ContentItem selectedContent;
             Dictionary<string, dynamic> submissionHtml;
             List<string> column = new List<string>();
             column.Add("Form Name");
@@ -31,8 +31,6 @@ namespace AdvancedForms.Helper
             column.Add("Created By");
             column.Add("Status");
             StringBuilder csv = new StringBuilder();
-            dynamic dynamicObj;
-            string value;
             foreach (var contentItem in pageOfContentItems)
             {
                 csv.Append(string.Format("{0},", contentItem.Content.AutoroutePart.Path.ToString().Split("/")[1].Replace("-", " ")));
@@ -45,27 +43,44 @@ namespace AdvancedForms.Helper
                 }
                 csv.Append(string.Format("{0},", selectedContent != null && selectedContent.DisplayText != null ? selectedContent.DisplayText : string.Empty));
                 submissionHtml = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(contentItem.Content.AdvancedFormSubmissions.Submission.Html.ToString());
-                foreach (var entry in submissionHtml)
-                {
-                    if (!column.Contains(entry.Key))
-                    {
-                        column.Add(entry.Key);
-                    }
-                }
-                for (int i = 4; i < column.Count; i++)
-                {
-                    dynamicObj = null;
-                    value = string.Empty;
-                    submissionHtml.TryGetValue(column[i], out dynamicObj);
-                    TryGetString(dynamicObj, out value);
-                    csv.Append(string.Format("{0},", value == null ? string.Empty : value.ToString().Replace(",", "").Replace("\r", "").Replace("\n", "")));
-                }
+                column.AddRange(this.GetNewColumns(submissionHtml, column));
+                csv.Append(this.GetCSVString(submissionHtml, column));
                 csv.AppendLine();
             }
             StringBuilder file = new StringBuilder(string.Join(",", column));
             file.AppendLine();
             file.Append(csv.ToString());
             return file.ToString();
+        }
+
+        public List<string> GetNewColumns(Dictionary<string, dynamic> submissionHtml, List<string> column)
+        {
+            List<string> newColumn = new List<string>();
+            foreach (var entry in submissionHtml)
+            {
+                if (!column.Contains(entry.Key))
+                {
+                    column.Add(entry.Key);
+                    newColumn.Add(entry.Key);
+                }
+            }
+            return newColumn;
+        }
+
+        public string GetCSVString(Dictionary<string, dynamic> submissionHtml, List<string> column)
+        {
+            dynamic contentItem;
+            string value;
+            StringBuilder csv = new StringBuilder();
+            for (int i = 4; i < column.Count; i++)
+            {
+                contentItem = null;
+                value = string.Empty;
+                submissionHtml.TryGetValue(column[i], out contentItem);
+                TryGetString(contentItem, out value);
+                csv.Append(string.Format("{0},", value == null ? string.Empty : value.ToString().Replace(",", "").Replace("\r", "").Replace("\n", "")));
+            }
+            return csv.ToString();
         }
 
         public bool TryGetString(dynamic obj, out string value)
