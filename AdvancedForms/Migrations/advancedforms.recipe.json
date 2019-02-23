@@ -261,20 +261,7 @@
         {
           "Name": "AdvancedFormStatus",
           "Settings": {},
-          "ContentPartFieldDefinitionRecords": [
-            {
-              "FieldName": "TextField",
-              "Name": "Status",
-              "Settings": {
-                "DisplayName": "Status",
-                "Editor": null,
-                "DisplayMode": null,
-                "Hint": null,
-                "Required": true,
-                "Position": "0"
-              }
-            }
-          ]
+          "ContentPartFieldDefinitionRecords": []
         },
         {
           "Name": "AdvancedForm",
@@ -466,20 +453,7 @@
         {
           "Name": "AdvancedFormTypes",
           "Settings": {},
-          "ContentPartFieldDefinitionRecords": [
-            {
-              "FieldName": "TextField",
-              "Name": "Type",
-              "Settings": {
-                "DisplayName": "Type",
-                "Editor": null,
-                "DisplayMode": null,
-                "Hint": null,
-                "Required": true,
-                "Position": "0"
-              }
-            }
-          ]
+          "ContentPartFieldDefinitionRecords": []
         },
         {
           "Name": "PickerType",
@@ -633,21 +607,21 @@
           "PickerType": {
             "Type": {
               "ContentItemIds": [
-                "45nnjwgdsxvdz5ppcc7jj27qcq"
+                "4k1vap396j96x1zvy8tt3k5mwf"
               ]
             }
           }
         },
         {
-          "ContentItemId": "45nnjwgdsxvdz5ppcc7jj27qcq",
-          "ContentItemVersionId": "4z6rm4ap5cfwn4394604qpcn5t",
+          "ContentItemId": "4k1vap396j96x1zvy8tt3k5mwf",
+          "ContentItemVersionId": "4fqaxqtvk81wyz1g4jjc1ankca",
           "ContentType": "AdvancedFormTypes",
           "DisplayText": "Building Permits",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2019-01-28T07:49:49.8421188Z",
-          "PublishedUtc": "2019-01-28T07:49:49.8593709Z",
-          "CreatedUtc": "2019-01-28T07:49:49.8593709Z",
+          "ModifiedUtc": "2019-02-23T12:30:37.3851Z",
+          "PublishedUtc": "2019-02-23T12:30:37.399651Z",
+          "CreatedUtc": "2019-02-23T12:30:36.6142533Z",
           "Owner": "admin",
           "Author": "admin",
           "AdvancedFormTypes": {},
@@ -656,22 +630,18 @@
           }
         },
         {
-          "ContentItemId": "470f7t61zj205vd6tdgwvmm7cc",
-          "ContentItemVersionId": "4jzcw8ycb0dw14adsk6kamh441",
+          "ContentItemId": "4q6g9m1p4j3146cj5yecans7wj",
+          "ContentItemVersionId": "43hkgaavvsnnf73rb0ak0k5f4x",
           "ContentType": "AdvancedFormTypes",
           "DisplayText": "Sample Forms",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2019-01-28T07:54:25.2043388Z",
-          "PublishedUtc": "2019-01-28T07:54:25.2484419Z",
-          "CreatedUtc": "2019-01-28T07:26:24.8117043Z",
+          "ModifiedUtc": "2019-02-23T12:30:51.9526553Z",
+          "PublishedUtc": "2019-02-23T12:30:51.9958978Z",
+          "CreatedUtc": "2019-02-23T12:30:46.7616366Z",
           "Owner": "admin",
           "Author": "admin",
-          "AdvancedFormTypes": {
-            "Type": {
-              "Text": "Sample Forms"
-            }
-          },
+          "AdvancedFormTypes": {},
           "TitlePart": {
             "Title": "Sample Forms"
           }
@@ -724,7 +694,7 @@
             },
             "Title": "Request For Permit Extension",
             "Type": {
-              "Text": "470f7t61zj205vd6tdgwvmm7cc"
+              "Text": "4q6g9m1p4j3146cj5yecans7wj"
             },
             "Header": {
               "Html": null
@@ -811,127 +781,103 @@
           }
         },
         {
-          "ContentItemId": "4pd31m51tpj083gm5hfwn25cnq",
-          "ContentItemVersionId": "4wqkzgy29y4xw6yw3wmdw2rxc7",
-          "ContentType": "AdvancedFormStatus",
-          "DisplayText": "Submitted",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2019-02-04T11:43:38.8778379Z",
-          "PublishedUtc": "2019-02-04T11:43:38.9815048Z",
-          "CreatedUtc": "2019-02-04T11:43:38.9815048Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "AdvancedFormStatus": {
-            "Status": {
-              "Text": "Submitted"
-            }
-          },
-          "TitlePart": {
-            "Title": "Submitted"
-          }
-        },
-        {
-          "ContentItemId": "411ca3jnctm72zz3c1sm60dndm",
-          "ContentItemVersionId": "4k3kxkxybxvxmwna0vnh8kq3w2",
-          "ContentType": "AdvancedFormStatus",
-          "DisplayText": "On Hold",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2019-02-04T11:43:53.3663853Z",
-          "PublishedUtc": "2019-02-04T11:43:53.3814615Z",
-          "CreatedUtc": "2019-02-04T11:43:53.3814615Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "AdvancedFormStatus": {
-            "Status": {
-              "Text": "On Hold"
-            }
-          },
-          "TitlePart": {
-            "Title": "On Hold"
-          }
-        },
-        {
-          "ContentItemId": "47w39j3zt4c6hsndc36y7a51mw",
-          "ContentItemVersionId": "4by0xcpd500d75r1ddtxavt4cc",
-          "ContentType": "AdvancedFormStatus",
-          "DisplayText": "Denied",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2019-02-04T11:44:02.4068481Z",
-          "PublishedUtc": "2019-02-04T11:44:02.4223612Z",
-          "CreatedUtc": "2019-02-04T11:44:02.4223612Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "AdvancedFormStatus": {
-            "Status": {
-              "Text": "Denied"
-            }
-          },
-          "TitlePart": {
-            "Title": "Denied"
-          }
-        },
-        {
-          "ContentItemId": "4sxfb2qg585qm0wtyv7hpjr2xs",
-          "ContentItemVersionId": "44bd01bptx9kmxh1f7ys330gny",
-          "ContentType": "AdvancedFormStatus",
-          "DisplayText": "In Progress",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2019-02-04T11:44:17.6884531Z",
-          "PublishedUtc": "2019-02-04T11:44:17.6997234Z",
-          "CreatedUtc": "2019-02-04T11:44:17.6997234Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "AdvancedFormStatus": {
-            "Status": {
-              "Text": "In Progress"
-            }
-          },
-          "TitlePart": {
-            "Title": "In Progress"
-          }
-        },
-        {
-          "ContentItemId": "4msgwa6nnxhwz5vrxzgbz6qwmh",
-          "ContentItemVersionId": "44znyfqe6k7bv4bsjx21290nwj",
+          "ContentItemId": "4kf4rtat04crp2dhywb7ms7hw5",
+          "ContentItemVersionId": "47ezk2a3h02r0386e7qkmr1sm1",
           "ContentType": "AdvancedFormStatus",
           "DisplayText": "Issues Found",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2019-02-04T11:44:29.1371488Z",
-          "PublishedUtc": "2019-02-04T11:44:29.1584799Z",
-          "CreatedUtc": "2019-02-04T11:44:29.1584799Z",
+          "ModifiedUtc": "2019-02-23T12:28:39.783995Z",
+          "PublishedUtc": "2019-02-23T12:28:39.8297815Z",
+          "CreatedUtc": "2019-02-23T12:28:37.3148518Z",
           "Owner": "admin",
           "Author": "admin",
-          "AdvancedFormStatus": {
-            "Status": {
-              "Text": "Issues Found"
-            }
-          },
+          "AdvancedFormStatus": {},
           "TitlePart": {
             "Title": "Issues Found"
           }
         },
         {
-          "ContentItemId": "44mx5gzdqn323vbd6xt4v8zrcw",
-          "ContentItemVersionId": "4bzvpdg6jp35n41bttk62rf5we",
+          "ContentItemId": "4bgy2zq8hsqbz4jb3ccbmfevcp",
+          "ContentItemVersionId": "4v00natcmzjk21f70331kn7s5n",
+          "ContentType": "AdvancedFormStatus",
+          "DisplayText": "In Progress",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2019-02-23T12:28:53.6127218Z",
+          "PublishedUtc": "2019-02-23T12:28:53.7024726Z",
+          "CreatedUtc": "2019-02-23T12:28:52.5951488Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "AdvancedFormStatus": {},
+          "TitlePart": {
+            "Title": "In Progress"
+          }
+        },
+        {
+          "ContentItemId": "4bjxgcfq2dn2msj1ej8f8st15d",
+          "ContentItemVersionId": "4h5jrrk7gnszkr03sznqddzhxp",
+          "ContentType": "AdvancedFormStatus",
+          "DisplayText": "Denied",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2019-02-23T12:29:05.2611299Z",
+          "PublishedUtc": "2019-02-23T12:29:05.2799625Z",
+          "CreatedUtc": "2019-02-23T12:29:04.3844435Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "AdvancedFormStatus": {},
+          "TitlePart": {
+            "Title": "Denied"
+          }
+        },
+        {
+          "ContentItemId": "42ynbkymf160xtbe6j1fn6jd5e",
+          "ContentItemVersionId": "4rex6zymyc6y2wn5rsm2xev1n4",
+          "ContentType": "AdvancedFormStatus",
+          "DisplayText": "On Hold",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2019-02-23T12:29:21.230485Z",
+          "PublishedUtc": "2019-02-23T12:29:21.2675089Z",
+          "CreatedUtc": "2019-02-23T12:29:20.361251Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "AdvancedFormStatus": {},
+          "TitlePart": {
+            "Title": "On Hold"
+          }
+        },
+        {
+          "ContentItemId": "4c7rpkpbyh6npvdsg6tpfka75a",
+          "ContentItemVersionId": "4qn8q892wvaw9x8jxjm1mcy8mq",
+          "ContentType": "AdvancedFormStatus",
+          "DisplayText": "Submitted",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2019-02-23T12:29:33.6219292Z",
+          "PublishedUtc": "2019-02-23T12:29:33.6607224Z",
+          "CreatedUtc": "2019-02-23T12:29:32.5442223Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "AdvancedFormStatus": {},
+          "TitlePart": {
+            "Title": "Submitted"
+          }
+        },
+        {
+          "ContentItemId": "4d58138jv1p1220wxfb8qvstm1",
+          "ContentItemVersionId": "4rmgqrg5jc2vzxhqv6h2gtpqdh",
           "ContentType": "AdvancedFormStatus",
           "DisplayText": "Draft",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2019-02-14T11:31:14.0167911Z",
-          "PublishedUtc": "2019-02-14T11:31:14.0253376Z",
-          "CreatedUtc": "2019-02-14T11:31:14.0253376Z",
+          "ModifiedUtc": "2019-02-23T12:29:44.440007Z",
+          "PublishedUtc": "2019-02-23T12:29:44.4468575Z",
+          "CreatedUtc": "2019-02-23T12:29:43.7087372Z",
           "Owner": "admin",
           "Author": "admin",
-          "AdvancedFormStatus": {
-            "Status": {
-              "Text": "Draft"
-            }
-          },
+          "AdvancedFormStatus": {},
           "TitlePart": {
             "Title": "Draft"
           }

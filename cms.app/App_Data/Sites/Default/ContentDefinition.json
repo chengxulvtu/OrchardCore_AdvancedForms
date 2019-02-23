@@ -1355,20 +1355,7 @@
     {
       "Name": "AdvancedFormStatus",
       "Settings": {},
-      "ContentPartFieldDefinitionRecords": [
-        {
-          "FieldName": "TextField",
-          "Name": "Status",
-          "Settings": {
-            "DisplayName": "Status",
-            "Editor": null,
-            "DisplayMode": null,
-            "Hint": null,
-            "Required": true,
-            "Position": "0"
-          }
-        }
-      ]
+      "ContentPartFieldDefinitionRecords": []
     },
     {
       "Name": "AdvancedForm",
@@ -1560,20 +1547,7 @@
     {
       "Name": "AdvancedFormTypes",
       "Settings": {},
-      "ContentPartFieldDefinitionRecords": [
-        {
-          "FieldName": "TextField",
-          "Name": "Type",
-          "Settings": {
-            "DisplayName": "Type",
-            "Editor": null,
-            "DisplayMode": null,
-            "Hint": null,
-            "Required": true,
-            "Position": "0"
-          }
-        }
-      ]
+      "ContentPartFieldDefinitionRecords": []
     },
     {
       "Name": "PickerType",
