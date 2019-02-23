@@ -16,7 +16,8 @@
             @if (Model.ContentItemSummaries.Count > 0)
             {
                 <div class="col-md-4 col-xl-7">
-                    <button type="submit" class="btn btn-primary" style="float:right" value="submit.Export" name="submit.Export">@T["Export"]</button>
+                    <button type="submit" id="btnExport" class="btn btn-primary" style="float:right;display:none;" value="submit.Export" name="submit.Export">@T["Export"]</button>
+                    <input type="hidden" id="checkedItems" name="checkedItems" />
                 </div>
             }
         </div>
@@ -38,3 +39,23 @@
         </div>
     }
 }
+
+<script type="text/javascript" at="Foot">
+    var checkedItems = [];
+    function itemChecked(id) {
+        debugger;
+        $("#btnExport").hide();
+        if (checkedItems.includes(id)) {
+            var index = checkedItems.indexOf(id);
+            if (index !== -1) {
+                checkedItems.splice(index, 1);
+            }
+        } else {
+            checkedItems.push(id);
+        }
+        if (checkedItems.length > 0) {
+            $("#btnExport").show();
+        }
+        $("#checkedItems").val(checkedItems.join())
+    }
+</script>

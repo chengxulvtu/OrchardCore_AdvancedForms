@@ -21,6 +21,7 @@ using Microsoft.AspNetCore.Routing;
 using System.Collections.Generic;
 using OrchardCore.ContentManagement.Records;
 using AdvancedForms.Helper;
+using System.Linq;
 
 namespace AdvancedForms.Controllers
 {
@@ -441,11 +442,14 @@ namespace AdvancedForms.Controllers
 
         [HttpPost, ActionName("Submissions")]
         [FormValueRequired("submit.Export")]
-        public async Task<FileContentResult> SubmissionsExport(string DisplayText = "")
+        public async Task<FileContentResult> SubmissionsExport(string checkedItems)
         {
-            DisplayText = string.IsNullOrEmpty(DisplayText) ? "" : DisplayText;
+            if (string.IsNullOrEmpty(checkedItems))
+                return null;
+            int[] selectedItems = checkedItems.Split(',').Select(int.Parse).ToArray();
             var query = _session.Query<ContentItem, ContentItemIndex>();
-            var pageOfContentItems = await query.Where(o => o.DisplayText.Contains(DisplayText) && o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).OrderByDescending(o => o.CreatedUtc).ListAsync();
+            var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).OrderByDescending(o => o.CreatedUtc).ListAsync();
+            pageOfContentItems = pageOfContentItems.Where(o => selectedItems.Contains(o.Id)).ToList();
             string file = await new CsvEtl(_contentManager).GetAdvFormSubmissionsCSVstring(pageOfContentItems);
             return File(new System.Text.UTF8Encoding().GetBytes(file), "text/csv", "Submissions.csv");
         }
