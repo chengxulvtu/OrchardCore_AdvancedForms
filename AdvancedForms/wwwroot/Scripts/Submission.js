@@ -17,10 +17,12 @@ function clearEditors() {
     if ($("#PublicComment").parent().find(".trumbowyg-editor").length != 0) {
         $("#PublicComment").parent().find(".trumbowyg-editor")[0].innerText = "";
         $('#PublicComment-ContentItmeID').parent().find(".publish-button")[0].textContent = "Save";
+        $('#PublicComment-ContentItmeID').val("");
     }
     if ($("#AdminComment").parent().find(".trumbowyg-editor").length != 0) {
         $("#AdminComment").parent().find(".trumbowyg-editor")[0].innerText = "";
         $('#AdminComment-ContentItmeID').parent().find(".publish-button")[0].textContent = "Save";
+        $('#AdminComment-ContentItmeID').val("");
     }
 }
 
