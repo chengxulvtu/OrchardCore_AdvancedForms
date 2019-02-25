@@ -422,6 +422,40 @@ namespace AdvancedForms.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        [Route("AdvancedForms/GetGraphData")]
+        public async Task<IActionResult> GetGraphData()
+        {
+            Graph graph = new Graph();
+            var query = _session.Query<ContentItem, ContentItemIndex>();
+            var allStatus = await query.Where(o => o.ContentType == "AdvancedFormStatus" && (o.Latest || o.Published)).ListAsync();
+            //dynamic FreqStatus = new System.Dynamic.ExpandoObject();
+            Dictionary<string, string> statusWithColor = new Dictionary<string, string>();
+            query = _session.Query<ContentItem, ContentItemIndex>();
+            var allTypes = await query.Where(o => o.ContentType == "AdvancedFormTypes" && (o.Latest || o.Published)).ListAsync();
+            graph.FreqData = new List<FrequencyData>();
+            FrequencyData data;
+            query = _session.Query<ContentItem, ContentItemIndex>();
+            var allSubmissions = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && o.Latest).ListAsync();
+            int formCount = 0;
+            foreach (var type in allTypes)
+            {
+                data = new FrequencyData();
+                data.State = type.DisplayText;
+                data.freq = new Dictionary<string, int>();
+                foreach (var status in allStatus)
+                {
+                    statusWithColor[status.DisplayText.Replace(" ", "_")] = status.Content.AdvancedFormStatus.Color.Text;
+                    formCount = allSubmissions.Where(o => o.Content.AdvancedFormSubmissions.Status.Text.ToString() == status.ContentItemId
+                    && o.Content.AdvancedFormSubmissions.Type.Text.ToString() == type.ContentItemId).Count();
+                    data.freq.Add(status.DisplayText.Replace(" ", "_"), formCount);
+                }
+                graph.FreqData.Add(data);
+            }
+            graph.FreqStatusColor = statusWithColor;
+            return Ok(graph);
+        }
+
         [HttpPost, ActionName("Submissions")]
         [FormValueRequired("submit.Filter")]
         public async Task<IActionResult> SubmissionsFilter(string DisplayText = "")

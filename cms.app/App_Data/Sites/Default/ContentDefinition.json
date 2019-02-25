@@ -1355,7 +1355,20 @@
     {
       "Name": "AdvancedFormStatus",
       "Settings": {},
-      "ContentPartFieldDefinitionRecords": []
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "TextField",
+          "Name": "Color",
+          "Settings": {
+            "DisplayName": "Color",
+            "Editor": "Color",
+            "DisplayMode": null,
+            "Hint": null,
+            "Required": true,
+            "Position": "0"
+          }
+        }
+      ]
     },
     {
       "Name": "AdvancedForm",
