@@ -8,6 +8,7 @@
     <EmbeddedResource Remove="Views\AdvancedForms\Contents-Meta.SummaryAdmin.cshtml" />
     <EmbeddedResource Remove="Views\AdvancedForms\Display.cshtml~RF1f203469.TMP" />
     <EmbeddedResource Remove="wwwroot\Scripts\D3.js" />
+    <EmbeddedResource Remove="wwwroot\Scripts\d3.v3.min.js" />
     <EmbeddedResource Remove="wwwroot\Scripts\Display.js" />
     <EmbeddedResource Remove="wwwroot\Styles\Submission.js" />
   </ItemGroup>
