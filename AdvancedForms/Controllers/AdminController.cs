@@ -71,6 +71,87 @@ namespace AdvancedForms.Controllers
 
         #region "   Create/Edit Form    "
 
+        public async Task<IActionResult> Adminfields(string contentItemId)
+        {
+            var contentItem = await _contentManager.GetAsync(contentItemId, VersionOptions.Latest);
+
+            if (contentItem == null)
+            {
+                return NotFound();
+            }
+
+            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageAdvancedForms, contentItem))
+            {
+                return Unauthorized();
+            }
+
+            var model = new AdvancedFormViewModel
+            {
+                Id = contentItemId,
+                EntryType = Enums.EntryType.Edit,
+                Title = contentItem.DisplayText,
+                Container = contentItem.Content.AdvancedForm.Container.Html,
+                AdminContainer = contentItem.Content.AdvancedForm.AdminContainer.Html,
+                Description = contentItem.Content.AdvancedForm.Description.Html,
+                Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
+                Header = contentItem.Content.AdvancedForm.Header.Html,
+                Footer = contentItem.Content.AdvancedForm.Footer.Html,
+                Type = contentItem.Content.AdvancedForm.Type.Text,
+            };
+
+            return View(model);
+        }
+
+        [HttpPost, ActionName("Adminfields")]
+        [FormValueRequired("submit.Save")]
+        public Task<IActionResult> AdminfieldsPOST(AdvancedFormViewModel viewModel, string returnUrl)
+        {
+            return EditPOST(viewModel, returnUrl, contentItem =>
+            {
+                var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
+
+                _notifier.Success(string.IsNullOrWhiteSpace(typeDefinition.DisplayName)
+                    ? T["Your content draft has been saved."]
+                    : T["Your {0} Admin fields draft has been saved.", typeDefinition.DisplayName]);
+
+                return Task.CompletedTask;
+            });
+        }
+
+        [HttpPost, ActionName("Adminfields")]
+        [FormValueRequired("submit.Publish")]
+        public async Task<IActionResult> AdminfieldsAndPublishPOST(AdvancedFormViewModel viewModel, string returnUrl)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+            string contentItemId = viewModel.Id;
+
+            var content = await _contentManager.GetAsync(contentItemId, VersionOptions.Latest);
+
+            if (content == null)
+            {
+                return NotFound();
+            }
+
+            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageAdvancedForms, content))
+            {
+                return Unauthorized();
+            }
+
+            return await EditPOST(viewModel, returnUrl, async contentItem =>
+            {
+                await _contentManager.PublishAsync(contentItem);
+
+                var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
+
+                _notifier.Success(string.IsNullOrWhiteSpace(typeDefinition.DisplayName)
+                    ? T["Your content has been published."]
+                    : T["Your {0} Admin fields has been published.", typeDefinition.DisplayName]);
+            });
+        }
+
         public async Task<IActionResult> Create()
         {
             if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageAdvancedForms))
@@ -233,7 +314,7 @@ namespace AdvancedForms.Controllers
                     : T["Your {0} draft has been saved.", typeDefinition.DisplayName]);
 
                 return Task.CompletedTask;
-            });
+            }, true);
         }
 
         [HttpPost, ActionName("Edit")]
@@ -267,10 +348,10 @@ namespace AdvancedForms.Controllers
                 _notifier.Success(string.IsNullOrWhiteSpace(typeDefinition.DisplayName)
                     ? T["Your content has been published."]
                     : T["Your {0} has been published.", typeDefinition.DisplayName]);
-            });
+            }, true);
         }
 
-        private async Task<IActionResult> EditPOST(AdvancedFormViewModel viewModel, string returnUrl, Func<ContentItem, Task> conditionallyPublish)
+        private async Task<IActionResult> EditPOST(AdvancedFormViewModel viewModel, string returnUrl, Func<ContentItem, Task> conditionallyPublish, bool isEditPage = false)
         {
             string contentItemId = viewModel.Id;
 
@@ -308,7 +389,10 @@ namespace AdvancedForms.Controllers
             if (!ModelState.IsValid)
             {
                 _session.Cancel();
-                return View("Create", model);
+                if(isEditPage)
+                    return View("Create", model);
+                else
+                    return View("Adminfields", model);
             }
 
             await conditionallyPublish(contentItem);
@@ -322,7 +406,10 @@ namespace AdvancedForms.Controllers
 
             if (returnUrl == null)
             {
-                return RedirectToAction("Edit", new RouteValueDictionary { { "ContentItemId", viewModel.Id } });
+                if (isEditPage)
+                    return RedirectToAction("Edit", new RouteValueDictionary { { "ContentItemId", viewModel.Id } });
+                else
+                    return RedirectToAction("Adminfields", new RouteValueDictionary { { "ContentItemId", viewModel.Id } });
             }
             else
             {
@@ -383,7 +470,7 @@ namespace AdvancedForms.Controllers
             }
             var model = new AdvancedFormViewModel
             {
-                Id = id,
+                Id = contentItem.ContentItemId,
                 Owner = contentItem.Owner,
                 ModifiedUtc = subContentItem.ModifiedUtc,
                 CreatedUtc = subContentItem.CreatedUtc,

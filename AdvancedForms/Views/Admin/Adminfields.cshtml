@@ -1,0 +1,86 @@
+﻿@model AdvancedForms.ViewModels.AdvancedFormViewModel
+@using System.Web
+@using Newtonsoft.Json;
+@using Newtonsoft.Json.Serialization;
+@* Css Files  *@
+<style asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+       debug-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" at="Head"></style>
+<style asp-src="/AdvancedForms/Styles/formio.full.min.css"></style>
+<style asp-src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+       debug-src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></style>
+<style name="trumbowyg" asp-src="/OrchardCore.Resources/Styles/trumbowyg.min.css"
+       debug-src="/OrchardCore.Resources/Styles/trumbowyg.css"></style>
+<style asp-src="/AdvancedForms/Styles/AdvancedForms.css"></style>
+@* JS Files  *@
+<script asp-src="/AdvancedForms/Scripts/formio.full.min.js" at="Head" asp-name="formio.full.min"></script>
+<script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
+<script asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" at="Head"></script>
+
+<script asp-src="/AdvancedForms/Scripts/AdvancedForms.js" at="Head" asp-name="AdvancedForms"></script>
+
+<style>
+    label {
+        margin-bottom: 0px !important;
+        padding-bottom: 10px;
+    }
+
+    div > label {
+        padding-bottom: 0px;
+    }
+
+    .btn-group-sm > .btn, .btn-sm {
+        padding: 2px 8px;
+    }
+</style>
+
+@{
+    var standardAdminComp = "{components:[{type:well }]}";
+}
+
+<script type='text/javascript' at="Head">
+        window.onload = function () {
+            let formioComponents;
+            let well = "well";
+            Formio.builder(document.getElementById('builderAdminFields'),
+            @if (String.IsNullOrEmpty(Model.AdminContainer)){@standardAdminComp}
+             else{@Html.Raw(Model.AdminContainer)}
+            ).then(builderAdminFieldsChange);
+        };
+
+</script>
+
+<h1>@T["Advanced Form Admin Fields Module"]</h1>
+
+<form enctype="multipart/form-data" method="post" id="main"></form>
+
+<div>
+    <label asp-for="Title">@T["Title"]</label>
+    <input asp-for="Title" class="form-control content-preview-text content-caption-text" autofocus="autofocus" readonly form="main" tabindex="1" />
+    <span class="hint">@T["The title of the form."]</span>
+    <br />
+    <br />
+</div>
+
+
+<div id='builderAdminFields'></div>
+
+
+
+<input type="hidden" asp-for="Container" form="main" />
+<input type="hidden" asp-for="AdminContainer" form="main" />
+
+<input type="hidden" asp-for="Id" form="main" />
+<input type="hidden" asp-for="EntryType" form="main" />
+<input type="hidden" asp-for="Description" form="main" />
+<input type="hidden" asp-for="Instructions" form="main" />
+<input type="hidden" asp-for="Header" form="main" />
+<input type="hidden" asp-for="Footer" form="main" />
+<input type="hidden" asp-for="Type" form="main" />
+
+<br />
+<br />
+
+<button form="main" type="submit" name="submit.Publish" class="publish-button btn btn-success" value="submit.Publish">@T["Publish"]</button>
+<button form="main" type="submit" name="submit.Save" class="primaryAction btn btn-primary" value="submit.Save">@T["Save Draft"]</button>
+
+

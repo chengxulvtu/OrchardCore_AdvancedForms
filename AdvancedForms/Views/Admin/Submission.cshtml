@@ -62,7 +62,7 @@
             });
         
     };
-    setCurrentUser('@Model.Id', '@User.Identity.Name', true);
+    setCurrentUser('@Model.SubmissionId', '@User.Identity.Name', true);
 </script>
 
 <div class="validation-summary-errors" data-valmsg-summary="true" id="notifyError">
@@ -154,9 +154,9 @@
 
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#formPreview" class="active show">@T["Submission"]</a></li>
-    <li><a data-toggle="tab" onclick="GetAdminComments('@Model.Id')" href="#AdminComments">@T["Admin Comments"]</a></li>
+    <li><a data-toggle="tab" onclick="GetAdminComments('@Model.SubmissionId')" href="#AdminComments">@T["Admin Comments"]</a></li>
     <li><a data-toggle="tab" href="#formAdminFields">@T["Admin Fields"]</a></li>
-    <li><a data-toggle="tab" onclick="GetPublicComments('@Model.Id')" href="#publicComments">@T["Public Comments"]</a></li>
+    <li><a data-toggle="tab" onclick="GetPublicComments('@Model.SubmissionId')" href="#publicComments">@T["Public Comments"]</a></li>
 </ul>
 
 <div class="tab-content">
@@ -173,7 +173,7 @@
         <div>
             @await Html.PartialAsync("HTMLField", Model.AdminEditor)
             <span class="hint">@T["These comments are private for admins only."]</span><br />
-            <button class="publish-button btn btn-success" onclick="submitAdminComment('@Model.Id')">@T["Save"]</button>
+            <button class="publish-button btn btn-success" onclick="submitAdminComment('@Model.SubmissionId')">@T["Save"]</button>
         </div>
         <br />
         <br />
@@ -181,16 +181,21 @@
     </div>
     <div id="formAdminFields" class="tab-pane fade">
         <br />
-        @if (!string.IsNullOrEmpty(Model.AdminContainer))
-        {
-            <div id='builderAdminFields'></div>
-        }
-        else
-        {
-            <div class="alert alert-info">
-                @T["No Admin Fields available."]
-            </div>
-        }
+        <div class="col-md-12">
+            <a href="/Advancedforms/Admin/Adminfields?contentItemId=@Model.Id" class="btn btn-success pull-right" style="margin-bottom:7px;">Modify Admin Fields</a>
+        </div>
+        <div class="col-md-12">
+            @if (!string.IsNullOrEmpty(Model.AdminContainer))
+            {
+                <div id='builderAdminFields'></div>
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    @T["No Admin Fields available."]
+                </div>
+            }
+        </div>
         <br />
     </div>
     <div id="publicComments" class="tab-pane fade">
@@ -201,7 +206,7 @@
         <div>
             @await Html.PartialAsync("HTMLField", Model.PublicEditor)
             <span class="hint">@T["These comments will be displayed to the submitter and are not private."]</span> <br />
-            <button class="publish-button btn btn-success" onclick="submitPublicComment('@Model.Id')">@T["Save"]</button>
+            <button class="publish-button btn btn-success" onclick="submitPublicComment('@Model.SubmissionId')">@T["Save"]</button>
         </div>
         <br />
         <br />
