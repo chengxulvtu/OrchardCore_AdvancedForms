@@ -54,27 +54,44 @@
 }
 
 <script type='text/javascript' at="Head">
-        window.onload = function () {
-            let formioComponents;
-            let well = "well";
-            let displayType = "@displayType";
-            Formio.builder(document.getElementById('builder'),
-            @if (String.IsNullOrEmpty(Model.Container)){
-                @standardComp
+    window.onload = function () {
+        let formioComponents;
+        let well = "well";
+        let displayType = "@displayType";
+        let isEdit = '@isEdit';
+        Formio.builder(document.getElementById('builder'),
+        @if (String.IsNullOrEmpty(Model.Container)){
+            @standardComp
+        }
+        else{
+            @Html.Raw(Model.Container)
+            if (Model.Container.Contains("\"display\":\"wizard\""))
+            {
+                displayType = "wizard";
             }
-            else{
-                @Html.Raw(Model.Container)
-                if (Model.Container.Contains("\"display\":\"wizard\""))
-                {
-                    displayType = "wizard";
-                }
-            }
-            ).then(builderChange);
+        }
+        ).then(builderChange);
 
-            displayType = "@displayType";
+        displayType = "@displayType";
 
-            activeButton(displayType);
-        };
+        activeButton(displayType);
+
+        if (isEdit) {
+            Formio.createForm(document.getElementById('builderAdminFields'),
+            @if (String.IsNullOrEmpty(Model.AdminContainer)){@standardAdminComp}
+                else{@Html.Raw(Model.AdminContainer)}
+            ).then(function (form) {
+                form.submission = {
+                    @if (!String.IsNullOrEmpty(Model.SubmissionId) && !String.IsNullOrEmpty(Model.AdminSubmission))
+                    {
+                        string adminsubmission = "data:" + Html.Raw(Model.AdminSubmission);
+                        @Html.Raw(adminsubmission);
+                    }
+                };
+                builderAdminFieldsChange(form);
+            });
+        }
+    };
 
     function formIObyDisplayType(displayType) {
         activeButton(displayType);
@@ -191,6 +208,10 @@
     <li class="active"><a data-toggle="tab" href="#formBuilder">@T["Form Builder"]</a></li>
     <li><a data-toggle="tab" href="#formPreview">@T["Preview"]</a></li>
     <li><a data-toggle="tab" href="#printTab">@T["Print"]</a></li>
+    @if (isEdit)
+    {
+        <li><a data-toggle="tab" href="#adminFields">@T["Admin Fields"]</a></li>
+    }
     <li><a data-toggle="tab" href="#subJsonTab">@T["Subumssion JSON"]</a></li>
     <li><a data-toggle="tab" href="#formJsonTab">@T["Form JSON"]</a></li>
 </ul>
@@ -235,6 +256,28 @@
             <pre id="subJson"></pre>
         </div>
     </div>
+    @if (isEdit)
+    {
+        <div id="adminFields" class="tab-pane fade">
+            <br />
+            <div class="col-md-12">
+                <a href="/Advancedforms/Admin/Adminfields?contentItemId=@Model.Id&returnUrl=/AdvancedForms/Admin/Edit?ContentItemId=@Model.Id" class="btn btn-success pull-right" style="margin-bottom:7px;">Modify Admin Fields</a>
+            </div>
+            <div class="col-md-12">
+                @if (!string.IsNullOrEmpty(Model.AdminContainer))
+                {
+                    <div id='builderAdminFields'></div>
+                }
+                else
+                {
+                    <div class="alert alert-info">
+                        @T["No Admin Fields available."]
+                    </div>
+                }
+            </div>
+            <br />
+        </div>
+    }
     <div id="formJsonTab" class="tab-pane fade">
         <br />
         <div class="card card-body bg-light jsonviewer">
