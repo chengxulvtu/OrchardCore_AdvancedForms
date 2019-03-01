@@ -129,7 +129,7 @@
     </ul>
 </div>
 
-<form enctype="multipart/form-data" asp-action="@createOrEdit" method="post" id="main" onsubmit="return onFormSubmit(this)"></form>
+<form enctype="multipart/form-data" asp-action="@createOrEdit" asp-route-returnUrl="@Model.ReturnUrl" method="post" id="main" onsubmit="return onFormSubmit(this)"></form>
 
 <div>
     <label asp-for="Title">@T["Title"]</label>

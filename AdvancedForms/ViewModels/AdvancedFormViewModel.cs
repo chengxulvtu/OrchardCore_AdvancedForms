@@ -33,6 +33,8 @@ namespace AdvancedForms.ViewModels
         public string SubmissionId { get; set; }
         public Enums.EntryType EntryType { get; set; }
 
+        public string ReturnUrl { get; set; }
+
         public HTMLFieldViewModel AdminEditor { get; set; }
 
         public HTMLFieldViewModel PublicEditor { get; set; }

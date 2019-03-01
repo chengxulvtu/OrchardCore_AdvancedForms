@@ -298,6 +298,8 @@ namespace AdvancedForms.Controllers
 
             };
 
+            model.ReturnUrl = returnUrl;
+
             return View("Create", model);
         }
 
