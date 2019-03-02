@@ -109,8 +109,8 @@
           ]
         },
         {
-          "Name": "PickerType",
-          "DisplayName": "PickerType",
+          "Name": "PickerAdvancedFormTypes",
+          "DisplayName": "Picker Advanced Form Type",
           "Settings": {
             "Creatable": "True",
             "Draftable": "True",
@@ -121,8 +121,8 @@
           },
           "ContentTypePartDefinitionRecords": [
             {
-              "PartName": "PickerType",
-              "Name": "PickerType",
+              "PartName": "PickerAdvancedFormTypes",
+              "Name": "PickerAdvancedFormTypes",
               "Settings": {
                 "Position": "0"
               }
@@ -158,8 +158,8 @@
           ]
         },
         {
-          "Name": "PickerStatus",
-          "DisplayName": "Picker Status",
+          "Name": "PickerAdvancedFormStatus",
+          "DisplayName": "Picker Advanced Form Status",
           "Settings": {
             "Creatable": "True",
             "Draftable": "True",
@@ -170,8 +170,8 @@
           },
           "ContentTypePartDefinitionRecords": [
             {
-              "PartName": "PickerStatus",
-              "Name": "PickerStatus",
+              "PartName": "PickerAdvancedFormStatus",
+              "Name": "PickerAdvancedFormStatus",
               "Settings": {
                 "Position": "0"
               }
@@ -469,12 +469,12 @@
           "ContentPartFieldDefinitionRecords": []
         },
         {
-          "Name": "PickerType",
+          "Name": "PickerAdvancedFormTypes",
           "Settings": {},
           "ContentPartFieldDefinitionRecords": [
             {
               "FieldName": "ContentPickerField",
-              "Name": "Type",
+              "Name": "AdvancedFormTypes",
               "Settings": {
                 "DisplayName": "Text",
                 "Editor": null,
@@ -491,14 +491,14 @@
           ]
         },
         {
-          "Name": "PickerStatus",
+          "Name": "PickerAdvancedFormStatus",
           "Settings": {},
           "ContentPartFieldDefinitionRecords": [
             {
               "FieldName": "ContentPickerField",
-              "Name": "Status",
+              "Name": "AdvancedFormStatus",
               "Settings": {
-                "DisplayName": "Status",
+                "DisplayName": "AdvancedFormStatus",
                 "Editor": null,
                 "DisplayMode": null,
                 "Hint": null,
@@ -608,7 +608,7 @@
         {
           "ContentItemId": "4f0zpb390q81qvtdv03pbxrn56",
           "ContentItemVersionId": "4k0czrgyjh124wnay8sw4wdfw0",
-          "ContentType": "PickerType",
+          "ContentType": "PickerAdvancedFormTypes",
           "DisplayText": null,
           "Latest": true,
           "Published": true,
@@ -617,7 +617,7 @@
           "CreatedUtc": "2019-01-28T06:54:24.4957816Z",
           "Owner": "admin",
           "Author": "admin",
-          "PickerType": {
+          "PickerAdvancedFormTypes": {
             "Type": {
               "ContentItemIds": [
                 "4k1vap396j96x1zvy8tt3k5mwf"

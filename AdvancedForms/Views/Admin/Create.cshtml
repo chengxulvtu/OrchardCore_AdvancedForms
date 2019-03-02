@@ -149,7 +149,7 @@
 
 <div style="margin-bottom: 2rem;">
     <label asp-for="Title">@T["Type"]</label>
-    <div id="ContentPicker_PickerType_Type" class="content-picker-default">
+    <div id="ContentPicker_PickerAdvancedFormTypes_Type" class="content-picker-default">
         <fieldset class="">
             <ul class="list-group col-xl-12 content-picker-default__list" v-show="arrayOfItems.length" v-cloak>
                 <draggable v-model="arrayOfItems">
@@ -308,13 +308,13 @@
 {
     var selectedItems = Html.Raw(JsonConvert.SerializeObject(Model.SelectedItems, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }));
     <script at="Foot">
-        initializeContentPickerFieldEditor('ContentPicker_PickerType_Type', @selectedItems, '', 'PickerType', 'Type', false);
+        initializeContentPickerFieldEditor('ContentPicker_PickerAdvancedFormTypes_Type', @selectedItems, '', 'PickerAdvancedFormTypes', 'AdvancedFormTypes', false);
     </script>
 }
 else
 {
     <script at="Foot">
-        initializeContentPickerFieldEditor('ContentPicker_PickerType_Type', [], '', 'PickerType', 'Type', false);
+        initializeContentPickerFieldEditor('ContentPicker_PickerAdvancedFormTypes_Type', [], '', 'PickerAdvancedFormTypes', 'AdvancedFormTypes', false);
     </script>
 }
 
