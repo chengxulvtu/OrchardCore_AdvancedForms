@@ -20,13 +20,13 @@
             <div class="col-md-4 col-xl-3 form-group">
                 <input type="text" class="form-control" id="DisplayText" name="DisplayText" value="@Model.DisplayText" />
             </div>
-            <div class="col-md-2 col-xl-1 form-group">
+            <div class="col-xs-6 form-group">
                 <button type="submit" class="btn btn-primary" value="submit.Filter" name="submit.Filter">@T["Apply"]</button>
             </div>
             @if (Model.ContentItemSummaries.Count > 0)
             {
-                <div class="col-md-4 col-xl-7">
-                    <button type="submit" id="btnExport" class="btn btn-primary" style="float:right;display:none;" value="submit.Export" name="submit.Export">@T["Export"]</button>
+                <div class="col-xs-6" style="padding: 0px 20px;">
+                    <button type="submit" id="btnExport" class="btn btn-primary" style="float:right;display:none;right: 30px !important;position: absolute;" value="submit.Export" name="submit.Export">@T["Export"]</button>
                     <input type="hidden" id="checkedItems" name="checkedItems" />
                 </div>
             }
