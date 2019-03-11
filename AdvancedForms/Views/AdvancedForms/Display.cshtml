@@ -1,5 +1,6 @@
 ﻿@model AdvancedForms.ViewModels.AdvancedFormViewModel
 
+<script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
 <style asp-src="/AdvancedForms/Styles/formio.full.min.css"></style>
 <script asp-src="/AdvancedForms/Scripts/formio.full.min.js" at="Head" asp-name="formio.full.min"></script>
 <script asp-src="/AdvancedForms/Scripts/Display.js" at="Head" asp-name="display"></script>
@@ -166,7 +167,6 @@
         <hr />
     </div>
 }
-
 <script asp-src="/AdvancedForms/Scripts/Submission.js" at="Head"></script>
 <script type="text/javascript">
     GetPublicComments('@Model.Id');

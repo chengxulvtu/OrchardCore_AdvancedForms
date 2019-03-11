@@ -10,7 +10,6 @@
     <EmbeddedResource Remove="Views\AdvancedForms\Display.cshtml~RF1f203469.TMP" />
     <EmbeddedResource Remove="wwwroot\Scripts\D3.js" />
     <EmbeddedResource Remove="wwwroot\Scripts\d3.v3.min.js" />
-    <EmbeddedResource Remove="wwwroot\Scripts\Display.js" />
     <EmbeddedResource Remove="wwwroot\Styles\Submission.js" />
   </ItemGroup>
 
@@ -93,6 +92,30 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OrchardCore.Profile\OrchardCore.Profile.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\advanced forms images\City of Salina.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\advanced forms images\Saline SC.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\advanced forms images\City of Salina.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\advanced forms images\Saline SC.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Scripts\Display.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Scripts\Display.js" />
   </ItemGroup>
 
 </Project>
