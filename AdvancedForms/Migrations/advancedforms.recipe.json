@@ -808,13 +808,13 @@
         },
         {
           "ContentItemId": "4dty5jg5c2w5ary9f8k7abtgdx",
-          "ContentItemVersionId": "40jwzj6910qz5z2btd0zc4t74e",
+          "ContentItemVersionId": "4cfjy9zay0a3x55gq23kgaq15w",
           "ContentType": "AdvancedForm",
           "DisplayText": "FIREWORKS DISPLAY APPLICATION ",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2019-03-12T07:52:15.9812842Z",
-          "PublishedUtc": "2019-03-12T07:52:16.0132112Z",
+          "ModifiedUtc": "2019-03-12T08:01:25.4843885Z",
+          "PublishedUtc": "2019-03-12T08:01:25.5255837Z",
           "CreatedUtc": "2019-03-12T07:18:08.543901Z",
           "Owner": "admin",
           "Author": null,
@@ -836,7 +836,7 @@
               "Text": "4q6g9m1p4j3146cj5yecans7wj"
             },
             "Header": {
-              "Html": null
+              "Html": "<h4 style=\"text-align: center; \"><strong>FIREWORKS DISPLAY APPLICATION&nbsp;</strong></h4><h4 style=\"text-align: center; \">Code of Ordinances Section 13-55</h4><h4 style=\"text-align: center;\">Note: This application must be submitted a minimum of 30 days prior to the event.</h4>"
             },
             "Footer": {
               "Html": "<p>Revised 2011&nbsp;</p>"
