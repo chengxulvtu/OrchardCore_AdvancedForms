@@ -118,4 +118,24 @@
     <Content Remove="wwwroot\Scripts\Display.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\advanced forms images\Block_Party_Permit_Regulations.PDF" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\advanced forms images\City of Salina.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\advanced forms images\Block_Party_Permit_Regulations.PDF" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Content.SubmissionAdmin.ListItem.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Content.SubmissionProfile.ListItem.cshtml" />
+  </ItemGroup>
+
 </Project>
