@@ -767,13 +767,13 @@
         },
         {
           "ContentItemId": "4e9ww7c5ph72cy46y86gz8n0d3",
-          "ContentItemVersionId": "45pmgn4asdhzg7z3c990q0b35p",
+          "ContentItemVersionId": "425bmvcz9z56a5rvvteb1e34cj",
           "ContentType": "AdvancedForm",
           "DisplayText": "Block Party Permit Application ",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2019-03-12T06:55:15.4584239Z",
-          "PublishedUtc": "2019-03-12T06:55:15.4843295Z",
+          "ModifiedUtc": "2019-03-12T07:01:12.3662508Z",
+          "PublishedUtc": "2019-03-12T07:01:12.3949171Z",
           "CreatedUtc": "2019-03-11T13:58:34.8644291Z",
           "Owner": "admin",
           "Author": null,
@@ -795,7 +795,7 @@
               "Text": "4q6g9m1p4j3146cj5yecans7wj"
             },
             "Header": {
-              "Html": "<h4 style=\"text-align: center; \"><strong>FIREWORKS DISPLAY APPLICATION&nbsp;</strong></h4><h4 style=\"text-align: center; \"><h4 style=\"text-align: center; \">Code of Ordinances Section 13-55&nbsp;<br>Note: This application must be submitted a minimum of 30 days prior to the event.&nbsp;</h4></h4>"
+              "Html": "<h4 style=\"text-align: center; \"><strong>Block Party Permit Application</strong></h4><h4 style=\"text-align: center; \"></h4><h4 style=\"text-align: center; \"><span style=\"font-size: 14px; text-align: left;\">Code of Ordinances Sections 31-141 through 31-145 and 31-156 through 31-162\r\n Note: This application must be submitted by at least three owners or residents representing\r\n3 or more different parcels adjacent to the street to be closed unless the street to be closed contains\r\nless than 3 parcels. This application must also be submitted at least 7 days in advance of the event.</span>&nbsp;</h4>"
             },
             "Footer": {
               "Html": "<p>Revised 2011&nbsp;</p>"
