@@ -138,4 +138,24 @@
     <Content Remove="Views\Content.SubmissionProfile.ListItem.cshtml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\advanced forms images\Accessible.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\advanced forms images\DeSoto.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\advanced forms images\DeSoto.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\advanced forms images\Grapevine.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\advanced forms images\Grapevine.PNG" />
+  </ItemGroup>
+
 </Project>
