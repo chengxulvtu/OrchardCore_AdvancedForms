@@ -158,4 +158,24 @@
     <Content Remove="wwwroot\Image\advanced forms images\Grapevine.PNG" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\Features\01.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\Features\01.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\Features\02.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\advanced forms images\Block_Party_Permit_Regulations.PDF" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\advanced forms images\Accessible.PNG" />
+  </ItemGroup>
+
 </Project>
