@@ -227,10 +227,15 @@ function onSubmissionFormSubmit(form) {
 
 function builderAdminFieldsChange(builder) {
     builder.on('change', function () {
+        debugger;
         if (builder.schema != null && builder.schema.components != null) {
             document.getElementById('AdminContainer').value = JSON.stringify(builder.schema);
         } else {
             document.getElementById('AdminContainer').value = null;
+            document.getElementById("AdminHtmlContainer").value = "";
+        }
+        if (builder.schema != null && builder.schema.components != null && $("#builderAdminFields")[0].innerHTML != "") {
+            document.getElementById("AdminHtmlContainer").value = $("#builderAdminFields")[0].innerHTML;
         }
 
         if (builder.data != null) {

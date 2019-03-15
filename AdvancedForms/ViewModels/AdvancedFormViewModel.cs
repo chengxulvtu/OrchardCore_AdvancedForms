@@ -26,7 +26,9 @@ namespace AdvancedForms.ViewModels
         public string Instructions { get; set; }
         [Required(ErrorMessage = "Form components is Required")]
         public string Container { get; set; }
+        public string HtmlContainer { get; set; }
         public string AdminContainer { get; set; }
+        public string AdminHtmlContainer { get; set; }
         public string Submission { get; set; }
         public string AdminSubmission { get; set; }
         public string Metadata { get; set; }

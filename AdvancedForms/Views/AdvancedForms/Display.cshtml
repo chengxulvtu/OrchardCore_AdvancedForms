@@ -130,7 +130,11 @@
                 }
             };
             form.on('submit', function (submission) { saveForm(submission, false); });
-            form.on('change', function (submission) { DraftSubmission = submission; });
+            form.on('change', function (submission) {
+                debugger;
+                DraftSubmission = submission;
+                document.getElementById("HtmlContainer").value = $("#formio")[0].innerHTML;
+            });
         });
         initValue('@Model.Title','@Model.Id','@Model.Header','@Model.Footer','@Model.Description','@Model.Type','@Model.SubmissionId','@Model.Instructions','@Model.Owner','@Model.AdminContainer')
     };
@@ -191,6 +195,8 @@
     <button form="main" name="submit.Save" class="primaryAction btn btn-info" onclick="saveDraft()" value="submit.Save">@T["Save as Draft"]</button>
 }
 <input type="hidden" asp-for="Container" form="main" />
+<input type="hidden" asp-for="HtmlContainer" form="main" />
+<input type="hidden" asp-for="AdminHtmlContainer" form="main" />
 <input type="hidden" asp-for="AdminSubmission" form="main" />
 <input type="hidden" asp-for="Id" form="main" />
 
@@ -214,5 +220,4 @@
 <script asp-src="/AdvancedForms/Scripts/Submission.js" at="Head"></script>
 <script type="text/javascript">
     GetPublicComments('@Model.Id');
-
 </script>

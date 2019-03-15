@@ -18,6 +18,7 @@ function saveDraft() {
 }
 
 function saveForm(submission, isDraft) {
+    debugger;
     $.ajax({
         url: '/AdvancedForms/Entry',
         method: 'POST',
@@ -36,7 +37,9 @@ function saveForm(submission, isDraft) {
             owner: Owner,
             adminContainer: AdminContainer,
             adminSubmission: document.getElementById('AdminSubmission').value,
-            isDraft: isDraft
+            isDraft: isDraft,
+            htmlContainer: document.getElementById('HtmlContainer').value,
+            adminHtmlContainer: document.getElementById('AdminHtmlContainer').value
         },
         success: function (data) {
             window.location.replace("/submission-confirmation");

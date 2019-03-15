@@ -86,6 +86,7 @@ namespace AdvancedForms.Controllers
                 Type = contentItem.Content.AdvancedForm.Type.Text,
                 Container = contentItem.Content.AdvancedForm.Container.Html,
                 AdminContainer = contentItem.Content.AdvancedForm.AdminContainer.Html,
+                AdminHtmlContainer = contentItem.Content.AdvancedForm.AdminHtmlContainer.Html,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
@@ -196,7 +197,7 @@ namespace AdvancedForms.Controllers
         [HttpPost]
         [Route("AdvancedForms/Entry")]
         public async Task<IActionResult> Entry(string submission, string title, string id, string container,
-            string header, string footer, string description, string type, string submissionId, string instructions, string owner, string adminContainer, string adminSubmission, bool isDraft)
+            string header, string footer, string description, string type, string submissionId, string instructions, string owner, string adminContainer, string adminSubmission, bool isDraft, string htmlContainer, string adminHtmlContainer)
         {
             ContentItem content;
             if (!string.IsNullOrWhiteSpace(submissionId))
@@ -240,7 +241,7 @@ namespace AdvancedForms.Controllers
             string subTitle = title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
 
             var viewModel = new AdvancedFormSubmissions(data, metadata, subTitle, container, header, footer, description,
-                type, instructions, owner, status, adminContainer, adminSubmission);
+                type, instructions, owner, status, adminContainer, adminSubmission, htmlContainer, adminHtmlContainer);
 
             return await EditPOST(content.ContentItemId, title, viewModel, async contentItem =>
             {
@@ -282,7 +283,7 @@ namespace AdvancedForms.Controllers
             string subTitle = model.Title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
             var subObject = JObject.Parse(model.Submission);
             var viewModel = new AdvancedFormSubmissions(model.Submission,
-            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission);
+            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.HtmlContainer, model.AdminHtmlContainer);
 
             await EditPOST(content.ContentItemId, model.Title, viewModel, async contentItem =>
             {
@@ -325,7 +326,7 @@ namespace AdvancedForms.Controllers
             string subTitle = model.Title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
             var subObject = JObject.Parse(model.Submission);
             var viewModel = new AdvancedFormSubmissions(model.Submission,
-            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission);
+            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.HtmlContainer, model.AdminHtmlContainer);
 
             await EditPOST(content.ContentItemId, model.Title, viewModel, async contentItem =>
             {
@@ -458,7 +459,9 @@ namespace AdvancedForms.Controllers
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 Container = contentItem.Content.AdvancedForm.Container.Html,
+                HtmlContainer = contentItem.Content.AdvancedForm.HtmlContainer.Html,
                 AdminContainer = contentItem.Content.AdvancedForm.AdminContainer.Html,
+                AdminHtmlContainer = contentItem.Content.AdvancedForm.AdminHtmlContainer.Html,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 SubmissionId = subContentItem.ContentItemId,
