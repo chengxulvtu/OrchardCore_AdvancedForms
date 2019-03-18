@@ -112,7 +112,7 @@
           "Name": "PickerAdvancedFormTypes",
           "DisplayName": "Picker Advanced Form Type",
           "Settings": {
-            "Creatable": "True",
+            "Creatable": "False",
             "Draftable": "True",
             "Versionable": "True",
             "Listable": "True",
@@ -161,7 +161,7 @@
           "Name": "PickerAdvancedFormStatus",
           "DisplayName": "Picker Advanced Form Status",
           "Settings": {
-            "Creatable": "True",
+            "Creatable": "False",
             "Draftable": "True",
             "Versionable": "True",
             "Listable": "True",
@@ -2172,7 +2172,7 @@
                   "Expression": "{{Request.Form.Title}}"
                 },
                 "Body": {
-                  "Expression": "Create {{Request.Form.Title}} has been created to view click the \r\n<a href=\"{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/admin/{{Request.Form.Title | replace: \" \", \"-\"}}/submission/{{ Workflow.CorrelationId }}\"> View {{Request.Form.Title}} </a>"
+                  "Expression": "Create {{Request.Form.Title}} has been created to view click the \r\n<a href=\"{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/admin/{{Request.Form.Title | replace: \" \", \"-\"}}/submission/{{ WorkflowExecutionContext.CorrelationId }}\"> View {{Request.Form.Title}} </a>"
                 },
                 "IsBodyHtml": true,
                 "ActivityMetadata": {
@@ -2197,7 +2197,7 @@
                   "Expression": "{{Request.Form.Title}} Submitted"
                 },
                 "Body": {
-                  "Expression": "Create {{Request.Form.Title}} has been created to view click the \r\n<a href=\"{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/{{Request.Form.Title | replace: \" \", \"-\"}}/view/{{ Workflow.CorrelationId }}\"> View {{Request.Form.Title}} </a>"
+                  "Expression": "Create {{Request.Form.Title}} has been created to view click the \r\n<a href=\"{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/{{Request.Form.Title | replace: \" \", \"-\"}}/view/{{ WorkflowExecutionContext.CorrelationId }}\"> View {{Request.Form.Title}} </a>"
                 },
                 "IsBodyHtml": true,
                 "ActivityMetadata": {

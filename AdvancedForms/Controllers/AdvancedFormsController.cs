@@ -85,8 +85,8 @@ namespace AdvancedForms.Controllers
                 Title = contentItem.DisplayText,
                 Type = contentItem.Content.AdvancedForm.Type.Text,
                 Container = contentItem.Content.AdvancedForm.Container.Html,
-                AdminContainer = contentItem.Content.AdvancedForm.AdminContainer.Html,
-                AdminHtmlContainer = contentItem.Content.AdvancedForm.AdminHtmlContainer.Html,
+                AdminContainer = null,
+                AdminHtmlContainer = null,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
@@ -126,8 +126,6 @@ namespace AdvancedForms.Controllers
                     : T["Your {0} has been published.", typeDefinition.DisplayName]);
             });
         }
-
-
 
         [HttpPost]
         [Route("AdvancedForms/SaveUpdatePublicComment")]
@@ -257,96 +255,6 @@ namespace AdvancedForms.Controllers
                     : T["Your {0} has been published.", typeDefinition.DisplayName]);
             });
         }
-
-        [HttpPost]
-        [Route("AdvancedForms/admin/{alias}/Submission/{id}")]
-        [FormValueRequired("submit.Save")]
-        public async Task<IActionResult> SubmissionSave(AdvancedFormViewModel model, string returnUrl = "")
-        {
-            ContentItem content;
-            if (!string.IsNullOrWhiteSpace(model.SubmissionId))
-            {
-                content = await _contentManager.GetAsync(model.SubmissionId, VersionOptions.Latest);
-            }
-            else
-            {
-                content = await _contentManager.NewAsync(_id);
-                await _contentManager.CreateAsync(content, VersionOptions.Draft);
-            }
-
-            if (string.IsNullOrWhiteSpace(model.Owner))
-            {
-                model.Owner = User.Identity.Name;
-            }
-
-            string guid = content.ContentItemId;
-            string subTitle = model.Title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
-            var subObject = JObject.Parse(model.Submission);
-            var viewModel = new AdvancedFormSubmissions(model.Submission,
-            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.HtmlContainer, model.AdminHtmlContainer);
-
-            await EditPOST(content.ContentItemId, model.Title, viewModel, async contentItem =>
-            {
-                var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
-                _notifier.Success(string.IsNullOrWhiteSpace(typeDefinition.DisplayName)
-                    ? T["Your content has been published."]
-                    : T["Your {0} has been published.", typeDefinition.DisplayName]);
-            });
-
-            if (!string.IsNullOrWhiteSpace(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-
-            return Redirect("/AdvancedForms/Admin/Submissions");
-        }
-
-        [HttpPost]
-        [Route("AdvancedForms/admin/{alias}/Submission/{id}")]
-        [FormValueRequired("submit.Publish")]
-        public async Task<IActionResult> SubmissionPublish(AdvancedFormViewModel model, string returnUrl = "")
-        {
-            ContentItem content;
-            if (!string.IsNullOrWhiteSpace(model.SubmissionId))
-            {
-                content = await _contentManager.GetAsync(model.SubmissionId, VersionOptions.Latest);
-            }
-            else
-            {
-                content = await _contentManager.NewAsync(_id);
-                await _contentManager.CreateAsync(content, VersionOptions.Draft);
-            }
-
-            if (string.IsNullOrWhiteSpace(model.Owner))
-            {
-                model.Owner = User.Identity.Name;
-            }
-
-            string guid = content.ContentItemId;
-            string subTitle = model.Title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
-            var subObject = JObject.Parse(model.Submission);
-            var viewModel = new AdvancedFormSubmissions(model.Submission,
-            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.HtmlContainer, model.AdminHtmlContainer);
-
-            await EditPOST(content.ContentItemId, model.Title, viewModel, async contentItem =>
-            {
-                await _contentManager.PublishAsync(contentItem);
-
-                var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
-
-                _notifier.Success(string.IsNullOrWhiteSpace(typeDefinition.DisplayName)
-                    ? T["Your content has been published."]
-                    : T["Your {0} has been published.", typeDefinition.DisplayName]);
-            });
-
-            if (!string.IsNullOrWhiteSpace(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-
-            return Redirect("/AdvancedForms/Admin/Submissions");
-        }
-
 
         private async Task<IActionResult> EditPOST(string contentItemId, string title, AdvancedFormSubmissions viewModel, Func<ContentItem, Task> conditionallyPublish)
         {
