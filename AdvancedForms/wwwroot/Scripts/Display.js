@@ -18,7 +18,6 @@ function saveDraft() {
 }
 
 function saveForm(submission, isDraft) {
-    debugger;
     $.ajax({
         url: '/AdvancedForms/Entry',
         method: 'POST',

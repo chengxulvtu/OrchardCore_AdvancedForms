@@ -131,7 +131,6 @@
             };
             form.on('submit', function (submission) { saveForm(submission, false); });
             form.on('change', function (submission) {
-                debugger;
                 DraftSubmission = submission;
                 document.getElementById("HtmlContainer").value = $("#formio")[0].innerHTML;
             });

@@ -227,7 +227,6 @@ function onSubmissionFormSubmit(form) {
 
 function builderAdminFieldsChange(builder) {
     builder.on('change', function () {
-        debugger;
         if (builder.schema != null && builder.schema.components != null) {
             document.getElementById('AdminContainer').value = JSON.stringify(builder.schema);
         } else {
