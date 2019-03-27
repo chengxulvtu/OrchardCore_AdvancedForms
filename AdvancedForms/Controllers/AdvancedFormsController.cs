@@ -362,7 +362,7 @@ namespace AdvancedForms.Controllers
 
             string guid = contentItem.ContentItemId;
             contentItem.Content.AdvancedFormSubmissions = JToken.FromObject(viewModel);
-            contentItem.DisplayText = viewModel.Title;
+            contentItem.DisplayText = title;
             contentItem.Author = User.Identity.Name;
             contentItem.Owner = viewModel.Owner;
             contentItem.Content.AutoroutePart.Path = CreatePath(title, guid);
@@ -463,7 +463,7 @@ namespace AdvancedForms.Controllers
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 SubmissionId = subContentItem.ContentItemId,
                 Submission = subContentItem.Content.AdvancedFormSubmissions.Submission.Html,
-                AdminSubmission = subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html,
+                AdminSubmission = subContentItem.Content.AdvancedFormSubmissions.AdminSubmission != null ? subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.ToString() : null,
                 EntryType = entryType,
                 Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text,
                 StatusText = statusText,

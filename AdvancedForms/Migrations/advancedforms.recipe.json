@@ -2136,7 +2136,7 @@
         {
           "WorkflowTypeId": "4rcsw09prnba46tqx6vq9gwanm",
           "Name": "ADVANCED FORM SUBMITTED",
-          "IsEnabled": true,
+          "IsEnabled": false,
           "IsSingleton": false,
           "DeleteFinishedWorkflows": false,
           "Activities": [
@@ -2172,7 +2172,7 @@
                   "Expression": "{{Request.Form.Title}}"
                 },
                 "Body": {
-                  "Expression": "Create {{Request.Form.Title}} has been created to view click the \r\n<a href=\"{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/admin/{{Request.Form.Title | replace: \" \", \"-\"}}/submission/{{ WorkflowExecutionContext.CorrelationId }}\"> View {{Request.Form.Title}} </a>"
+                  "Expression": "Create {{Request.Form.Title}} has been created to view click the \r\n<a href=\"{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/admin/{{Request.Form.Title | replace: \" \", \"-\"}}/submission/{{ Workflow.CorrelationId }}\"> View {{Request.Form.Title}} </a>"
                 },
                 "IsBodyHtml": true,
                 "ActivityMetadata": {
@@ -2197,7 +2197,7 @@
                   "Expression": "{{Request.Form.Title}} Submitted"
                 },
                 "Body": {
-                  "Expression": "Create {{Request.Form.Title}} has been created to view click the \r\n<a href=\"{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/{{Request.Form.Title | replace: \" \", \"-\"}}/view/{{ WorkflowExecutionContext.CorrelationId }}\"> View {{Request.Form.Title}} </a>"
+                  "Expression": "Create {{Request.Form.Title}} has been created to view click the \r\n<a href=\"{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/{{Request.Form.Title | replace: \" \", \"-\"}}/view/{{ Workflow.CorrelationId }}\"> View {{Request.Form.Title}} </a>"
                 },
                 "IsBodyHtml": true,
                 "ActivityMetadata": {
@@ -2218,6 +2218,84 @@
               "SourceActivityId": "458m79t8ssr6ns1yrxjvj1mxd1",
               "SourceOutcomeName": "Done",
               "DestinationActivityId": "4sqdz688wzvtx46exvmym9d7m4"
+            }
+          ]
+        },
+        {
+          "WorkflowTypeId": "4ych77yvcmk3779eq6aqvr41nb",
+          "Name": "Concept Plan Application",
+          "IsEnabled": true,
+          "IsSingleton": false,
+          "DeleteFinishedWorkflows": false,
+          "Activities": [
+            {
+              "ActivityId": "4fvmbn9x6mexh0mcakfmgppsww",
+              "Name": "EmailTask",
+              "X": 500,
+              "Y": 360,
+              "IsStart": true,
+              "Properties": {
+                "Sender": {
+                  "Expression": "mohit-db8e0f@inbox.mailtrap.io"
+                },
+                "Recipients": {
+                  "Expression": "{% assign userdetails = Queries.GetUserEmailByUsername | query : userName: User.Identity.Name %} {{userdetails[0].NormalizedEmail}}"
+                },
+                "Subject": {
+                  "Expression": "{{Request.Form.Title}} Admin Completed"
+                },
+                "Body": {
+                  "Expression": "Create {{Request.Form.Title}} has been created to view click the \r\n<a href=\"{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/{{Request.Form.Title | replace: \" \", \"-\"}}/view/{{ Workflow.CorrelationId }}\"> View {{Request.Form.Title}} </a>"
+                },
+                "IsBodyHtml": true,
+                "ActivityMetadata": {
+                  "Title": "Admin Email Task"
+                }
+              }
+            },
+            {
+              "ActivityId": "4eynbagtk1d7pzhr6800xcbe48",
+              "Name": "IfElseTask",
+              "X": 20,
+              "Y": 180,
+              "IsStart": true,
+              "Properties": {
+                "ActivityMetadata": {
+                  "Title": "Check If Public Works Department and Date Completed"
+                },
+                "Condition": {
+                  "Expression": "workflow().Input.ContentItem.DisplayText == \"CONCEPT PLAN\" && workflow().Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.publicWorksDepartment != '' && workflow().Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.date != ''"
+                }
+              }
+            },
+            {
+              "ActivityId": "4g7wz4m8tvjqytym49zntgvdnb",
+              "Name": "ContentPublishedEvent",
+              "X": 350,
+              "Y": 0,
+              "IsStart": true,
+              "Properties": {
+                "ContentTypeFilter": [
+                  "AdvancedFormSubmissions"
+                ],
+                "ActivityMetadata": {
+                  "Title": "CONCEPT PLAN Admin Submission"
+                }
+              }
+            }
+          ],
+          "Transitions": [
+            {
+              "Id": 0,
+              "SourceActivityId": "4eynbagtk1d7pzhr6800xcbe48",
+              "SourceOutcomeName": "True",
+              "DestinationActivityId": "4fvmbn9x6mexh0mcakfmgppsww"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4g7wz4m8tvjqytym49zntgvdnb",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4eynbagtk1d7pzhr6800xcbe48"
             }
           ]
         }

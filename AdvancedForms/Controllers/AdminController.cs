@@ -23,6 +23,7 @@ using OrchardCore.ContentManagement.Records;
 using AdvancedForms.Helper;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace AdvancedForms.Controllers
 {
@@ -495,7 +496,7 @@ namespace AdvancedForms.Controllers
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 SubmissionId = subContentItem.ContentItemId,
                 Submission = subContentItem.Content.AdvancedFormSubmissions.Submission.Html,
-                AdminSubmission = subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html,
+                AdminSubmission = subContentItem.Content.AdvancedFormSubmissions.AdminSubmission != null ? subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.ToString() : null,
                 Metadata = subContentItem.Content.AdvancedFormSubmissions.Metadata.Html,
                 Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text,
                 SelectedItems = lst,
