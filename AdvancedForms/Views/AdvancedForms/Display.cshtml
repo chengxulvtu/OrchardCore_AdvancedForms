@@ -9,6 +9,7 @@
     body {
         background: #f7f7f7 !important;
     }
+
     .panel-default > .panel-heading {
         color: #30363c !important;
         background-color: #fec934 !important;
@@ -23,6 +24,7 @@
         font-family: roboto, sans-serif !important;
         font-weight: 500 !important;
     }
+
     .form-control {
         border: 1px solid #a2a2a2 !important;
     }
@@ -82,9 +84,11 @@
     .panel-body {
         padding: 15px;
     }
+
     .panel-title {
         font-size: 18px;
     }
+
     h4 {
         font-size: 18px;
     }
@@ -97,7 +101,7 @@
         box-shadow: 0px 0px 0px 0px #000;
     }
 
-    legend{
+    legend {
         font-size: 1.2em !important;
         font-weight: bold !important;
         text-align: left !important;
@@ -163,27 +167,47 @@
         <br />
     }
 </div>
-<div>
-    @if (!string.IsNullOrEmpty(Model.Description))
-    {
 
-        @Html.LabelFor(model => model.Description)
-        <br />
-        @Html.Raw(Model.Description)
-        <br />
-        <br />
-    }
-</div>
-<div>
-    @if (!string.IsNullOrEmpty(Model.Instructions))
-    {
-        @Html.LabelFor(model => model.Instructions)
-        <br />
-        @Html.Raw(Model.Instructions)
-        <br />
-        <br />
-    }
-</div>
+
+@if (!string.IsNullOrEmpty(Model.Description))
+{
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#Description" style="color:#fff;text-decoration:none;">Description <i class="fa fa-plus pull-right"></i></a>
+                </h4>
+            </div>
+            <div id="Description" class="panel-collapse collapse">
+                <div class="panel-body">
+                    @Html.Raw(Model.Description)
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(Model.Instructions))
+{
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#Instructions" style="color:#fff;text-decoration:none;">Instructions
+                        <i class="fa fa-plus pull-right"></i>
+                    </a>
+                    
+                </h4>
+            </div>
+            <div id="Instructions" class="panel-collapse collapse">
+                <div class="panel-body">
+                    @Html.Raw(Model.Instructions)
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
 
 <div id="advancedForm-errors"></div>
 
@@ -219,4 +243,20 @@
 <script asp-src="/AdvancedForms/Scripts/Submission.js" at="Head"></script>
 <script type="text/javascript">
     GetPublicComments('@Model.Id');
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Add minus icon for collapse element which is open by default
+        $(".collapse.in").each(function () {
+            $(this).siblings(".panel-heading").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+        });
+
+        // Toggle plus minus icon on show hide of collapse element
+        $(".collapse").on('show.bs.collapse', function () {
+            $(this).parent().find(".fa").removeClass("fa-plus").addClass("fa-minus");
+        }).on('hide.bs.collapse', function () {
+            $(this).parent().find(".fa").removeClass("fa-minus").addClass("fa-plus");
+        });
+    });
 </script>
