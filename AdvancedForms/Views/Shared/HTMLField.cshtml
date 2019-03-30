@@ -14,8 +14,8 @@
 <script>
     $('#@Model.ID').trumbowyg();
 
-    function EditComment(id, comment, selector) {
-        $('#' + selector).parent().find(".trumbowyg-editor")[0].textContent = comment;
+    function EditComment(id, obj, selector) {
+        $('#' + selector).parent().find(".trumbowyg-editor")[0].innerHTML = $(obj).parent().parent().find(".panel-body")[0].innerHTML;
         $('#' + selector +'-ContentItmeID').val(id);
         $('#' + selector +'-ContentItmeID').parent().find(".publish-button")[0].textContent = "Update";
         var height = $(document).height() - 700;

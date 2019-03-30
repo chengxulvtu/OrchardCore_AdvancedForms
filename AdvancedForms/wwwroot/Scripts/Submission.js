@@ -30,7 +30,7 @@ function submitAdminComment(id) {
     if ($("#AdminComment").parent().find(".trumbowyg-editor").length == 0) {
         return;
     }
-    var content = $("#AdminComment").parent().find(".trumbowyg-editor")[0].textContent;
+    var content = $("#AdminComment").parent().find(".trumbowyg-editor")[0].innerHTML;
     if (content == null) {
         return;
     }
@@ -58,7 +58,7 @@ function submitPublicComment(id) {
     if ($("#PublicComment").parent().find(".trumbowyg-editor").length == 0) {
         return;
     }
-    var content = $("#PublicComment").parent().find(".trumbowyg-editor")[0].textContent;
+    var content = $("#PublicComment").parent().find(".trumbowyg-editor")[0].innerHTML;
     if (content == null) {
         return;
     }
@@ -192,7 +192,7 @@ function getPanel(value, isPublic) {
     }
 
     if (currentUser == value.Owner) {
-        panel += '<button class="pull-right btn btn-link" href="#" style="color:#007bff;" onclick="EditComment(\'' + value.ContentItemId + '\', \'' + comment + '\', \'' + editorSelect + '\')">Edit</button>';
+        panel += '<button class="pull-right btn btn-link" href="#" style="color:#007bff;" onclick="EditComment(\'' + value.ContentItemId + '\', this, \'' + editorSelect + '\')">Edit</button>';
     }
     panel += '</div>';
     panel += '<div class="panel-body">' + comment + '</div>';

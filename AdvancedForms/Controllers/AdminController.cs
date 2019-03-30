@@ -156,6 +156,46 @@ namespace AdvancedForms.Controllers
             });
         }
 
+        [HttpPost]
+        [Route("AdvancedForms/SaveUpdateAdminComment")]
+        public async Task<IActionResult> SaveAdminComment(string id, string contentItemId, string comment)
+        {
+            ContentItem content;
+            if (!string.IsNullOrWhiteSpace(contentItemId))
+            {
+                content = await _contentManager.GetAsync(contentItemId, VersionOptions.Latest);
+            }
+            else
+            {
+                content = await _contentManager.NewAsync("AdminComment");
+                await _contentManager.CreateAsync(content, VersionOptions.Draft);
+            }
+
+            var model = new CommentPart(comment);
+
+
+            await _contentManager.PublishAsync(content);
+
+            //return Ok(StatusCodes.Status200OK);
+            int returnCode = await new ContentHelper(_contentManager, _session, _contentDefinitionManager, _contentAliasManager).EditCommentPOST(content.ContentItemId, false, id, User.Identity.Name, model, async contentItem =>
+            {
+                await _contentManager.PublishAsync(contentItem);
+                var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
+
+                _notifier.Success(string.IsNullOrWhiteSpace(typeDefinition.DisplayName)
+                    ? T["Your content has been published."]
+                    : T["Your {0} has been published.", typeDefinition.DisplayName]);
+            });
+            if (returnCode == StatusCodes.Status204NoContent)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return StatusCode(returnCode);
+            }
+        }
+
         public async Task<IActionResult> Create()
         {
             if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageAdvancedForms))

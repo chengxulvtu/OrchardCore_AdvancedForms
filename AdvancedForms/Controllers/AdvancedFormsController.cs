@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc.Localization;
 using OrchardCore.ContentManagement.Records;
 using YesSql;
 using OrchardCore.Mvc.ActionConstraints;
+using AdvancedForms.Helper;
 
 namespace AdvancedForms.Controllers
 {
@@ -96,38 +97,6 @@ namespace AdvancedForms.Controllers
         }
 
         [HttpPost]
-        [Route("AdvancedForms/SaveUpdateAdminComment")]
-        public async Task<IActionResult> SaveAdminComment(string id, string contentItemId, string comment)
-        {
-            ContentItem content;
-            if (!string.IsNullOrWhiteSpace(contentItemId))
-            {
-                content = await _contentManager.GetAsync(contentItemId, VersionOptions.Latest);
-            }
-            else
-            {
-                content = await _contentManager.NewAsync("AdminComment");
-                await _contentManager.CreateAsync(content, VersionOptions.Draft);
-            }
-
-            var model = new CommentPart(comment);
-
-
-            await _contentManager.PublishAsync(content);
-
-            //return Ok(StatusCodes.Status200OK);
-            return await EditCommentPOST(content.ContentItemId, false, id, model, async contentItem =>
-            {
-                await _contentManager.PublishAsync(contentItem);
-                var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
-
-                _notifier.Success(string.IsNullOrWhiteSpace(typeDefinition.DisplayName)
-                    ? T["Your content has been published."]
-                    : T["Your {0} has been published.", typeDefinition.DisplayName]);
-            });
-        }
-
-        [HttpPost]
         [Route("AdvancedForms/SaveUpdatePublicComment")]
         public async Task<IActionResult> SavePublicComment(string id, string contentItemId, string comment)
         {
@@ -148,7 +117,7 @@ namespace AdvancedForms.Controllers
             await _contentManager.PublishAsync(content);
 
             //return Ok(StatusCodes.Status200OK);
-            return await EditCommentPOST(content.ContentItemId, true, id, model, async contentItem =>
+            int returnCode = await new ContentHelper(_contentManager,_session,_contentDefinitionManager, _contentAliasManager).EditCommentPOST(content.ContentItemId, true, id, User.Identity.Name, model, async contentItem =>
             {
                 await _contentManager.PublishAsync(contentItem);
                 var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
@@ -157,30 +126,15 @@ namespace AdvancedForms.Controllers
                     ? T["Your content has been published."]
                     : T["Your {0} has been published.", typeDefinition.DisplayName]);
             });
-        }
 
-        private async Task<IActionResult> EditCommentPOST(string contentItemId, bool isPublic, string id, CommentPart viewModel, Func<ContentItem, Task> conditionallyPublish)
-        {
-
-            var content = await _contentManager.GetAsync(contentItemId, VersionOptions.DraftRequired);
-
-            if (content == null)
+            if(returnCode == StatusCodes.Status204NoContent)
             {
                 return NotFound();
             }
-            if (isPublic)
-                content.Content.PublicComment = JToken.FromObject(viewModel);
             else
-                content.Content.AdminComment = JToken.FromObject(viewModel);
-            content.Owner = User.Identity.Name;
-            content.DisplayText = id;
-
-            await conditionallyPublish(content);
-
-            _session.Save(content);
-
-            var typeDefinition = _contentDefinitionManager.GetTypeDefinition(content.ContentType);
-            return StatusCode(StatusCodes.Status201Created);
+            {
+                return StatusCode(returnCode);
+            }
         }
 
         [HttpGet]
@@ -406,9 +360,6 @@ namespace AdvancedForms.Controllers
             {
                 await Display(alias);
             }
-
-            var contentItemId = await _contentAliasManager.GetContentItemIdAsync("slug:AdvancedForms/" + alias);
-            var contentItem = await _contentManager.GetAsync(contentItemId, VersionOptions.Published);
             var subContentItem = await _contentManager.GetAsync(id, VersionOptions.Published);
             var viewName = entryType == EntryType.Print ? "Print" : "Display";
 
@@ -433,43 +384,7 @@ namespace AdvancedForms.Controllers
             {
                 return Unauthorized();
             }
-
-            var selectedContent = await _contentManager.GetAsync(subContentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.Published);
-
-            if (selectedContent == null)
-            {
-                selectedContent = await _contentManager.GetAsync(subContentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.DraftRequired);
-            }
-            string statusText = string.Empty;
-            if (selectedContent != null)
-            {
-                statusText = selectedContent.DisplayText;
-            }
-
-
-            var model = new AdvancedFormViewModel
-            {
-                Id = id,
-                Owner = subContentItem.Owner,
-                Title = contentItem.DisplayText,
-                Type = contentItem.Content.AdvancedForm.Type.Text,
-                Header = contentItem.Content.AdvancedForm.Header.Html,
-                Footer = contentItem.Content.AdvancedForm.Footer.Html,
-                Container = contentItem.Content.AdvancedForm.Container.Html,
-                HtmlContainer = contentItem.Content.AdvancedForm.HtmlContainer.Html,
-                AdminContainer = contentItem.Content.AdvancedForm.AdminContainer.Html,
-                AdminHtmlContainer = contentItem.Content.AdvancedForm.AdminHtmlContainer.Html,
-                Description = contentItem.Content.AdvancedForm.Description.Html,
-                Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
-                SubmissionId = subContentItem.ContentItemId,
-                Submission = subContentItem.Content.AdvancedFormSubmissions.Submission.Html,
-                AdminSubmission = subContentItem.Content.AdvancedFormSubmissions.AdminSubmission != null ? subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.ToString() : null,
-                EntryType = entryType,
-                Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text,
-                StatusText = statusText,
-                PublicEditor = new HTMLFieldViewModel() { ID = "PublicComment" }
-
-            };
+            var model = await new ContentHelper(_contentManager, _session, _contentDefinitionManager, _contentAliasManager).ReturnView(alias, id, entryType);
 
             return View(viewName, model);
 
