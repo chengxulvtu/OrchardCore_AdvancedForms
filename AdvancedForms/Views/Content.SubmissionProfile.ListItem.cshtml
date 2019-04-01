@@ -5,6 +5,10 @@
     var hasPublished = await ContentManager.HasPublishedVersionAsync(contentItem);
     var hasDraft = contentItem.HasDraft();
     string action = contentItem.Content.AutoroutePart.Path != null ? contentItem.Content.AutoroutePart.Path.ToString().Split("/")[1] : null;
+    if(action == null)
+    {
+        return;
+    }
     string status = string.Empty;
     dynamic selectedContent = await ContentManager.GetAsync(contentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.Published);
     if (selectedContent == null)
@@ -25,8 +29,8 @@
             {
                 <a href="/@contentItem.Content.AutoroutePart.Path" class="btn btn-success btn-sm" itemprop="">@T["View"]</a>
             }
-        </div>       
-        <a href="/AdvancedForms/@action/Edit/@contentItem.ContentItemId">@action.Replace("-", " ")</a> 
+        </div>
+        <a href="/AdvancedForms/@action/Edit/@contentItem.ContentItemId">@action.Replace("-", " ")</a>
         <br />
         <div class="metadata">
             @if (hasPublished)
@@ -41,7 +45,7 @@
                     <i class="fa fa-pencil" aria-hidden="true"></i> @T["Draft"]
                 </span>
             }
-                <span class="badge badge-secondary" title="@T[@status]" style="color:#fff;"> @T["Status - " + @status]</span>
+            <span class="badge badge-secondary" title="@T[@status]" style="color:#fff;"> @T["Status - " + @status]</span>
             <div>
                 <span class="hint">@T["Last modified {0} by {1}", (object)(await DisplayAsync(await New.TimeSpan(Utc: contentItem.ModifiedUtc))), contentItem.Author]</span>
             </div>

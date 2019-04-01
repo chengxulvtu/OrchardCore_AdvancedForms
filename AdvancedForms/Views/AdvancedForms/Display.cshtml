@@ -139,7 +139,7 @@
                 document.getElementById("HtmlContainer").value = $("#formio")[0].innerHTML;
             });
         });
-        initValue('@Model.Title','@Model.Id','@Model.Header','@Model.Footer','@Model.Description','@Model.Type','@Model.SubmissionId','@Model.Instructions','@Model.Owner','@Model.AdminContainer')
+        initValue('@Model.Title','@Model.Id','@Model.Header','@Model.Footer','@Model.Description','@Model.Type','@Model.SubmissionId','@Model.Instructions','@Model.Owner')
     };
     setCurrentUser('@Model.Id', '@User.Identity.Name', false);
 </script>
@@ -219,8 +219,6 @@
 }
 <input type="hidden" asp-for="Container" form="main" />
 <input type="hidden" asp-for="HtmlContainer" form="main" />
-<input type="hidden" asp-for="AdminHtmlContainer" form="main" />
-<input type="hidden" asp-for="AdminSubmission" form="main" />
 <input type="hidden" asp-for="Id" form="main" />
 
 @if (!string.IsNullOrWhiteSpace(Model.SubmissionId) && !Model.StatusText.Equals("Draft"))

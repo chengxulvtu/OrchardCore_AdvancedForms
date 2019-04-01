@@ -2,6 +2,10 @@
 @inject IContentManager ContentManager
 @{
     ContentItem contentItem = Model.ContentItem;
+    if (contentItem.Content.AutoroutePart.Path == null)
+    {
+        return;
+    }
     var hasPublished = await ContentManager.HasPublishedVersionAsync(contentItem);
     var hasDraft = contentItem.HasDraft();
     string action = contentItem.Content.AutoroutePart.Path.ToString().Split("/")[1];

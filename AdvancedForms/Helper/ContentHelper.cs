@@ -74,7 +74,7 @@ namespace AdvancedForms.Helper
             }
             return new AdvancedFormViewModel
             {
-                Id = id,
+                Id = contentItem.ContentItemId,
                 Owner = subContentItem.Owner,
                 Title = contentItem.DisplayText,
                 Type = contentItem.Content.AdvancedForm.Type.Text,

@@ -41,7 +41,7 @@
                 Model.Container = Model.Container.Replace("\"display\":\"wizard\"", "\"display\":\"form\"");
             }
             @Html.Raw(Model.Container)
-           ,{readOnly: true}
+           , { readOnly: true, viewAsHtml: true}
         ).then(function(form) {
             form.submission = {
                 @if (!String.IsNullOrEmpty(Model.SubmissionId))

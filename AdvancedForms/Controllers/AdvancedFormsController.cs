@@ -86,8 +86,6 @@ namespace AdvancedForms.Controllers
                 Title = contentItem.DisplayText,
                 Type = contentItem.Content.AdvancedForm.Type.Text,
                 Container = contentItem.Content.AdvancedForm.Container.Html,
-                AdminContainer = null,
-                AdminHtmlContainer = null,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
@@ -117,17 +115,17 @@ namespace AdvancedForms.Controllers
             await _contentManager.PublishAsync(content);
 
             //return Ok(StatusCodes.Status200OK);
-            int returnCode = await new ContentHelper(_contentManager,_session,_contentDefinitionManager, _contentAliasManager).EditCommentPOST(content.ContentItemId, true, id, User.Identity.Name, model, async contentItem =>
-            {
-                await _contentManager.PublishAsync(contentItem);
-                var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
+            int returnCode = await new ContentHelper(_contentManager, _session, _contentDefinitionManager, _contentAliasManager).EditCommentPOST(content.ContentItemId, true, id, User.Identity.Name, model, async contentItem =>
+              {
+                  await _contentManager.PublishAsync(contentItem);
+                  var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
 
-                _notifier.Success(string.IsNullOrWhiteSpace(typeDefinition.DisplayName)
-                    ? T["Your content has been published."]
-                    : T["Your {0} has been published.", typeDefinition.DisplayName]);
-            });
+                  _notifier.Success(string.IsNullOrWhiteSpace(typeDefinition.DisplayName)
+                      ? T["Your content has been published."]
+                      : T["Your {0} has been published.", typeDefinition.DisplayName]);
+              });
 
-            if(returnCode == StatusCodes.Status204NoContent)
+            if (returnCode == StatusCodes.Status204NoContent)
             {
                 return NotFound();
             }
@@ -149,18 +147,25 @@ namespace AdvancedForms.Controllers
         [HttpPost]
         [Route("AdvancedForms/Entry")]
         public async Task<IActionResult> Entry(string submission, string title, string id, string container,
-            string header, string footer, string description, string type, string submissionId, string instructions, string owner, string adminContainer, string adminSubmission, bool isDraft, string htmlContainer, string adminHtmlContainer)
+            string header, string footer, string description, string type, string submissionId, string instructions, string owner, bool isDraft, string htmlContainer)
         {
             ContentItem content;
+            string adminSubmission = string.Empty;
             if (!string.IsNullOrWhiteSpace(submissionId))
             {
                 content = await _contentManager.GetAsync(submissionId, VersionOptions.Latest);
+                adminSubmission = content.Content.AdvancedFormSubmissions.AdminSubmission != null ?
+                    content.Content.AdvancedFormSubmissions.AdminSubmission.Html.ToString() : null;
             }
             else
             {
                 content = await _contentManager.NewAsync(_id);
                 await _contentManager.CreateAsync(content, VersionOptions.Draft);
             }
+
+            var formContent = await _contentManager.GetAsync(id, VersionOptions.Latest);
+            string adminContainer = formContent.Content.AdvancedForm.AdminContainer.Html;
+            string adminHtmlContainer = formContent.Content.AdvancedForm.AdminHtmlContainer.Html;
 
             string metadata = string.Empty, data, status = string.Empty;
             var query = _session.Query<ContentItem, ContentItemIndex>();

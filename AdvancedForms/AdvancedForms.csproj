@@ -8,8 +8,6 @@
   <ItemGroup>
     <EmbeddedResource Remove="Views\AdvancedForms\Contents-Meta.SummaryAdmin.cshtml" />
     <EmbeddedResource Remove="Views\AdvancedForms\Display.cshtml~RF1f203469.TMP" />
-    <EmbeddedResource Remove="wwwroot\Scripts\D3.js" />
-    <EmbeddedResource Remove="wwwroot\Scripts\d3.v3.min.js" />
     <EmbeddedResource Remove="wwwroot\Styles\Submission.js" />
   </ItemGroup>
 
@@ -176,6 +174,14 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\Image\advanced forms images\Accessible.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Scripts\D3.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Scripts\d3.v3.min.js" />
   </ItemGroup>
 
 </Project>

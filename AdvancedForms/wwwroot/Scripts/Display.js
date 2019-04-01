@@ -1,6 +1,6 @@
-﻿var Title, Id, Header, Footer, Description, Type, SubmissionId, Instructions, Owner, AdminContainer, DraftSubmission;
+﻿var Title, Id, Header, Footer, Description, Type, SubmissionId, Instructions, Owner, DraftSubmission;
 
-function initValue(title, id, header, footer, description, type, submissionId, instructions, owner, adminContainer) {
+function initValue(title, id, header, footer, description, type, submissionId, instructions, owner) {
     Title = title;
     Id = id;
     Header = header;
@@ -10,7 +10,6 @@ function initValue(title, id, header, footer, description, type, submissionId, i
     SubmissionId = submissionId;
     Instructions = instructions;
     Owner = owner;
-    AdminContainer = adminContainer;
 }
 
 function saveDraft() {
@@ -34,11 +33,8 @@ function saveForm(submission, isDraft) {
             submissionId: SubmissionId,
             instructions: Instructions,
             owner: Owner,
-            adminContainer: AdminContainer,
-            adminSubmission: document.getElementById('AdminSubmission').value,
             isDraft: isDraft,
-            htmlContainer: document.getElementById('HtmlContainer').value,
-            adminHtmlContainer: document.getElementById('AdminHtmlContainer').value
+            htmlContainer: document.getElementById('HtmlContainer').value
         },
         success: function (data) {
             window.location.replace("/submission-confirmation");
