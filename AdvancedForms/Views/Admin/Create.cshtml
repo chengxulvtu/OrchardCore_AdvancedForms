@@ -71,25 +71,11 @@
             }
         }
         ).then(builderChange);
-
         displayType = "@displayType";
-
         activeButton(displayType);
-
-        if (isEdit) {
-            Formio.createForm(document.getElementById('builderAdminFields'),
-            @if (String.IsNullOrEmpty(Model.AdminContainer)){@standardAdminComp}
-                else{@Html.Raw(Model.AdminContainer)}
-            ).then(function (form) {
-                form.submission = {
-                    @if (!String.IsNullOrEmpty(Model.SubmissionId) && !String.IsNullOrEmpty(Model.AdminSubmission))
-                    {
-                        string adminsubmission = "data:" + Html.Raw(Model.AdminSubmission);
-                        @Html.Raw(adminsubmission);
-                    }
-                };
-                builderAdminFieldsChange(form);
-            });
+        console.log(isEdit);
+        if(isEdit) {
+            renderAdminForm();
         }
     };
 
@@ -104,6 +90,35 @@
         ).then(builderChange);
     }
 </script>
+
+@if (isEdit)
+{
+    <script>
+        function renderAdminForm() {
+            Formio.createForm(document.getElementById('builderAdminFields'),
+                @if (String.IsNullOrEmpty(Model.AdminContainer)){@standardAdminComp}
+                    else{@Html.Raw(Model.AdminContainer)}
+                ).then(function (form) {
+                    form.submission = {
+                        @if (!String.IsNullOrEmpty(Model.SubmissionId) && !String.IsNullOrEmpty(Model.AdminSubmission))
+                        {
+                            string adminsubmission = "data:" + Html.Raw(Model.AdminSubmission);
+                            @Html.Raw(adminsubmission);
+                        }
+                    };
+                    builderAdminFieldsChange(form);
+                });
+        }
+    </script>
+}
+else
+{
+    <script>
+        function renderAdminForm() {
+        }
+    </script>
+}
+
 
 <h1>@T["Advanced Form Module"]</h1>
 @{
@@ -316,6 +331,7 @@
 else
 {
     <script at="Foot">
+
         initializeContentPickerFieldEditor('ContentPicker_PickerAdvancedFormTypes_Type', [], '', 'PickerAdvancedFormTypes', 'AdvancedFormTypes', false);
     </script>
 }
