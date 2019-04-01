@@ -19,9 +19,8 @@ namespace AdvancedForms.Models
     {
         public JSonEditorPart(string html)
         {
-            Html = JObject.Parse(html);
+            Html = !string.IsNullOrEmpty(html) ? JObject.Parse(html) : null;
         }
-
         public JObject Html { get; set; }
     }
 }

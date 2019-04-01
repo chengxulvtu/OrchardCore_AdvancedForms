@@ -3,6 +3,7 @@ using AdvancedForms.Models;
 using AdvancedForms.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Metadata;
@@ -80,15 +81,15 @@ namespace AdvancedForms.Helper
                 Type = contentItem.Content.AdvancedForm.Type.Text,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
-                Container = contentItem.Content.AdvancedForm.Container.Html,
+                Container = contentItem.Content.AdvancedForm.Container.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.Container.Html) : String.Empty,
                 HtmlContainer = contentItem.Content.AdvancedForm.HtmlContainer.Html,
-                AdminContainer = contentItem.Content.AdvancedForm.AdminContainer.Html,
+                AdminContainer = contentItem.Content.AdvancedForm.AdminContainer.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.AdminContainer.Html) : String.Empty,
                 AdminHtmlContainer = contentItem.Content.AdvancedForm.AdminHtmlContainer.Html,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 SubmissionId = subContentItem.ContentItemId,
-                Submission = subContentItem.Content.AdvancedFormSubmissions.Submission.Html,
-                AdminSubmission = subContentItem.Content.AdvancedFormSubmissions.AdminSubmission != null ? subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.ToString() : null,
+                Submission = subContentItem.Content.AdvancedFormSubmissions.Submission.Html != null ? JsonConvert.SerializeObject(subContentItem.Content.AdvancedFormSubmissions.Submission.Html) : String.Empty,
+                AdminSubmission = subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html != null ? JsonConvert.SerializeObject(subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html) : String.Empty,
                 EntryType = entryType,
                 Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text,
                 StatusText = statusText,

@@ -19,6 +19,7 @@ using OrchardCore.ContentManagement.Records;
 using YesSql;
 using OrchardCore.Mvc.ActionConstraints;
 using AdvancedForms.Helper;
+using Newtonsoft.Json;
 
 namespace AdvancedForms.Controllers
 {
@@ -85,7 +86,7 @@ namespace AdvancedForms.Controllers
                 Id = contentItemId,
                 Title = contentItem.DisplayText,
                 Type = contentItem.Content.AdvancedForm.Type.Text,
-                Container = contentItem.Content.AdvancedForm.Container.Html,
+                Container = contentItem.Content.AdvancedForm.Container.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.Container.Html) : String.Empty,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
@@ -164,7 +165,7 @@ namespace AdvancedForms.Controllers
             }
 
             var formContent = await _contentManager.GetAsync(id, VersionOptions.Latest);
-            string adminContainer = formContent.Content.AdvancedForm.AdminContainer.Html;
+            string adminContainer = formContent.Content.AdvancedForm.AdminContainer.Html != null ? JsonConvert.SerializeObject(formContent.Content.AdvancedForm.AdminContainer.Html) : String.Empty;
             string adminHtmlContainer = formContent.Content.AdvancedForm.AdminHtmlContainer.Html;
 
             string metadata = string.Empty, data, status = string.Empty;
