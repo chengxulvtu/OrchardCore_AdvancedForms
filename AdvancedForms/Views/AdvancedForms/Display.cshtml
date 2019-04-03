@@ -175,10 +175,10 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" href="#Description" style="color:#fff;text-decoration:none;">Description <i class="fa fa-plus pull-right"></i></a>
+                    <a data-toggle="collapse" href="#Description" onclick="collapseShow('Description')" style="color:#fff;text-decoration:none;">Description <i class="fa fa-plus pull-right"></i></a>
                 </h4>
             </div>
-            <div id="Description" class="panel-collapse collapse">
+            <div id="Description" class="panel-collapse collapse show">
                 <div class="panel-body">
                     @Html.Raw(Model.Description)
                 </div>
@@ -193,10 +193,11 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" href="#Instructions" style="color:#fff;text-decoration:none;">Instructions
+                    <a data-toggle="collapse" href="#Instructions" onclick="collapseShow('Instructions')" style="color:#fff;text-decoration:none;">
+                        Instructions
                         <i class="fa fa-plus pull-right"></i>
                     </a>
-                    
+
                 </h4>
             </div>
             <div id="Instructions" class="panel-collapse collapse">
@@ -257,4 +258,8 @@
             $(this).parent().find(".fa").removeClass("fa-minus").addClass("fa-plus");
         });
     });
+    function collapseShow(id) {
+        $("#Description").collapse('toggle');
+        $("#Instructions").collapse('toggle');
+    }
 </script>
