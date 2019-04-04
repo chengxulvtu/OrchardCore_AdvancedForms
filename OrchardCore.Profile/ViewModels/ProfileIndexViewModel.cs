@@ -9,5 +9,6 @@ namespace OrchardCore.Profile.ViewModels
     {
         public dynamic Shape { get; set; }
         public string GroupId { get; set; }
+        public List<dynamic> ContentItemSummaries { get; set; }
     }
 }

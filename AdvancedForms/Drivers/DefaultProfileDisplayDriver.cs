@@ -57,10 +57,10 @@ namespace AdvancedForms.Drivers
                 pageOfContentItems = pageOfContentItems.Where(o => o.Owner == profile.UserName);
             }
             var contentItemSummaries = new List<dynamic>();
-            foreach (var contentItem in pageOfContentItems)
-            {
-                contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, updater, "SubmissionProfile_ListItem"));
-            }
+            //foreach (var contentItem in pageOfContentItems)
+            //{
+            //    contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, updater, "SubmissionProfile_ListItem"));
+            //}
 
             return await Task.FromResult<IDisplayResult>(
                     Initialize<ProfileViewModel>("List_Edit", item =>

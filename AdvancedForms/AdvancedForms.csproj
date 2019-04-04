@@ -81,10 +81,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Content.SubmissionProfile.ListItem.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Remove="Views\Admin\Adminfields.cshtml" />
   </ItemGroup>
 
@@ -130,10 +126,6 @@
 
   <ItemGroup>
     <Content Remove="Views\Content.SubmissionAdmin.ListItem.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="Views\Content.SubmissionProfile.ListItem.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
