@@ -80,7 +80,6 @@
 <div class="row">
     <div class="col-md-3">
         <div class="list-group" id="myList">
-            @*@await DisplayAsync(await New.ProfileMenu())*@
             @await RenderSectionAsync("ProfileNavigation", required: true)
         </div>
     </div>
@@ -152,8 +151,6 @@
                 @T["No result found."]
             </div>
         }
-
-        @*@await DisplayAsync(Model.Shape)*@
     </div>
 </div>
 <hr />

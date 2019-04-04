@@ -50,22 +50,10 @@ namespace AdvancedForms.Drivers
 
         public async override Task<IDisplayResult> EditAsync(IProfile profile, IUpdateModel updater)
         {
-            var query = _session.Query<ContentItem, ContentItemIndex>();
-            var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && o.Latest).OrderByDescending(o => o.CreatedUtc).ListAsync();
-            if (profile.UserName.ToLower() != "admin")
-            {
-                pageOfContentItems = pageOfContentItems.Where(o => o.Owner == profile.UserName);
-            }
-            var contentItemSummaries = new List<dynamic>();
-            //foreach (var contentItem in pageOfContentItems)
-            //{
-            //    contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, updater, "SubmissionProfile_ListItem"));
-            //}
-
             return await Task.FromResult<IDisplayResult>(
                     Initialize<ProfileViewModel>("List_Edit", item =>
                     {
-                        item.ContentItemSummaries = contentItemSummaries;
+                        item.ContentItemSummaries = null;
                     }).Location("Content:1").OnGroup(GroupId)
             );
         }
