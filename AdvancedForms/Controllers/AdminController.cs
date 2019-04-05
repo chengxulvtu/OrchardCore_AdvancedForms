@@ -272,7 +272,10 @@ namespace AdvancedForms.Controllers
                 viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type, viewModel.AdminContainer, viewModel.HtmlContainer, viewModel.AdminHtmlContainer);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.DisplayText = viewModel.Title;
-            contentItem.Content.AutoroutePart.Path = CreatePath(viewModel.Title);
+            var path = CreatePath(viewModel.Title);
+            contentItem.Content.AutoroutePart.Path = path;
+
+            contentItem.Alter<OrchardCore.Autoroute.Model.AutoroutePart>(x => x.Path = path);
             if (!ModelState.IsValid)
             {
                 _session.Cancel();
@@ -419,7 +422,10 @@ namespace AdvancedForms.Controllers
                 viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type, viewModel.AdminContainer, viewModel.HtmlContainer, viewModel.AdminHtmlContainer);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.DisplayText = viewModel.Title;
-            contentItem.Content.AutoroutePart.Path = CreatePath(viewModel.Title);
+            var path = CreatePath(viewModel.Title);
+            contentItem.Content.AutoroutePart.Path = path;
+
+            contentItem.Alter<OrchardCore.Autoroute.Model.AutoroutePart>(x => x.Path = path);
 
             var model = new AdvancedFormViewModel
             {
