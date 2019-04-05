@@ -51,6 +51,7 @@
     var isEdit = !String.IsNullOrEmpty(Model.Id);
     var createOrEdit = isEdit ? "Edit" : "Create";
     var displayType = "form";
+    var renderAdminForm = "renderAdminForm()";
 }
 
 <script type='text/javascript' at="Head">
@@ -73,8 +74,9 @@
         ).then(builderChange);
         displayType = "@displayType";
         activeButton(displayType);
-        if(isEdit) {
-            renderAdminForm();
+        debugger;
+        @if (isEdit && !String.IsNullOrEmpty(Model.AdminContainer)) {
+            @renderAdminForm;
         }
     };
 
@@ -90,9 +92,9 @@
     }
 </script>
 
-@if (isEdit)
+@if (isEdit && !String.IsNullOrEmpty(Model.AdminContainer))
 {
-    <script>
+    <script type='text/javascript' at="Head">
         function renderAdminForm() {
             Formio.createForm(document.getElementById('builderAdminFields'),
                 @if (String.IsNullOrEmpty(Model.AdminContainer)){@standardAdminComp}
@@ -107,13 +109,6 @@
                     };
                     builderAdminFieldsChange(form);
                 });
-        }
-    </script>
-}
-else
-{
-    <script>
-        function renderAdminForm() {
         }
     </script>
 }
@@ -152,15 +147,6 @@ else
     <br />
     <br />
 </div>
-
-@*<div>
-        <label asp-for="Tag">@T["Tag"]</label>
-        <input asp-for="Tag" class="form-control content-preview-text content-caption-text" autofocus="autofocus" form="main" />
-        <span class="hint">@T["The tag of the form."]</span>
-        <br />
-        <br />
-    </div>*@
-
 <div style="margin-bottom: 2rem;">
     <label asp-for="Title">@T["Type"]</label>
     <div id="ContentPicker_PickerAdvancedFormTypes_Type" class="content-picker-default">
