@@ -13742,7 +13742,7 @@
                   "Expression": "{{Request.Form.Title}} Approved by Public Works Department"
                 },
                 "Body": {
-                  "Expression": "Form: {{Request.Form.Title}} Submitted on: {{ Workflow.Input.ContentItem.CreatedUtc | date: \"%b %d, %y\" }} by {{ Workflow.Input.ContentItem.Owner }} <br/> \r\nWas approved on {{ Workflow.Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.date | date: \"%b %d, %y\" }}  <br/> \r\nLocation Address: {{ Workflow.Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.addressOfSubjectProperty }} <br/>\r\nTo view to view click the \r\n<a href=\"{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/{{Request.Form.Title | replace: \" \", \"-\"}}/view/{{ Workflow.CorrelationId }}\"> View {{Request.Form.Title}} </a>"
+                  "Expression": "Form: {{Request.Form.Title}} Submitted on: {{ Workflow.Input.ContentItem.CreatedUtc | date: \"%b %d, %y\" }} by {{ Workflow.Input.ContentItem.Owner }} <br/> \r\nWas approved on {{ Workflow.Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.date | date: \"%b %d, %y\" }}  <br/> \r\nLocation Address: {{ Workflow.Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.addressOfSubjectProperty }} <br/>\r\nTo view to view click the \r\n<a href=\"{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/{{Request.Form.Title | replace: \" \", \"-\"}}/view/{{ Workflow.CorrelationId }}\"> View {{Request.Form.Title}} </a>\r\n\r\n<br/><br/>\r\n{{ Workflow.Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission }}"
                 },
                 "IsBodyHtml": true,
                 "ActivityMetadata": {
@@ -13755,13 +13755,13 @@
               "Name": "IfElseTask",
               "X": 20,
               "Y": 190,
-              "IsStart": true,
+              "IsStart": false,
               "Properties": {
                 "ActivityMetadata": {
                   "Title": "Check If Public Works Department and Date Completed"
                 },
                 "Condition": {
-                  "Expression": "workflow().Input.ContentItem.DisplayText == \"Concept Plan\" && workflow().Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.publicWorksSignature != '' && workflow().Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.date != ''"
+                  "Expression": "workflow().Input.ContentItem.DisplayText == \"Concept Plan\" && workflow().Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html != null && workflow().Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.publicWorksSignature != '' && workflow().Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.date != ''"
                 }
               }
             },
@@ -13809,21 +13809,15 @@
           "Transitions": [
             {
               "Id": 0,
-              "SourceActivityId": "4g7wz4m8tvjqytym49zntgvdnb",
-              "SourceOutcomeName": "Done",
-              "DestinationActivityId": "4eynbagtk1d7pzhr6800xcbe48"
-            },
-            {
-              "Id": 0,
-              "SourceActivityId": "4eynbagtk1d7pzhr6800xcbe48",
-              "SourceOutcomeName": "True",
-              "DestinationActivityId": "4fvmbn9x6mexh0mcakfmgppsww"
-            },
-            {
-              "Id": 0,
               "SourceActivityId": "4fvmbn9x6mexh0mcakfmgppsww",
               "SourceOutcomeName": "Done",
               "DestinationActivityId": "4xbe49x0vs4dbrrkp5kmqwym4a"
+            },
+            {
+              "Id": 0,
+              "SourceActivityId": "4g7wz4m8tvjqytym49zntgvdnb",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4fvmbn9x6mexh0mcakfmgppsww"
             }
           ]
         }
