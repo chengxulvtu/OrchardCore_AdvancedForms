@@ -13768,7 +13768,7 @@
                   "Title": "Check If Public Works Department and Date Completed"
                 },
                 "Condition": {
-                  "Expression": "workflow().Input.ContentItem.DisplayText == \"Concept Plan\" && workflow().Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html != null && workflow().Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.publicWorksSignature != '' && workflow().Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.date != ''"
+                  "Expression": "workflow().Input.ContentItem.DisplayText == \"Concept Plan\" && workflow().Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html != '' && workflow().Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.publicWorksSignature != '' && workflow().Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.date != ''"
                 }
               }
             },
