@@ -167,6 +167,10 @@ namespace AdvancedForms.Controllers
             var formContent = await _contentManager.GetAsync(id, VersionOptions.Latest);
             string adminContainer = formContent.Content.AdvancedForm.AdminContainer.Html != null ? JsonConvert.SerializeObject(formContent.Content.AdvancedForm.AdminContainer.Html) : String.Empty;
             string adminHtmlContainer = formContent.Content.AdvancedForm.AdminHtmlContainer.Html;
+            description = formContent.Content.AdvancedForm.Description.Html;
+            instructions = formContent.Content.AdvancedForm.Instructions.Html;
+            header = formContent.Content.AdvancedForm.Header.Html;
+            footer = formContent.Content.AdvancedForm.Footer.Html;
 
             string metadata = string.Empty, data, status = string.Empty;
             var query = _session.Query<ContentItem, ContentItemIndex>();
