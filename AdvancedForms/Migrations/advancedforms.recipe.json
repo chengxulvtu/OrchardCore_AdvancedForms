@@ -13749,7 +13749,7 @@
                   "Expression": "{{Request.Form.Title}} Approved by Public Works Department"
                 },
                 "Body": {
-                  "Expression": "Form: {{Request.Form.Title}} Submitted on: {{ Workflow.Input.ContentItem.CreatedUtc | date: \"%b %d, %y\" }} by {{ Workflow.Input.ContentItem.Owner }} <br/> \r\nWas approved on {{ Workflow.Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.date | date: \"%b %d, %y\" }}  <br/> \r\nLocation Address: {{ Workflow.Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.addressOfSubjectProperty }} <br/>\r\nTo view to view click the \r\n<a href=\"{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/{{Request.Form.Title | replace: \" \", \"-\"}}/view/{{ Workflow.CorrelationId }}\"> View {{Request.Form.Title}} </a>\r\n\r\n<br/><br/>\r\n{{ Workflow.Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission }}"
+                  "Expression": "Form: {{Request.Form.Title}} Submitted on: {{ Workflow.Input.ContentItem.CreatedUtc | date: \"%b %d, %y\" }} by {{ Workflow.Input.ContentItem.Owner }} <br/> \r\nWas approved on {{ Workflow.Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.date | date: \"%b %d, %y\" }}  <br/> \r\nLocation Address: {{ Workflow.Input.ContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html.addressOfSubjectProperty }} <br/>\r\nTo view to view click the \r\n<a href=\"{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/{{Request.Form.Title | replace: \" \", \"-\"}}/view/{{ Workflow.CorrelationId }}\"> View {{Request.Form.Title}} </a>"
                 },
                 "IsBodyHtml": true,
                 "ActivityMetadata": {
@@ -13829,7 +13829,7 @@
             {
               "Id": 0,
               "SourceActivityId": "4eynbagtk1d7pzhr6800xcbe48",
-              "SourceOutcomeName": "False",
+              "SourceOutcomeName": "True",
               "DestinationActivityId": "4fvmbn9x6mexh0mcakfmgppsww"
             }
           ]
