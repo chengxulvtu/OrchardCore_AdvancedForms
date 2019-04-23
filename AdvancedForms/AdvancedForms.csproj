@@ -24,8 +24,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.NET.Sdk.Web" Version="1.0.0-alpha-20161104-2-112" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="OrchardCore" Version="1.0.0-beta3-71077" />
     <PackageReference Include="OrchardCore.Admin.Abstractions" Version="1.0.0-beta3-71077" />
     <PackageReference Include="OrchardCore.Autoroute" Version="1.0.0-beta3-71077" />
@@ -176,6 +185,10 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\Scripts\d3.v3.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Styles\display.css" />
   </ItemGroup>
 
 </Project>
