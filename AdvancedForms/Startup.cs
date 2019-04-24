@@ -30,10 +30,10 @@ namespace AdvancedForms
         {
             services.AddScoped<IDataMigration, Migrations>();
             services.AddScoped<IPermissionProvider, Permissions>();
+
             services.AddScoped<INavigationProvider, AdminMenu>();
             services.AddScoped<IProfileNavigationProvider, ProfileMenu>();
             services.AddScoped<IContentHandler, ContentsHandler>();
-
             services.AddScoped<IDisplayManager<IProfile>, DisplayManager<IProfile>>();
             services.AddScoped<IDisplayDriver<IProfile>, DefaultProfileDisplayDriver>();
         }
