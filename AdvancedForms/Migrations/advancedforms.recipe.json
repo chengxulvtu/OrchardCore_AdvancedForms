@@ -629,13 +629,13 @@
       "data": [
         {
           "ContentItemId": "48j1kp23v7re85sypwhzsp32cs",
-          "ContentItemVersionId": "4qe2cr3qtggxytnzjmq30ywv4r",
+          "ContentItemVersionId": "498rhhz81h8rrtb5vqsyysbmnw",
           "ContentType": "LandingPage",
           "DisplayText": "Application Test",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2019-03-14T09:03:33.3919912Z",
-          "PublishedUtc": "2019-03-14T09:03:33.58318Z",
+          "ModifiedUtc": "2019-04-29T11:44:31.3052174Z",
+          "PublishedUtc": "2019-04-29T11:44:31.4235719Z",
           "CreatedUtc": "2019-03-14T06:10:33.0541874Z",
           "Owner": "admin",
           "Author": "admin",
@@ -650,13 +650,13 @@
           "Services": {
             "ContentItems": [
               {
-                "ContentItemId": "40jwyw61rddhft4c5cwma9prxf",
+                "ContentItemId": "46x72qc347ab2vvgnp03hws754",
                 "ContentItemVersionId": null,
                 "ContentType": "Service",
-                "DisplayText": "Advanced Forms",
+                "DisplayText": "Advanced Online Forms",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.406131Z",
+                "ModifiedUtc": "2019-04-29T11:44:31.3449446Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": null,
@@ -667,20 +667,20 @@
                   }
                 },
                 "HtmlBodyPart": {
-                  "Html": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
+                  "Html": "Fill out your Permits, Licenses, and other County Forms online instead of coming into the office."
                 },
                 "TitlePart": {
-                  "Title": "Advanced Forms"
+                  "Title": "Advanced Online Forms"
                 }
               },
               {
-                "ContentItemId": "4w5b69pz7j5c9y9v96kat1hycg",
+                "ContentItemId": "4tmx16qyrjb5q3esf0hqfg0rxx",
                 "ContentItemVersionId": null,
                 "ContentType": "Service",
                 "DisplayText": "Downloadable Forms",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.4200045Z",
+                "ModifiedUtc": "2019-04-29T11:44:31.3526398Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": null,
@@ -691,7 +691,7 @@
                   }
                 },
                 "HtmlBodyPart": {
-                  "Html": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
+                  "Html": "Don't like technology download your form, print it, fill it out, and bring it in the office. "
                 },
                 "TitlePart": {
                   "Title": "Downloadable Forms"
@@ -702,13 +702,13 @@
           "Portfolio": {
             "ContentItems": [
               {
-                "ContentItemId": "4g32kw6ksk0ca2c50x22f078dp",
+                "ContentItemId": "4djpxw0t5495y51frv5jy64fwf",
                 "ContentItemVersionId": null,
                 "ContentType": "Project",
                 "DisplayText": "Online Forms",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.4289958Z",
+                "ModifiedUtc": "2019-04-29T11:44:31.3621819Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": null,
@@ -720,82 +720,24 @@
                     ]
                   },
                   "Category": {
-                    "Text": "Photography"
+                    "Text": "Online Forms"
                   }
                 },
                 "HtmlBodyPart": {
-                  "Html": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!"
+                  "Html": "Save time by securely filling out your building permits, applications, and license requests <a href=\"advancedforms\">online</a>. "
                 },
                 "TitlePart": {
                   "Title": "Online Forms"
                 }
               },
               {
-                "ContentItemId": "4k2zk33pexh5tzqzr89ed5r8my",
+                "ContentItemId": "43ta076d42hz9zww3ycted4f5d",
                 "ContentItemVersionId": null,
                 "ContentType": "Project",
-                "DisplayText": "Print Forms",
+                "DisplayText": "Online Status Updates",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.4365011Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "Project": {
-                  "Image": {
-                    "Paths": [
-                      "Features/02.png"
-                    ]
-                  },
-                  "Category": {
-                    "Text": "Illustrations"
-                  }
-                },
-                "HtmlBodyPart": {
-                  "Html": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!"
-                },
-                "TitlePart": {
-                  "Title": "Print Forms"
-                }
-              },
-              {
-                "ContentItemId": "47wgf28yy4c5nz2gqn8q0sn95s",
-                "ContentItemVersionId": null,
-                "ContentType": "Project",
-                "DisplayText": "Downloadable Forms",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.4452995Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "Project": {
-                  "Image": {
-                    "Paths": [
-                      "Features/3.png"
-                    ]
-                  },
-                  "Category": {
-                    "Text": "Graphic Design"
-                  }
-                },
-                "HtmlBodyPart": {
-                  "Html": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!"
-                },
-                "TitlePart": {
-                  "Title": "Downloadable Forms"
-                }
-              },
-              {
-                "ContentItemId": "40w1nkaj2dft0rsbnrxk409wxq",
-                "ContentItemVersionId": null,
-                "ContentType": "Project",
-                "DisplayText": "Online Status updates",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.4539484Z",
+                "ModifiedUtc": "2019-04-29T11:44:31.3724146Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": null,
@@ -807,24 +749,53 @@
                     ]
                   },
                   "Category": {
-                    "Text": "Identity"
+                    "Text": "User Profile"
                   }
                 },
                 "HtmlBodyPart": {
-                  "Html": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!"
+                  "Html": "Create a <a href=\"profile\">profile</a> to see status updates and communicate with the county staff during the process in the platform. No need to pick up the phone, send emails, or come in the office!"
                 },
                 "TitlePart": {
-                  "Title": "Online Status updates"
+                  "Title": "Online Status Updates"
                 }
               },
               {
-                "ContentItemId": "4yj5nb500yqzz11e9e6nzvjyw2",
+                "ContentItemId": "41xnzkbe95m11z3a7ge735d3nv",
+                "ContentItemVersionId": null,
+                "ContentType": "Project",
+                "DisplayText": "Print Forms",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2019-04-29T11:44:31.38191Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "Project": {
+                  "Image": {
+                    "Paths": [
+                      "Features/02.png"
+                    ]
+                  },
+                  "Category": {
+                    "Text": "User Profile"
+                  }
+                },
+                "HtmlBodyPart": {
+                  "Html": "Need to keep a copy for your records? You can print a copy at any time. No need to worry or waste paper your print outs will be safely kept in our online system. "
+                },
+                "TitlePart": {
+                  "Title": "Print Forms"
+                }
+              },
+              {
+                "ContentItemId": "4z57qsbyfs9gzw06tkd4d3dp4q",
                 "ContentItemVersionId": null,
                 "ContentType": "Project",
                 "DisplayText": "Online Payment’s",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.4625568Z",
+                "ModifiedUtc": "2019-04-29T11:44:31.391921Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": null,
@@ -836,24 +807,53 @@
                     ]
                   },
                   "Category": {
-                    "Text": "Branding"
+                    "Text": "Online Forms"
                   }
                 },
                 "HtmlBodyPart": {
-                  "Html": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!"
+                  "Html": "Pay online to save you time and allow us to start on your request sooner. You can track all your payments in your <a href=\"profile\">profile</a>. "
                 },
                 "TitlePart": {
                   "Title": "Online Payment’s"
                 }
               },
               {
-                "ContentItemId": "4gvvdznej9tj81jeq2m2hvmycr",
+                "ContentItemId": "4kk2j3ksvk6g711rrb5vas0nx8",
+                "ContentItemVersionId": null,
+                "ContentType": "Project",
+                "DisplayText": "Manual Forms",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2019-04-29T11:44:31.4021731Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
+                "Project": {
+                  "Image": {
+                    "Paths": [
+                      "Features/7.png"
+                    ]
+                  },
+                  "Category": {
+                    "Text": "Manual Forms"
+                  }
+                },
+                "HtmlBodyPart": {
+                  "Html": "Don't like technology <a href=\"DownloadableForms\">download</a> your form, print it, fill it out, and bring it in the office. We give you options to help you the way you want to be helped."
+                },
+                "TitlePart": {
+                  "Title": "Manual Forms"
+                }
+              },
+              {
+                "ContentItemId": "4t2a5ww2102hpy8d9nrnxc4v41",
                 "ContentItemVersionId": null,
                 "ContentType": "Project",
                 "DisplayText": "Workflows",
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.4767654Z",
+                "ModifiedUtc": "2019-04-29T11:44:31.4107549Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": null,
@@ -865,11 +865,11 @@
                     ]
                   },
                   "Category": {
-                    "Text": "Web Design"
+                    "Text": "Workflow"
                   }
                 },
                 "HtmlBodyPart": {
-                  "Html": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!"
+                  "Html": "Get automatic updates as your request progresses through the approval process with our advanced workflow system. Our workflow system streamlines communication while saving both of us time.  "
                 },
                 "TitlePart": {
                   "Title": "Workflows"
@@ -878,341 +878,13 @@
             ]
           },
           "About": {
-            "ContentItems": [
-              {
-                "ContentItemId": "4ny98dyq06et1r1avahjd4km5a",
-                "ContentItemVersionId": null,
-                "ContentType": "Milestone",
-                "DisplayText": "Our Humble Beginnings",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.4879889Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "Milestone": {
-                  "Date": {
-                    "Text": "2009-2011"
-                  },
-                  "Image": {
-                    "Paths": [
-                      "/about/1.jpg"
-                    ]
-                  }
-                },
-                "HtmlBodyPart": {
-                  "Html": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!"
-                },
-                "TitlePart": {
-                  "Title": "Our Humble Beginnings"
-                }
-              },
-              {
-                "ContentItemId": "4e5gx1dpzjfrgxjfqq1eh57tnr",
-                "ContentItemVersionId": null,
-                "ContentType": "Milestone",
-                "DisplayText": "An Agency is Born",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.497152Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "Milestone": {
-                  "Date": {
-                    "Text": "MARCH 2011"
-                  },
-                  "Image": {
-                    "Paths": [
-                      "/about/2.jpg"
-                    ]
-                  }
-                },
-                "HtmlBodyPart": {
-                  "Html": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!\r\n"
-                },
-                "TitlePart": {
-                  "Title": "An Agency is Born"
-                }
-              },
-              {
-                "ContentItemId": "4xfnk2pe1eszhz33wpkaapng5j",
-                "ContentItemVersionId": null,
-                "ContentType": "Milestone",
-                "DisplayText": "Transition to Full Service",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.503845Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "Milestone": {
-                  "Date": {
-                    "Text": "DECEMBER 2012"
-                  },
-                  "Image": {
-                    "Paths": [
-                      "/about/3.jpg"
-                    ]
-                  }
-                },
-                "HtmlBodyPart": {
-                  "Html": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!"
-                },
-                "TitlePart": {
-                  "Title": "Transition to Full Service"
-                }
-              },
-              {
-                "ContentItemId": "4e89kdxs9gvw2yqegy92j31ams",
-                "ContentItemVersionId": null,
-                "ContentType": "Milestone",
-                "DisplayText": "Phase Two Expansion",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.5117338Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "Milestone": {
-                  "Date": {
-                    "Text": "JULY 2014"
-                  },
-                  "Image": {
-                    "Paths": [
-                      "/about/4.jpg"
-                    ]
-                  }
-                },
-                "HtmlBodyPart": {
-                  "Html": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!\r\n"
-                },
-                "TitlePart": {
-                  "Title": "Phase Two Expansion"
-                }
-              }
-            ]
+            "ContentItems": []
           },
           "Team": {
-            "ContentItems": [
-              {
-                "ContentItemId": "4jbynfwry2v7n1sb94ymxdtmnv",
-                "ContentItemVersionId": null,
-                "ContentType": "TeamMember",
-                "DisplayText": "Kay Garland",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.521608Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "TeamMember": {
-                  "Occupation": {
-                    "Text": "Lead Designer"
-                  },
-                  "Picture": {
-                    "Paths": [
-                      "/team/1.jpg"
-                    ]
-                  },
-                  "Twitter": {
-                    "Text": "@BillGates"
-                  },
-                  "Facebook": {
-                    "Text": "BillGates"
-                  },
-                  "LinkedIn": {
-                    "Text": "williamhgates"
-                  }
-                },
-                "TitlePart": {
-                  "Title": "Kay Garland"
-                }
-              },
-              {
-                "ContentItemId": "47s6kzd8mmg841a8n6bd66ftdt",
-                "ContentItemVersionId": null,
-                "ContentType": "TeamMember",
-                "DisplayText": "Larry Parker",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.5329715Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "TeamMember": {
-                  "Occupation": {
-                    "Text": "Lead Marketer"
-                  },
-                  "Picture": {
-                    "Paths": [
-                      "/team/2.jpg"
-                    ]
-                  },
-                  "Twitter": {
-                    "Text": "@BillGates"
-                  },
-                  "Facebook": {
-                    "Text": "BillGates"
-                  },
-                  "LinkedIn": {
-                    "Text": "williamhgates"
-                  }
-                },
-                "TitlePart": {
-                  "Title": "Larry Parker"
-                }
-              },
-              {
-                "ContentItemId": "417e13j5e5b0wwv2yw9e9px7we",
-                "ContentItemVersionId": null,
-                "ContentType": "TeamMember",
-                "DisplayText": "Diana Pertersen",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.5444722Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "TeamMember": {
-                  "Occupation": {
-                    "Text": "Lead Developer"
-                  },
-                  "Picture": {
-                    "Paths": [
-                      "/team/3.jpg"
-                    ]
-                  },
-                  "Twitter": {
-                    "Text": "@BillGates"
-                  },
-                  "Facebook": {
-                    "Text": "BillGates"
-                  },
-                  "LinkedIn": {
-                    "Text": "williamhgates"
-                  }
-                },
-                "TitlePart": {
-                  "Title": "Diana Pertersen"
-                }
-              }
-            ]
+            "ContentItems": []
           },
           "Clients": {
-            "ContentItems": [
-              {
-                "ContentItemId": "4s7x4ft8ekx5p28m17txrytz4w",
-                "ContentItemVersionId": null,
-                "ContentType": "Client",
-                "DisplayText": "Envato",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.5525783Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "Client": {
-                  "Logo": {
-                    "Paths": [
-                      "/logos/envato.jpg"
-                    ]
-                  },
-                  "Url": {
-                    "Text": "#"
-                  }
-                },
-                "TitlePart": {
-                  "Title": "Envato"
-                }
-              },
-              {
-                "ContentItemId": "441z20bd8x60567488c9qjxrxn",
-                "ContentItemVersionId": null,
-                "ContentType": "Client",
-                "DisplayText": "Design Moto",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.559112Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "Client": {
-                  "Logo": {
-                    "Paths": [
-                      "/logos/designmodo.jpg"
-                    ]
-                  },
-                  "Url": {
-                    "Text": "#"
-                  }
-                },
-                "TitlePart": {
-                  "Title": "Design Moto"
-                }
-              },
-              {
-                "ContentItemId": "43vd4h3c2z5b7s8tm5jpzs9nnr",
-                "ContentItemVersionId": null,
-                "ContentType": "Client",
-                "DisplayText": "ThemeForest",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.5660285Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "Client": {
-                  "Logo": {
-                    "Paths": [
-                      "/logos/themeforest.jpg"
-                    ]
-                  },
-                  "Url": {
-                    "Text": "#"
-                  }
-                },
-                "TitlePart": {
-                  "Title": "ThemeForest"
-                }
-              },
-              {
-                "ContentItemId": "4tcga00g9eyq0vnsgjpp8yxjcw",
-                "ContentItemVersionId": null,
-                "ContentType": "Client",
-                "DisplayText": "Creative",
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2019-03-14T09:03:33.572403Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": null,
-                "Author": "admin",
-                "Client": {
-                  "Logo": {
-                    "Paths": [
-                      "/logos/creative-market.jpg"
-                    ]
-                  },
-                  "Url": {
-                    "Text": "#"
-                  }
-                },
-                "TitlePart": {
-                  "Title": "Creative"
-                }
-              }
-            ]
+            "ContentItems": []
           }
         },
         {
@@ -13468,13 +13140,13 @@
         },
         {
           "ContentItemId": "4dgf9zk28fewp32czg12et6amp",
-          "ContentItemVersionId": "4dv9me9qzv3cjx5t2xreypqawr",
+          "ContentItemVersionId": "4zve7hq4s0xarxx0wwa5vcmxwc",
           "ContentType": "Menu",
           "DisplayText": "Main Menu",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2019-03-14T07:10:58.2827589Z",
-          "PublishedUtc": "2019-03-14T07:10:58.2921695Z",
+          "ModifiedUtc": "2019-04-28T03:18:44.942674Z",
+          "PublishedUtc": "2019-04-28T03:18:44.9745716Z",
           "CreatedUtc": "2019-03-14T06:10:33.0427545Z",
           "Owner": "admin",
           "Author": "admin",
@@ -13485,44 +13157,73 @@
           "MenuItemsListPart": {
             "MenuItems": [
               {
-                "ContentType": "LinkMenuItem",
                 "ContentItemId": "4xqr84et18ghdxz1agdh8nvqwy",
+                "ContentItemVersionId": null,
+                "ContentType": "LinkMenuItem",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": null,
                 "LinkMenuItemPart": {
                   "Name": "Services",
                   "Url": "~/#services"
                 }
               },
               {
-                "ContentType": "LinkMenuItem",
                 "ContentItemId": "4m1webt08g68y3hv8hpebrqx4t",
+                "ContentItemVersionId": null,
+                "ContentType": "LinkMenuItem",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": null,
                 "LinkMenuItemPart": {
                   "Name": "Features",
                   "Url": "~/#portfolio"
                 }
               },
               {
-                "ContentType": "LinkMenuItem",
                 "ContentItemId": "4x0cpdnzhv4bb6tt3n9dykbyne",
+                "ContentItemVersionId": null,
+                "ContentType": "LinkMenuItem",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": null,
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": null,
                 "LinkMenuItemPart": {
                   "Name": "How Do I",
                   "Url": "~/#about"
                 }
               },
               {
+                "ContentItemId": "44vqb0kq32dkt1q7n0mcynx6x7",
+                "ContentItemVersionId": null,
                 "ContentType": "LinkMenuItem",
-                "ContentItemId": "4t947e9ky7cmgwxdwrxspsqp4z",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2019-04-28T03:18:34.3487753Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "admin",
                 "LinkMenuItemPart": {
-                  "Name": "Team",
-                  "Url": "~/#team"
-                }
-              },
-              {
-                "ContentType": "LinkMenuItem",
-                "ContentItemId": "4faxny3yx2h3k711ps6z13mtmy",
-                "LinkMenuItemPart": {
-                  "Name": "Contact",
-                  "Url": "~/contact"
-                }
+                  "Name": "My Profile",
+                  "Url": "/Profile"
+                },
+                "LinkMenuItem": {}
               }
             ]
           },
@@ -13568,11 +13269,11 @@
       "name": "Templates",
       "Templates": {
         "Content__LandingPage": {
-          "Content": "{% zone \"Header\" %}\r\n<!-- Header -->\r\n<header class=\"masthead\" style=\"background-image: url({{ '/header-bg.jpg' | asset_url }})\">\r\n    <div class=\"container\">\r\n        <div class=\"intro-text\">\r\n            <div class=\"intro-lead-in\">Training Software Platform</div>\r\n            <div class=\"intro-heading text-uppercase\">Making Interactions Easier</div>\r\n            <a class=\"btn btn-primary btn-xl text-uppercase js-scroll-trigger\" href=\"#services\">Tell Me More</a>\r\n        </div>\r\n    </div>\r\n</header>\r\n{% endzone %}\r\n\r\n{% if Model.ContentItem.Content.Services.ContentItems.size > 0 %}\r\n<!-- Services -->\r\n<section id=\"services\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12 text-center\">\r\n                <h2 class=\"section-heading text-uppercase\">Services</h2>\r\n                <h3 class=\"section-subheading text-muted\">How Can we help you?</h3>\r\n            </div>\r\n        </div>\r\n        <div class=\"row text-center\">\r\n            {% for service in Model.ContentItem.Content.Services.ContentItems %}\r\n            <div class=\"col-md-4\">\r\n                <span class=\"fa-stack fa-4x\">\r\n                    <i class=\"fa fa-circle fa-stack-2x text-primary\"></i>\r\n                    <i class=\"fa {{ service.Service.IconClass.Text }} fa-stack-1x fa-inverse\"></i>\r\n                </span>\r\n                <h4 class=\"service-heading\">{{ service.TitlePart.Title }}</h4>\r\n                <p class=\"text-muted\">{{ service.HtmlBodyPart.Body | raw }}</p>\r\n            </div>\r\n            {% endfor %}\r\n        </div>\r\n    </div>\r\n</section>\r\n{% endif %}\r\n\r\n{% if Model.ContentItem.Content.Portfolio.ContentItems.size > 0 %}\r\n<!-- Portfolio Grid -->\r\n<section class=\"bg-light\" id=\"portfolio\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12 text-center\">\r\n                <h2 class=\"section-heading text-uppercase\">Portfolio</h2>\r\n                <h3 class=\"section-subheading text-muted\">Lorem ipsum dolor sit amet consectetur.</h3>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            {% for project in Model.ContentItem.Content.Portfolio.ContentItems %}\r\n            <div class=\"col-md-4 col-sm-6 portfolio-item\">\r\n                <div class=\"portfolio-link\" data-toggle=\"modal\" href=\"#portfolioModal{{ forloop.index }}\">\r\n                    <div class=\"portfolio-hover\">\r\n                        <div class=\"portfolio-hover-content\">\r\n                            <i class=\"fa fa-plus fa-3x\"></i>\r\n                        </div>\r\n                    </div>\r\n                    <img class=\"img-fluid\" src=\"{{ project.Project.Image.Paths.first | asset_url | resize_url: width:400, height: 300, mode: 'stretch' }}\" alt=\"{{ project.TitlePart.Title }}\">\r\n                </div>\r\n                <div class=\"portfolio-caption\">\r\n                    <h4>{{ project.TitlePart.Title }}</h4>\r\n                    <p class=\"text-muted\">{{ project.Project.Category.Text }}</p>\r\n                </div>\r\n            </div>\r\n            {% endfor %}\r\n        </div>\r\n    </div>\r\n</section>\r\n{% endif %}\r\n\r\n{% if Model.ContentItem.Content.About.ContentItems.size > 0 %}\r\n<!-- About -->\r\n<section id=\"about\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12 text-center\">\r\n                <h2 class=\"section-heading text-uppercase\">About</h2>\r\n                <h3 class=\"section-subheading text-muted\">Lorem ipsum dolor sit amet consectetur.</h3>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12\">\r\n                <ul class=\"timeline\">\r\n                    {% for milestone in Model.ContentItem.Content.About.ContentItems %}\r\n                    <li class=\"{% cycle '', 'timeline-inverted' %}\">\r\n                        <div class=\"timeline-image\">\r\n                            <img class=\"rounded-circle img-fluid\" src=\"{{ milestone.Milestone.Image.Paths.first | asset_url | resize_url: width:160, height: 160, mode: 'stretch' }}\" alt=\"\">\r\n                        </div>\r\n                        <div class=\"timeline-panel\">\r\n                            <div class=\"timeline-heading\">\r\n                                <h4>{{ milestone.Milestone.Date.Text }}</h4>\r\n                                <h4 class=\"subheading\">{{ milestone.TitlePart.Title }}</h4>\r\n                            </div>\r\n                            <div class=\"timeline-body\">\r\n                                <p class=\"text-muted\">{{ milestone.HtmlBodyPart.Body }}</p>\r\n                            </div>\r\n                        </div>\r\n                    </li>\r\n                    {% endfor %}\r\n                    <li class=\"timeline-inverted\">\r\n                        <div class=\"timeline-image\">\r\n                            <h4>\r\n                                Be Part\r\n                                <br>Of Our\r\n                                <br>Story!\r\n                            </h4>\r\n                        </div>\r\n                    </li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</section>\r\n{% endif %}\r\n\r\n{% if Model.ContentItem.Content.Team.ContentItems.size > 0 %}\r\n<!-- Team -->\r\n<section class=\"bg-light\" id=\"team\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12 text-center\">\r\n                <h2 class=\"section-heading text-uppercase\">Our Amazing Team</h2>\r\n                <h3 class=\"section-subheading text-muted\">Lorem ipsum dolor sit amet consectetur.</h3>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            {% for member in Model.ContentItem.Content.Team.ContentItems %}\r\n            <div class=\"col-sm-4\">\r\n                <div class=\"team-member\">\r\n                    <img class=\"mx-auto rounded-circle\" src=\"{{ member.TeamMember.Picture.Paths.first | asset_url | resize_url: width:240, height: 240, mode: 'stretch' }}\" alt=\"\">\r\n                    <h4>{{ member.TitlePart.Title }}</h4>\r\n                    <p class=\"text-muted\">{{ member.TeamMember.Occupation.Text }}</p>\r\n                    <ul class=\"list-inline social-buttons\">\r\n                        {% if member.TeamMember.Twitter.Text.size > 0 %}\r\n                        <li class=\"list-inline-item\">\r\n                            <a href=\"https://www.twitter.com/{{ member.TeamMember.Twitter.Text }}\">\r\n                                <i class=\"fa fa-twitter\"></i>\r\n                            </a>\r\n                        </li>\r\n                        {% endif %}\r\n                        {% if member.TeamMember.Facebook.Text.size > 0 %}\r\n                        <li class=\"list-inline-item\">\r\n                            <a href=\"https://www.facebook.com/{{ member.TeamMember.Facebook.Text }}\">\r\n                                <i class=\"fa fa-facebook\"></i>\r\n                            </a>\r\n                        </li>\r\n                        {% endif %}\r\n                        {% if member.TeamMember.LinkedIn.Text.size > 0 %}\r\n                        <li class=\"list-inline-item\">\r\n                            <a href=\"https://www.linkedin.com/in/{{ member.TeamMember.LinkedIn.Text }}\">\r\n                                <i class=\"fa fa-linkedin\"></i>\r\n                            </a>\r\n                        </li>\r\n                        {% endif %}\r\n                    </ul>\r\n                </div>\r\n            </div>\r\n            {% endfor %}\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-8 mx-auto text-center\">\r\n                <p class=\"large text-muted\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</section>\r\n{% endif %}\r\n\r\n{% if Model.ContentItem.Content.Clients.ContentItems.size > 0 %}\r\n<!-- Clients -->\r\n<section class=\"py-5\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            {% for client in Model.ContentItem.Content.Clients.ContentItems %}\r\n            <div class=\"col-md-3 col-sm-6\">\r\n                <a href=\"{{ client.Client.Url.Text }}\">\r\n                    <img class=\"img-fluid d-block mx-auto\" src=\"{{ client.Client.Logo.Paths.first | asset_url }}\" alt=\"\">\r\n                </a>\r\n            </div>\r\n            {% endfor %}\r\n        </div>\r\n    </div>\r\n</section>\r\n{% endif %}\r\n\r\n<!-- Contact -->\r\n<section id=\"contact\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12 text-center\">\r\n                <h2 class=\"section-heading text-uppercase\">Contact Us</h2>\r\n                <h3 class=\"section-subheading text-muted\">Lorem ipsum dolor sit amet consectetur.</h3>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12\">\r\n                <form id=\"contactForm\" name=\"sentMessage\" novalidate>\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-6\">\r\n                            <div class=\"form-group\">\r\n                                <input class=\"form-control\" id=\"name\" type=\"text\" placeholder=\"Your Name *\" required data-validation-required-message=\"Please enter your name.\">\r\n                                <p class=\"help-block text-danger\"></p>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <input class=\"form-control\" id=\"email\" type=\"email\" placeholder=\"Your Email *\" required data-validation-required-message=\"Please enter your email address.\">\r\n                                <p class=\"help-block text-danger\"></p>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <input class=\"form-control\" id=\"phone\" type=\"tel\" placeholder=\"Your Phone *\" required data-validation-required-message=\"Please enter your phone number.\">\r\n                                <p class=\"help-block text-danger\"></p>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"col-md-6\">\r\n                            <div class=\"form-group\">\r\n                                <textarea class=\"form-control\" id=\"message\" placeholder=\"Your Message *\" required data-validation-required-message=\"Please enter a message.\"></textarea>\r\n                                <p class=\"help-block text-danger\"></p>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"clearfix\"></div>\r\n                        <div class=\"col-lg-12 text-center\">\r\n                            <div id=\"success\"></div>\r\n                            <button id=\"sendMessageButton\" class=\"btn btn-primary btn-xl text-uppercase\" type=\"submit\">Send Message</button>\r\n                        </div>\r\n                    </div>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</section>\r\n\r\n<!-- Modals -->\r\n{% for project in Model.ContentItem.Content.Portfolio.ContentItems %}\r\n<div class=\"portfolio-modal modal fade\" id=\"portfolioModal{{ forloop.index }}\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"close-modal\" data-dismiss=\"modal\">\r\n                <div class=\"lr\">\r\n                    <div class=\"rl\"></div>\r\n                </div>\r\n            </div>\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-lg-8 mx-auto\">\r\n                        <div class=\"modal-body\">\r\n                            <!-- Project Details Go Here -->\r\n                            <h2 class=\"text-uppercase\">{{ project.TitlePart.Title }}</h2>\r\n                            <p class=\"item-intro text-muted\">{{ project.Project.Category.Text }}</p>\r\n                            <img class=\"img-fluid d-block mx-auto\" src=\"{{ project.Project.Image.Paths.first | asset_url | resize_url: width:400, height: 300, mode: 'stretch' }}\" alt=\"{{ project.TitlePart.Title }}\">\r\n                            <p>{{ project.HtmlBodyPart.Body | raw }}</p>\r\n                            {% comment %}\r\n                            <ul class=\"list-inline\">\r\n                                <li>Date: January 2017</li>\r\n                                <li>Client: Threads</li>\r\n                                <li>Category: Illustration</li>\r\n                            </ul>\r\n                            {% endcomment %}\r\n                            <button class=\"btn btn-primary\" data-dismiss=\"modal\" type=\"button\">\r\n                                <i class=\"fa fa-times\"></i>\r\n                                Close Project\r\n                            </button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n{% endfor %}",
+          "Content": "{% zone \"Header\" %}\r\n<!-- Header -->\r\n<header class=\"masthead\" style=\"background-image: url({{ '/header-bg_night.jpg' | asset_url }})\">\r\n    <div class=\"container\">\r\n        <div class=\"intro-text\">\r\n            <div class=\"intro-lead-in\">Training Software Platform</div>\r\n            <div class=\"intro-heading text-uppercase\">Making Interactions Easier</div>\r\n            <a class=\"btn btn-primary btn-xl text-uppercase js-scroll-trigger\" href=\"#services\">Tell Me More</a>\r\n        </div>\r\n    </div>\r\n</header>\r\n{% endzone %}\r\n\r\n{% if Model.ContentItem.Content.Services.ContentItems.size > 0 %}\r\n<!-- Services -->\r\n<section id=\"services\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12 text-center\">\r\n                <h2 class=\"section-heading text-uppercase\">Services</h2>\r\n                <h3 class=\"section-subheading text-muted\">How Can we help you?</h3>\r\n            </div>\r\n        </div>\r\n        <div class=\"row text-center\">\r\n            {% for service in Model.ContentItem.Content.Services.ContentItems %}\r\n            <div class=\"col-md-4\">\r\n                <span class=\"fa-stack fa-4x\">\r\n                    <i class=\"fa fa-circle fa-stack-2x text-primary\"></i>\r\n                    <i class=\"fa {{ service.Service.IconClass.Text }} fa-stack-1x fa-inverse\"></i>\r\n                </span>\r\n                <h4 class=\"service-heading\">{{ service.TitlePart.Title }}</h4>\r\n                <p class=\"text-muted\">{{ service.HtmlBodyPart.Body | raw }}</p>\r\n            </div>\r\n            {% endfor %}\r\n        </div>\r\n    </div>\r\n</section>\r\n{% endif %}\r\n\r\n{% if Model.ContentItem.Content.Portfolio.ContentItems.size > 0 %}\r\n<!-- Portfolio Grid -->\r\n<section class=\"bg-light\" id=\"portfolio\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12 text-center\">\r\n                <h2 class=\"section-heading text-uppercase\">Portfolio</h2>\r\n                <h3 class=\"section-subheading text-muted\">Lorem ipsum dolor sit amet consectetur.</h3>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            {% for project in Model.ContentItem.Content.Portfolio.ContentItems %}\r\n            <div class=\"col-md-4 col-sm-6 portfolio-item\">\r\n                <div class=\"portfolio-link\" data-toggle=\"modal\" href=\"#portfolioModal{{ forloop.index }}\">\r\n                    <div class=\"portfolio-hover\">\r\n                        <div class=\"portfolio-hover-content\">\r\n                            <i class=\"fa fa-plus fa-3x\"></i>\r\n                        </div>\r\n                    </div>\r\n                    <img class=\"img-fluid\" src=\"{{ project.Project.Image.Paths.first | asset_url | resize_url: width:400, height: 300, mode: 'stretch' }}\" alt=\"{{ project.TitlePart.Title }}\">\r\n                </div>\r\n                <div class=\"portfolio-caption\">\r\n                    <h4>{{ project.TitlePart.Title }}</h4>\r\n                    <p class=\"text-muted\">{{ project.Project.Category.Text }}</p>\r\n                </div>\r\n            </div>\r\n            {% endfor %}\r\n        </div>\r\n    </div>\r\n</section>\r\n{% endif %}\r\n\r\n{% if Model.ContentItem.Content.About.ContentItems.size > 0 %}\r\n<!-- About -->\r\n<section id=\"about\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12 text-center\">\r\n                <h2 class=\"section-heading text-uppercase\">About</h2>\r\n                <h3 class=\"section-subheading text-muted\">Lorem ipsum dolor sit amet consectetur.</h3>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12\">\r\n                <ul class=\"timeline\">\r\n                    {% for milestone in Model.ContentItem.Content.About.ContentItems %}\r\n                    <li class=\"{% cycle '', 'timeline-inverted' %}\">\r\n                        <div class=\"timeline-image\">\r\n                            <img class=\"rounded-circle img-fluid\" src=\"{{ milestone.Milestone.Image.Paths.first | asset_url | resize_url: width:160, height: 160, mode: 'stretch' }}\" alt=\"\">\r\n                        </div>\r\n                        <div class=\"timeline-panel\">\r\n                            <div class=\"timeline-heading\">\r\n                                <h4>{{ milestone.Milestone.Date.Text }}</h4>\r\n                                <h4 class=\"subheading\">{{ milestone.TitlePart.Title }}</h4>\r\n                            </div>\r\n                            <div class=\"timeline-body\">\r\n                                <p class=\"text-muted\">{{ milestone.HtmlBodyPart.Body }}</p>\r\n                            </div>\r\n                        </div>\r\n                    </li>\r\n                    {% endfor %}\r\n                    <li class=\"timeline-inverted\">\r\n                        <div class=\"timeline-image\">\r\n                            <h4>\r\n                                Be Part\r\n                                <br>Of Our\r\n                                <br>Story!\r\n                            </h4>\r\n                        </div>\r\n                    </li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</section>\r\n{% endif %}\r\n\r\n{% if Model.ContentItem.Content.Team.ContentItems.size > 0 %}\r\n<!-- Team -->\r\n<section class=\"bg-light\" id=\"team\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12 text-center\">\r\n                <h2 class=\"section-heading text-uppercase\">Our Amazing Team</h2>\r\n                <h3 class=\"section-subheading text-muted\">Lorem ipsum dolor sit amet consectetur.</h3>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            {% for member in Model.ContentItem.Content.Team.ContentItems %}\r\n            <div class=\"col-sm-4\">\r\n                <div class=\"team-member\">\r\n                    <img class=\"mx-auto rounded-circle\" src=\"{{ member.TeamMember.Picture.Paths.first | asset_url | resize_url: width:240, height: 240, mode: 'stretch' }}\" alt=\"\">\r\n                    <h4>{{ member.TitlePart.Title }}</h4>\r\n                    <p class=\"text-muted\">{{ member.TeamMember.Occupation.Text }}</p>\r\n                    <ul class=\"list-inline social-buttons\">\r\n                        {% if member.TeamMember.Twitter.Text.size > 0 %}\r\n                        <li class=\"list-inline-item\">\r\n                            <a href=\"https://www.twitter.com/{{ member.TeamMember.Twitter.Text }}\">\r\n                                <i class=\"fa fa-twitter\"></i>\r\n                            </a>\r\n                        </li>\r\n                        {% endif %}\r\n                        {% if member.TeamMember.Facebook.Text.size > 0 %}\r\n                        <li class=\"list-inline-item\">\r\n                            <a href=\"https://www.facebook.com/{{ member.TeamMember.Facebook.Text }}\">\r\n                                <i class=\"fa fa-facebook\"></i>\r\n                            </a>\r\n                        </li>\r\n                        {% endif %}\r\n                        {% if member.TeamMember.LinkedIn.Text.size > 0 %}\r\n                        <li class=\"list-inline-item\">\r\n                            <a href=\"https://www.linkedin.com/in/{{ member.TeamMember.LinkedIn.Text }}\">\r\n                                <i class=\"fa fa-linkedin\"></i>\r\n                            </a>\r\n                        </li>\r\n                        {% endif %}\r\n                    </ul>\r\n                </div>\r\n            </div>\r\n            {% endfor %}\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-8 mx-auto text-center\">\r\n                <p class=\"large text-muted\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</section>\r\n{% endif %}\r\n\r\n{% if Model.ContentItem.Content.Clients.ContentItems.size > 0 %}\r\n<!-- Clients -->\r\n<section class=\"py-5\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            {% for client in Model.ContentItem.Content.Clients.ContentItems %}\r\n            <div class=\"col-md-3 col-sm-6\">\r\n                <a href=\"{{ client.Client.Url.Text }}\">\r\n                    <img class=\"img-fluid d-block mx-auto\" src=\"{{ client.Client.Logo.Paths.first | asset_url }}\" alt=\"\">\r\n                </a>\r\n            </div>\r\n            {% endfor %}\r\n        </div>\r\n    </div>\r\n</section>\r\n{% endif %}\r\n\r\n<!-- Contact -->\r\n<section id=\"contact\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12 text-center\">\r\n                <h2 class=\"section-heading text-uppercase\">Contact Us</h2>\r\n                <h3 class=\"section-subheading text-muted\">Lorem ipsum dolor sit amet consectetur.</h3>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-lg-12\">\r\n                <form id=\"contactForm\" name=\"sentMessage\" novalidate>\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-6\">\r\n                            <div class=\"form-group\">\r\n                                <input class=\"form-control\" id=\"name\" type=\"text\" placeholder=\"Your Name *\" required data-validation-required-message=\"Please enter your name.\">\r\n                                <p class=\"help-block text-danger\"></p>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <input class=\"form-control\" id=\"email\" type=\"email\" placeholder=\"Your Email *\" required data-validation-required-message=\"Please enter your email address.\">\r\n                                <p class=\"help-block text-danger\"></p>\r\n                            </div>\r\n                            <div class=\"form-group\">\r\n                                <input class=\"form-control\" id=\"phone\" type=\"tel\" placeholder=\"Your Phone *\" required data-validation-required-message=\"Please enter your phone number.\">\r\n                                <p class=\"help-block text-danger\"></p>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"col-md-6\">\r\n                            <div class=\"form-group\">\r\n                                <textarea class=\"form-control\" id=\"message\" placeholder=\"Your Message *\" required data-validation-required-message=\"Please enter a message.\"></textarea>\r\n                                <p class=\"help-block text-danger\"></p>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"clearfix\"></div>\r\n                        <div class=\"col-lg-12 text-center\">\r\n                            <div id=\"success\"></div>\r\n                            <button id=\"sendMessageButton\" class=\"btn btn-primary btn-xl text-uppercase\" type=\"submit\">Send Message</button>\r\n                        </div>\r\n                    </div>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</section>\r\n\r\n<!-- Modals -->\r\n{% for project in Model.ContentItem.Content.Portfolio.ContentItems %}\r\n<div class=\"portfolio-modal modal fade\" id=\"portfolioModal{{ forloop.index }}\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"close-modal\" data-dismiss=\"modal\">\r\n                <div class=\"lr\">\r\n                    <div class=\"rl\"></div>\r\n                </div>\r\n            </div>\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-lg-8 mx-auto\">\r\n                        <div class=\"modal-body\">\r\n                            <!-- Project Details Go Here -->\r\n                            <h2 class=\"text-uppercase\">{{ project.TitlePart.Title }}</h2>\r\n                            <p class=\"item-intro text-muted\">{{ project.Project.Category.Text }}</p>\r\n                            <img class=\"img-fluid d-block mx-auto\" src=\"{{ project.Project.Image.Paths.first | asset_url | resize_url: width:400, height: 300, mode: 'stretch' }}\" alt=\"{{ project.TitlePart.Title }}\">\r\n                            <p>{{ project.HtmlBodyPart.Body | raw }}</p>\r\n                            {% comment %}\r\n                            <ul class=\"list-inline\">\r\n                                <li>Date: January 2017</li>\r\n                                <li>Client: Threads</li>\r\n                                <li>Category: Illustration</li>\r\n                            </ul>\r\n                            {% endcomment %}\r\n                            <button class=\"btn btn-primary\" data-dismiss=\"modal\" type=\"button\">\r\n                                <i class=\"fa fa-times\"></i>\r\n                                Close Project\r\n                            </button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n{% endfor %}",
           "Description": "A template for the Landing Page content type"
         },
         "Content": {
-          "Content": "{% zone \"Header\" %}\r\n<header class=\"masthead\" style=\"background-image: url({{ '/header-bg.jpg' | asset_url }})\">\r\n    <div class=\"container\">\r\n        <div class=\"intro-text\">\r\n            <div class=\"intro-lead-in\"></div>\r\n            <div class=\"intro-heading text-uppercase\">{{ Model.ContentItem | display_text }}</div>\r\n      </div>\r\n    </div>\r\n</header>\r\n{% endzone %}\r\n\r\n<section>\r\n  <div class=\"container\">\r\n      {{ Model.Content | shape_render }}\r\n  </div>\r\n</section>\r\n",
+          "Content": "{% zone \"Header\" %}\r\n<header class=\"masthead\" style=\"background-image: url({{ '/header-bg_night.jpg' | asset_url }})\">\r\n    <div class=\"container\">\r\n        <div class=\"intro-text\">\r\n            <div class=\"intro-lead-in\"></div>\r\n            <div class=\"intro-heading text-uppercase\">{{ Model.ContentItem | display_text }}</div>\r\n      </div>\r\n    </div>\r\n</header>\r\n{% endzone %}\r\n\r\n<section>\r\n  <div class=\"container\">\r\n      {{ Model.Content | shape_render }}\r\n  </div>\r\n</section>\r\n",
           "Description": "Main content template for liquid file for all pages "
         }
       }
@@ -13583,6 +13284,10 @@
         {
           "TargetPath": "header-bg.jpg",
           "SourcePath": "../wwwroot/Image/header-bg.jpg"
+        },
+        {
+          "TargetPath": "header-bg_night.jpg",
+          "SourcePath": "../wwwroot/Image/header-bg_night.jpg"
         },
         {
           "SourcePath": "../wwwroot/Image/advanced forms images/City of Salina.PNG",
@@ -13631,6 +13336,10 @@
         {
           "SourcePath": "../wwwroot/Image/Features/6.png",
           "TargetPath": "Features/6.png"
+        },
+        {
+          "SourcePath": "../wwwroot/Image/Features/7.png",
+          "TargetPath": "Features/7.png"
         }
       ]
     },
