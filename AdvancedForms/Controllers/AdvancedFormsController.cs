@@ -208,6 +208,10 @@ namespace AdvancedForms.Controllers
                 if (helper.IsMapLocationExist(adminContainer))
                 {
                     Location = helper.GetInputValue(data, "applicationLocation");
+                    if (string.IsNullOrEmpty(adminSubmission))
+                    {
+                        adminSubmission = "{\r\n  \"isMapLocation\": true\r\n}";
+                    }
                 }
             }
             var viewModel = new AdvancedFormSubmissions(data, metadata, subTitle, container, header, footer, description,

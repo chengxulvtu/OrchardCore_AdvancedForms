@@ -117,7 +117,7 @@ namespace AdvancedForms.Helper
         {
             string value = string.Empty;
             Dictionary<string, object> contents = JsonConvert.DeserializeObject<Dictionary<string, object>>(data);
-            if(contents.Any(o=>o.Key == Input))
+            if (contents.Any(o => o.Key == Input))
             {
                 return contents.FirstOrDefault(o => o.Key == Input).Value.ToString();
             }
@@ -134,7 +134,7 @@ namespace AdvancedForms.Helper
                 {
                     if (prop["key"].ToString() == Key)
                     {
-                        value = prop["input"].ToString();
+                        value = prop["defaultValue"].ToString();
                         break;
                     }
                 }
