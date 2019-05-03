@@ -547,7 +547,8 @@ namespace AdvancedForms.Controllers
                 Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text,
                 SelectedItems = lst,
                 AdminEditor = new HTMLFieldViewModel() { ID = "AdminComment" },
-                PublicEditor = new HTMLFieldViewModel() { ID = "PublicComment" }
+                PublicEditor = new HTMLFieldViewModel() { ID = "PublicComment" },
+                ApplicationLocation = subContentItem.Content.AdvancedFormSubmissions.ApplicationLocation.Text
             };
             return View("Submission", model);
         }

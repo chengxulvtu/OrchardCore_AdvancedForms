@@ -201,9 +201,17 @@ namespace AdvancedForms.Controllers
             }
             string guid = content.ContentItemId;
             string subTitle = title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
-
+            string Location = string.Empty;
+            if (adminContainer != null)
+            {
+                ContentHelper helper = new ContentHelper(_contentManager, _session, _contentDefinitionManager, _contentAliasManager);
+                if (helper.IsMapLocationExist(adminContainer))
+                {
+                    Location = helper.GetInputValue(data, "applicationLocation");
+                }
+            }
             var viewModel = new AdvancedFormSubmissions(data, metadata, subTitle, container, header, footer, description,
-                type, instructions, owner, status, adminContainer, adminSubmission, htmlContainer, adminHtmlContainer);
+                type, instructions, owner, status, adminContainer, adminSubmission, htmlContainer, adminHtmlContainer, Location);
 
             return await EditPOST(content.ContentItemId, title, viewModel, async contentItem =>
             {
@@ -245,7 +253,7 @@ namespace AdvancedForms.Controllers
             string subTitle = model.Title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
             var subObject = JObject.Parse(model.Submission);
             var viewModel = new AdvancedFormSubmissions(model.Submission,
-            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.HtmlContainer, model.AdminHtmlContainer);
+            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.HtmlContainer, model.AdminHtmlContainer, model.ApplicationLocation);
 
             await EditPOST(content.ContentItemId, model.Title, viewModel, async contentItem =>
             {
@@ -288,7 +296,7 @@ namespace AdvancedForms.Controllers
             string subTitle = model.Title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
             var subObject = JObject.Parse(model.Submission);
             var viewModel = new AdvancedFormSubmissions(model.Submission,
-            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.HtmlContainer, model.AdminHtmlContainer);
+            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.HtmlContainer, model.AdminHtmlContainer, model.ApplicationLocation);
 
             await EditPOST(content.ContentItemId, model.Title, viewModel, async contentItem =>
             {

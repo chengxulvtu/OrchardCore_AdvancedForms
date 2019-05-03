@@ -22,7 +22,7 @@ namespace AdvancedForms.Helper
         private readonly IContentAliasManager _contentAliasManager;
 
         public ContentHelper(
-            IContentManager contentManager, 
+            IContentManager contentManager,
             YesSql.ISession session,
             IContentDefinitionManager contentDefinitionManager,
             IContentAliasManager contentAliasManager)
@@ -96,6 +96,50 @@ namespace AdvancedForms.Helper
                 PublicEditor = new HTMLFieldViewModel() { ID = "PublicComment" }
 
             };
+        }
+
+        public bool IsMapLocationExist(string adminContainer)
+        {
+            bool isMapLocation = false;
+            var adminfields = JObject.Parse(adminContainer);
+            if (adminfields["components"] != null && adminfields["components"][0] != null && adminfields["components"][0]["components"] != null)
+            {
+                string value = this.GetValueFromJObject("isMapLocation", adminfields["components"][0]["components"]);
+                if (!string.IsNullOrEmpty(value))
+                {
+                    return true;
+                }
+            }
+            return isMapLocation;
+        }
+
+        public string GetInputValue(string data, string Input)
+        {
+            string value = string.Empty;
+            Dictionary<string, object> contents = JsonConvert.DeserializeObject<Dictionary<string, object>>(data);
+            if(contents.Any(o=>o.Key == Input))
+            {
+                return contents.FirstOrDefault(o => o.Key == Input).Value.ToString();
+            }
+            return value;
+        }
+
+        public string GetValueFromJObject(string Key, JToken obj)
+        {
+            string value = string.Empty;
+            if (obj.ToString().Contains("{") && obj.ToString().Contains("}"))
+            {
+                value = string.Empty;
+                foreach (var prop in obj.Children())
+                {
+                    if (prop["key"].ToString() == Key)
+                    {
+                        value = prop["input"].ToString();
+                        break;
+                    }
+                }
+            }
+            return value;
         }
 
     }

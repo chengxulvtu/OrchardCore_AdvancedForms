@@ -31,6 +31,7 @@ namespace AdvancedForms.ViewModels
         public string AdminHtmlContainer { get; set; }
         public string Submission { get; set; }
         public string AdminSubmission { get; set; }
+        public string ApplicationLocation { get; set; }
         public string Metadata { get; set; }
         public string SubmissionId { get; set; }
         public Enums.EntryType EntryType { get; set; }
