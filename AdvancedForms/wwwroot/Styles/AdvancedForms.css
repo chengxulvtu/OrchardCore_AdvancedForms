@@ -250,3 +250,36 @@ svg {
     overflow: hidden;
     vertical-align: text-bottom !important;
 }
+.fileinput-button {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+.errorMessagePublic {
+    color: red;
+    font-size: 12px;
+    display:none;
+}
+#fileuploadPublic{
+    display:none !important;
+}
+#publicAttachmentRemove{
+    color:red;
+    display:none;
+    cursor:pointer;
+}
+
+.errorMessageAdmin {
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+#fileuploadAdmin {
+    display: none !important;
+}
+
+#adminAttachmentRemove {
+    color: red;
+    display: none;
+    cursor: pointer;
+}

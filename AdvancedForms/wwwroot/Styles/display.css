@@ -122,3 +122,37 @@ legend {
     padding: 0 10px;
     border-bottom: none;
 }
+.errorMessagePublic {
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+#fileuploadPublic {
+    display: none !important;
+}
+
+#publicAttachmentRemove {
+    color: red;
+    display: none;
+    cursor: pointer;
+}
+
+.errorMessageAdmin {
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+#fileuploadAdmin {
+    display: none !important;
+}
+
+#adminAttachmentRemove {
+    color: red;
+    display: none;
+    cursor: pointer;
+}
+.panel-heading a, .panel-heading a:hover {
+    color: #fff;
+}

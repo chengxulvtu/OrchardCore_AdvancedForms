@@ -11,7 +11,7 @@
     var createOrEdit = isEdit ? "Edit" : "Create";
 }
 
-<script type='text/javascript' at="Head">
+<script type='text/javascript' at="Foot">
     window.onload = function() {
         Formio.createForm(document.getElementById('formio'),
             @Html.Raw(Model.Container)
@@ -127,16 +127,31 @@
         <br />
         <div>
             @await Html.PartialAsync("HTMLField", Model.PublicEditor)
-            <button class="publish-button btn btn-success" onclick="submitPublicComment('@Model.Id')">@T["Save"]</button>
+            <span class="errorMessagePublic">@T["Public comment required."]</span> <br />
+            <div class="btn-group btn-group-sm">
+                <label for="fileuploadPublic" class="btn btn-sm btn-primary fileinput-button upload-button" style="padding: 6px 12px;font-size: 14px;">
+                    <input id="fileuploadPublic" type="file" name="files">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    @T["Attach a file with comment"]
+                </label>
+            </div><br />
+            <a target="_blank" id="publicAttachment"></a> <a id="publicAttachmentRemove">Remove Attachment</a><br />
+            <button class="publish-button btn btn-success" onclick="submitPublicComment('@Model.SubmissionId')">@T["Save"]</button>
         </div>
         <br />
         <br />
         <hr />
     </div>
 }
-<script asp-src="/AdvancedForms/Scripts/Submission.js" at="Head"></script>
-<script type="text/javascript">
-    GetPublicComments('@Model.Id');
+<script asp-src="/OrchardCore.Resources/Scripts/jquery-ui.js" debug-src="/OrchardCore.Resources/Scripts/jquery-ui.js" asp-name="jquery-ui" at="Foot"></script>
+<script asp-src="https://vuejs.org/js/vue.min.js" debug-src="https://vuejs.org/js/vue.js" asp-name="vuejs" at="Foot"></script>
+<script asp-src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.min.js" debug-src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.js" asp-name="sortable" at="Foot"></script>
+<script asp-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.min.js" debug-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.js" asp-name="vuedraggable" depends-on="vuejs, sortable" at="Foot"></script>
+
+<script asp-src="/AdvancedForms/Scripts/jquery.fileupload.js" at="Foot" asp-name="advancedforms.fileupload"></script>
+<script asp-src="/AdvancedForms/Scripts/Submission.js" at="Foot"></script>
+<script type="text/javascript" at="Foot">
+    GetPublicComments('@Model.SubmissionId');
 </script>
 
 <script>

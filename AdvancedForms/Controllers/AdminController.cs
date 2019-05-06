@@ -158,7 +158,7 @@ namespace AdvancedForms.Controllers
 
         [HttpPost]
         [Route("AdvancedForms/SaveUpdateAdminComment")]
-        public async Task<IActionResult> SaveAdminComment(string id, string contentItemId, string comment)
+        public async Task<IActionResult> SaveAdminComment(string id, string contentItemId, string comment, string attachment)
         {
             ContentItem content;
             if (!string.IsNullOrWhiteSpace(contentItemId))
@@ -171,7 +171,9 @@ namespace AdvancedForms.Controllers
                 await _contentManager.CreateAsync(content, VersionOptions.Draft);
             }
 
-            var model = new CommentPart(comment);
+            attachment = string.IsNullOrEmpty(attachment) ? "" : attachment;
+
+            var model = new CommentPart(comment, attachment);
 
 
             await _contentManager.PublishAsync(content);

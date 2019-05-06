@@ -7,7 +7,6 @@ function setCurrentUser(id, user, isSubmission) {
     ID = id;
 }
 
-
 function renderCommentEditors() {
     $('#PublicComment').trumbowyg();
     $('#AdminComment').trumbowyg();
@@ -24,16 +23,27 @@ function clearEditors() {
         $('#AdminComment-ContentItmeID').parent().find(".publish-button")[0].textContent = "Save";
         $('#AdminComment-ContentItmeID').val("");
     }
+
+    $("#publicAttachmentRemove").hide();
+    $("#publicAttachment").text("");
+    $("#publicAttachment").attr("href", "");
+
+    $("#adminAttachmentRemove").hide();
+    $("#adminAttachment").text("");
+    $("#adminAttachment").attr("href", "");
 }
 
 function submitAdminComment(id) {
+    $(".errorMessageAdmin").hide();
     if ($("#AdminComment").parent().find(".trumbowyg-editor").length == 0) {
         return;
     }
     var content = $("#AdminComment").parent().find(".trumbowyg-editor")[0].innerHTML;
-    if (content == null) {
+    if (content === null || content === "") {
+        $(".errorMessageAdmin").show();
         return;
     }
+    var url = $("#adminAttachment").text();
     $.ajax({
         url: '/AdvancedForms/SaveUpdateAdminComment',
         method: 'POST',
@@ -41,7 +51,8 @@ function submitAdminComment(id) {
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
             id: id,
             contentItemId: $("#AdminComment-ContentItmeID").val(),
-            comment: content
+            comment: content,
+            attachment: url
         },
         success: function (data) {
             clearEditors();
@@ -55,13 +66,16 @@ function submitAdminComment(id) {
 }
 
 function submitPublicComment(id) {
+    $(".errorMessagePublic").hide();
     if ($("#PublicComment").parent().find(".trumbowyg-editor").length == 0) {
         return;
     }
     var content = $("#PublicComment").parent().find(".trumbowyg-editor")[0].innerHTML;
-    if (content == null) {
+    if (content === null || content === "") {
+        $(".errorMessagePublic").show();
         return;
     }
+    var url = $("#publicAttachment").text();
     $.ajax({
         url: '/AdvancedForms/SaveUpdatePublicComment',
         method: 'POST',
@@ -69,7 +83,8 @@ function submitPublicComment(id) {
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
             id: id,
             contentItemId: $("#PublicComment-ContentItmeID").val(),
-            comment: content
+            comment: content,
+            attachment: url
         },
         success: function (data) {
             clearEditors();
@@ -175,13 +190,24 @@ function getPanel(value, isPublic) {
     var editorSelect = "AdminComment";
     panel += '<div class="panel panel-default">';
     var comment = '';
+    var url = '';
     if (isPublic) {
         editorSelect = "PublicComment";
         comment = value.PublicComment.Comment.Html;
+        if (value.PublicComment.Attachment !== undefined) {
+            url = value.PublicComment.Attachment.Text;
+        }
     }
-    else
+    else {
         comment = value.AdminComment.Comment.Html;
+        if (value.AdminComment.Attachment !== undefined) {
+            url = value.AdminComment.Attachment.Text;
+        }
+    }
     panel += '<div class="panel-heading"><b>' + value.Owner + '</b> ' + getDateString(value.CreatedUtc);
+    if (url !== "") {
+        panel += ' <a target="_blank" href="' + url + '">Download Attachment</a>';
+    }
 
     if (IsSubmission) {
         if (isPublic) {
@@ -243,4 +269,68 @@ function builderAdminFieldsChange(builder) {
             document.getElementById('AdminSubmission').value = null;
         }
     });
+}
+
+$('#fileuploadPublic').fileupload({
+    dataType: 'json',
+    url: '/OrchardCore.Media/Admin/Upload',
+    formData: function () {
+        var antiForgeryToken = $("input[name=__RequestVerificationToken]").val();
+
+        return [
+            { name: 'path', value: "Form Comments" },
+            { name: '__RequestVerificationToken', value: antiForgeryToken }
+        ]
+    },
+    done: function (e, data) {
+        $.each(data.result.files, function (index, file) {
+            clearAttachment();
+            if (file.error != undefined) {
+                alert(file.error);
+            } else {
+                $("#publicAttachmentRemove").show();
+                $("#publicAttachment").text(file.url);
+                $("#publicAttachment").attr("href", file.url);
+            }
+        });
+    }
+});
+
+$('#fileuploadAdmin').fileupload({
+    dataType: 'json',
+    url: '/OrchardCore.Media/Admin/Upload',
+    formData: function () {
+        var antiForgeryToken = $("input[name=__RequestVerificationToken]").val();
+
+        return [
+            { name: 'path', value: "Form Comments" },
+            { name: '__RequestVerificationToken', value: antiForgeryToken }
+        ]
+    },
+    done: function (e, data) {
+        $.each(data.result.files, function (index, file) {
+            clearAttachment();
+            if (file.error != undefined) {
+                alert(file.error);
+            } else {
+                $("#adminAttachmentRemove").show();
+                $("#adminAttachment").text(file.url);
+                $("#adminAttachment").attr("href", file.url);
+            }
+        });
+    }
+});
+
+$("#publicAttachmentRemove, #adminAttachmentRemove").click(function () {
+    clearAttachment();
+});
+
+function clearAttachment() {
+    $("#publicAttachmentRemove").hide();
+    $("#publicAttachment").text("");
+    $("#publicAttachment").attr("href", "");
+
+    $("#adminAttachmentRemove").hide();
+    $("#adminAttachment").text("");
+    $("#adminAttachment").attr("href", "");
 }

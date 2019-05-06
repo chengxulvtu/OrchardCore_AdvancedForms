@@ -14,7 +14,6 @@
 <script asp-src="/AdvancedForms/Scripts/formio.full.min.js" at="Head" asp-name="formio.full.min"></script>
 <script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
 <script asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" at="Head"></script>
-
 <script asp-src="~/OrchardCore.ContentFields/Scripts/contentPicker.js" asp-name="contentPicker" at="Foot" depends-on="vuejs, vuemultiselect"></script>
 <style asp-src="~/OrchardCore.ContentFields/Styles/contentPicker.min.css" debug-src="~/OrchardCore.ContentFields/Styles/contentPicker.css"></style>
 <script asp-src="https://vuejs.org/js/vue.min.js" debug-src="https://vuejs.org/js/vue.js" asp-name="vuejs" at="Foot"></script>
@@ -22,14 +21,23 @@
 <style asp-src="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css"></style>
 <script asp-src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.min.js" debug-src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.js" asp-name="sortable" at="Foot"></script>
 <script asp-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.min.js" debug-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.js" asp-name="vuedraggable" depends-on="vuejs, sortable" at="Foot"></script>
-<script asp-src="/AdvancedForms/Scripts/Submission.js" at="Head" asp-name="advancedforms.submission"></script>
+<script asp-src="~/OrchardCore.Media/Scripts/media.js" asp-name="media" at="Foot" depends-on="admin, vuejs, sortable, vuedraggable"></script>
+<style asp-src="~/OrchardCore.Media/Styles/media.min.css" debug-src="~/OrchardCore.Media/Styles/media.css"></style>
+<script asp-src="https://vuejs.org/js/vue.min.js" debug-src="https://vuejs.org/js/vue.js" asp-name="vuejs" at="Foot"></script>
+<script asp-src="/AdvancedForms/Scripts/jquery.fileupload.js" at="Foot" asp-name="advancedforms.fileupload"></script>
+<script asp-src="/AdvancedForms/Scripts/Submission.js" at="Foot" asp-name="advancedforms.submission"></script>
 
+<style>
+    #fileupload {
+        display: none;
+    }
+</style>
 
 @{
     var standardAdminComp = "{components:[{type:well }]}";
 }
 
-<script type='text/javascript' at="Head">
+<script type='text/javascript' at="Foot">
     window.onload = function () {
         let well = "well";
         Formio.createForm(document.getElementById('formio'),
@@ -69,7 +77,7 @@
     <ul>
         <li id="StatusError"><span class="field-validation-error">@T["The Status field is Required."]</span></li>
     </ul>
-</div>
+</div>  
 
 <div>
     <h1 style="font-weight: 600;font-size: 30px;">
@@ -173,6 +181,15 @@
         <div>
             @await Html.PartialAsync("HTMLField", Model.AdminEditor)
             <span class="hint">@T["These comments are private for admins only."]</span><br />
+            <span class="errorMessageAdmin">@T["Admin comment required."]</span> <br />
+            <div class="btn-group btn-group-sm">
+                <label for="fileuploadAdmin" class="btn btn-sm btn-primary fileinput-button upload-button" style="padding: 6px 12px;font-size: 14px;">
+                    <input id="fileuploadAdmin" type="file" name="files">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    @T["Attach a file with comment"]
+                </label>
+            </div><br />
+            <a target="_blank" id="adminAttachment"></a> <a id="adminAttachmentRemove">Remove Attachment</a><br />
             <button class="publish-button btn btn-success" onclick="submitAdminComment('@Model.SubmissionId')">@T["Save"]</button>
         </div>
         <br />
@@ -203,6 +220,15 @@
         <div>
             @await Html.PartialAsync("HTMLField", Model.PublicEditor)
             <span class="hint">@T["These comments will be displayed to the submitter and are not private."]</span> <br />
+            <span class="errorMessagePublic">@T["Public comment required."]</span> <br />
+            <div class="btn-group btn-group-sm">
+                <label for="fileuploadPublic" class="btn btn-sm btn-primary fileinput-button upload-button" style="padding: 6px 12px;font-size: 14px;">
+                    <input id="fileuploadPublic" type="file" name="files">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    @T["Attach a file with comment"]
+                </label>
+            </div><br />
+            <a target="_blank" id="publicAttachment"></a> <a id="publicAttachmentRemove">Remove Attachment</a><br/> 
             <button class="publish-button btn btn-success" onclick="submitPublicComment('@Model.SubmissionId')">@T["Save"]</button>
         </div>
         <br />
