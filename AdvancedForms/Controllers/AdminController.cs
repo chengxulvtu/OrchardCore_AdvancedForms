@@ -157,6 +157,43 @@ namespace AdvancedForms.Controllers
         }
 
         [HttpPost]
+        [Route("AdvancedForms/MakePublicComment")]
+        public async Task<IActionResult> MakePublicComment(string id, string contentItemId)
+        {
+            ContentItem content = null;
+            if (!string.IsNullOrWhiteSpace(contentItemId))
+            {
+                content = await _contentManager.GetAsync(contentItemId, VersionOptions.Latest);
+            }
+            if (content == null)
+            {
+                return NotFound();
+            }
+            var model = new CommentPart(content.Content.AdminComment.Comment.Html.ToString(), content.Content.AdminComment.Attachment.Text.ToString());
+
+            await _contentManager.RemoveAsync(content);
+            ContentItem contentPublic = await _contentManager.NewAsync("PublicComment");
+            await _contentManager.CreateAsync(contentPublic, VersionOptions.Draft);
+            await _contentManager.PublishAsync(contentPublic);
+            int returnCode = await new ContentHelper(_contentManager, _session, _contentDefinitionManager, _contentAliasManager).EditCommentPOST(contentPublic.ContentItemId, true, id, User.Identity.Name, model, async contentItem =>
+            {
+                await _contentManager.PublishAsync(contentItem);
+                var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
+                _notifier.Success(string.IsNullOrWhiteSpace(typeDefinition.DisplayName)
+                    ? T["Your content has been published."]
+                    : T["Your {0} has been published.", typeDefinition.DisplayName]);
+            });
+            if (returnCode == StatusCodes.Status204NoContent)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return StatusCode(returnCode);
+            }
+        }
+
+        [HttpPost]
         [Route("AdvancedForms/SaveUpdateAdminComment")]
         public async Task<IActionResult> SaveAdminComment(string id, string contentItemId, string comment, string attachment)
         {
@@ -447,7 +484,7 @@ namespace AdvancedForms.Controllers
             if (!ModelState.IsValid)
             {
                 _session.Cancel();
-                if(isEditPage)
+                if (isEditPage)
                     return View("Create", model);
                 else
                     return View("Adminfields", model);

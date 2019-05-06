@@ -34,6 +34,7 @@ function clearEditors() {
 }
 
 function submitAdminComment(id) {
+    debugger;
     $(".errorMessageAdmin").hide();
     if ($("#AdminComment").parent().find(".trumbowyg-editor").length == 0) {
         return;
@@ -118,6 +119,29 @@ function RemoveAdminComment(contentItemId) {
     });
 }
 
+function MakePublicComment(contentItemId) {
+    var isConfirm = confirm("Are you sure to want to make the comment public?");
+    if (isConfirm) {
+        $.ajax({
+            url: '/AdvancedForms/MakePublicComment',
+            method: 'POST',
+            data: {
+                __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+                id: ID,
+                contentItemId: contentItemId
+            },
+            success: function (data) {
+                clearEditors();
+                GetAdminComments(ID);
+            },
+            error: function (error) {
+                var errorMsg = "Unable to Save. Try again later.";
+                $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
+            }
+        });
+    }
+}
+
 function RemovePublicComment(contentItemId) {
     $.ajax({
         url: '/AdvancedForms/SaveUpdatePublicComment',
@@ -186,6 +210,7 @@ function GetPublicComments(id) {
 }
 
 function getPanel(value, isPublic) {
+    debugger;
     var panel = "";
     var editorSelect = "AdminComment";
     panel += '<div class="panel panel-default">';
@@ -211,14 +236,15 @@ function getPanel(value, isPublic) {
 
     if (IsSubmission) {
         if (isPublic) {
-            panel += '<button class="pull-right btn btn-link" href="#" style="color:#007bff;" onclick="RemovePublicComment(\'' + value.ContentItemId + '\')">Admin Remove</button>';
+            panel += '<button class="pull-right btn btn-link" href="#" style="color:#007bff;margin-top:-6px;" onclick="RemovePublicComment(\'' + value.ContentItemId + '\')">Admin Remove</button>';
         } else {
-            panel += '<button class="pull-right btn btn-link" href="#" style="color:#007bff;" onclick="RemoveAdminComment(\'' + value.ContentItemId + '\')">Admin Remove</button>';
+            panel += '<button class="pull-right btn btn-link" href="#" style="color:#007bff;margin-top:-6px;" onclick="MakePublicComment(\'' + value.ContentItemId + '\')">Make Public</button>';
+            panel += '<button class="pull-right btn btn-link" href="#" style="color:#007bff;margin-top:-6px;" onclick="RemoveAdminComment(\'' + value.ContentItemId + '\')">Admin Remove</button>';
         }
     }
 
     if (currentUser == value.Owner) {
-        panel += '<button class="pull-right btn btn-link" href="#" style="color:#007bff;" onclick="EditComment(\'' + value.ContentItemId + '\', this, \'' + editorSelect + '\')">Edit</button>';
+        panel += '<button class="pull-right btn btn-link" href="#" style="color:#007bff;margin-top:-6px;" onclick="EditComment(\'' + value.ContentItemId + '\', this, \'' + editorSelect + '\')">Edit</button>';
     }
     panel += '</div>';
     panel += '<div class="panel-body">' + comment + '</div>';
