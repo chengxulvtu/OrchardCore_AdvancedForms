@@ -602,6 +602,14 @@
                 "Hint": null,
                 "Position": "0"
               }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Attachment",
+              "Settings": {
+                "DisplayName": "Attachment",
+                "Position": "1"
+              }
             }
           ]
         },
@@ -618,6 +626,14 @@
                 "DisplayMode": null,
                 "Hint": null,
                 "Position": "0"
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Attachment",
+              "Settings": {
+                "DisplayName": "Attachment",
+                "Position": "1"
               }
             }
           ]

@@ -34,7 +34,6 @@ function clearEditors() {
 }
 
 function submitAdminComment(id) {
-    debugger;
     $(".errorMessageAdmin").hide();
     if ($("#AdminComment").parent().find(".trumbowyg-editor").length == 0) {
         return;
@@ -210,7 +209,6 @@ function GetPublicComments(id) {
 }
 
 function getPanel(value, isPublic) {
-    debugger;
     var panel = "";
     var editorSelect = "AdminComment";
     panel += '<div class="panel panel-default">';
@@ -230,7 +228,7 @@ function getPanel(value, isPublic) {
         }
     }
     panel += '<div class="panel-heading"><b>' + value.Owner + '</b> ' + getDateString(value.CreatedUtc);
-    if (url !== "") {
+    if (url !== null && url !== "") {
         panel += ' <a target="_blank" href="' + url + '">Download Attachment</a>';
     }
 
@@ -311,16 +309,38 @@ $('#fileuploadPublic').fileupload({
     done: function (e, data) {
         $.each(data.result.files, function (index, file) {
             clearAttachment();
-            if (file.error != undefined) {
+            if (file.error !== undefined) {
                 alert(file.error);
             } else {
-                $("#publicAttachmentRemove").show();
-                $("#publicAttachment").text(file.url);
-                $("#publicAttachment").attr("href", file.url);
+                var newFile = getNewFileName(file.name);
+                var newPath = 'Form Comments/' + newFile;
+                $.ajax({
+                    url: '/OrchardCore.Media/Admin/MoveMedia' + "?oldPath=" + encodeURIComponent(file.mediaPath) + "&newPath=" + encodeURIComponent(newPath),
+                    method: 'POST',
+                    data: {
+                        __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val()
+                    },
+                    success: function (data) {
+                        $("#publicAttachmentRemove").show();
+                        $("#publicAttachment").text('/media/' + newPath);
+                        $("#publicAttachment").attr("href", '/media/' + newPath);
+                    },
+                    error: function (error) {
+                        alert(error);
+                    }
+                });
             }
         });
     }
 });
+
+function getNewFileName(fileName) {
+    var d = new Date();
+    var n = d.getTime();
+    var random = Math.floor((Math.random() * 1000) + 1);
+    var fileExtension = fileName.replace(/^.*\./, '');
+    return n + random + '.' + fileExtension;
+}
 
 $('#fileuploadAdmin').fileupload({
     dataType: 'json',
@@ -339,9 +359,23 @@ $('#fileuploadAdmin').fileupload({
             if (file.error != undefined) {
                 alert(file.error);
             } else {
-                $("#adminAttachmentRemove").show();
-                $("#adminAttachment").text(file.url);
-                $("#adminAttachment").attr("href", file.url);
+                var newFile = getNewFileName(file.name);
+                var newPath = 'Form Comments/' + newFile;
+                $.ajax({
+                    url: '/OrchardCore.Media/Admin/MoveMedia' + "?oldPath=" + encodeURIComponent(file.mediaPath) + "&newPath=" + encodeURIComponent(newPath),
+                    method: 'POST',
+                    data: {
+                        __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val()
+                    },
+                    success: function (data) {
+                        $("#adminAttachmentRemove").show();
+                        $("#adminAttachment").text('/media/' + newPath);
+                        $("#adminAttachment").attr("href", '/media/' + newPath);
+                    },
+                    error: function (error) {
+                        alert(error);
+                    }
+                });
             }
         });
     }

@@ -77,7 +77,7 @@
     <ul>
         <li id="StatusError"><span class="field-validation-error">@T["The Status field is Required."]</span></li>
     </ul>
-</div>  
+</div>
 
 <div>
     <h1 style="font-weight: 600;font-size: 30px;">
@@ -179,17 +179,25 @@
         </div>
         <br />
         <div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="btn-group btn-group-sm pull-right">
+                        <label for="fileuploadAdmin" class="btn btn-sm btn-primary fileinput-button upload-button" style="padding: 6px 12px;font-size: 14px;">
+                            <input id="fileuploadAdmin" type="file" name="files">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            @T["Attach a file with comment"]
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="pull-right">
+                        <a target="_blank" id="adminAttachment"></a> <a id="adminAttachmentRemove">Remove Attachment</a>
+                    </div>
+                </div>
+            </div>
             @await Html.PartialAsync("HTMLField", Model.AdminEditor)
             <span class="hint">@T["These comments are private for admins only."]</span><br />
             <span class="errorMessageAdmin">@T["Admin comment required."]</span> <br />
-            <div class="btn-group btn-group-sm">
-                <label for="fileuploadAdmin" class="btn btn-sm btn-primary fileinput-button upload-button" style="padding: 6px 12px;font-size: 14px;">
-                    <input id="fileuploadAdmin" type="file" name="files">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                    @T["Attach a file with comment"]
-                </label>
-            </div><br />
-            <a target="_blank" id="adminAttachment"></a> <a id="adminAttachmentRemove">Remove Attachment</a><br />
             <button class="publish-button btn btn-success" onclick="submitAdminComment('@Model.SubmissionId')">@T["Save"]</button>
         </div>
         <br />
@@ -218,17 +226,25 @@
         </div>
         <br />
         <div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="btn-group btn-group-sm pull-right">
+                        <label for="fileuploadPublic" class="btn btn-sm btn-primary fileinput-button upload-button" style="padding: 6px 12px;font-size: 14px;">
+                            <input id="fileuploadPublic" type="file" name="files">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            @T["Attach a file with comment"]
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="pull-right">
+                        <a target="_blank" id="publicAttachment"></a> <a id="publicAttachmentRemove">Remove Attachment</a>
+                    </div>
+                </div>
+            </div>
             @await Html.PartialAsync("HTMLField", Model.PublicEditor)
             <span class="hint">@T["These comments will be displayed to the submitter and are not private."]</span> <br />
             <span class="errorMessagePublic">@T["Public comment required."]</span> <br />
-            <div class="btn-group btn-group-sm">
-                <label for="fileuploadPublic" class="btn btn-sm btn-primary fileinput-button upload-button" style="padding: 6px 12px;font-size: 14px;">
-                    <input id="fileuploadPublic" type="file" name="files">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                    @T["Attach a file with comment"]
-                </label>
-            </div><br />
-            <a target="_blank" id="publicAttachment"></a> <a id="publicAttachmentRemove">Remove Attachment</a><br/> 
             <button class="publish-button btn btn-success" onclick="submitPublicComment('@Model.SubmissionId')">@T["Save"]</button>
         </div>
         <br />

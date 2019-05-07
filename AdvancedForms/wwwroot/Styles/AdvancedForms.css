@@ -283,3 +283,7 @@ svg {
     display: none;
     cursor: pointer;
 }
+
+.trumbowyg-box, .trumbowyg-editor{
+    margin:0px !important;
+}

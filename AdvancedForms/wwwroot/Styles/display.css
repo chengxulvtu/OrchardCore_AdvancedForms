@@ -156,3 +156,6 @@ legend {
 .panel-heading a, .panel-heading a:hover {
     color: #fff;
 }
+.trumbowyg-box, .trumbowyg-editor{
+    margin:0px !important;
+}
