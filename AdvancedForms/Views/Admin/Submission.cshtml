@@ -26,6 +26,9 @@
 <script asp-src="https://vuejs.org/js/vue.min.js" debug-src="https://vuejs.org/js/vue.js" asp-name="vuejs" at="Foot"></script>
 <script asp-src="/AdvancedForms/Scripts/jquery.fileupload.js" at="Foot" asp-name="advancedforms.fileupload"></script>
 <script asp-src="/AdvancedForms/Scripts/Submission.js" at="Foot" asp-name="advancedforms.submission"></script>
+<script at="Foot" name="trumbowyg" asp-src="/OrchardCore.Resources/Scripts/jquery.js" type="text/javascript"></script>
+<script at="Foot" name="trumbowyg" asp-src="/OrchardCore.Resources/Scripts/jquery-ui.js" type="text/javascript"></script>
+<script at="Foot" name="trumbowyg" asp-src="/TheAdmin/Scripts/TheAdmin.js" type="text/javascript"></script>
 
 <style>
     #fileupload {
@@ -276,6 +279,8 @@
 
 <button form="main" type="submit" name="submit.Publish" class="publish-button btn btn-success" value="submit.Publish">@T["Publish"]</button>
 <button form="main" type="submit" name="submit.Save" class="primaryAction btn btn-primary" value="submit.Save">@T["Save Draft"]</button>
+<div class="loading">Loading&#8230;</div>
+
 
 @{
     var returnUrl = Context.Request.Query["returnUrl"];

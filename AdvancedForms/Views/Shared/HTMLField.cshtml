@@ -15,11 +15,25 @@
     $('#@Model.ID').trumbowyg();
 
     function EditComment(id, obj, selector) {
+        clearEditors(); 
+        var url =  $(obj).parent().parent().find(".downloadLink")[0];
         $('#' + selector).parent().find(".trumbowyg-editor")[0].innerHTML = $(obj).parent().parent().find(".panel-body")[0].innerHTML;
         $('#' + selector +'-ContentItmeID').val(id);
         $('#' + selector +'-ContentItmeID').parent().find(".publish-button")[0].textContent = "Update";
         var height = $(document).height() - 700;
         $("html, body").animate({ scrollTop: height }, 800);
+        if (url !== undefined && url !== null && url !== "" &&
+            url.value !== undefined && url.value !== null && url.value !== "") {
+            if (selector === "AdminComment") {
+                $("#adminAttachmentRemove").show();
+                $("#adminAttachment").text(url.value);
+                $("#adminAttachment").attr("href", url.value);
+            } else {
+                $("#publicAttachmentRemove").show();
+                $("#publicAttachment").text(url.value);
+                $("#publicAttachment").attr("href", url.value);
+            }
+        }
     }
 
 </script>

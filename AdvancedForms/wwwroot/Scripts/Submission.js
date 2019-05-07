@@ -229,6 +229,7 @@ function getPanel(value, isPublic) {
     }
     panel += '<div class="panel-heading"><b>' + value.Owner + '</b> ' + getDateString(value.CreatedUtc);
     if (url !== null && url !== "") {
+        panel += '<input type="hidden" class="downloadLink" value="' + url + '" />';
         panel += ' <a target="_blank" href="' + url + '">Download Attachment</a>';
     }
 
@@ -394,3 +395,6 @@ function clearAttachment() {
     $("#adminAttachment").text("");
     $("#adminAttachment").attr("href", "");
 }
+
+var $loading = $('.loading').hide();
+$(document).ajaxStart(function () { $loading.show(); }).ajaxStop(function () { $loading.hide(); });
