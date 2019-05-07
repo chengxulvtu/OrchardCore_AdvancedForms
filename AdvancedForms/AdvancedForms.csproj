@@ -8,7 +8,6 @@
   <ItemGroup>
     <EmbeddedResource Remove="Views\AdvancedForms\Contents-Meta.SummaryAdmin.cshtml" />
     <EmbeddedResource Remove="Views\AdvancedForms\Display.cshtml~RF1f203469.TMP" />
-    <EmbeddedResource Remove="wwwroot\Scripts\jquery.fileupload.js" />
     <EmbeddedResource Remove="wwwroot\Styles\Submission.js" />
   </ItemGroup>
 
@@ -190,6 +189,14 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\Styles\display.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Scripts\jquery.fileupload.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Scripts\jquery.fileupload.js" />
   </ItemGroup>
 
 </Project>
