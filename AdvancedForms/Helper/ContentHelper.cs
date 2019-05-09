@@ -104,7 +104,7 @@ namespace AdvancedForms.Helper
             var adminfields = JObject.Parse(adminContainer);
             if (adminfields["components"] != null && adminfields["components"][0] != null && adminfields["components"][0]["components"] != null)
             {
-                string value = this.GetValueFromJObject("isMapLocation", adminfields["components"][0]["components"]);
+                string value = this.GetValueFromJObject("doNotMapLocation", adminfields["components"][0]["components"]);
                 if (!string.IsNullOrEmpty(value))
                 {
                     return true;

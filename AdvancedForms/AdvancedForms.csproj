@@ -199,4 +199,8 @@
     <Content Remove="wwwroot\Scripts\jquery.fileupload.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\Image\map-marker.png" />
+  </ItemGroup>
+
 </Project>
