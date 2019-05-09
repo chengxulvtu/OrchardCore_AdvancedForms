@@ -516,7 +516,6 @@ namespace AdvancedForms.Controllers
 
         #region "   Admin Form Submission Screen    "
 
-        [Route("AdvancedForms/admin/{alias}/Submission/{id}")]
         public async Task<IActionResult> Submission(string alias, string id)
         {
             if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageAdvancedForms))

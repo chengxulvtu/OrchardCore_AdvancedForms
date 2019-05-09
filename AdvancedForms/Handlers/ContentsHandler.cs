@@ -52,7 +52,7 @@ namespace AdvancedForms.Handlers
                         metadata.EditorRouteValues = new RouteValueDictionary {
                             {"Area", "AdvancedForms"},
                             {"Controller", path},
-                            {"Action", "Edit"},
+                            {"Action", "Submission"},
                             {"id", context.ContentItem.ContentItemId}
                         };
                     }
@@ -79,7 +79,7 @@ namespace AdvancedForms.Handlers
                         metadata.AdminRouteValues = new RouteValueDictionary {
                             {"Area", "AdvancedForms"},
                             {"Controller", path},
-                            {"Action", "Edit"},
+                            {"Action", "Submission"},
                             {"id", context.ContentItem.ContentItemId}
                         };
                     }

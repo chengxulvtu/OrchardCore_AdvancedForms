@@ -46,6 +46,20 @@ namespace AdvancedForms
                 template: "AdvancedForms/{alias}",
                 defaults: new { controller = "AdvancedForms", action = "Display" }
             );
+
+            routes.MapAreaRoute(
+                name: "EditSubmissionAdvancedForm",
+                areaName: "AdvancedForms",
+                template: "AdvancedForms/{alias}/Submission/{id}",
+                defaults: new { controller = "Admin", action = "Submission" }
+            );
+
+            routes.MapAreaRoute(
+                name: "EditSubmissionAdminAdvancedForm",
+                areaName: "AdvancedForms",
+                template: "AdvancedForms/admin/{alias}/Submission/{id}",
+                defaults: new { controller = "Admin", action = "Submission" }
+            );
         }
     }
 }
