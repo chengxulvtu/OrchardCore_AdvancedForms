@@ -33,8 +33,7 @@ function saveForm(submission, isDraft) {
             submissionId: SubmissionId,
             instructions: Instructions,
             owner: Owner,
-            isDraft: isDraft,
-            htmlContainer: document.getElementById('HtmlContainer').value
+            isDraft: isDraft
         },
         success: function (data) {
             window.location.replace("/submission-confirmation");

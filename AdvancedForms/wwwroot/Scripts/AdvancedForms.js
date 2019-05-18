@@ -11,10 +11,6 @@ function updateContainer(builder) {
         document.getElementById('Container').value = JSON.stringify(builder.schema);
     } else {
         document.getElementById('Container').value = null;
-        document.getElementById("HtmlContainer").value = "";
-    }
-    if (builder.schema != null && builder.schema.components != null && $("#formio")[0].innerHTML != "") {
-        document.getElementById("HtmlContainer").value = $("#formio")[0].innerHTML;
     }
     var formElement = document.getElementById('formio');
     formElement.innerHTML = '';
@@ -33,10 +29,6 @@ function builderAdminFieldsChange(builder) {
             document.getElementById('AdminContainer').value = JSON.stringify(builder.schema);
         } else {
             document.getElementById('AdminContainer').value = null;
-            document.getElementById("AdminHtmlContainer").value = "";
-        }
-        if (builder.schema != null && builder.schema.components != null && $("#builderAdminFields")[0].innerHTML != "") {
-            document.getElementById("AdminHtmlContainer").value = $("#builderAdminFields")[0].innerHTML;
         }
     });
 }

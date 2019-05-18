@@ -282,12 +282,7 @@ function builderAdminFieldsChange(builder) {
             document.getElementById('AdminContainer').value = JSON.stringify(builder.schema);
         } else {
             document.getElementById('AdminContainer').value = null;
-            document.getElementById("AdminHtmlContainer").value = "";
         }
-        if (builder.schema != null && builder.schema.components != null && $("#builderAdminFields")[0].innerHTML != "") {
-            document.getElementById("AdminHtmlContainer").value = $("#builderAdminFields")[0].innerHTML;
-        }
-
         if (builder.data != null) {
             document.getElementById('AdminSubmission').value = JSON.stringify(builder.data);
         } else {
