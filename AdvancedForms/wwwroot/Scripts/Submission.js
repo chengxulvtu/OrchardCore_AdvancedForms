@@ -45,7 +45,6 @@ function submitAdminComment(id) {
     }
     var url = $("#adminAttachment").text();
     $.ajax({
-        //url: '/AdvancedForms/SaveUpdateAdminComment',
         url: urlConfig.SaveUpdateAdminComment,
         method: 'POST',
         data: {
@@ -78,7 +77,6 @@ function submitPublicComment(id) {
     }
     var url = $("#publicAttachment").text();
     $.ajax({
-        //url: '/AdvancedForms/SaveUpdatePublicComment',
         url: urlConfig.SaveUpdatePublicComment,
         method: 'POST',
         data: {
@@ -101,7 +99,6 @@ function submitPublicComment(id) {
 
 function RemoveAdminComment(contentItemId) {
     $.ajax({
-        //url: '/AdvancedForms/SaveUpdateAdminComment',
         url: urlConfig.SaveUpdateAdminComment,
         method: 'POST',
         data: {
@@ -125,7 +122,6 @@ function MakePublicComment(contentItemId) {
     var isConfirm = confirm("Are you sure to want to make the comment public?");
     if (isConfirm) {
         $.ajax({
-            //url: '/AdvancedForms/MakePublicComment',
             url: urlConfig.MakePublicComment,
             method: 'POST',
             data: {
@@ -147,7 +143,6 @@ function MakePublicComment(contentItemId) {
 
 function RemovePublicComment(contentItemId) {
     $.ajax({
-        //url: '/AdvancedForms/SaveUpdatePublicComment',
         url: urlConfig.SaveUpdatePublicComment,
         method: 'POST',
         data: {
@@ -169,7 +164,6 @@ function RemovePublicComment(contentItemId) {
 
 function GetAdminComments(id) {
     $.ajax({
-        //url: '/AdvancedForms/GetAdminComments',
         url: urlConfig.GetAdminComments,
         method: 'GET',
         data: {
@@ -193,7 +187,6 @@ function GetAdminComments(id) {
 
 function GetPublicComments(id) {
     $.ajax({
-        //url: '/AdvancedForms/GetPublicComments',
         url: urlConfig.GetPublicComments,
         method: 'GET',
         data: {
@@ -300,7 +293,6 @@ function builderAdminFieldsChange(builder) {
 
 $('#fileuploadPublic').fileupload({
     dataType: 'json',
-    //url: '/OrchardCore.Media/Admin/Upload',
     url: urlConfig.Upload,
     formData: function () {
         var antiForgeryToken = $("input[name=__RequestVerificationToken]").val();
@@ -319,7 +311,6 @@ $('#fileuploadPublic').fileupload({
                 var newFile = getNewFileName(file.name);
                 var newPath = 'Form Comments/' + newFile;
                 $.ajax({
-                    //url: '/OrchardCore.Media/Admin/MoveMedia' + "?oldPath=" + encodeURIComponent(file.mediaPath) + "&newPath=" + encodeURIComponent(newPath),
                     url: urlConfig.MoveMedia + "?oldPath=" + encodeURIComponent(file.mediaPath) + "&newPath=" + encodeURIComponent(newPath),
                     method: 'POST',
                     data: {
@@ -349,7 +340,6 @@ function getNewFileName(fileName) {
 
 $('#fileuploadAdmin').fileupload({
     dataType: 'json',
-    //url: '/OrchardCore.Media/Admin/Upload',
     url: urlConfig.Upload,
     formData: function () {
         var antiForgeryToken = $("input[name=__RequestVerificationToken]").val();
@@ -369,7 +359,6 @@ $('#fileuploadAdmin').fileupload({
                 var newPath = 'Form Comments/' + newFile;
                 $.ajax({
                     url: urlConfig.MoveMedia + "?oldPath=" + encodeURIComponent(file.mediaPath) + "&newPath=" + encodeURIComponent(newPath),
-                    //url: '/OrchardCore.Media/Admin/MoveMedia' + "?oldPath=" + encodeURIComponent(file.mediaPath) + "&newPath=" + encodeURIComponent(newPath),
                     method: 'POST',
                     data: {
                         __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val()
