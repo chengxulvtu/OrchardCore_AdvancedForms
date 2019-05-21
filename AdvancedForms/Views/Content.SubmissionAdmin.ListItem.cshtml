@@ -24,10 +24,10 @@
 <li class="list-group-item">
     <div class="properties">
         <div class="related float-right">
-            <a href="/AdvancedForms/admin/@action/submission/@contentItem.ContentItemId?returnUrl=@FullRequestPath" class="btn btn-primary btn-sm">@T["Edit"]</a>
+            <a href="@Url.Action(action, "Admin", new { area = "AdvancedForms" })/submission/@contentItem.ContentItemId?returnUrl=@FullRequestPath" class="btn btn-primary btn-sm">@T["Edit"]</a>
             @if (hasPublished)
             {
-                <a href="/@contentItem.Content.AutoroutePart.Path" class="btn btn-success btn-sm" itemprop="">@T["View"]</a>
+                <a href="@Url.Action("View", action, new { area = "AdvancedForms" })/@contentItem.ContentItemId" class="btn btn-success btn-sm" itemprop="">@T["View"]</a>
             }
             <div class="btn-group">
                 <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,7 +60,7 @@
             <input type="checkbox" class="custom-control-input" value="@contentItem.Id" name="itemIds" id="itemIds-@contentItem.Id" onchange="itemChecked('@contentItem.Id')" />
             <label class="custom-control-label" for="itemIds-@contentItem.Id">&nbsp;</label>
         </div>
-        <a href="/AdvancedForms/admin/@action/submission/@contentItem.ContentItemId">@action.Replace("-", " ")</a>
+        <a href="@Url.Action(action, "Admin", new { area = "AdvancedForms" })/submission/@contentItem.ContentItemId">@action.Replace("-", " ")</a>
         <br />
         <div class="metadata">
             @if (hasPublished)

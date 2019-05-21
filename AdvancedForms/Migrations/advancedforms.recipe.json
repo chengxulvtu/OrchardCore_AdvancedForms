@@ -13592,7 +13592,7 @@
                 "Author": "admin",
                 "LinkMenuItemPart": {
                   "Name": "My Profile",
-                  "Url": "/Profile"
+                  "Url": "Profile"
                 },
                 "LinkMenuItem": {}
               }

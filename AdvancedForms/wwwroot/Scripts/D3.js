@@ -1,6 +1,6 @@
 ﻿function renderGraph() {
     $.ajax({
-        url: '/AdvancedForms/GetGraphData',
+        url: urlConfig.GetGraphData,
         method: 'GET',
         success: function (data) {
             if (data != null) {

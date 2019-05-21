@@ -18,7 +18,8 @@ function saveDraft() {
 
 function saveForm(submission, isDraft) {
     $.ajax({
-        url: '/AdvancedForms/Entry',
+        //url: '/AdvancedForms/Entry',
+        url: urlConfig.Entry,
         method: 'POST',
         data: {
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
@@ -36,7 +37,7 @@ function saveForm(submission, isDraft) {
             isDraft: isDraft
         },
         success: function (data) {
-            window.location.replace("/submission-confirmation");
+            window.location.replace(urlConfig.Entry.replace("Entry", "") + "submission-confirmation");
         },
         error: function (error) {
             var errorMsg = "Unable to Save. Try again later.";

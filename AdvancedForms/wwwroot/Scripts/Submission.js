@@ -13,12 +13,12 @@ function renderCommentEditors() {
 }
 
 function clearEditors() {
-    if ($("#PublicComment").parent().find(".trumbowyg-editor").length != 0) {
+    if ($("#PublicComment").parent().find(".trumbowyg-editor").length !== 0) {
         $("#PublicComment").parent().find(".trumbowyg-editor")[0].innerText = "";
         $('#PublicComment-ContentItmeID').parent().find(".publish-button")[0].textContent = "Save";
         $('#PublicComment-ContentItmeID').val("");
     }
-    if ($("#AdminComment").parent().find(".trumbowyg-editor").length != 0) {
+    if ($("#AdminComment").parent().find(".trumbowyg-editor").length !== 0) {
         $("#AdminComment").parent().find(".trumbowyg-editor")[0].innerText = "";
         $('#AdminComment-ContentItmeID').parent().find(".publish-button")[0].textContent = "Save";
         $('#AdminComment-ContentItmeID').val("");
@@ -35,7 +35,7 @@ function clearEditors() {
 
 function submitAdminComment(id) {
     $(".errorMessageAdmin").hide();
-    if ($("#AdminComment").parent().find(".trumbowyg-editor").length == 0) {
+    if ($("#AdminComment").parent().find(".trumbowyg-editor").length === 0) {
         return;
     }
     var content = $("#AdminComment").parent().find(".trumbowyg-editor")[0].innerHTML;
@@ -45,7 +45,8 @@ function submitAdminComment(id) {
     }
     var url = $("#adminAttachment").text();
     $.ajax({
-        url: '/AdvancedForms/SaveUpdateAdminComment',
+        //url: '/AdvancedForms/SaveUpdateAdminComment',
+        url: urlConfig.SaveUpdateAdminComment,
         method: 'POST',
         data: {
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
@@ -67,7 +68,7 @@ function submitAdminComment(id) {
 
 function submitPublicComment(id) {
     $(".errorMessagePublic").hide();
-    if ($("#PublicComment").parent().find(".trumbowyg-editor").length == 0) {
+    if ($("#PublicComment").parent().find(".trumbowyg-editor").length === 0) {
         return;
     }
     var content = $("#PublicComment").parent().find(".trumbowyg-editor")[0].innerHTML;
@@ -77,7 +78,8 @@ function submitPublicComment(id) {
     }
     var url = $("#publicAttachment").text();
     $.ajax({
-        url: '/AdvancedForms/SaveUpdatePublicComment',
+        //url: '/AdvancedForms/SaveUpdatePublicComment',
+        url: urlConfig.SaveUpdatePublicComment,
         method: 'POST',
         data: {
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
@@ -99,7 +101,8 @@ function submitPublicComment(id) {
 
 function RemoveAdminComment(contentItemId) {
     $.ajax({
-        url: '/AdvancedForms/SaveUpdateAdminComment',
+        //url: '/AdvancedForms/SaveUpdateAdminComment',
+        url: urlConfig.SaveUpdateAdminComment,
         method: 'POST',
         data: {
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
@@ -122,7 +125,8 @@ function MakePublicComment(contentItemId) {
     var isConfirm = confirm("Are you sure to want to make the comment public?");
     if (isConfirm) {
         $.ajax({
-            url: '/AdvancedForms/MakePublicComment',
+            //url: '/AdvancedForms/MakePublicComment',
+            url: urlConfig.MakePublicComment,
             method: 'POST',
             data: {
                 __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
@@ -143,7 +147,8 @@ function MakePublicComment(contentItemId) {
 
 function RemovePublicComment(contentItemId) {
     $.ajax({
-        url: '/AdvancedForms/SaveUpdatePublicComment',
+        //url: '/AdvancedForms/SaveUpdatePublicComment',
+        url: urlConfig.SaveUpdatePublicComment,
         method: 'POST',
         data: {
             __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
@@ -164,13 +169,14 @@ function RemovePublicComment(contentItemId) {
 
 function GetAdminComments(id) {
     $.ajax({
-        url: '/AdvancedForms/GetAdminComments',
+        //url: '/AdvancedForms/GetAdminComments',
+        url: urlConfig.GetAdminComments,
         method: 'GET',
         data: {
             id: id
         },
         success: function (data) {
-            if (data != null) {
+            if (data !== null) {
                 var comments = "";
                 $.each(data, function (index, value) {
                     comments += getPanel(value, false);
@@ -187,13 +193,14 @@ function GetAdminComments(id) {
 
 function GetPublicComments(id) {
     $.ajax({
-        url: '/AdvancedForms/GetPublicComments',
+        //url: '/AdvancedForms/GetPublicComments',
+        url: urlConfig.GetPublicComments,
         method: 'GET',
         data: {
             id: id
         },
         success: function (data) {
-            if (data != null) {
+            if (data !== null) {
                 var comments = "";
                 $.each(data, function (index, value) {
                     comments += getPanel(value, true);
@@ -242,7 +249,7 @@ function getPanel(value, isPublic) {
         }
     }
 
-    if (currentUser == value.Owner) {
+    if (currentUser === value.Owner) {
         panel += '<button class="pull-right btn btn-link" href="#" style="color:#007bff;margin-top:-6px;" onclick="EditComment(\'' + value.ContentItemId + '\', this, \'' + editorSelect + '\')">Edit</button>';
     }
     panel += '</div>';
@@ -258,7 +265,7 @@ function getDateString(value) {
 
 function onSubmissionFormSubmit(form) {
     var isValidate = true;
-    if (form.Status == undefined || form.Status.value == '') {
+    if (form.Status === undefined || form.Status.value === '') {
         isValidate = false;
         document.getElementById("StatusError").style.display = "list-item";
         document.getElementById("multiselect_Div").classList.add("editor-error");
@@ -278,12 +285,12 @@ function onSubmissionFormSubmit(form) {
 
 function builderAdminFieldsChange(builder) {
     builder.on('change', function () {
-        if (builder.schema != null && builder.schema.components != null) {
+        if (builder.schema !== null && builder.schema.components !== null) {
             document.getElementById('AdminContainer').value = JSON.stringify(builder.schema);
         } else {
             document.getElementById('AdminContainer').value = null;
         }
-        if (builder.data != null) {
+        if (builder.data !== null) {
             document.getElementById('AdminSubmission').value = JSON.stringify(builder.data);
         } else {
             document.getElementById('AdminSubmission').value = null;
@@ -293,7 +300,8 @@ function builderAdminFieldsChange(builder) {
 
 $('#fileuploadPublic').fileupload({
     dataType: 'json',
-    url: '/OrchardCore.Media/Admin/Upload',
+    //url: '/OrchardCore.Media/Admin/Upload',
+    url: urlConfig.Upload,
     formData: function () {
         var antiForgeryToken = $("input[name=__RequestVerificationToken]").val();
 
@@ -311,7 +319,8 @@ $('#fileuploadPublic').fileupload({
                 var newFile = getNewFileName(file.name);
                 var newPath = 'Form Comments/' + newFile;
                 $.ajax({
-                    url: '/OrchardCore.Media/Admin/MoveMedia' + "?oldPath=" + encodeURIComponent(file.mediaPath) + "&newPath=" + encodeURIComponent(newPath),
+                    //url: '/OrchardCore.Media/Admin/MoveMedia' + "?oldPath=" + encodeURIComponent(file.mediaPath) + "&newPath=" + encodeURIComponent(newPath),
+                    url: urlConfig.MoveMedia + "?oldPath=" + encodeURIComponent(file.mediaPath) + "&newPath=" + encodeURIComponent(newPath),
                     method: 'POST',
                     data: {
                         __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val()
@@ -340,7 +349,8 @@ function getNewFileName(fileName) {
 
 $('#fileuploadAdmin').fileupload({
     dataType: 'json',
-    url: '/OrchardCore.Media/Admin/Upload',
+    //url: '/OrchardCore.Media/Admin/Upload',
+    url: urlConfig.Upload,
     formData: function () {
         var antiForgeryToken = $("input[name=__RequestVerificationToken]").val();
 
@@ -352,13 +362,14 @@ $('#fileuploadAdmin').fileupload({
     done: function (e, data) {
         $.each(data.result.files, function (index, file) {
             clearAttachment();
-            if (file.error != undefined) {
+            if (file.error !== undefined) {
                 alert(file.error);
             } else {
                 var newFile = getNewFileName(file.name);
                 var newPath = 'Form Comments/' + newFile;
                 $.ajax({
-                    url: '/OrchardCore.Media/Admin/MoveMedia' + "?oldPath=" + encodeURIComponent(file.mediaPath) + "&newPath=" + encodeURIComponent(newPath),
+                    url: urlConfig.MoveMedia + "?oldPath=" + encodeURIComponent(file.mediaPath) + "&newPath=" + encodeURIComponent(newPath),
+                    //url: '/OrchardCore.Media/Admin/MoveMedia' + "?oldPath=" + encodeURIComponent(file.mediaPath) + "&newPath=" + encodeURIComponent(newPath),
                     method: 'POST',
                     data: {
                         __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val()

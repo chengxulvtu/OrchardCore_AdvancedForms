@@ -256,7 +256,7 @@
         <div id="adminFields" class="tab-pane fade">
             <br />
             <div class="col-md-12">
-                <a href="/Advancedforms/Admin/Adminfields?contentItemId=@Model.Id&returnUrl=/AdvancedForms/Admin/Edit?ContentItemId=@Model.Id" class="btn btn-success pull-right" style="margin-bottom:7px;">Modify Admin Fields</a>
+                <a href="@Url.Action("Adminfields", "Admin", new { area = "AdvancedForms" })?contentItemId=@Model.Id&returnUrl=/AdvancedForms/Admin/Edit?ContentItemId=@Model.Id" class="btn btn-success pull-right" style="margin-bottom:7px;">Modify Admin Fields</a>
             </div>
             <div class="col-md-12">
                 @if (!string.IsNullOrEmpty(Model.AdminContainer))

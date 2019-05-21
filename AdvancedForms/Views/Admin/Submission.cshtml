@@ -25,6 +25,20 @@
 <style asp-src="~/OrchardCore.Media/Styles/media.min.css" debug-src="~/OrchardCore.Media/Styles/media.css"></style>
 <script asp-src="https://vuejs.org/js/vue.min.js" debug-src="https://vuejs.org/js/vue.js" asp-name="vuejs" at="Foot"></script>
 <script asp-src="/AdvancedForms/Scripts/jquery.fileupload.js" at="Foot" asp-name="advancedforms.fileupload"></script>
+<script asp-src="/AdvancedForms/Scripts/urlConfig.js" at="Head" asp-name="advancedforms.urlConfig"></script>
+<script at="Head">
+    if (typeof urlConfig !== undefined) {
+        urlConfig.Entry = '@Url.Action("Entry", "AdvancedForms", new { area = "AdvancedForms" })';
+        urlConfig.Upload = '@Url.Action("Upload", "Admin", new { area = "OrchardCore.Media" })';
+        urlConfig.MoveMedia = '@Url.Action("MoveMedia", "Admin", new { area = "OrchardCore.Media" })';
+        urlConfig.GetPublicComments = '@Url.Action("GetPublicComments", "AdvancedForms", new { area = "AdvancedForms" })';
+        urlConfig.GetAdminComments = '@Url.Action("GetAdminComments", "Admin", new { area = "AdvancedForms" })';
+        urlConfig.GetGraphData = '@Url.Action("GetGraphData", "Admin", new { area = "AdvancedForms" })';
+        urlConfig.MakePublicComment = '@Url.Action("MakePublicComment", "Admin", new { area = "AdvancedForms" })';
+        urlConfig.SaveUpdateAdminComment = '@Url.Action("SaveAdminComment", "Admin", new { area = "AdvancedForms" })';
+        urlConfig.SaveUpdatePublicComment = '@Url.Action("SavePublicComment", "AdvancedForms", new { area = "AdvancedForms" })';
+    }
+</script>
 <script asp-src="/AdvancedForms/Scripts/Submission.js" at="Foot" asp-name="advancedforms.submission"></script>
 <script at="Foot" name="trumbowyg" asp-src="/OrchardCore.Resources/Scripts/jquery.js" type="text/javascript"></script>
 <script at="Foot" name="trumbowyg" asp-src="/OrchardCore.Resources/Scripts/jquery-ui.js" type="text/javascript"></script>

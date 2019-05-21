@@ -203,4 +203,8 @@
     <Content Remove="wwwroot\Image\map-marker.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\Scripts\urlConfig.js" />
+  </ItemGroup>
+
 </Project>

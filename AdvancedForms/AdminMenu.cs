@@ -29,7 +29,7 @@ namespace AdvancedForms
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
                     ).Add(T["Forms"], layers => layers
-                        .Url("/Admin/Contents/ContentItems/AdvancedForm")
+                        .Url("Admin/Contents/ContentItems/AdvancedForm")
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
                     ).Add(T["Submissions"], layers => layers
@@ -37,19 +37,19 @@ namespace AdvancedForms
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
                     ).Add(T["New Downloadable Form"], layers => layers
-                        .Url("/Admin/Contents/ContentTypes/DownloadableForm/Create")
+                        .Url("Admin/Contents/ContentTypes/DownloadableForm/Create")
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
                     ).Add(T["Downloadable Forms"], layers => layers
-                        .Url("/Admin/Contents/ContentItems/DownloadableForm")
+                        .Url("Admin/Contents/ContentItems/DownloadableForm")
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
                     ).Add(T["New Form Type"], layers => layers
-                        .Url("/Admin/Contents/ContentTypes/AdvancedFormTypes/Create")
+                        .Url("Admin/Contents/ContentTypes/AdvancedFormTypes/Create")
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
                     ).Add(T["New Form Status"], layers => layers
-                        .Url("/Admin/Contents/ContentTypes/AdvancedFormStatus/Create")
+                        .Url("Admin/Contents/ContentTypes/AdvancedFormStatus/Create")
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
                      ));
