@@ -8,6 +8,7 @@
 <script at="Head">
     if (typeof urlConfig !== undefined) {
         urlConfig.Entry = '@Url.Action("Entry", "AdvancedForms", new { area = "AdvancedForms" })';
+        urlConfig.AddCaseAttachItem = '@Url.Action("AddCaseAttachItem", "Admin", new { area = "Case" })';
         urlConfig.Upload = '@Url.Action("Upload", "Admin", new { area = "OrchardCore.Media" })';
         urlConfig.MoveMedia = '@Url.Action("MoveMedia", "Admin", new { area = "OrchardCore.Media" })';
         urlConfig.GetPublicComments = '@Url.Action("GetPublicComments", "AdvancedForms", new { area = "AdvancedForms" })';
@@ -47,7 +48,7 @@
                 DraftSubmission = submission;
             });
         });
-        initValue('@Model.Title','@Model.Id','@Model.Header','@Model.Footer','@Model.Description','@Model.Type','@Model.SubmissionId','@Model.Instructions','@Model.Owner')
+        initValue('@Model.Title','@Model.Id','@Model.Header','@Model.Footer','@Model.Description','@Model.Type','@Model.SubmissionId','@Model.Instructions','@Model.Owner', '@Model.CaseID')
     };
     setCurrentUser('@Model.Id', '@User.Identity.Name', false);
 </script>

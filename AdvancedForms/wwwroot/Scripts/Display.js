@@ -1,6 +1,6 @@
-﻿var Title, Id, Header, Footer, Description, Type, SubmissionId, Instructions, Owner, DraftSubmission;
+﻿var Title, Id, Header, Footer, Description, Type, SubmissionId, Instructions, Owner, DraftSubmission, CaseID;
 
-function initValue(title, id, header, footer, description, type, submissionId, instructions, owner) {
+function initValue(title, id, header, footer, description, type, submissionId, instructions, owner, caseId) {
     Title = title;
     Id = id;
     Header = header;
@@ -10,6 +10,7 @@ function initValue(title, id, header, footer, description, type, submissionId, i
     SubmissionId = submissionId;
     Instructions = instructions;
     Owner = owner;
+    CaseID = caseId;
 }
 
 function saveDraft() {
@@ -34,6 +35,36 @@ function saveForm(submission, isDraft) {
             instructions: Instructions,
             owner: Owner,
             isDraft: isDraft
+        },
+        success: function (data) {
+            if (CaseID !== undefined && CaseID !== null && CaseID !== '') {
+                addAFCaseItem(data);
+            } else {
+                window.location.replace(urlConfig.Entry.replace("AdvancedForms/Entry", "") + "submission-confirmation");
+            }
+        },
+        error: function (error) {
+            var errorMsg = "Unable to Save. Try again later.";
+            $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
+        }
+    });
+}
+
+var getDateString = function (value) {
+    date = new Date(value);
+    return date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear() + ' ' + date.toLocaleTimeString().replace(/:\d{2}\s/, ' ');
+};
+
+function addAFCaseItem(content) {
+    var itemText = content.DisplayText + ' Created By: ' + content.Owner + ' on ' + getDateString(content.CreatedUtc);
+    $.ajax({
+        url: urlConfig.AddCaseAttachItem,
+        method: 'POST',
+        data: {
+            __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+            caseContentItemId: CaseID,
+            attachContentItemId: content.ContentItemId,
+            itemDisplayText: itemText
         },
         success: function (data) {
             window.location.replace(urlConfig.Entry.replace("AdvancedForms/Entry", "") + "submission-confirmation");

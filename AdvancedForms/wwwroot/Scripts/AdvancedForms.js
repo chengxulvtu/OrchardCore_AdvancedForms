@@ -25,7 +25,7 @@ function updateContainer(builder) {
 
 function builderAdminFieldsChange(builder) {
     builder.on('change', function () {
-        if (builder.schema != null && builder.schema.components != null) {
+        if (builder.schema !== null && builder.schema.components != null) {
             document.getElementById('AdminContainer').value = JSON.stringify(builder.schema);
         } else {
             document.getElementById('AdminContainer').value = null;

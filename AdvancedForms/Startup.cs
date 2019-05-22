@@ -48,6 +48,13 @@ namespace AdvancedForms
             );
 
             routes.MapAreaRoute(
+                name: "DisplayAdvancedFormCaseID",
+                areaName: "AdvancedForms",
+                template: "AdvancedForms/{alias}/Case/{caseID}",
+                defaults: new { controller = "AdvancedForms", action = "Display" }
+            );
+
+            routes.MapAreaRoute(
                 name: "EditSubmissionAdvancedForm",
                 areaName: "AdvancedForms",
                 template: "AdvancedForms/{alias}/Submission/{id}",

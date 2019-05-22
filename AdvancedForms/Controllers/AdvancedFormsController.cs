@@ -90,7 +90,45 @@ namespace AdvancedForms.Controllers
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
-                Footer = contentItem.Content.AdvancedForm.Footer.Html
+                Footer = contentItem.Content.AdvancedForm.Footer.Html,
+                CaseID = ""
+            };
+            return View(model);
+        }
+
+        [Route("AdvancedForms/{alias}/Case/{caseID}")]
+        public async Task<IActionResult> Display(string alias, string caseID)
+        {
+            if (String.IsNullOrWhiteSpace(alias))
+            {
+                return Redirect("/");
+            }
+
+            var contentItemId = await _contentAliasManager.GetContentItemIdAsync("slug:AdvancedForms/" + alias);
+
+            var contentItem = await _contentManager.GetAsync(contentItemId, VersionOptions.Published);
+
+            if (contentItem == null)
+            {
+                return NotFound();
+            }
+
+            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ViewContent, contentItem))
+            {
+                return Unauthorized();
+            }
+
+            var model = new AdvancedFormViewModel
+            {
+                Id = contentItemId,
+                Title = contentItem.DisplayText,
+                Type = contentItem.Content.AdvancedForm.Type.Text,
+                Container = contentItem.Content.AdvancedForm.Container.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.Container.Html) : String.Empty,
+                Description = contentItem.Content.AdvancedForm.Description.Html,
+                Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
+                Header = contentItem.Content.AdvancedForm.Header.Html,
+                Footer = contentItem.Content.AdvancedForm.Footer.Html,
+                CaseID = caseID
             };
             return View(model);
         }
@@ -348,8 +386,9 @@ namespace AdvancedForms.Controllers
             // would not be taken into account.
             _session.Save(contentItem);
 
+            
             var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
-            return StatusCode(StatusCodes.Status201Created);
+            return Ok(contentItem);
         }
 
         [Route("AdvancedForms/{alias}/Edit/{id}")]
