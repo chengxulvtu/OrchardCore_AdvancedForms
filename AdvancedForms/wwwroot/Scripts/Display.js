@@ -36,7 +36,7 @@ function saveForm(submission, isDraft) {
             isDraft: isDraft
         },
         success: function (data) {
-            window.location.replace(urlConfig.Entry.replace("Entry", "") + "submission-confirmation");
+            window.location.replace(urlConfig.Entry.replace("AdvancedForms/Entry", "") + "submission-confirmation");
         },
         error: function (error) {
             var errorMsg = "Unable to Save. Try again later.";

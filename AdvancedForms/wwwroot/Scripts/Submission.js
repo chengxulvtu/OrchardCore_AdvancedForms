@@ -318,8 +318,8 @@ $('#fileuploadPublic').fileupload({
                     },
                     success: function (data) {
                         $("#publicAttachmentRemove").show();
-                        $("#publicAttachment").text('/media/' + newPath);
-                        $("#publicAttachment").attr("href", '/media/' + newPath);
+                        $("#publicAttachment").text(urlConfig.Upload.replace("/OrchardCore.Media/Admin/Upload", "") + '/media/' + newPath);
+                        $("#publicAttachment").attr("href", urlConfig.Upload.replace("/OrchardCore.Media/Admin/Upload", "") + '/media/' + newPath);
                     },
                     error: function (error) {
                         alert(error);
@@ -365,8 +365,8 @@ $('#fileuploadAdmin').fileupload({
                     },
                     success: function (data) {
                         $("#adminAttachmentRemove").show();
-                        $("#adminAttachment").text('/media/' + newPath);
-                        $("#adminAttachment").attr("href", '/media/' + newPath);
+                        $("#adminAttachment").text(urlConfig.Upload.replace("/OrchardCore.Media/Admin/Upload", "") + '/media/' + newPath);
+                        $("#adminAttachment").attr("href", urlConfig.Upload.replace("/OrchardCore.Media/Admin/Upload", "") + '/media/' + newPath);
                     },
                     error: function (error) {
                         alert(error);
