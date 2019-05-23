@@ -23,7 +23,7 @@
 
 @{
     var isEdit = !String.IsNullOrEmpty(Model.Id);
-    var createOrEdit = isEdit ? "Edit" : "Create";
+    var createOrEdit = isEdit ? T["Edit"] : T["Create"];
 }
 
 <script type='text/javascript' at="Foot">
@@ -54,7 +54,7 @@
 </script>
 
 <form enctype="multipart/form-data" asp-action="@createOrEdit" method="post" id="main"></form>
-<a style="float:right;" href="@Url.Content("~/")/profile">Go To Profile</a>
+<a style="float:right;" href="@Url.Content("~/")/profile">@T["Go To Profile"]</a>
 
 <div>
     <h1 style="font-weight: 600;font-size: 30px;">
@@ -84,7 +84,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" href="#Description" onclick="collapseShow('Description')" style="color:#fff;text-decoration:none;">Description <i class="fa fa-plus pull-right"></i></a>
+                    <a data-toggle="collapse" href="#Description" onclick="collapseShow('Description')" style="color:#fff;text-decoration:none;">@T["Description"] <i class="fa fa-plus pull-right"></i></a>
                 </h4>
             </div>
             <div id="Description" class="panel-collapse collapse show">
@@ -103,10 +103,9 @@
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" href="#Instructions" onclick="collapseShow('Instructions')" style="color:#fff;text-decoration:none;">
-                        Instructions
+                        @T["Instructions"]
                         <i class="fa fa-plus pull-right"></i>
                     </a>
-
                 </h4>
             </div>
             <div id="Instructions" class="panel-collapse collapse">
@@ -132,7 +131,7 @@
 
 @if (!string.IsNullOrWhiteSpace(Model.SubmissionId) && !Model.StatusText.Equals("Draft"))
 {
-    <h4>Comments</h4><hr />
+    <h4>@T["Comments"]</h4><hr />
     <div>
         <br />
         <div id="PublicCommentsPanels">
@@ -151,7 +150,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="pull-right">
-                        <a target="_blank" id="publicAttachment"></a> <a id="publicAttachmentRemove">Remove Attachment</a>
+                        <a target="_blank" id="publicAttachment"></a> <a id="publicAttachmentRemove">@T["Remove Attachment"]</a>
                     </div>
                 </div>
             </div>
