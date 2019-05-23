@@ -139,14 +139,17 @@ label {
 #ta-left-sidebar #left-nav > ul.menu-admin > .item-label > span.icon {
     background-color: #eaeaea !important;
 }
+
 .left-sidebar-compact #ta-left-sidebar #left-nav > ul > li > .item-label .icon:hover {
     background-color: #eaeaea !important;
 }
+
 @media (max-width: 768px) {
     .collapse:not(.show) {
         display: none !important;
     }
 }
+
 .menu-admin {
     background-color: #eaeaea !important;
 }
@@ -246,26 +249,31 @@ rect:hover {
     align: right;
     width: 50px;
 }
+
 svg {
     overflow: hidden;
     vertical-align: text-bottom !important;
 }
+
 .fileinput-button {
     padding: 6px 12px;
     font-size: 14px;
 }
+
 .errorMessagePublic {
     color: red;
     font-size: 12px;
-    display:none;
+    display: none;
 }
-#fileuploadPublic{
-    display:none !important;
+
+#fileuploadPublic {
+    display: none !important;
 }
-#publicAttachmentRemove{
-    color:red;
-    display:none;
-    cursor:pointer;
+
+#publicAttachmentRemove {
+    color: red;
+    display: none;
+    cursor: pointer;
 }
 
 .errorMessageAdmin {
@@ -284,8 +292,8 @@ svg {
     cursor: pointer;
 }
 
-.trumbowyg-box, .trumbowyg-editor{
-    margin:0px !important;
+.trumbowyg-box, .trumbowyg-editor {
+    margin: 0px !important;
 }
 
 /* Absolute Center Spinner */
@@ -412,5 +420,31 @@ svg {
         -ms-transform: rotate(360deg);
         -o-transform: rotate(360deg);
         transform: rotate(360deg);
+    }
+}
+
+.custom-control-label {
+    padding-left: 10px;
+}
+
+    .custom-control-label::before {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .custom-control-label::after {
+        width: 2rem;
+        height: 2rem;
+    }
+
+@media (min-width: 768px)  {
+    .custom-control {
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .custom-control {
+        margin-bottom:15px;
     }
 }

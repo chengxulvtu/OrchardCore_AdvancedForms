@@ -91,7 +91,8 @@ namespace AdvancedForms.Controllers
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
-                CaseID = ""
+                CaseID = "",
+                HideFromListing = contentItem.Content.AdvancedForm.HideFromListing.Value,
             };
             return View(model);
         }
@@ -128,7 +129,8 @@ namespace AdvancedForms.Controllers
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
-                CaseID = caseID
+                CaseID = caseID,
+                HideFromListing = contentItem.Content.AdvancedForm.HideFromListing.Value
             };
             return View(model);
         }
@@ -188,7 +190,7 @@ namespace AdvancedForms.Controllers
         [HttpPost]
         [Route("AdvancedForms/Entry")]
         public async Task<IActionResult> Entry(string submission, string title, string id, string container,
-            string header, string footer, string description, string type, string submissionId, string instructions, string owner, bool isDraft)
+            string header, string footer, string description, string type, string submissionId, string instructions, string owner, bool isDraft, bool hideFromListing)
         {
             ContentItem content;
             string adminSubmission = string.Empty;
@@ -210,6 +212,7 @@ namespace AdvancedForms.Controllers
             instructions = formContent.Content.AdvancedForm.Instructions.Html;
             header = formContent.Content.AdvancedForm.Header.Html;
             footer = formContent.Content.AdvancedForm.Footer.Html;
+            hideFromListing = formContent.Content.AdvancedForm.HideFromListing.Value;
 
             string metadata = string.Empty, data, status = string.Empty;
             var query = _session.Query<ContentItem, ContentItemIndex>();
@@ -251,7 +254,7 @@ namespace AdvancedForms.Controllers
                 }
             }
             var viewModel = new AdvancedFormSubmissions(data, metadata, subTitle, container, header, footer, description,
-                type, instructions, owner, status, adminContainer, adminSubmission, Location);
+                type, instructions, owner, status, adminContainer, adminSubmission, Location, hideFromListing);
 
             return await EditPOST(content.ContentItemId, title, viewModel, async contentItem =>
             {
@@ -293,7 +296,7 @@ namespace AdvancedForms.Controllers
             string subTitle = model.Title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
             var subObject = JObject.Parse(model.Submission);
             var viewModel = new AdvancedFormSubmissions(model.Submission,
-            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.ApplicationLocation);
+            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.ApplicationLocation, model.HideFromListing);
 
             await EditPOST(content.ContentItemId, model.Title, viewModel, async contentItem =>
             {
@@ -336,7 +339,7 @@ namespace AdvancedForms.Controllers
             string subTitle = model.Title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
             var subObject = JObject.Parse(model.Submission);
             var viewModel = new AdvancedFormSubmissions(model.Submission,
-            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.ApplicationLocation);
+            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.ApplicationLocation, model.HideFromListing);
 
             await EditPOST(content.ContentItemId, model.Title, viewModel, async contentItem =>
             {

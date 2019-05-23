@@ -1,6 +1,6 @@
-﻿var Title, Id, Header, Footer, Description, Type, SubmissionId, Instructions, Owner, DraftSubmission, CaseID;
+﻿var Title, Id, Header, Footer, Description, Type, SubmissionId, Instructions, Owner, DraftSubmission, CaseID, HideFromListing;
 
-function initValue(title, id, header, footer, description, type, submissionId, instructions, owner, caseId) {
+function initValue(title, id, header, footer, description, type, submissionId, instructions, owner, caseId, hideFromListing) {
     Title = title;
     Id = id;
     Header = header;
@@ -11,6 +11,7 @@ function initValue(title, id, header, footer, description, type, submissionId, i
     Instructions = instructions;
     Owner = owner;
     CaseID = caseId;
+    HideFromListing = hideFromListing;
 }
 
 function saveDraft() {
@@ -34,7 +35,8 @@ function saveForm(submission, isDraft) {
             submissionId: SubmissionId,
             instructions: Instructions,
             owner: Owner,
-            isDraft: isDraft
+            isDraft: isDraft,
+            hideFromListing: HideFromListing
         },
         success: function (data) {
             if (CaseID !== undefined && CaseID !== null && CaseID !== '') {

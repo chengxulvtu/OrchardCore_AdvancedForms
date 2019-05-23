@@ -142,47 +142,56 @@
     <br />
     <br />
 </div>
-<div style="margin-bottom: 2rem;">
-    <label asp-for="Title">@T["Type"]</label>
-    <div id="ContentPicker_PickerAdvancedFormTypes_Type" class="content-picker-default">
-        <fieldset class="">
-            <ul class="list-group col-xl-12 content-picker-default__list" v-show="arrayOfItems.length" v-cloak>
-                <draggable v-model="arrayOfItems">
-                    <li v-for="(item, i) in arrayOfItems"
-                        class="list-group-item content-picker-default__list-item"
-                        :key="item.contentItemId">
-                        {{ item.displayText }} <span v-show="!item.hasPublished" class="text-muted small">(@T["Not published"])</span>
-                        <input asp-for="Type" type="hidden" v-model="item.contentItemId" form="main" />
-                        <div class="btn-group btn-group-sm float-right" role="group">
-                            <button v-on:click="remove(item)" type="button" class="btn btn-secondary content-picker-default__list-item__delete"><i class="fa fa-trash fa-sm" aria-hidden="true"></i></button>
+<div class="row">
+    <div class="col-md-6">
+        <div style="margin-bottom: 2rem;">
+            <label asp-for="Title">@T["Type"]</label>
+            <div id="ContentPicker_PickerAdvancedFormTypes_Type" class="content-picker-default">
+                <fieldset class="">
+                    <ul class="list-group col-xl-12 content-picker-default__list" v-show="arrayOfItems.length" v-cloak>
+                        <draggable v-model="arrayOfItems">
+                            <li v-for="(item, i) in arrayOfItems"
+                                class="list-group-item content-picker-default__list-item"
+                                :key="item.contentItemId">
+                                {{ item.displayText }} <span v-show="!item.hasPublished" class="text-muted small">(@T["Not published"])</span>
+                                <input asp-for="Type" type="hidden" v-model="item.contentItemId" form="main" />
+                                <div class="btn-group btn-group-sm float-right" role="group">
+                                    <button v-on:click="remove(item)" type="button" class="btn btn-secondary content-picker-default__list-item__delete"><i class="fa fa-trash fa-sm" aria-hidden="true"></i></button>
+                                </div>
+                            </li>
+                        </draggable>
+                    </ul>
+                </fieldset>
+                <fieldset class="row">
+                    <div class="col-xl-12">
+                        <div id="multiselect_Div" :tabindex="2">
+                            <vue-multiselect v-model="value" :options="options" track-by="contentItemId"
+                                             label="displayText" placeholder="@T["Type to search"]"
+                                             @@search-change="asyncFind" @@select="onSelect"
+                                             :searchable="true" :close-on-select="true" :reset-after="true"
+                                             :show-labels="true"
+                                             :disabled="isDisabled"
+                                             select-label="@T["Select"]" deselect-label="@T["Remove"]">
+                                <template slot="option" slot-scope="props">
+                                    <div v-cloak><span>{{ props.option.displayText }}</span><span class="small ml-2" v-show="!props.option.hasPublished">(@T["Not published"])</span></div>
+                                </template>
+                            </vue-multiselect>
                         </div>
-                    </li>
-                </draggable>
-            </ul>
-        </fieldset>
-        <fieldset class="row">
-            <div class="col-xl-12">
-                <div id="multiselect_Div" :tabindex="2">
-                    <vue-multiselect v-model="value" :options="options" track-by="contentItemId"
-                                     label="displayText" placeholder="@T["Type to search"]"
-                                     @@search-change="asyncFind" @@select="onSelect"
-                                     :searchable="true" :close-on-select="true" :reset-after="true"
-                                     :show-labels="true"
-                                     :disabled="isDisabled"
-                                     select-label="@T["Select"]" deselect-label="@T["Remove"]">
-                        <template slot="option" slot-scope="props">
-                            <div v-cloak><span>{{ props.option.displayText }}</span><span class="small ml-2" v-show="!props.option.hasPublished">(@T["Not published"])</span></div>
-                        </template>
-                    </vue-multiselect>
-                </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <span class="hint">@T["The type of the form."]</span>
+                    </div>
+                </fieldset>
             </div>
-            <div class="col-xl-12">
-                <span class="hint">@T["The type of the form."]</span>
-            </div>
-        </fieldset>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="custom-control custom-checkbox mr-sm-2">
+            <input asp-for="HideFromListing" type="checkbox" form="main" class="custom-control-input" id="customControlAutosizing">
+            <label class="custom-control-label" for="customControlAutosizing"> @T["Hide From Listing"]</label>
+        </div>
     </div>
 </div>
-
 <div class="description">
     <label asp-for="Description">@T["Description"]</label>
     <textarea asp-for="Description" class="form-control content-preview-text content-caption-text" form="main"></textarea>
@@ -190,7 +199,6 @@
     <br />
     <br />
 </div>
-
 <div>
     <label asp-for="Instructions">@T["Instructions"]</label>
     <textarea asp-for="Instructions" class="form-control content-preview-text content-caption-text" form="main"></textarea>

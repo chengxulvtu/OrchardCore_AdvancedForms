@@ -12,9 +12,10 @@ namespace AdvancedForms.Models
         public EditorPart Header { get; set; }
         public EditorPart Footer { get; set; }
         public EditorPart Instructions;
+        public BooleanPart HideFromListing { get; set; }
         public JSonEditorPart Container, AdminContainer;
 
-        public AdvancedForm(string description, string instructions, string container, string title, string header, string footer, string type, string adminContainer)
+        public AdvancedForm(string description, string instructions, string container, string title, string header, string footer, string type, string adminContainer, bool isHideFromListing)
         {
             Description = new EditorPart(description);
             Title = title;
@@ -24,6 +25,7 @@ namespace AdvancedForms.Models
             Header = new EditorPart(header);
             Footer = new EditorPart(footer);
             Type = new TextPart(type);
+            HideFromListing = new BooleanPart(isHideFromListing);
         }
 
     }

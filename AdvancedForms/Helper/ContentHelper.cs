@@ -91,7 +91,8 @@ namespace AdvancedForms.Helper
                 EntryType = entryType,
                 Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text,
                 StatusText = statusText,
-                PublicEditor = new HTMLFieldViewModel() { ID = "PublicComment" }
+                PublicEditor = new HTMLFieldViewModel() { ID = "PublicComment" },
+                HideFromListing = contentItem.Content.AdvancedForm.HideFromListing.Value
 
             };
         }

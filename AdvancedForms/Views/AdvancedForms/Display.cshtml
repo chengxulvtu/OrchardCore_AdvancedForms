@@ -23,7 +23,7 @@
 
 @{
     var isEdit = !String.IsNullOrEmpty(Model.Id);
-    var createOrEdit = isEdit ? T["Edit"] : T["Create"];
+    var createOrEdit = isEdit ? "Edit" : "Create";
 }
 
 <script type='text/javascript' at="Foot">
@@ -48,7 +48,7 @@
                 DraftSubmission = submission;
             });
         });
-        initValue('@Model.Title','@Model.Id','@Model.Header','@Model.Footer','@Model.Description','@Model.Type','@Model.SubmissionId','@Model.Instructions','@Model.Owner', '@Model.CaseID')
+        initValue('@Model.Title','@Model.Id','@Model.Header','@Model.Footer','@Model.Description','@Model.Type','@Model.SubmissionId','@Model.Instructions','@Model.Owner', '@Model.CaseID', '@Model.HideFromListing')
     };
     setCurrentUser('@Model.Id', '@User.Identity.Name', false);
 </script>
