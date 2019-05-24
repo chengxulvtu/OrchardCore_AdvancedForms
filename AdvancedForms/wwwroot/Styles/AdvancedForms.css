@@ -423,28 +423,3 @@ svg {
     }
 }
 
-.custom-control-label {
-    padding-left: 10px;
-}
-
-    .custom-control-label::before {
-        width: 2rem;
-        height: 2rem;
-    }
-
-    .custom-control-label::after {
-        width: 2rem;
-        height: 2rem;
-    }
-
-@media (min-width: 768px)  {
-    .custom-control {
-        margin-top: 25px;
-    }
-}
-
-@media (max-width: 768px) {
-    .custom-control {
-        margin-bottom:15px;
-    }
-}

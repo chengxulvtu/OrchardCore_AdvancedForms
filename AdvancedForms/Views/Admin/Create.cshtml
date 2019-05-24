@@ -39,6 +39,32 @@
     .btn-group-sm > .btn, .btn-sm {
         padding: 2px 8px;
     }
+
+    .custom-control-label {
+        padding-left: 10px;
+    }
+
+        .custom-control-label::before {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .custom-control-label::after {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+    @@media (min-width: 768px) {
+        .custom-control {
+            margin-top: 25px;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .custom-control {
+            margin-bottom: 15px;
+        }
+    }
 </style>
 
 @{
