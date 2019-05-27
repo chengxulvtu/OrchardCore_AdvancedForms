@@ -29,7 +29,7 @@ namespace AdvancedForms
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
                     ).Add(T["Forms"], layers => layers
-                        .Url("Admin/Contents/ContentItems/AdvancedForm")
+                        .Url("Admin/Contents/ContentItems/AdvancedForm?Options.SelectedContentType=AdvancedForm")
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
                     ).Add(T["Submissions"], layers => layers
@@ -41,7 +41,7 @@ namespace AdvancedForms
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
                     ).Add(T["Downloadable Forms"], layers => layers
-                        .Url("Admin/Contents/ContentItems/DownloadableForm")
+                        .Url("Admin/Contents/ContentItems/DownloadableForm?Options.SelectedContentType=DownloadableForm")
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
                     ).Add(T["New Form Type"], layers => layers
