@@ -11,13 +11,18 @@ namespace AdvancedForms
         public static readonly Permission ViewContent = new Permission("ViewContent", "View all content");
         public static readonly Permission ViewOwnContent = new Permission("ViewOwnContent", "View own content Sumbissions", new[] { ViewContent });
 
+        public static readonly Permission ManageMedia = new Permission("ManageMediaContent", "Manage Media");
+        public static readonly Permission ManageOwnMedia = new Permission("ManageOwnMedia", "Manage Own Media", new[] { ManageMedia });
+        public static readonly Permission ManageAttachedMediaFieldsFolder = new Permission("ManageAttachedMediaFieldsFolder", "Manage Attached Media Fields Folder");
+
         public IEnumerable<Permission> GetPermissions()
         {
             return new[] {
                 ManageAdvancedForms,
                 ManageOwnAdvancedForms,
                 ViewContent,
-                ViewOwnContent
+                ViewOwnContent,
+                ManageMedia, ManageOwnMedia, ManageAttachedMediaFieldsFolder
             };
         }
 
@@ -46,12 +51,16 @@ namespace AdvancedForms
                 },
                  new PermissionStereotype {
                     Name = "Authenticated",
-                    Permissions = new[] { ManageAdvancedForms, SubmitForm }
+                    Permissions = new[] { ViewContent }
                 },
                 new PermissionStereotype {
                     Name = "Anonymous",
-                    Permissions = new[] { ManageAdvancedForms, ViewContent }
-                }
+                    Permissions = new[] { ViewContent }
+                },
+                new PermissionStereotype {
+                    Name = "CITIZEN",
+                    Permissions = new[] { ManageAdvancedForms, SubmitForm, ManageMedia, ManageOwnMedia, ManageAttachedMediaFieldsFolder }
+                },
             };
         }
     }
