@@ -62,6 +62,11 @@ namespace AdvancedForms.Helper
             var contentItem = await _contentManager.GetAsync(contentItemId, VersionOptions.Published);
             var subContentItem = await _contentManager.GetAsync(id, VersionOptions.Published);
 
+            if (subContentItem == null)
+            {
+                subContentItem = await _contentManager.GetAsync(id, VersionOptions.DraftRequired);
+            }
+
             var selectedContent = await _contentManager.GetAsync(subContentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.Published);
 
             if (selectedContent == null)

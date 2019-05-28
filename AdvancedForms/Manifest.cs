@@ -11,7 +11,8 @@
     Id = "AdvancedForms",
     Name = "AdvancedForms",
     Description = "Creates forms content types, uses Forms.IO open source MIT open source tools. NOTE: Turn on Query Module before turning on this module.",
-    Dependencies = new[] { "OrchardCore.Contents, OrchardCore.Lists", "OrchardCore.Liquid", "OrchardCore.Queries", "OrchardCore.Queries.Sql","OrchardCore.Workflows","OrchardCore.Email","OrchardCore.Workflows.Http","OrchardCore.Resources"},
+    Dependencies = new[] { "OrchardCore.Contents, OrchardCore.Lists", "OrchardCore.Liquid", "OrchardCore.Queries", "OrchardCore.Queries.Sql",
+        "OrchardCore.Workflows","OrchardCore.Email","OrchardCore.Workflows.Http","OrchardCore.Resources", "OrchardCore.Users.Registration" },
     Category = "MRT Software"
 )]
 
