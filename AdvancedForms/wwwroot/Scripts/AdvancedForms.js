@@ -117,10 +117,10 @@ function activeButton(displayType) {
     $("#btnWizard").removeClass();
     $("#btnForm").removeClass();
     if (displayType == "wizard") {
-        $("#btnWizard").addClass("btn btn-primary active");
-        $("#btnForm").addClass("btn btn-default");
+        $("#btnWizard").addClass("btn btn-info active");
+        $("#btnForm").addClass("btn btn-info");
     } else {
-        $("#btnWizard").addClass("btn btn-default");
-        $("#btnForm").addClass("btn btn-primary active");
+        $("#btnWizard").addClass("btn btn-info");
+        $("#btnForm").addClass("btn btn-info active");
     }
 }
