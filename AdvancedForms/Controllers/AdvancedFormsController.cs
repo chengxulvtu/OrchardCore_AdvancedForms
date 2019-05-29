@@ -20,14 +20,6 @@ using YesSql;
 using OrchardCore.Mvc.ActionConstraints;
 using AdvancedForms.Helper;
 using Newtonsoft.Json;
-using OrchardCore.Environment.Shell.Configuration;
-using Microsoft.Extensions.Configuration;
-using System.IO;
-using System.Linq;
-using Microsoft.Extensions.Logging;
-using OrchardCore.Media;
-using OrchardCore.FileStorage;
-using Microsoft.AspNetCore.StaticFiles;
 
 namespace AdvancedForms.Controllers
 {
@@ -42,37 +34,25 @@ namespace AdvancedForms.Controllers
         private readonly IContentDefinitionManager _contentDefinitionManager;
         private readonly INotifier _notifier;
         private readonly YesSql.ISession _session;
-        private readonly IShellConfiguration _shellConfiguration;
-        private readonly ILogger _logger;
-        private readonly IMediaFileStore _mediaFileStore;
-        private readonly IContentTypeProvider _contentTypeProvider;
         private const string _id = "AdvancedFormSubmissions";
 
         public AdvancedFormsController(
-            IMediaFileStore mediaFileStore,
-            IContentTypeProvider contentTypeProvider,
             IContentManager contentManager,
             IContentItemDisplayManager contentItemDisplayManager,
             IAuthorizationService authorizationService,
             IContentAliasManager contentAliasManager,
-            IShellConfiguration shellConfiguration,
             INotifier notifier,
             YesSql.ISession session,
-            ILogger<AdvancedFormsController> logger,
             IContentDefinitionManager contentDefinitionManager,
             IHtmlLocalizer<AdvancedFormsController> localizer
             )
         {
-            _mediaFileStore = mediaFileStore;
-            _contentTypeProvider = contentTypeProvider;
             _authorizationService = authorizationService;
             _contentItemDisplayManager = contentItemDisplayManager;
             _contentManager = contentManager;
             _notifier = notifier;
             _contentAliasManager = contentAliasManager;
             _session = session;
-            _shellConfiguration = shellConfiguration;
-            _logger = logger;
             _contentDefinitionManager = contentDefinitionManager;
             T = localizer;
         }
@@ -480,208 +460,6 @@ namespace AdvancedForms.Controllers
             }
             return title;
         }
-
-        #region "Manage Media Items"
-
-        private static string[] DefaultAllowedFileExtensions = new string[] {
-            // Images
-            ".jpg",
-            ".jpeg",
-            ".png",
-            ".gif",
-            ".ico",
-            ".svg",
-
-            // Documents
-            ".pdf", // (Portable Document Format; Adobe Acrobat)
-            ".doc", ".docx", // (Microsoft Word Document)
-            ".ppt", ".pptx", ".pps", ".ppsx", // (Microsoft PowerPoint Presentation)
-            ".odt", // (OpenDocument Text Document)
-            ".xls", ".xlsx", // (Microsoft Excel Document)
-            ".psd", // (Adobe Photoshop Document)
-
-            // Audio
-            ".mp3",
-            ".m4a",
-            ".ogg",
-            ".wav",
-
-            // Video
-            ".mp4", ".m4v", // (MPEG-4)
-            ".mov", // (QuickTime)
-            ".wmv", // (Windows Media Video)
-            ".avi",
-            ".mpg",
-            ".ogv", // (Ogg)
-            ".3gp", // (3GPP)
-        };
-
-        [HttpPost]
-        [Route("AdvancedForms/Admin/Upload")]
-        public async Task<ActionResult<object>> Upload(
-            string path,
-            string contentType,
-            ICollection<IFormFile> files)
-        {
-            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageOwnMedia))
-            {
-                return Unauthorized();
-            }
-
-            if (string.IsNullOrEmpty(path))
-            {
-                path = "";
-            }
-
-            var section = _shellConfiguration.GetSection("OrchardCore.Media");
-
-            // var maxUploadSize = section.GetValue("MaxRequestBodySize", 100_000_000);
-            var maxFileSize = section.GetValue("MaxFileSize", 30_000_000);
-            var allowedFileExtensions = section.GetSection("AllowedFileExtensions").Get<string[]>() ?? DefaultAllowedFileExtensions;
-
-            var result = new List<object>();
-
-            // Loop through each file in the request
-            foreach (var file in files)
-            {
-                // TODO: support clipboard
-
-                if (!allowedFileExtensions.Contains(Path.GetExtension(file.FileName), StringComparer.OrdinalIgnoreCase))
-                {
-                    result.Add(new
-                    {
-                        name = file.FileName,
-                        size = file.Length,
-                        folder = path,
-                        error = T["This file extension is not allowed: {0}", Path.GetExtension(file.FileName)].ToString()
-                    });
-
-                    _logger.LogInformation("File extension not allowed: '{0}'", file.FileName);
-
-                    continue;
-                }
-
-                if (file.Length > maxFileSize)
-                {
-                    result.Add(new
-                    {
-                        name = file.FileName,
-                        size = file.Length,
-                        folder = path,
-                        error = T["The file {0} is too big. The limit is {1}MB", file.FileName, (int)Math.Floor((double)maxFileSize / 1024 / 1024)].ToString()
-                    });
-
-                    _logger.LogInformation("File too big: '{0}' ({1}B)", file.FileName, file.Length);
-
-                    continue;
-                }
-
-                if (!allowedFileExtensions.Contains(Path.GetExtension(file.FileName), StringComparer.OrdinalIgnoreCase))
-                {
-                    result.Add(new
-                    {
-                        name = file.FileName,
-                        size = file.Length,
-                        folder = path,
-                        error = T["This file extension is not allowed: {0}", Path.GetExtension(file.FileName)].ToString()
-                    });
-
-                    _logger.LogInformation("File extension not allowed: '{0}'", file.FileName);
-
-                    continue;
-                }
-
-                if (file.Length > maxFileSize)
-                {
-                    result.Add(new
-                    {
-                        name = file.FileName,
-                        size = file.Length,
-                        folder = path,
-                        error = T["The file {0} is too big. The limit is {1}MB", file.FileName, (int)Math.Floor((double)maxFileSize / 1024 / 1024)].ToString()
-                    });
-
-                    _logger.LogInformation("File too big: '{0}' ({1}B)", file.FileName, file.Length);
-
-                    continue;
-                }
-
-                try
-                {
-                    var mediaFilePath = _mediaFileStore.Combine(path, file.FileName);
-
-                    using (var stream = file.OpenReadStream())
-                    {
-                        await _mediaFileStore.CreateFileFromStream(mediaFilePath, stream);
-                    }
-
-                    var mediaFile = await _mediaFileStore.GetFileInfoAsync(mediaFilePath);
-
-                    result.Add(CreateFileResult(mediaFile));
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "An error occured while uploading a media");
-
-                    result.Add(new
-                    {
-                        name = file.FileName,
-                        size = file.Length,
-                        folder = path,
-                        error = ex.Message
-                    });
-                }
-            }
-
-            return new { files = result.ToArray() };
-        }
-
-        [HttpPost]
-        [Route("AdvancedForms/Admin/MoveMedia")]
-        public async Task<IActionResult> MoveMedia(string oldPath, string newPath)
-        {
-            if (!await _authorizationService.AuthorizeAsync(User, Permissions.ManageOwnMedia)
-                || !await _authorizationService.AuthorizeAsync(User, Permissions.ManageAttachedMediaFieldsFolder, (object)oldPath))
-            {
-                return Unauthorized();
-            }
-
-            if (string.IsNullOrEmpty(oldPath) || string.IsNullOrEmpty(newPath))
-            {
-                return NotFound();
-            }
-
-            if (await _mediaFileStore.GetFileInfoAsync(oldPath) == null)
-            {
-                return NotFound();
-            }
-
-            if (await _mediaFileStore.GetFileInfoAsync(newPath) != null)
-            {
-                return StatusCode(StatusCodes.Status403Forbidden, T["Cannot move media because a file already exists with the same name"]);
-            }
-
-            await _mediaFileStore.MoveFileAsync(oldPath, newPath);
-
-            return Ok();
-        }
-
-        public object CreateFileResult(IFileStoreEntry mediaFile)
-        {
-            _contentTypeProvider.TryGetContentType(mediaFile.Name, out var contentType);
-
-            return new
-            {
-                name = mediaFile.Name,
-                size = mediaFile.Length,
-                folder = mediaFile.DirectoryPath,
-                url = _mediaFileStore.MapPathToPublicUrl(mediaFile.Path),
-                mediaPath = mediaFile.Path,
-                mime = contentType ?? "application/octet-stream"
-            };
-        }
-
-        #endregion
 
     }
 }
