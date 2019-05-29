@@ -16,6 +16,7 @@ namespace AdvancedForms
             return new[] {
                 ManageAdvancedForms,
                 ManageOwnAdvancedForms,
+                SubmitForm,
                 ViewContent,
                 ViewOwnContent
             };
@@ -26,31 +27,31 @@ namespace AdvancedForms
             return new[] {
                 new PermissionStereotype {
                     Name = "Administrator",
-                    Permissions = new[] { ManageAdvancedForms, SubmitForm }
+                    Permissions = new[] { ManageAdvancedForms, ManageOwnAdvancedForms, SubmitForm }
                 },
                 new PermissionStereotype {
                     Name = "Editor",
-                    Permissions = new[] { ManageAdvancedForms, SubmitForm }
+                    Permissions = new[] { ManageAdvancedForms, ManageOwnAdvancedForms, SubmitForm }
                 },
                 new PermissionStereotype {
                     Name = "Moderator",
-                    Permissions = new[] { ManageAdvancedForms, SubmitForm }
+                    Permissions = new[] { ManageAdvancedForms, ManageOwnAdvancedForms, SubmitForm }
                 },
                 new PermissionStereotype {
                     Name = "Author",
-                    Permissions = new[] { ManageOwnAdvancedForms, SubmitForm }
+                    Permissions = new[] { ViewOwnContent }
                 },
                 new PermissionStereotype {
                     Name = "Contributor",
-                    Permissions = new[] { ManageOwnAdvancedForms, SubmitForm }
+                    Permissions = new[] { ViewOwnContent }
                 },
                  new PermissionStereotype {
                     Name = "Authenticated",
-                    Permissions = new[] { ManageAdvancedForms, SubmitForm }
+                    Permissions = new[] { ViewOwnContent }
                 },
                 new PermissionStereotype {
                     Name = "Anonymous",
-                    Permissions = new[] { ManageAdvancedForms, ViewContent }
+                    Permissions = new[] { ViewOwnContent }
                 }
             };
         }
