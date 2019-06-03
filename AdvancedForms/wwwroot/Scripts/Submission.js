@@ -98,66 +98,75 @@ function submitPublicComment(id) {
 }
 
 function RemoveAdminComment(contentItemId) {
-    $.ajax({
-        url: urlConfig.SaveUpdateAdminComment,
-        method: 'POST',
-        data: {
-            __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
-            id: ID,
-            contentItemId: contentItemId,
-            comment: "Comment removed by moderator"
-        },
-        success: function (data) {
-            clearEditors();
-            GetAdminComments(ID);
-        },
-        error: function (error) {
-            var errorMsg = "Unable to Save. Try again later.";
-            $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
+    confirmDialog("Delete Comment", "Are you sure to want to delete the admin comment?", r => {
+        if (r) {
+            $.ajax({
+                url: urlConfig.SaveUpdateAdminComment,
+                method: 'POST',
+                data: {
+                    __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+                    id: ID,
+                    contentItemId: contentItemId,
+                    comment: "Comment removed by moderator"
+                },
+                success: function (data) {
+                    clearEditors();
+                    GetAdminComments(ID);
+                },
+                error: function (error) {
+                    var errorMsg = "Unable to Save. Try again later.";
+                    $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
+                }
+            });
         }
     });
 }
 
 function MakePublicComment(contentItemId) {
-    var isConfirm = confirm("Are you sure to want to make the comment public?");
-    if (isConfirm) {
-        $.ajax({
-            url: urlConfig.MakePublicComment,
-            method: 'POST',
-            data: {
-                __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
-                id: ID,
-                contentItemId: contentItemId
-            },
-            success: function (data) {
-                clearEditors();
-                GetAdminComments(ID);
-            },
-            error: function (error) {
-                var errorMsg = "Unable to Save. Try again later.";
-                $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
-            }
-        });
-    }
+    confirmDialog("Update Comment", "Are you sure to want to make the comment public?", r => {
+        if (r) {
+            $.ajax({
+                url: urlConfig.MakePublicComment,
+                method: 'POST',
+                data: {
+                    __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+                    id: ID,
+                    contentItemId: contentItemId
+                },
+                success: function (data) {
+                    clearEditors();
+                    GetAdminComments(ID);
+                },
+                error: function (error) {
+                    var errorMsg = "Unable to Save. Try again later.";
+                    $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
+                }
+            });
+        }
+    });
 }
 
 function RemovePublicComment(contentItemId) {
-    $.ajax({
-        url: urlConfig.SaveUpdatePublicComment,
-        method: 'POST',
-        data: {
-            __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
-            id: ID,
-            contentItemId: contentItemId,
-            comment: "Comment removed by moderator"
-        },
-        success: function (data) {
-            clearEditors();
-            GetPublicComments(ID);
-        },
-        error: function (error) {
-            var errorMsg = "Unable to Save. Try again later.";
-            $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
+    confirmDialog("Delete Comment", "Are you sure to want to delete the public comment?", r => {
+        if (r) {
+            $.ajax({
+                url: urlConfig.SaveUpdatePublicComment,
+                method: 'POST',
+                data: {
+                    __RequestVerificationToken: $("input[name='__RequestVerificationToken']").val(),
+                    id: ID,
+                    contentItemId: contentItemId,
+                    comment: "Comment removed by moderator"
+                },
+                success: function (data) {
+                    clearEditors();
+                    GetPublicComments(ID);
+                },
+                error: function (error) {
+                    var errorMsg = "Unable to Save. Try again later.";
+                    $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
+                }
+            });
         }
     });
 }
