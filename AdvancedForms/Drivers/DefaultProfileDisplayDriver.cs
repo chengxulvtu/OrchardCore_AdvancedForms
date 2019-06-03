@@ -17,6 +17,7 @@ using OrchardCore.DisplayManagement.Views;
 using OrchardCore.Environment.Shell;
 using OrchardCore.Profile;
 using YesSql;
+using OrchardCore.Profile.ViewModels;
 
 namespace AdvancedForms.Drivers
 {
@@ -47,15 +48,27 @@ namespace AdvancedForms.Drivers
 
         IHtmlLocalizer H { get; set; }
 
-
         public async override Task<IDisplayResult> EditAsync(IProfile profile, IUpdateModel updater)
         {
+            var query = _session.Query<ContentItem, ContentItemIndex>();
+            var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && o.Latest).OrderByDescending(o => o.CreatedUtc).ListAsync();
+            if (profile.UserName.ToLower() != "admin")
+            {
+                pageOfContentItems = pageOfContentItems.Where(o => o.Owner == profile.UserName);
+            }
+            var contentItemSummaries = new List<dynamic>();
+            foreach (var contentItem in pageOfContentItems)
+            {
+                contentItemSummaries.Add(contentItem);
+            }
+
             return await Task.FromResult<IDisplayResult>(
                     Initialize<ProfileViewModel>("List_Edit", item =>
                     {
-                        item.ContentItemSummaries = null;
+                        item.ContentItemSummaries = contentItemSummaries;
                     }).Location("Content:1").OnGroup(GroupId)
             );
         }
+
     }
 }

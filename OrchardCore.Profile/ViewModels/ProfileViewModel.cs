@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AdvancedForms.ViewModels
+namespace OrchardCore.Profile.ViewModels
 {
     public class ProfileViewModel
     {

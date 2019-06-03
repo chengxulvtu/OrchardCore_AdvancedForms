@@ -1,6 +1,4 @@
-﻿@using OrchardCore.ContentManagement
-@inject IContentManager ContentManager
-@model ProfileIndexViewModel
+﻿@model ProfileIndexViewModel
 
 <style>
     #mainNav {
@@ -84,73 +82,7 @@
         </div>
     </div>
     <div class="col-md-9">
-        <h2 style="font-size: 20px;">Submitted Forms</h2><hr />
-
-        @if (Model.ContentItemSummaries.Count > 0)
-        {
-            <ul class="list-group">
-                @foreach (var contentItemSummary in Model.ContentItemSummaries)
-                {
-                    ContentItem contentItem = contentItemSummary;
-                    var hasPublished = await ContentManager.HasPublishedVersionAsync(contentItem);
-                    var hasDraft = contentItem.HasDraft();
-                    string action = contentItem.Content.AutoroutePart.Path != null ? contentItem.Content.AutoroutePart.Path.ToString().Split("/")[1] : null;
-                    if (action == null)
-                    {
-                        return;
-                    }
-                    string status = string.Empty;
-                    dynamic selectedContent = await ContentManager.GetAsync(contentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.Published);
-                    if (selectedContent == null)
-                    {
-                        selectedContent = await ContentManager.GetAsync(contentItem.Content.AdvancedFormSubmissions.Status.Text.ToString(), VersionOptions.DraftRequired);
-                    }
-                    if (selectedContent != null)
-                    {
-                        status = selectedContent.DisplayText;
-                    }
-
-
-                    <li class="list-group-item tedt">
-                        <div class="properties">
-                            <div class="related float-right">
-                                <a href="@Url.Action("Edit", action, new { area = "AdvancedForms" })/@contentItem.ContentItemId?returnUrl=@FullRequestPath" class="btn btn-primary btn-sm">@T["Edit"]</a>
-                                @if (hasPublished)
-                                {
-                                    <a href="@Url.Action("View", action, new { area = "AdvancedForms" })/@contentItem.ContentItemId" class="btn btn-success btn-sm" itemprop="">@T["View"]</a>
-                                }
-                            </div>
-                            <a href="@Url.Action("Edit", action, new { area = "AdvancedForms" })/@contentItem.ContentItemId">@action.Replace("-", " ")</a>
-                            <br />
-                            <div class="metadata">
-                                @if (hasPublished)
-                                {
-                                    <span class="badge badge-success" title="@T["Published"]">
-                                        <i class="fa fa-check" aria-hidden="true"></i> @T["Published"]
-                                    </span>
-                                }
-                                @if (hasDraft)
-                                {
-                                    <span class="badge badge-primary" title="@T["Draft"]">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i> @T["Draft"]
-                                    </span>
-                                }
-                                <span class="badge badge-secondary" title="@T[@status]" style="color:#fff;"> @T["Status - " + @status]</span>
-                                <div>
-                                    <span class="hint">@T["Last modified {0} by {1}", (object)(await DisplayAsync(await New.TimeSpan(Utc: contentItem.ModifiedUtc))), contentItem.Author]</span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                }
-            </ul>
-        }
-        else
-        {
-            <div class="alert alert-info">
-                @T["No result found."]
-            </div>
-        }
+        @await DisplayAsync(Model.Shape)
     </div>
 </div>
 <hr />

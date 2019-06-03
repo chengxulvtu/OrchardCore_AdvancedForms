@@ -70,23 +70,10 @@ namespace OrchardCore.Profile.Controllers
                 await _profileService.UpdateProfileAsync(profile);
             }
 
-            var query = _session.Query<ContentItem, ContentItemIndex>();
-            var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && o.Latest).OrderByDescending(o => o.CreatedUtc).ListAsync();
-            if (profile.UserName.ToLower() != "admin")
-            {
-                pageOfContentItems = pageOfContentItems.Where(o => o.Owner == profile.UserName);
-            }
-            var contentItemSummaries = new List<dynamic>();
-            foreach (var contentItem in pageOfContentItems)
-            {
-                contentItemSummaries.Add(contentItem);
-            }
-
             var viewModel = new ProfileIndexViewModel
             {
                 GroupId = groupId,
-                Shape = await _profileDisplayManager.BuildEditorAsync(profile, this, false, groupId),
-                ContentItemSummaries = contentItemSummaries
+                Shape = await _profileDisplayManager.BuildEditorAsync(profile, this, false, groupId)
             };
 
             return View(viewModel);
