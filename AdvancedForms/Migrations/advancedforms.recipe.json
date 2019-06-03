@@ -14023,18 +14023,18 @@
         }
       }
     },
-    "name",
-    "Roles",
-    "Roles",
-    [
-      {
-        "Name": "CITIZEN",
-        "Permissions": [
-          "SubmitForm",
-          "AccessAdminPanel",
-          "ManageOwnMedia"
-        ]
-      }
-    ]
+    {
+      "name": "Roles",
+      "Roles": [
+        {
+          "Name": "CITIZEN",
+          "Permissions": [
+            "SubmitForm",
+            "AccessAdminPanel",
+            "ManageOwnMedia"
+          ]
+        }
+      ]
+    }
   ]
 }
