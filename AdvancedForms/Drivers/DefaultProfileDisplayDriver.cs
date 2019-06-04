@@ -63,7 +63,7 @@ namespace AdvancedForms.Drivers
             }
 
             return await Task.FromResult<IDisplayResult>(
-                    Initialize<ProfileViewModel>("List_Edit", item =>
+                    Initialize<ProfileViewModel>("Submission_List_Edit", item =>
                     {
                         item.ContentItemSummaries = contentItemSummaries;
                     }).Location("Content:1").OnGroup(GroupId)
