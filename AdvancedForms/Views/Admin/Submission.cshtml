@@ -184,7 +184,7 @@
     <li><a data-toggle="tab" onclick="GetPublicComments('@Model.SubmissionId')" href="#publicComments">@T["Public Comments"]</a></li>
 </ul>
 
-<div class="tab-content">
+<div class="tab-content" style="border: 1px solid #ddd;padding: 15px;">
     <div id="formPreview" class="tab-pane fade in active">
         <br />
         <div id="advancedForm-errors"></div>
@@ -199,7 +199,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="btn-group btn-group-sm pull-right">
-                        <label for="fileuploadAdmin" class="btn btn-sm btn-primary fileinput-button upload-button" style="padding: 6px 12px;font-size: 14px;">
+                        <label for="fileuploadAdmin" class="btn btn-sm btn-primary fileinput-button upload-button" style="padding: 6px 12px;font-size: 14px;margin-bottom: 0.5rem !important;">
                             <input id="fileuploadAdmin" type="file" name="files">
                             <i class="fa fa-plus" aria-hidden="true"></i>
                             @T["Attach a file with comment"]
@@ -222,20 +222,20 @@
         <hr />
     </div>
     <div id="formAdminFields" class="tab-pane fade">
-        <br />
-        <div class="col-md-12">
-            @if (!string.IsNullOrEmpty(Model.AdminContainer))
-            {
-                <div id='builderAdminFields'></div>
-            }
-            else
-            {
-                <div class="alert alert-info">
-                    @T["No Admin Fields available."]
-                </div>
-            }
+        <div class="row">
+            <div class="col-md-12">
+                @if (!string.IsNullOrEmpty(Model.AdminContainer))
+                {
+                    <div id='builderAdminFields'></div>
+                }
+                else
+                {
+                    <div class="alert alert-info">
+                        @T["No Admin Fields available."]
+                    </div>
+                }
+            </div>
         </div>
-        <br />
     </div>
     <div id="publicComments" class="tab-pane fade">
         <br />
@@ -246,7 +246,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="btn-group btn-group-sm pull-right">
-                        <label for="fileuploadPublic" class="btn btn-sm btn-primary fileinput-button upload-button" style="padding: 6px 12px;font-size: 14px;">
+                        <label for="fileuploadPublic" class="btn btn-sm btn-primary fileinput-button upload-button" style="padding: 6px 12px;font-size: 14px;margin-bottom: 0.5rem !important;">
                             <input id="fileuploadPublic" type="file" name="files">
                             <i class="fa fa-plus" aria-hidden="true"></i>
                             @T["Attach a file with comment"]
