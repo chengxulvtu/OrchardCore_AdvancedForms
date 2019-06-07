@@ -52,7 +52,7 @@ namespace AdvancedForms.Drivers
         {
             var query = _session.Query<ContentItem, ContentItemIndex>();
             var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && o.Latest).OrderByDescending(o => o.CreatedUtc).ListAsync();
-            if (profile.UserName.ToLower() != "admin")
+            if (!profile.UserRoles.Any(o=>o == "Administrator"))
             {
                 pageOfContentItems = pageOfContentItems.Where(o => o.Owner == profile.UserName);
             }

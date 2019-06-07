@@ -1,4 +1,5 @@
 ﻿using OrchardCore.Entities;
+using System.Collections.Generic;
 
 namespace OrchardCore.Profile
 {
@@ -6,5 +7,6 @@ namespace OrchardCore.Profile
     {
         public int Id { get; set; }
         public string UserName { get; set; }
+        public List<string> UserRoles { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -67,6 +68,7 @@ namespace OrchardCore.Profile.Controllers
             if (profile.UserName != User.Identity.Name)
             {
                 profile.UserName = User.Identity.Name;
+                profile.UserRoles = ((ClaimsIdentity)User.Identity).Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
                 await _profileService.UpdateProfileAsync(profile);
             }
 

@@ -78,6 +78,7 @@ namespace OrchardCore.Profile.Service
             var existing = await session.Query<Profile>().FirstOrDefaultAsync();
 
             existing.UserName = profile.UserName;
+            existing.UserRoles = profile.UserRoles;
             session.Save(existing);
 
             _memoryCache.Set(ProfileCacheKey, profile);
