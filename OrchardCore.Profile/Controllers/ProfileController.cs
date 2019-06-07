@@ -65,7 +65,7 @@ namespace OrchardCore.Profile.Controllers
             }
 
             var profile = await _profileService.GetProfileAsync();
-            if (profile.UserName != User.Identity.Name)
+            if (profile.UserName != User.Identity.Name || profile.UserRoles == null)
             {
                 profile.UserName = User.Identity.Name;
                 profile.UserRoles = ((ClaimsIdentity)User.Identity).Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();

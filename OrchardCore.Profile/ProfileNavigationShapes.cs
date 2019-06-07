@@ -37,10 +37,13 @@ namespace OrchardCore.Profile
                         return;
                     }
 
+                    var viewContextAccessor = context.ServiceProvider.GetRequiredService<ViewContextAccessor>();
+                    var viewContext = viewContextAccessor.ViewContext;
+
                     var navigationManager = context.ServiceProvider.GetRequiredService<IProfileNavigationManager>();
                     var shapeFactory = context.ServiceProvider.GetRequiredService<IShapeFactory>();
                     var httpContextAccessor = context.ServiceProvider.GetRequiredService<IHttpContextAccessor>();
-                    var menuItems = navigationManager.BuildMenu(menuName, context.DisplayContext.ViewContext);
+                    var menuItems = navigationManager.BuildMenu(menuName, viewContext);
                     var httpContext = httpContextAccessor.HttpContext;
 
                     if (httpContext != null)
@@ -63,7 +66,7 @@ namespace OrchardCore.Profile
                     }
 
                     // TODO: Flag Selected menu item
-                    await ProfileNavigationHelper.PopulateMenuAsync(shapeFactory, menu, menu, menuItems, context.DisplayContext.ViewContext);
+                    await ProfileNavigationHelper.PopulateMenuAsync(shapeFactory, menu, menu, menuItems, viewContext);
                 });
 
             builder.Describe("ProfileNavigationItem")
