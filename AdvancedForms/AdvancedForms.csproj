@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <Folder Include="Assets\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,17 +37,17 @@
     <PackageReference Include="Microsoft.NET.Sdk.Web" Version="1.0.0-alpha-20161104-2-112" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
-    <PackageReference Include="OrchardCore" Version="1.0.0-beta3-71635" />
-    <PackageReference Include="OrchardCore.Admin.Abstractions" Version="1.0.0-beta3-71635" />
-    <PackageReference Include="OrchardCore.Autoroute" Version="1.0.0-beta3-71635" />
-    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.0.0-beta3-71635" />
-    <PackageReference Include="OrchardCore.ContentManagement.Abstractions" Version="1.0.0-beta3-71635" />
-    <PackageReference Include="OrchardCore.ContentTypes.Abstractions" Version="1.0.0-beta3-71635" />
-    <PackageReference Include="OrchardCore.Data.Abstractions" Version="1.0.0-beta3-71635" />
-    <PackageReference Include="OrchardCore.Menu" Version="1.0.0-beta3-71635" />
-    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-beta3-71635" />
-    <PackageReference Include="OrchardCore.Mvc.Core" Version="1.0.0-beta3-71635" />
-    <PackageReference Include="OrchardCore.Recipes.Abstractions" Version="1.0.0-beta3-71635" />
+    <PackageReference Include="OrchardCore" Version="1.0.0-beta3-71666" />
+    <PackageReference Include="OrchardCore.Admin.Abstractions" Version="1.0.0-beta3-71666" />
+    <PackageReference Include="OrchardCore.Autoroute" Version="1.0.0-beta3-71666" />
+    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.0.0-beta3-71666" />
+    <PackageReference Include="OrchardCore.ContentManagement.Abstractions" Version="1.0.0-beta3-71666" />
+    <PackageReference Include="OrchardCore.ContentTypes.Abstractions" Version="1.0.0-beta3-71666" />
+    <PackageReference Include="OrchardCore.Data.Abstractions" Version="1.0.0-beta3-71666" />
+    <PackageReference Include="OrchardCore.Menu" Version="1.0.0-beta3-71666" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-beta3-71666" />
+    <PackageReference Include="OrchardCore.Mvc.Core" Version="1.0.0-beta3-71666" />
+    <PackageReference Include="OrchardCore.Recipes.Abstractions" Version="1.0.0-beta3-71666" />
   </ItemGroup>
 
   <ItemGroup>
@@ -83,10 +84,6 @@
 
   <ItemGroup>
     <Content Remove="Views\NavigationItemText-manualForms.Id.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="Views\Shared\HTMLField.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -94,6 +91,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\OrchardCore.Profile\OrchardCore.Profile.csproj" />
   </ItemGroup>
 

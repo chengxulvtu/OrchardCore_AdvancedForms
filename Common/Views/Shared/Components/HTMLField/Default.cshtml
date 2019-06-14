@@ -1,12 +1,12 @@
-﻿@model AdvancedForms.ViewModels.HTMLFieldViewModel
+﻿@model Common.ViewModels.HTMLFieldViewModel
 
-<style name="trumbowyg" asp-src="/OrchardCore.Resources/Styles/trumbowyg.min.css"
+@*<style name="trumbowyg" asp-src="/OrchardCore.Resources/Styles/trumbowyg.min.css"
        debug-src="/OrchardCore.Resources/Styles/trumbowyg.css"></style>
 <script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
 <script name="trumbowyg" depends-on="admin" asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js"
         debug-src="/OrchardCore.Resources/Scripts/trumbowyg.js" at="Head"></script>
 <script name="trumbowyg" depends-on="admin" asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js"
-        debug-src="/OrchardCore.Resources/Scripts/trumbowyg.js" at="Foot"></script>
+        debug-src="/OrchardCore.Resources/Scripts/trumbowyg.js" at="Foot"></script>*@
 
 <textarea id="@Model.ID" class="form-control content-preview-text content-caption-text"></textarea>
 <input type="hidden" id="@Model.ID-ContentItmeID" />
@@ -15,6 +15,7 @@
     $('#@Model.ID').trumbowyg();
 
     function EditComment(id, obj, selector) {
+        debugger;
         clearEditors(); 
         var url =  $(obj).parent().parent().find(".downloadLink")[0];
         $('#' + selector).parent().find(".trumbowyg-editor")[0].innerHTML = $(obj).parent().parent().find(".panel-body")[0].innerHTML;
@@ -24,7 +25,7 @@
         $("html, body").animate({ scrollTop: height }, 800);
         if (url !== undefined && url !== null && url !== "" &&
             url.value !== undefined && url.value !== null && url.value !== "") {
-            if (selector === "AdminComment") {
+            if (selector === "AdminComment" || selector === "CaseAdminComment") {
                 $("#adminAttachmentRemove").show();
                 $("#adminAttachment").text(url.value);
                 $("#adminAttachment").attr("href", url.value);

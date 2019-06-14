@@ -1,0 +1,10 @@
+﻿@model Common.ViewModels.CurrencyFieldViewModel
+
+<label asp-for="TotalCost">@Model.Title</label>
+<div class="input-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text">@Model.CurrencySign</span>
+    </div>
+    <input type="number" min="0" step="any" id="@Model.ID" name="@Model.ID" value="@Model.Value" class="form-control content-preview-text content-caption-text" form="@Model.FormName" />
+</div>
+<span class="hint">@Model.Hint</span>

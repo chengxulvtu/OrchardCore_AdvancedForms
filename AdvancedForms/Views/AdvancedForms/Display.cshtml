@@ -1,4 +1,5 @@
 ﻿@model AdvancedForms.ViewModels.AdvancedFormViewModel
+@using Common.ViewModels;
 
 <script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
 <style asp-src="/AdvancedForms/Styles/formio.full.min.css"></style>
@@ -20,6 +21,12 @@
     }
 </script>
 <script asp-src="/AdvancedForms/Scripts/Display.js" at="Head" asp-name="display"></script>
+
+<style name="trumbowyg" asp-src="/OrchardCore.Resources/Styles/trumbowyg.min.css"
+       debug-src="/OrchardCore.Resources/Styles/trumbowyg.css"></style>
+<script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
+<script name="trumbowyg" depends-on="admin" asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js"
+        debug-src="/OrchardCore.Resources/Scripts/trumbowyg.js" at="Head"></script>
 
 @{
     var isEdit = !String.IsNullOrEmpty(Model.Id);
@@ -138,24 +145,11 @@
         </div>
         <br />
         <div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="btn-group btn-group-sm pull-right">
-                        <label for="fileuploadPublic" class="btn btn-sm btn-primary fileinput-button upload-button" style="padding: 6px 12px;font-size: 14px;">
-                            <input id="fileuploadPublic" type="file" name="files">
-                            <i class="fa fa-plus" aria-hidden="true"></i>
-                            @T["Attach a file with comment"]
-                        </label>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="pull-right">
-                        <a target="_blank" id="publicAttachment"></a> <a id="publicAttachmentRemove">@T["Remove Attachment"]</a>
-                    </div>
-                </div>
-            </div>
-            @await Html.PartialAsync("HTMLField", Model.PublicEditor)
-            <span class="errorMessagePublic">@T["Public comment required."]</span> <br />
+            @await Component.InvokeAsync("CommentField", new CommentFieldViewModel()
+            {
+                AttachFileHint = T["Attach a file with comment"], AttachmentID = "publicAttachment", AttachRemoveHint = T["Remove Attachment"], AttachRemoveID = "publicAttachmentRemove",
+                Editor = Model.PublicEditor, ErrorHint = T["Public comment required."], ErrorMessageClass = "errorMessagePublic", FileUploadID = "fileuploadPublic"
+            });
             <button class="publish-button btn btn-success" onclick="submitPublicComment('@Model.SubmissionId')">@T["Save"]</button>
         </div>
         <br />

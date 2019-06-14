@@ -733,10 +733,10 @@
       ]
     },
     {
-      "Name": "PickerType",
-      "DisplayName": "PickerType",
+      "Name": "PickerAdvancedFormTypes",
+      "DisplayName": "Picker Advanced Form Type",
       "Settings": {
-        "Creatable": "True",
+        "Creatable": "False",
         "Draftable": "True",
         "Versionable": "True",
         "Listable": "True",
@@ -745,8 +745,8 @@
       },
       "ContentTypePartDefinitionRecords": [
         {
-          "PartName": "PickerType",
-          "Name": "PickerType",
+          "PartName": "PickerAdvancedFormTypes",
+          "Name": "PickerAdvancedFormTypes",
           "Settings": {
             "Position": "0"
           }
@@ -782,10 +782,10 @@
       ]
     },
     {
-      "Name": "PickerStatus",
-      "DisplayName": "Picker Status",
+      "Name": "PickerAdvancedFormStatus",
+      "DisplayName": "Picker Advanced Form Status",
       "Settings": {
-        "Creatable": "True",
+        "Creatable": "False",
         "Draftable": "True",
         "Versionable": "True",
         "Listable": "True",
@@ -794,8 +794,8 @@
       },
       "ContentTypePartDefinitionRecords": [
         {
-          "PartName": "PickerStatus",
-          "Name": "PickerStatus",
+          "PartName": "PickerAdvancedFormStatus",
+          "Name": "PickerAdvancedFormStatus",
           "Settings": {
             "Position": "0"
           }
@@ -961,6 +961,24 @@
         "Attachable": "True",
         "Description": "Provides a Title for your content item.",
         "DefaultPosition": "0"
+      },
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "MenuPart",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "MenuItemPart",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": []
+    },
+    {
+      "Name": "LinkMenuItemPart",
+      "Settings": {
+        "Attachable": true,
+        "Description": "Provides a menu link behavior for your content item."
       },
       "ContentPartFieldDefinitionRecords": []
     },
@@ -1474,6 +1492,13 @@
             "Hint": null,
             "Position": "5"
           }
+        },
+        {
+          "FieldName": "BooleanField",
+          "Name": "HideFromListing",
+          "Settings": {
+            "DisplayName": "Hide From Listing"
+          }
         }
       ]
     },
@@ -1563,12 +1588,12 @@
       "ContentPartFieldDefinitionRecords": []
     },
     {
-      "Name": "PickerType",
+      "Name": "PickerAdvancedFormTypes",
       "Settings": {},
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "ContentPickerField",
-          "Name": "Type",
+          "Name": "AdvancedFormTypes",
           "Settings": {
             "DisplayName": "Text",
             "Editor": null,
@@ -1585,14 +1610,14 @@
       ]
     },
     {
-      "Name": "PickerStatus",
+      "Name": "PickerAdvancedFormStatus",
       "Settings": {},
       "ContentPartFieldDefinitionRecords": [
         {
           "FieldName": "ContentPickerField",
-          "Name": "Status",
+          "Name": "AdvancedFormStatus",
           "Settings": {
-            "DisplayName": "Status",
+            "DisplayName": "AdvancedFormStatus",
             "Editor": null,
             "DisplayMode": null,
             "Hint": null,
@@ -1666,6 +1691,14 @@
             "Hint": null,
             "Position": "0"
           }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Attachment",
+          "Settings": {
+            "DisplayName": "Attachment",
+            "Position": "1"
+          }
         }
       ]
     },
@@ -1683,9 +1716,17 @@
             "Hint": null,
             "Position": "0"
           }
+        },
+        {
+          "FieldName": "TextField",
+          "Name": "Attachment",
+          "Settings": {
+            "DisplayName": "Attachment",
+            "Position": "1"
+          }
         }
       ]
     }
   ],
-  "Serial": 113
+  "Serial": 116
 }

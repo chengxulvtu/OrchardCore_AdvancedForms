@@ -1,0 +1,27 @@
+﻿@model Common.ViewModels.CommentFieldViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="btn-group btn-group-sm pull-right">
+            <label for="@Model.FileUploadID" class="btn btn-sm btn-primary fileinput-button upload-button" style="padding: 6px 12px;font-size: 14px;margin-bottom: 5px !important;">
+                <input id="@Model.FileUploadID" type="file" name="files">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                @Model.AttachFileHint
+            </label>
+        </div>
+        @if (Model.IsAttachAFURL)
+        {
+            <button id="@Model.AttachmentAFURLId" class="btn btn-sm btn-primary pull-right" style="padding: 2px 10px;margin: 0 5px;font-size: 20px;margin-bottom: 5px !important;">
+                <i class="fa fa-tasks"></i>
+            </button>
+        }
+    </div>
+    <div class="col-md-12">
+        <div class="pull-right">
+            <a target="_blank" id="@Model.AttachmentID"></a> <a id="@Model.AttachRemoveID">@Model.AttachRemoveHint</a>
+        </div>
+    </div>
+</div>
+@await Component.InvokeAsync("HTMLField", Model.Editor)
+<span class="hint">@Model.EditorHint</span><br />
+<span class="@Model.ErrorMessageClass">@Model.ErrorHint</span> <br />

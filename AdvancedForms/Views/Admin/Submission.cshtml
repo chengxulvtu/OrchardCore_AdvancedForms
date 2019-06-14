@@ -1,6 +1,7 @@
 ﻿@model AdvancedForms.ViewModels.AdvancedFormViewModel
 @using System.Web
 @using Newtonsoft.Json;
+@using Common.ViewModels;
 @using Newtonsoft.Json.Serialization;
 @* Css Files  *@
 <style asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -40,9 +41,18 @@
     }
 </script>
 <script asp-src="/AdvancedForms/Scripts/Submission.js" at="Foot" asp-name="advancedforms.submission"></script>
+
+
+<style name="trumbowyg" asp-src="/OrchardCore.Resources/Styles/trumbowyg.min.css"
+       debug-src="/OrchardCore.Resources/Styles/trumbowyg.css"></style>
+<script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
+<script name="trumbowyg" depends-on="admin" asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js"
+        debug-src="/OrchardCore.Resources/Scripts/trumbowyg.js" at="Head"></script>
+
 <script at="Foot" name="trumbowyg" asp-src="/OrchardCore.Resources/Scripts/jquery.js" type="text/javascript"></script>
 <script at="Foot" name="trumbowyg" asp-src="/OrchardCore.Resources/Scripts/jquery-ui.js" type="text/javascript"></script>
 <script at="Foot" name="trumbowyg" asp-src="/TheAdmin/Scripts/TheAdmin.js" type="text/javascript"></script>
+
 
 <style>
     #fileupload {
@@ -175,8 +185,6 @@
     </div>
 </div>
 
-
-
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#formPreview" class="active show">@T["Submission"]</a></li>
     <li><a data-toggle="tab" onclick="GetAdminComments('@Model.SubmissionId')" href="#AdminComments">@T["Admin Comments"]</a></li>
@@ -196,25 +204,11 @@
         </div>
         <br />
         <div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="btn-group btn-group-sm pull-right">
-                        <label for="fileuploadAdmin" class="btn btn-sm btn-primary fileinput-button upload-button" style="padding: 6px 12px;font-size: 14px;margin-bottom: 0.5rem !important;">
-                            <input id="fileuploadAdmin" type="file" name="files">
-                            <i class="fa fa-plus" aria-hidden="true"></i>
-                            @T["Attach a file with comment"]
-                        </label>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="pull-right">
-                        <a target="_blank" id="adminAttachment"></a> <a id="adminAttachmentRemove">Remove Attachment</a>
-                    </div>
-                </div>
-            </div>
-            @await Html.PartialAsync("HTMLField", Model.AdminEditor)
-            <span class="hint">@T["These comments are private for admins only."]</span><br />
-            <span class="errorMessageAdmin">@T["Admin comment required."]</span> <br />
+            @await Component.InvokeAsync("CommentField", new CommentFieldViewModel()
+           {
+               AttachFileHint = T["Attach a file with comment"], AttachmentID = "adminAttachment", AttachRemoveHint = T["Remove Attachment"], AttachRemoveID = "adminAttachmentRemove",
+               Editor = Model.AdminEditor, ErrorHint = T["Admin comment required."], ErrorMessageClass = "errorMessageAdmin", FileUploadID = "fileuploadAdmin", EditorHint = T["These comments are private for admins only."]
+           });
             <button class="publish-button btn btn-success" onclick="submitAdminComment('@Model.SubmissionId')">@T["Save"]</button>
         </div>
         <br />
@@ -243,25 +237,11 @@
         </div>
         <br />
         <div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="btn-group btn-group-sm pull-right">
-                        <label for="fileuploadPublic" class="btn btn-sm btn-primary fileinput-button upload-button" style="padding: 6px 12px;font-size: 14px;margin-bottom: 0.5rem !important;">
-                            <input id="fileuploadPublic" type="file" name="files">
-                            <i class="fa fa-plus" aria-hidden="true"></i>
-                            @T["Attach a file with comment"]
-                        </label>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="pull-right">
-                        <a target="_blank" id="publicAttachment"></a> <a id="publicAttachmentRemove">Remove Attachment</a>
-                    </div>
-                </div>
-            </div>
-            @await Html.PartialAsync("HTMLField", Model.PublicEditor)
-            <span class="hint">@T["These comments will be displayed to the submitter and are not private."]</span> <br />
-            <span class="errorMessagePublic">@T["Public comment required."]</span> <br />
+            @await Component.InvokeAsync("CommentField", new CommentFieldViewModel()
+           {
+               AttachFileHint = T["Attach a file with comment"], AttachmentID = "publicAttachment", AttachRemoveHint = T["Remove Attachment"], AttachRemoveID = "publicAttachmentRemove",
+               Editor = Model.PublicEditor, ErrorHint = T["Public comment required."], ErrorMessageClass = "errorMessagePublic", FileUploadID = "fileuploadPublic", EditorHint= T["These comments will be displayed to the submitter and are not private."]
+           });
             <button class="publish-button btn btn-success" onclick="submitPublicComment('@Model.SubmissionId')">@T["Save"]</button>
         </div>
         <br />
