@@ -12,12 +12,14 @@ namespace AdvancedForms.Models
         public TextPart ApplicationLocation { get; set; }
         public TextPart Status { get; set; }
         public BooleanPart HideFromListing { get; set; }
+        public BooleanPart IsGlobalHeader { get; set; }
+        public BooleanPart IsGlobalFooter { get; set; }
         public EditorPart Header, Footer, Description, Instructions;
         public JSonEditorPart Submission, AdminSubmission, Metadata, Container, AdminContainer;
 
 
         public AdvancedFormSubmissions(string submission, string metadata, string title, string container, string header, 
-            string footer, string description, string type, string instructions, string owner, string status, string adminContainer, string adminSubmission, string applicationLocation, bool isHideFromListing)
+            string footer, string description, string type, string instructions, string owner, string status, string adminContainer, string adminSubmission, string applicationLocation, bool isHideFromListing, bool isGlobalHeader, bool isGlobalFooter)
         {
             Submission = new JSonEditorPart(submission);
             AdminSubmission = new JSonEditorPart(adminSubmission);
@@ -36,6 +38,9 @@ namespace AdvancedForms.Models
             ApplicationLocation = new TextPart(applicationLocation);
 
             HideFromListing = new BooleanPart(isHideFromListing);
+
+            IsGlobalHeader = new BooleanPart(isGlobalHeader);
+            IsGlobalFooter = new BooleanPart(isGlobalFooter);
         }
 
     }

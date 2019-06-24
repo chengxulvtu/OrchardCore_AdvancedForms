@@ -264,12 +264,27 @@
     </div>
     <div id="printTab" class="tab-pane fade">
         <br />
+
+        <div>
+            <div class="custom-control custom-checkbox mr-sm-2">
+                <input asp-for="IsGlobalHeader" type="checkbox" form="main" class="custom-control-input" id="inputGlobalHeader">
+                <label class="custom-control-label" for="inputGlobalHeader"> @T["Using Global Header"]</label>
+            </div>
+        </div>
+
         <div>
             <label asp-for="Header">@T["Header"]</label>
             <textarea asp-for="Header" class="form-control content-preview-text content-caption-text" form="main"></textarea>
             <span class="hint">@T["The Header for the form."]</span>
             <br />
             <br />
+        </div>
+
+        <div>
+            <div class="custom-control custom-checkbox mr-sm-2">
+                <input asp-for="IsGlobalFooter" type="checkbox" form="main" class="custom-control-input" id="inputGlobalFooter">
+                <label class="custom-control-label" for="inputGlobalFooter"> @T["Using Global Footer"]</label>
+            </div>
         </div>
         <div>
             <label asp-for="Footer">@T["Footer"]</label>

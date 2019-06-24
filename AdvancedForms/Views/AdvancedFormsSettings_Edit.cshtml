@@ -1,0 +1,32 @@
+﻿@model AdvancedForms.Models.AdvancedFormsSettings
+<style asp-src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" debug-src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></style>
+<style name="trumbowyg" asp-src="/OrchardCore.Resources/Styles/trumbowyg.min.css" debug-src="/OrchardCore.Resources/Styles/trumbowyg.css"></style>
+<script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
+<script asp-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" at="Head"></script>
+<script name="trumbowyg" depends-on="admin" asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js" debug-src="/OrchardCore.Resources/Scripts/trumbowyg.js" at="Foot"></script>
+
+<div>
+    <label asp-for="Header">@T["Global Header"]</label>
+    <textarea asp-for="Header" class="form-control content-preview-text content-caption-text"></textarea>
+    <span class="hint">@T["The Global Header for the form."]</span>
+    <br />
+    <br />
+</div>
+<div>
+    <label asp-for="Footer">@T["Global Footer"]</label>
+    <textarea asp-for="Footer" class="form-control content-preview-text content-caption-text"></textarea>
+    <span class="hint">@T["The Global Footer for the form."]</span>
+    <br />
+    <br />
+</div>
+
+<script>
+    $(function () {
+        $('#ISite_Footer').trumbowyg().on('tbwchange', function () {
+            $(document).trigger('contentpreview:render');
+        });
+        $('#ISite_Header').trumbowyg().on('tbwchange', function () {
+            $(document).trigger('contentpreview:render');
+        });
+    });
+</script>

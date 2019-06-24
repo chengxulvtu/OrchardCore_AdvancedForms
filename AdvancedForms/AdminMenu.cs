@@ -2,6 +2,7 @@ using Microsoft.Extensions.Localization;
 using System;
 using System.Threading.Tasks;
 using OrchardCore.Navigation;
+using AdvancedForms.Drivers;
 
 namespace AdvancedForms
 {
@@ -52,7 +53,11 @@ namespace AdvancedForms
                         .Url("Admin/Contents/ContentTypes/AdvancedFormStatus/Create")
                         .Permission(Permissions.ManageOwnAdvancedForms)
                         .LocalNav()
-                     ));
+                     ).Add(T["Settings"], layers => layers
+                        .Action("Index", "Admin", new { area = "OrchardCore.Settings", groupId = AdvancedFormsSettingsDisplayDriver.GroupId })
+                        .Permission(Permissions.ManageOwnAdvancedForms)
+                        .LocalNav()
+                    ));
             return Task.CompletedTask;
         }
     }

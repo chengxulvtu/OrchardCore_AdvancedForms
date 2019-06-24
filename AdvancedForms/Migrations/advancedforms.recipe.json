@@ -387,7 +387,22 @@
               "Settings": {
                 "DisplayName": "Hide From Listing"
               }
+            },
+            {
+              "FieldName": "BooleanField",
+              "Name": "IsGlobalHeader",
+              "Settings": {
+                "DisplayName": "Using Global Header"
+              }
+            },
+            {
+              "FieldName": "BooleanField",
+              "Name": "IsGlobalFooter",
+              "Settings": {
+                "DisplayName": "Using Global Footer"
+              }
             }
+
           ]
         },
         {
@@ -1123,6 +1138,12 @@
               "Html": null
             },
             "HideFromListing": {
+              "Value": false
+            },
+            "IsGlobalHeader": {
+              "Value": false
+            },
+            "IsGlobalFooter": {
               "Value": false
             }
           },
@@ -2745,6 +2766,12 @@
             },
             "HideFromListing": {
               "Value": false
+            },
+            "IsGlobalHeader": {
+              "Value": false
+            },
+            "IsGlobalFooter": {
+              "Value": false
             }
           },
           "TitlePart": {},
@@ -4215,6 +4242,12 @@
               "Html": "<p>BLF – 035.1 Rev.3-2015</p>"
             },
             "HideFromListing": {
+              "Value": false
+            },
+            "IsGlobalHeader": {
+              "Value": false
+            },
+            "IsGlobalFooter": {
               "Value": false
             }
           },
@@ -5856,6 +5889,12 @@
             },
             "HideFromListing": {
               "Value": false
+            },
+            "IsGlobalHeader": {
+              "Value": false
+            },
+            "IsGlobalFooter": {
+              "Value": false
             }
           },
           "TitlePart": {},
@@ -7435,6 +7474,12 @@
             },
             "HideFromListing": {
               "Value": false
+            },
+            "IsGlobalHeader": {
+              "Value": false
+            },
+            "IsGlobalFooter": {
+              "Value": false
             }
           },
           "TitlePart": {},
@@ -8847,6 +8892,12 @@
             },
             "HideFromListing": {
               "Value": false
+            },
+            "IsGlobalHeader": {
+              "Value": false
+            },
+            "IsGlobalFooter": {
+              "Value": false
             }
           },
           "TitlePart": {},
@@ -10088,6 +10139,12 @@
               "Html": null
             },
             "HideFromListing": {
+              "Value": false
+            },
+            "IsGlobalHeader": {
+              "Value": false
+            },
+            "IsGlobalFooter": {
               "Value": false
             }
           },
@@ -11472,6 +11529,12 @@
               "Html": null
             },
             "HideFromListing": {
+              "Value": false
+            },
+            "IsGlobalHeader": {
+              "Value": false
+            },
+            "IsGlobalFooter": {
               "Value": false
             }
           },
@@ -13031,6 +13094,12 @@
               "Html": null
             },
             "HideFromListing": {
+              "Value": false
+            },
+            "IsGlobalHeader": {
+              "Value": false
+            },
+            "IsGlobalFooter": {
               "Value": false
             }
           },

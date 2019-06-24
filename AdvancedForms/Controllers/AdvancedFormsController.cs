@@ -20,6 +20,8 @@ using YesSql;
 using OrchardCore.Mvc.ActionConstraints;
 using AdvancedForms.Helper;
 using Newtonsoft.Json;
+using OrchardCore.Settings;
+using OrchardCore.Entities;
 
 namespace AdvancedForms.Controllers
 {
@@ -33,6 +35,7 @@ namespace AdvancedForms.Controllers
         private readonly IContentAliasManager _contentAliasManager;
         private readonly IContentDefinitionManager _contentDefinitionManager;
         private readonly INotifier _notifier;
+        private readonly ISiteService _siteService;
         private readonly YesSql.ISession _session;
         private const string _id = "AdvancedFormSubmissions";
 
@@ -42,6 +45,7 @@ namespace AdvancedForms.Controllers
             IAuthorizationService authorizationService,
             IContentAliasManager contentAliasManager,
             INotifier notifier,
+            ISiteService siteService,
             YesSql.ISession session,
             IContentDefinitionManager contentDefinitionManager,
             IHtmlLocalizer<AdvancedFormsController> localizer
@@ -51,6 +55,7 @@ namespace AdvancedForms.Controllers
             _contentItemDisplayManager = contentItemDisplayManager;
             _contentManager = contentManager;
             _notifier = notifier;
+            _siteService = siteService;
             _contentAliasManager = contentAliasManager;
             _session = session;
             _contentDefinitionManager = contentDefinitionManager;
@@ -93,6 +98,8 @@ namespace AdvancedForms.Controllers
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 CaseID = "",
                 HideFromListing = contentItem.Content.AdvancedForm.HideFromListing.Value,
+                IsGlobalHeader = contentItem.Content.AdvancedForm.IsGlobalHeader.Value,
+                IsGlobalFooter = contentItem.Content.AdvancedForm.IsGlobalFooter.Value,
             };
             return View(model);
         }
@@ -130,7 +137,9 @@ namespace AdvancedForms.Controllers
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 CaseID = caseID,
-                HideFromListing = contentItem.Content.AdvancedForm.HideFromListing.Value
+                HideFromListing = contentItem.Content.AdvancedForm.HideFromListing.Value,
+                IsGlobalHeader = contentItem.Content.AdvancedForm.IsGlobalHeader.Value,
+                IsGlobalFooter = contentItem.Content.AdvancedForm.IsGlobalFooter.Value
             };
             return View(model);
         }
@@ -190,7 +199,7 @@ namespace AdvancedForms.Controllers
         [HttpPost]
         [Route("AdvancedForms/Entry")]
         public async Task<IActionResult> Entry(string submission, string title, string id, string container,
-            string header, string footer, string description, string type, string submissionId, string instructions, string owner, bool isDraft, bool hideFromListing)
+            string header, string footer, string description, string type, string submissionId, string instructions, string owner, bool isDraft, bool hideFromListing, bool isGlobalHeader, bool isGlobalFooter)
         {
             ContentItem content;
             string adminSubmission = string.Empty;
@@ -213,6 +222,8 @@ namespace AdvancedForms.Controllers
             header = formContent.Content.AdvancedForm.Header.Html;
             footer = formContent.Content.AdvancedForm.Footer.Html;
             hideFromListing = formContent.Content.AdvancedForm.HideFromListing.Value;
+            isGlobalFooter = formContent.Content.AdvancedForm.IsGlobalFooter.Value;
+            isGlobalHeader = formContent.Content.AdvancedForm.IsGlobalHeader.Value;
 
             string metadata = string.Empty, data, status = string.Empty;
             var query = _session.Query<ContentItem, ContentItemIndex>();
@@ -254,7 +265,7 @@ namespace AdvancedForms.Controllers
                 }
             }
             var viewModel = new AdvancedFormSubmissions(data, metadata, subTitle, container, header, footer, description,
-                type, instructions, owner, status, adminContainer, adminSubmission, Location, hideFromListing);
+                type, instructions, owner, status, adminContainer, adminSubmission, Location, hideFromListing, isGlobalHeader, isGlobalFooter);
 
             return await EditPOST(content.ContentItemId, title, viewModel, async contentItem =>
             {
@@ -296,7 +307,7 @@ namespace AdvancedForms.Controllers
             string subTitle = model.Title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
             var subObject = JObject.Parse(model.Submission);
             var viewModel = new AdvancedFormSubmissions(model.Submission,
-            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.ApplicationLocation, model.HideFromListing);
+            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.ApplicationLocation, model.HideFromListing, model.IsGlobalHeader, model.IsGlobalFooter);
 
             await EditPOST(content.ContentItemId, model.Title, viewModel, async contentItem =>
             {
@@ -339,7 +350,7 @@ namespace AdvancedForms.Controllers
             string subTitle = model.Title + " " + DateTime.Now.ToUniversalTime().ToString() + " " + guid;
             var subObject = JObject.Parse(model.Submission);
             var viewModel = new AdvancedFormSubmissions(model.Submission,
-            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.ApplicationLocation, model.HideFromListing);
+            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.ApplicationLocation, model.HideFromListing, model.IsGlobalHeader, model.IsGlobalFooter);
 
             await EditPOST(content.ContentItemId, model.Title, viewModel, async contentItem =>
             {
@@ -447,9 +458,19 @@ namespace AdvancedForms.Controllers
                 return Unauthorized();
             }
             var model = await new ContentHelper(_contentManager, _session, _contentDefinitionManager, _contentAliasManager).ReturnView(alias, id, entryType);
+            var globalAFSetting = (await _siteService.GetSiteSettingsAsync()).As<AdvancedFormsSettings>();
+
+            if (model.IsGlobalHeader)
+            {
+                model.Header = globalAFSetting.Header;
+            }
+
+            if (model.IsGlobalFooter)
+            {
+                model.Footer = globalAFSetting.Footer;
+            }
 
             return View(viewName, model);
-
         }
 
         private string CreatePath(string title, string quid)

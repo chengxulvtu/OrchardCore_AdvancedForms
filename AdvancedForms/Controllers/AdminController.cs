@@ -101,6 +101,8 @@ namespace AdvancedForms.Controllers
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 Type = contentItem.Content.AdvancedForm.Type.Text,
                 HideFromListing = contentItem.Content.AdvancedForm.HideFromListing.Value,
+                IsGlobalHeader = contentItem.Content.AdvancedForm.IsGlobalHeader.Value,
+                IsGlobalFooter = contentItem.Content.AdvancedForm.IsGlobalFooter.Value
             };
 
             return View(model);
@@ -308,7 +310,7 @@ namespace AdvancedForms.Controllers
             }
 
             var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions,
-                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type, viewModel.AdminContainer, viewModel.HideFromListing);
+                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type, viewModel.AdminContainer, viewModel.HideFromListing, viewModel.IsGlobalHeader, viewModel.IsGlobalFooter);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.DisplayText = viewModel.Title;
             var path = CreatePath(viewModel.Title);
@@ -381,7 +383,9 @@ namespace AdvancedForms.Controllers
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 Type = contentItem.Content.AdvancedForm.Type.Text,
                 SelectedItems = lst,
-                HideFromListing = Convert.ToBoolean(contentItem.Content.AdvancedForm.HideFromListing.Value.ToString())
+                HideFromListing = Convert.ToBoolean(contentItem.Content.AdvancedForm.HideFromListing.Value.ToString()),
+                IsGlobalHeader = Convert.ToBoolean(contentItem.Content.AdvancedForm.IsGlobalHeader.Value.ToString()),
+                IsGlobalFooter = Convert.ToBoolean(contentItem.Content.AdvancedForm.IsGlobalFooter.Value.ToString())
             };
 
             model.ReturnUrl = returnUrl;
@@ -456,7 +460,7 @@ namespace AdvancedForms.Controllers
             }
 
             var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions,
-                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type, viewModel.AdminContainer, viewModel.HideFromListing);
+                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type, viewModel.AdminContainer, viewModel.HideFromListing, viewModel.IsGlobalHeader, viewModel.IsGlobalFooter);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.DisplayText = viewModel.Title;
             var path = CreatePath(viewModel.Title);
@@ -475,7 +479,9 @@ namespace AdvancedForms.Controllers
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 Type = contentItem.Content.AdvancedForm.Type.Text,
-                HideFromListing = contentItem.Content.AdvancedForm.HideFromListing.Value
+                HideFromListing = contentItem.Content.AdvancedForm.HideFromListing.Value,
+                IsGlobalHeader = contentItem.Content.AdvancedForm.IsGlobalHeader.Value,
+                IsGlobalFooter = contentItem.Content.AdvancedForm.IsGlobalFooter.Value
             };
 
             if (!ModelState.IsValid)
@@ -574,6 +580,8 @@ namespace AdvancedForms.Controllers
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 HideFromListing = contentItem.Content.AdvancedForm.HideFromListing.Value,
+                IsGlobalHeader = contentItem.Content.AdvancedForm.IsGlobalHeader.Value,
+                IsGlobalFooter = contentItem.Content.AdvancedForm.IsGlobalFooter.Value,
                 SubmissionId = subContentItem.ContentItemId,
                 Submission = subContentItem.Content.AdvancedFormSubmissions.Submission.Html != null ? JsonConvert.SerializeObject(subContentItem.Content.AdvancedFormSubmissions.Submission.Html) : String.Empty,
                 AdminSubmission = subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html != null ? JsonConvert.SerializeObject(subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html) : String.Empty,
