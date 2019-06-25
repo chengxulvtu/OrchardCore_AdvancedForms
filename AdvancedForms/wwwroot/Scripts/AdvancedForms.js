@@ -124,3 +124,7 @@ function activeButton(displayType) {
         $("#btnForm").addClass("btn btn-info active");
     }
 }
+
+
+
+   

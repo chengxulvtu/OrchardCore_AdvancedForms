@@ -27,6 +27,11 @@
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
 <style>
+    .disabledbutton {
+        pointer-events: none;
+        opacity: 0.4;
+    }
+
     label {
         margin-bottom: 0px !important;
         padding-bottom: 10px;
@@ -272,7 +277,8 @@
             </div>
         </div>
 
-        <div>
+
+        <div id="printHeader">
             <label asp-for="Header">@T["Header"]</label>
             <textarea asp-for="Header" class="form-control content-preview-text content-caption-text" form="main"></textarea>
             <span class="hint">@T["The Header for the form."]</span>
@@ -286,13 +292,14 @@
                 <label class="custom-control-label" for="inputGlobalFooter"> @T["Using Global Footer"]</label>
             </div>
         </div>
-        <div>
+        <div id="printFooter">
             <label asp-for="Footer">@T["Footer"]</label>
             <textarea asp-for="Footer" class="form-control content-preview-text content-caption-text" form="main"></textarea>
             <span class="hint">@T["The Footer for the form."]</span>
             <br />
             <br />
         </div>
+
     </div>
     <div id="subJsonTab" class="tab-pane fade">
         <br />
@@ -362,4 +369,30 @@ else
     </script>
 }
 
+@if (Model.IsGlobalHeader)
+{
+    <script>
+        $("#printHeader").addClass("disabledbutton");
+    </script>
+}
 
+@if (Model.IsGlobalFooter)
+{
+    <script>
+        $("#printFooter").addClass("disabledbutton");
+    </script>
+}
+
+
+<script>
+    $("#inputGlobalHeader").click(function () {
+        if ($(this).is(":checked")) { $("#printHeader").addClass("disabledbutton"); }
+        else { $("#printHeader").removeClass("disabledbutton"); }
+    });
+
+    $("#inputGlobalFooter").click(function () {
+        if ($(this).is(":checked")) { $("#printFooter").addClass("disabledbutton"); }
+        else { $("#printFooter").removeClass("disabledbutton"); }
+    });
+
+</script>
