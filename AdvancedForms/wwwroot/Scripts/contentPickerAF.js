@@ -66,7 +66,7 @@ function initializeContentPickerFieldEditorAF(elementId, selectedItems, tenantPa
                 }
             },
             remove: function (item) {
-                this.arrayOfItems.splice(this.arrayOfItems.indexOf(item), 1)
+                this.arrayOfItems.splice(this.arrayOfItems.indexOf(item), 1);
                 $("#customControlAutosizing").prop("checked", false);
                 $("#customControlAutosizing").prop('disabled', false);
             }

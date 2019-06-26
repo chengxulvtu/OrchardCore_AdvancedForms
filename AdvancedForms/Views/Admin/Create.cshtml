@@ -358,6 +358,11 @@
     var selectedItems = Html.Raw(JsonConvert.SerializeObject(Model.SelectedItems, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }));
     <script at="Foot">
         initializeContentPickerFieldEditorAF('ContentPicker_PickerAdvancedFormTypes_Type', @selectedItems, '', 'PickerAdvancedFormTypes', 'AdvancedFormTypes', false);
+        var obj = JSON.parse('@selectedItems');
+        if (obj != null && obj.length > 0 && obj[0].hideFromListing) {
+            $("#customControlAutosizing").prop("checked", true);
+            $("#customControlAutosizing").prop('disabled', true);
+        }
     </script>
 }
 else
