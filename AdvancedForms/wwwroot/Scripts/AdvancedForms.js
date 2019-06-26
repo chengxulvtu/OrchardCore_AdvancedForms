@@ -73,6 +73,15 @@ function onFormSubmit(form) {
         document.getElementById("multiselect_Div").classList.remove("editor-error");
     }
 
+    if (form.Group == undefined || form.Group.value == '') {
+        isValidate = false;
+        document.getElementById("GroupError").style.display = "list-item";
+        document.getElementById("multiselectGroup_Div").classList.add("editor-error");
+    } else {
+        document.getElementById("GroupError").style.display = "none";
+        document.getElementById("multiselectGroup_Div").classList.remove("editor-error");
+    }
+
     if (form.Description.value == '') {
         isValidate = false;
         document.getElementById("DescriptionError").style.display = "list-item";

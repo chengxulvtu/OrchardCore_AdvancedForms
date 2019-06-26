@@ -12,4 +12,9 @@ namespace AdvancedForms.ViewModels
         public bool HasPublished { get; set; }
         public bool HideFromListing { get; set; }
     }
+
+    public class RolesViewModel
+    {
+        public string Name { get; set; }
+    }
 }

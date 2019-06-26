@@ -18,6 +18,8 @@ namespace AdvancedForms.ViewModels
         public string Title { get; set; }
         [Required]
         public string Type { get; set; }
+        [Required]
+        public string Group { get; set; }
         public string Status { get; set; }
         public string StatusText { get; set; }
         public string Header { get; set; }
@@ -47,5 +49,7 @@ namespace AdvancedForms.ViewModels
 
         [BindNever]
         public IList<ContentPickerItemViewModel> SelectedItems { get; set; }
+        [BindNever]
+        public IList<RolesViewModel> SelectedGroups { get; set; }
     }
 }

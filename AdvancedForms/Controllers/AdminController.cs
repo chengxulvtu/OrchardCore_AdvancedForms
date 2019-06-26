@@ -25,6 +25,8 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Common.ViewModels;
+using OrchardCore.Security.Services;
+using System.Security.Claims;
 
 namespace AdvancedForms.Controllers
 {
@@ -38,6 +40,7 @@ namespace AdvancedForms.Controllers
         private readonly YesSql.ISession _session;
         private readonly IContentItemDisplayManager _contentItemDisplayManager;
         private readonly INotifier _notifier;
+        private readonly IRoleService _roleService;
         private readonly IAuthorizationService _authorizationService;
         private readonly ILogger _logger;
         private readonly IContentAliasManager _contentAliasManager;
@@ -51,6 +54,7 @@ namespace AdvancedForms.Controllers
             YesSql.ISession session,
             IShapeFactory shapeFactory,
             ILogger<AdminController> logger,
+            IRoleService roleService,
             IHtmlLocalizer<AdminController> localizer,
             IAuthorizationService authorizationService,
             IContentAliasManager contentAliasManager
@@ -58,6 +62,7 @@ namespace AdvancedForms.Controllers
         {
             _authorizationService = authorizationService;
             _notifier = notifier;
+            _roleService = roleService;
             _contentItemDisplayManager = contentItemDisplayManager;
             _session = session;
             _siteService = siteService;
@@ -100,6 +105,7 @@ namespace AdvancedForms.Controllers
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 Type = contentItem.Content.AdvancedForm.Type.Text,
+                Group = contentItem.Content.AdvancedForm.Group.Text,
                 HideFromListing = contentItem.Content.AdvancedForm.HideFromListing.Value,
                 IsGlobalHeader = contentItem.Content.AdvancedForm.IsGlobalHeader.Value,
                 IsGlobalFooter = contentItem.Content.AdvancedForm.IsGlobalFooter.Value
@@ -243,8 +249,10 @@ namespace AdvancedForms.Controllers
             {
                 return Unauthorized();
             }
-
-            return View(new AdvancedFormViewModel());
+            List<RolesViewModel> roles = new List<RolesViewModel>();
+            roles.Add(new RolesViewModel() { Name = "Citizen" });
+            var model = new AdvancedFormViewModel() { SelectedGroups = roles };
+            return View(model);
         }
 
         [HttpPost, ActionName("Create")]
@@ -310,7 +318,7 @@ namespace AdvancedForms.Controllers
             }
 
             var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions,
-                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type, viewModel.AdminContainer, viewModel.HideFromListing, viewModel.IsGlobalHeader, viewModel.IsGlobalFooter);
+                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type, viewModel.AdminContainer, viewModel.HideFromListing, viewModel.IsGlobalHeader, viewModel.IsGlobalFooter, viewModel.Group);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.DisplayText = viewModel.Title;
             var path = CreatePath(viewModel.Title);
@@ -371,6 +379,15 @@ namespace AdvancedForms.Controllers
                 contentPick.HideFromListing = selectedContent.Content.AdvancedFormTypes.HideFromListing.Value;
                 lst.Add(contentPick);
             }
+
+            List<RolesViewModel> roles = new List<RolesViewModel>();
+            string groups = contentItem.Content.AdvancedForm.Group.Text;
+            List<string> lstGroups = groups.Split(",").ToList();
+            foreach (var item in lstGroups)
+            {
+                roles.Add(new RolesViewModel() { Name = item });
+            }
+
             var model = new AdvancedFormViewModel
             {
                 Id = contentItemId,
@@ -383,7 +400,9 @@ namespace AdvancedForms.Controllers
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 Type = contentItem.Content.AdvancedForm.Type.Text,
+                Group = contentItem.Content.AdvancedForm.Group.Text,
                 SelectedItems = lst,
+                SelectedGroups = roles,
                 HideFromListing = Convert.ToBoolean(contentItem.Content.AdvancedForm.HideFromListing.Value.ToString()),
                 IsGlobalHeader = Convert.ToBoolean(contentItem.Content.AdvancedForm.IsGlobalHeader.Value.ToString()),
                 IsGlobalFooter = Convert.ToBoolean(contentItem.Content.AdvancedForm.IsGlobalFooter.Value.ToString())
@@ -461,7 +480,7 @@ namespace AdvancedForms.Controllers
             }
 
             var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions,
-                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type, viewModel.AdminContainer, viewModel.HideFromListing, viewModel.IsGlobalHeader, viewModel.IsGlobalFooter);
+                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type, viewModel.AdminContainer, viewModel.HideFromListing, viewModel.IsGlobalHeader, viewModel.IsGlobalFooter, viewModel.Group);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.DisplayText = viewModel.Title;
             var path = CreatePath(viewModel.Title);
@@ -480,6 +499,7 @@ namespace AdvancedForms.Controllers
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 Type = contentItem.Content.AdvancedForm.Type.Text,
+                Group = contentItem.Content.AdvancedForm.Group.Text,
                 HideFromListing = contentItem.Content.AdvancedForm.HideFromListing.Value,
                 IsGlobalHeader = contentItem.Content.AdvancedForm.IsGlobalHeader.Value,
                 IsGlobalFooter = contentItem.Content.AdvancedForm.IsGlobalFooter.Value
@@ -567,6 +587,15 @@ namespace AdvancedForms.Controllers
                 contentPick.HideFromListing = selectedContent.Content.AdvancedFormTypes.HideFromListing.Value;
                 lst.Add(contentPick);
             }
+
+            List<RolesViewModel> roles = new List<RolesViewModel>();
+            string groups = contentItem.Content.AdvancedForm.Group.Text;
+            List<string> lstGroups = groups.Split(",").ToList();
+            foreach (var item in lstGroups)
+            {
+                roles.Add(new RolesViewModel() { Name = item });
+            }
+
             var model = new AdvancedFormViewModel
             {
                 Id = contentItem.ContentItemId,
@@ -575,6 +604,7 @@ namespace AdvancedForms.Controllers
                 CreatedUtc = subContentItem.CreatedUtc,
                 Title = contentItem.DisplayText,
                 Type = contentItem.Content.AdvancedForm.Type.Text,
+                Group = contentItem.Content.AdvancedForm.Group.Text,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 Container = contentItem.Content.AdvancedForm.Container.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.Container.Html) : String.Empty,
@@ -590,6 +620,7 @@ namespace AdvancedForms.Controllers
                 Metadata = subContentItem.Content.AdvancedFormSubmissions.Metadata.Html != null ? JsonConvert.SerializeObject(subContentItem.Content.AdvancedFormSubmissions.Metadata.Html) : String.Empty,
                 Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text,
                 SelectedItems = lst,
+                SelectedGroups = roles,
                 AdminEditor = new HTMLFieldViewModel() { ID = "AdminComment" },
                 PublicEditor = new HTMLFieldViewModel() { ID = "PublicComment" },
                 ApplicationLocation = subContentItem.Content.AdvancedFormSubmissions.ApplicationLocation.Text
@@ -603,9 +634,18 @@ namespace AdvancedForms.Controllers
             var query = _session.Query<ContentItem, ContentItemIndex>();
             var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).OrderByDescending(o => o.CreatedUtc).ListAsync();
             var contentItemSummaries = new List<dynamic>();
+            List<string> roles;
+            var currentUserRoles = ((ClaimsIdentity)User.Identity).Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
             foreach (var contentItem in pageOfContentItems)
             {
-                contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, this, "SubmissionAdmin_ListItem"));
+                var contentItemId = await _contentAliasManager.GetContentItemIdAsync("slug:AdvancedForms/" + contentItem.DisplayText.Replace(" ","-"));
+                var AFcontentItem = await _contentManager.GetAsync(contentItemId, VersionOptions.Published);
+                string groups = AFcontentItem.Content.AdvancedForm.Group.Text;
+                roles = groups.Split(",").ToList();
+                if(roles.Any(item => currentUserRoles.Contains(item)))
+                {
+                    contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, this, "SubmissionAdmin_ListItem"));
+                }
             }
             model.ContentItemSummaries = contentItemSummaries;
             return View(model);
@@ -678,9 +718,9 @@ namespace AdvancedForms.Controllers
         }
         #endregion
 
-        #region "Advanced Form Type Content Picker List"
+        #region "Advanced Form Type List List"
         [Route("GetAdvancedFormTypes")]
-        public async Task<IActionResult> List(string query)
+        public async Task<IActionResult> GetAdvancedFormTypes(string query)
         {
             List<ContentPickerItemViewModel> list = new List<ContentPickerItemViewModel>();
             ContentPickerItemViewModel model;
@@ -693,6 +733,23 @@ namespace AdvancedForms.Controllers
                 model.DisplayText = item.DisplayText;
                 model.HasPublished = item.IsPublished();
                 model.HideFromListing = item.Content.AdvancedFormTypes.HideFromListing.Value;
+                list.Add(model);
+            }
+            return new ObjectResult(list);
+        }
+        #endregion
+
+        #region "Advanced Form Type List List"
+        [Route("GetUserRoles")]
+        public async Task<IActionResult> GetUserRoles(string query)
+        {
+            List<RolesViewModel> list = new List<RolesViewModel>();
+            RolesViewModel model;
+            var roles = await _roleService.GetRoleNamesAsync();
+            foreach (var item in roles)
+            {
+                model = new RolesViewModel();
+                model.Name = item;
                 list.Add(model);
             }
             return new ObjectResult(list);

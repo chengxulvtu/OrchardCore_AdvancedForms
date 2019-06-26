@@ -157,6 +157,7 @@
 <div class="validation-summary-errors" data-valmsg-summary="true" id="notifyError">
     <ul>
         <li id="TitleError"><span class="field-validation-error">@T["The Title field is Required."]</span></li>
+        <li id="GroupError"><span class="field-validation-error">@T["The Group field is Required."]</span></li>
         <li id="TagError"><span class="field-validation-error">@T["The Tag field is Required."]</span></li>
         <li id="DescriptionError"><span class="field-validation-error">@T["The Description field is required."]</span></li>
         <li id="ContainerError"><span class="field-validation-error">@T["Form components is Required."]</span></li>
@@ -171,6 +172,51 @@
     <span class="hint">@T["The title of the form."]</span>
     <br />
     <br />
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div style="margin-bottom: 2rem;">
+            <label asp-for="Title">@T["Group"]</label>
+            <div id="ContentPicker_PickerSecurityGroup" class="content-picker-default">
+                <fieldset class="">
+                    <input asp-for="Group" type="hidden" v-model="selectedIds" form="main" />
+                    <ul class="list-group col-xl-12 content-picker-default__list" v-show="arrayOfItems.length" v-cloak>
+                        <draggable v-model="arrayOfItems">
+                            <li v-for="(item, i) in arrayOfItems"
+                                class="list-group-item content-picker-default__list-item"
+                                :key="item.name">
+                                {{ item.name }}
+                                @*<input asp-for="Group" type="hidden" v-model="selectedIds" form="main" />*@
+                                <div class="btn-group btn-group-sm float-right" role="group">
+                                    <button v-on:click="remove(item)" type="button" class="btn btn-secondary content-picker-default__list-item__delete"><i class="fa fa-trash fa-sm" aria-hidden="true"></i></button>
+                                </div>
+                            </li>
+                        </draggable>
+                    </ul>
+                </fieldset>
+                <fieldset class="row">
+                    <div class="col-xl-12">
+                        <div id="multiselectGroup_Div" :tabindex="2">
+                            <vue-multiselect v-model="value" :options="options" track-by="name"
+                                             label="displayText" placeholder="@T["Type to search"]"
+                                             @@search-change="asyncFind" @@select="onSelect"
+                                             :searchable="true" :close-on-select="true" :reset-after="true"
+                                             :show-labels="true" :hide-selected="true"
+                                             :disabled="isDisabled"
+                                             select-label="@T["Select"]" deselect-label="@T["Remove"]">
+                                <template slot="option" slot-scope="props">
+                                    <div v-cloak><span>{{ props.option.name }}</span></div>
+                                </template>
+                            </vue-multiselect>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <span class="hint">@T["The Group of the form."]</span>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-md-6">
@@ -357,7 +403,7 @@
 {
     var selectedItems = Html.Raw(JsonConvert.SerializeObject(Model.SelectedItems, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }));
     <script at="Foot">
-        initializeContentPickerFieldEditorAF('ContentPicker_PickerAdvancedFormTypes_Type', @selectedItems, '', 'PickerAdvancedFormTypes', 'AdvancedFormTypes', false);
+        initializeContentPickerFieldEditorAFType('ContentPicker_PickerAdvancedFormTypes_Type', @selectedItems, '', 'PickerAdvancedFormTypes', 'AdvancedFormTypes', false);
         var obj = JSON.parse('@selectedItems');
         if (obj != null && obj.length > 0 && obj[0].hideFromListing) {
             $("#customControlAutosizing").prop("checked", true);
@@ -368,7 +414,21 @@
 else
 {
     <script at="Foot">
-        initializeContentPickerFieldEditorAF('ContentPicker_PickerAdvancedFormTypes_Type', [], '', 'PickerAdvancedFormTypes', 'AdvancedFormTypes', false);
+        initializeContentPickerFieldEditorAFType('ContentPicker_PickerAdvancedFormTypes_Type', [], '', 'PickerAdvancedFormTypes', 'AdvancedFormTypes', false);
+    </script>
+}
+
+@if (Model.SelectedGroups != null && Model.SelectedGroups.Count > 0)
+{
+    var selectedGroups = Html.Raw(JsonConvert.SerializeObject(Model.SelectedGroups, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }));
+    <script at="Foot">
+        initializeContentPickerFieldEditorSecurityGroup('ContentPicker_PickerSecurityGroup', @selectedGroups, '', true);
+    </script>
+}
+else
+{
+    <script at="Foot">
+        initializeContentPickerFieldEditorSecurityGroup('ContentPicker_PickerSecurityGroup', [], '', true);
     </script>
 }
 
