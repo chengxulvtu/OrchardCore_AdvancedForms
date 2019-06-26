@@ -488,7 +488,16 @@
         {
           "Name": "AdvancedFormTypes",
           "Settings": {},
-          "ContentPartFieldDefinitionRecords": []
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "BooleanField",
+              "Name": "HideFromListing",
+              "Settings": {
+                "DisplayName": "Hide From Listing",
+                "Position": "0"
+              }
+            }
+          ]
         },
         {
           "Name": "PickerAdvancedFormTypes",
@@ -664,37 +673,45 @@
           }
         },
         {
-          "ContentItemId": "4k1vap396j96x1zvy8tt3k5mwf",
-          "ContentItemVersionId": "4fqaxqtvk81wyz1g4jjc1ankca",
-          "ContentType": "AdvancedFormTypes",
-          "DisplayText": "Building Permits",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2019-02-23T12:30:37.3851Z",
-          "PublishedUtc": "2019-02-23T12:30:37.399651Z",
-          "CreatedUtc": "2019-02-23T12:30:36.6142533Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "AdvancedFormTypes": {},
-          "TitlePart": {
-            "Title": "Building Permits"
-          }
-        },
-        {
           "ContentItemId": "4q6g9m1p4j3146cj5yecans7wj",
-          "ContentItemVersionId": "43hkgaavvsnnf73rb0ak0k5f4x",
+          "ContentItemVersionId": "40nzbpk76pz3641fssnpxhgccv",
           "ContentType": "AdvancedFormTypes",
           "DisplayText": "Sample Forms",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2019-02-23T12:30:51.9526553Z",
-          "PublishedUtc": "2019-02-23T12:30:51.9958978Z",
+          "ModifiedUtc": "2019-06-26T05:26:04.0067882Z",
+          "PublishedUtc": "2019-06-26T05:26:04.0203903Z",
           "CreatedUtc": "2019-02-23T12:30:46.7616366Z",
           "Owner": "admin",
           "Author": "admin",
-          "AdvancedFormTypes": {},
+          "AdvancedFormTypes": {
+            "HideFromListing": {
+              "Value": false
+            }
+          },
           "TitlePart": {
             "Title": "Sample Forms"
+          }
+        },
+        {
+          "ContentItemId": "4k1vap396j96x1zvy8tt3k5mwf",
+          "ContentItemVersionId": "4jxvyzvq3gxvx46e9n477z8gc5",
+          "ContentType": "AdvancedFormTypes",
+          "DisplayText": "Building Permits",
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2019-06-26T05:26:09.7333752Z",
+          "PublishedUtc": "2019-06-26T05:26:09.7438281Z",
+          "CreatedUtc": "2019-02-23T12:30:36.6142533Z",
+          "Owner": "admin",
+          "Author": "admin",
+          "AdvancedFormTypes": {
+            "HideFromListing": {
+              "Value": false
+            }
+          },
+          "TitlePart": {
+            "Title": "Building Permits"
           }
         },
         {
@@ -715,7 +732,7 @@
             "SetHomepage": false
           },
           "LiquidPart": {
-            "Liquid": "<style>\r\n  #mainNav{\r\n      background-color: #212529 !important;\r\n      padding-top: 0px;\r\n    padding-bottom: 0px;\r\n  } \r\n  .section-heading{\r\n  margin-top:35px !important;\r\n  }\r\n  header.masthead{\r\n  \tdisplay:none;\r\n  }\r\n  section{\r\n      padding: 50px 0;\r\n  }\r\n  .panel-body {\r\n    padding: 0px;\r\n  border-radius: 0px;\r\n}\r\n  .panel-heading{\r\n      padding: 10px 10px;\r\n    background: #eee;\r\n    margin-top: 20px;\r\n    border: 1px solid rgba(0, 0, 0, 0.125);\r\n    font-size: 18px;\r\n  }\r\n</style>\r\n\r\n<div class=\"row\">\r\n\t<div class=\"col-lg-12 text-center\">\r\n  \t\t<h2 class=\"section-heading text-uppercase\">ADVANCED FORMS</h2>\r\n\t</div>\r\n</div>\r\n<div class=\"row\">\r\n  {% assign allAdvancedForms = Queries.AllAdvancedForms | query | where: \"Content.AdvancedForm.HideFromListing.Value\", false | sort: \"Content.AdvancedForm.Type.Text\" %}\r\n  {% assign allFormType = Queries.GetAllAdvancedFormType | query %}\r\n  {% assign addedType = '' %}\r\n  {% for item in allFormType %}\r\n  \t{% for form in allAdvancedForms %}\r\n  \t{% if item.ContentItemId == form.Content.AdvancedForm.Type.Text %}\r\n  \t{% if addedType != form.Content.AdvancedForm.Type.Text %}\r\n  \t{% assign addedType = form.Content.AdvancedForm.Type.Text %}\r\n\t<div class=\"col-md-6\">\r\n\t\t<div class=\"panel panel-default\">\r\n        \t<div class=\"panel-heading\">{{item}}</div>\r\n    \t\t<div class=\"panel-body\">\r\n              \r\n              \t{% for form in allAdvancedForms %}\r\n              \t{% if item.ContentItemId == form.Content.AdvancedForm.Type.Text %}\r\n            \t<a href=\"{{ form | display_url  }}\" class=\"list-group-item list-group-item-action\">\r\n                <div><strong>{{ form | display_text }} </strong><br/>\r\n                \t{{ form.Content.AdvancedForm.Description.Html | raw }}\r\n                </div>\r\n                </a>\r\n              \t{% endif %}\r\n              \t{% endfor %}\r\n              \r\n          \t</div>\r\n       \t</div>\r\n   \t</div>\r\n  \t{% endif %}\r\n  \t{% endif %}\r\n  \t{% endfor %}\r\n  {% endfor %}\r\n</div>\r\n\r\n"
+            "Liquid": "<style>\r\n  #mainNav{\r\n      background-color: #212529 !important;\r\n      padding-top: 0px;\r\n    padding-bottom: 0px;\r\n  } \r\n  .section-heading{\r\n  margin-top:35px !important;\r\n  }\r\n  header.masthead{\r\n  \tdisplay:none;\r\n  }\r\n  section{\r\n      padding: 50px 0;\r\n  }\r\n  .panel-body {\r\n    padding: 0px;\r\n  border-radius: 0px;\r\n}\r\n  .panel-heading{\r\n      padding: 10px 10px;\r\n    background: #eee;\r\n    margin-top: 20px;\r\n    border: 1px solid rgba(0, 0, 0, 0.125);\r\n    font-size: 18px;\r\n  }\r\n</style>\r\n\r\n<div class=\"row\">\r\n\t<div class=\"col-lg-12 text-center\">\r\n  \t\t<h2 class=\"section-heading text-uppercase\">ADVANCED FORMS</h2>\r\n\t</div>\r\n</div>\r\n<div class=\"row\">\r\n  {% assign allAdvancedForms = Queries.AllAdvancedForms | query | where: \"Content.AdvancedForm.HideFromListing.Value\", false | sort: \"Content.AdvancedForm.Type.Text\" %}\r\n  {% assign allFormType = Queries.GetAllAdvancedFormType | query %}\r\n  {% assign addedType = '' %}\r\n  {% for item in allFormType %}\r\n  \t{% if item.Content.AdvancedFormTypes.HideFromListing.Value != true %}\r\n  \t{% for form in allAdvancedForms %}\r\n  \t{% if item.ContentItemId == form.Content.AdvancedForm.Type.Text %}\r\n  \t{% if addedType != form.Content.AdvancedForm.Type.Text %}\r\n  \t{% assign addedType = form.Content.AdvancedForm.Type.Text %}\r\n\t<div class=\"col-md-6\">\r\n\t\t<div class=\"panel panel-default\">\r\n        \t<div class=\"panel-heading\">{{item}}</div>\r\n    \t\t<div class=\"panel-body\">\r\n              \r\n              \t{% for form in allAdvancedForms %}\r\n              \t{% if item.ContentItemId == form.Content.AdvancedForm.Type.Text %}\r\n            \t<a href=\"{{ form | display_url  }}\" class=\"list-group-item list-group-item-action\">\r\n                <div><strong>{{ form | display_text }} </strong><br/>\r\n                \t{{ form.Content.AdvancedForm.Description.Html | raw }}\r\n                </div>\r\n                </a>\r\n              \t{% endif %}\r\n              \t{% endfor %}\r\n              \r\n          \t</div>\r\n       \t</div>\r\n   \t</div>\r\n  \t{% endif %}\r\n  \t{% endif %}\r\n  \t{% endfor %}\r\n  \t{% endif %}\r\n  {% endfor %}\r\n</div>\r\n\r\n"
           },
           "TitlePart": {
             "Title": "Available online Forms"

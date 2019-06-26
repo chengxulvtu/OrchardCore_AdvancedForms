@@ -10,5 +10,6 @@ namespace AdvancedForms.ViewModels
         public string ContentItemId { get; set; }
         public string DisplayText { get; set; }
         public bool HasPublished { get; set; }
+        public bool HideFromListing { get; set; }
     }
 }

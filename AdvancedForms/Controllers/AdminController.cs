@@ -368,6 +368,7 @@ namespace AdvancedForms.Controllers
                 contentPick.ContentItemId = selectedContent.ContentItemId;
                 contentPick.DisplayText = selectedContent.DisplayText;
                 contentPick.HasPublished = selectedContent.Published;
+                contentPick.HideFromListing = selectedContent.Content.AdvancedFormTypes.HideFromListing.Value;
                 lst.Add(contentPick);
             }
             var model = new AdvancedFormViewModel
@@ -563,6 +564,7 @@ namespace AdvancedForms.Controllers
                 contentPick.ContentItemId = selectedContent.ContentItemId;
                 contentPick.DisplayText = selectedContent.DisplayText;
                 contentPick.HasPublished = selectedContent.Published;
+                contentPick.HideFromListing = selectedContent.Content.AdvancedFormTypes.HideFromListing.Value;
                 lst.Add(contentPick);
             }
             var model = new AdvancedFormViewModel
@@ -673,6 +675,27 @@ namespace AdvancedForms.Controllers
             pageOfContentItems = pageOfContentItems.Where(o => selectedItems.Contains(o.Id)).ToList();
             string file = await new CsvEtl(_contentManager).GetAdvFormSubmissionsCSVstring(pageOfContentItems);
             return File(new System.Text.UTF8Encoding().GetBytes(file), "text/csv", "Submissions.csv");
+        }
+        #endregion
+
+        #region "Advanced Form Type Content Picker List"
+        [Route("GetAdvancedFormTypes")]
+        public async Task<IActionResult> List(string query)
+        {
+            List<ContentPickerItemViewModel> list = new List<ContentPickerItemViewModel>();
+            ContentPickerItemViewModel model;
+            var sessionQuery = _session.Query<ContentItem, ContentItemIndex>();
+            var types = await sessionQuery.Where(o => o.ContentType == "AdvancedFormTypes" && o.Latest).ListAsync();
+            foreach (var item in types)
+            {
+                model = new ContentPickerItemViewModel();
+                model.ContentItemId = item.ContentItemId;
+                model.DisplayText = item.DisplayText;
+                model.HasPublished = item.IsPublished();
+                model.HideFromListing = item.Content.AdvancedFormTypes.HideFromListing.Value;
+                list.Add(model);
+            }
+            return new ObjectResult(list);
         }
         #endregion
 
