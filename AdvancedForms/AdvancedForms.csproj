@@ -8,7 +8,6 @@
   <ItemGroup>
     <EmbeddedResource Remove="Views\AdvancedForms\Contents-Meta.SummaryAdmin.cshtml" />
     <EmbeddedResource Remove="Views\AdvancedForms\Display.cshtml~RF1f203469.TMP" />
-    <EmbeddedResource Remove="wwwroot\Scripts\contentPickerAF.js" />
     <EmbeddedResource Remove="wwwroot\Styles\Submission.js" />
   </ItemGroup>
 
@@ -202,6 +201,10 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\Scripts\urlConfig.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Scripts\contentPickerAF.js" />
   </ItemGroup>
 
 </Project>
