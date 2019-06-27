@@ -23,6 +23,7 @@ using Newtonsoft.Json;
 using OrchardCore.Settings;
 using OrchardCore.Entities;
 using System.Linq;
+using System.Security.Claims;
 
 namespace AdvancedForms.Controllers
 {
@@ -188,6 +189,53 @@ namespace AdvancedForms.Controllers
             {
                 return StatusCode(returnCode);
             }
+        }
+
+        [Route("AdvancedForms")]
+        [AllowAnonymous]
+        public async Task<IActionResult> AdvancedForms()
+        {
+            List<AdvFormsDisplayViewModel> model = new List<AdvFormsDisplayViewModel>();
+            AdvFormsDisplayViewModel displayModel;
+            List<string> userRoles = ((ClaimsIdentity)User.Identity).Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
+            var query = _session.Query<ContentItem, ContentItemIndex>();
+            var allAdvancedForms = await query.Where(o => o.ContentType == "AdvancedForm" && o.Published).ListAsync();
+            query = _session.Query<ContentItem, ContentItemIndex>();
+            var allAdvancedFormTypes = await query.Where(o => o.ContentType == "AdvancedFormTypes" && o.Published).ListAsync();
+            if (userRoles.Count == 0)
+            {
+                userRoles.Add("CITIZEN");
+            }
+            string[] groups;
+            foreach (var item in allAdvancedFormTypes)
+            {
+                if (!Boolean.Parse(item.Content.AdvancedFormTypes.HideFromListing.Value.ToString()))
+                {
+                    displayModel = new AdvFormsDisplayViewModel();
+                    displayModel.Type = item.DisplayText;
+                    var filteredForms = allAdvancedForms.Where(o => o.Content.AdvancedForm.Type.Text.ToString() == item.ContentItemId && !Boolean.Parse(o.Content.AdvancedForm.HideFromListing.Value.ToString())).ToList();
+                    displayModel.Items = new List<AdvFormsDisplay>();
+                    foreach (var form in filteredForms)
+                    {
+                        groups = form.Content.AdvancedForm.Group.Text.ToString().Split(',');
+                        if (userRoles.Any(o => o == "Administrator" || groups.Contains(o)))
+                        {
+                            displayModel.Items.Add(new AdvFormsDisplay()
+                            {
+                                Action = form.Content.AutoroutePart.Path.ToString(),
+                                ContentItemId = form.ContentItemId,
+                                DisplayText = form.DisplayText,
+                                Description = form.Content.AdvancedForm.Description.Html
+                            });
+                        }
+                    }
+                    if (displayModel.Items.Count > 0)
+                    {
+                        model.Add(displayModel);
+                    }
+                }
+            }
+            return View(model);
         }
 
         [HttpGet]
@@ -403,7 +451,7 @@ namespace AdvancedForms.Controllers
             // would not be taken into account.
             _session.Save(contentItem);
 
-            
+
             var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
             return Ok(contentItem);
         }
