@@ -29,4 +29,11 @@
             $(document).trigger('contentpreview:render');
         });
     });
+
+    $("form").submit(function (event) {
+        var header = $("#ISite_Header").parent().find(".trumbowyg-editor")[0].innerHTML;
+        $("#ISite_Header").val(header);
+        var footer = $("#ISite_Footer").parent().find(".trumbowyg-editor")[0].innerHTML;
+        $("#ISite_Footer").val(footer);
+    }); 
 </script>

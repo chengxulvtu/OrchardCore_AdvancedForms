@@ -250,7 +250,7 @@ namespace AdvancedForms.Controllers
                 return Unauthorized();
             }
             List<RolesViewModel> roles = new List<RolesViewModel>();
-            roles.Add(new RolesViewModel() { Name = "Citizen" });
+            roles.Add(new RolesViewModel() { Name = "CITIZEN" });
             var model = new AdvancedFormViewModel() { SelectedGroups = roles };
             return View(model);
         }
