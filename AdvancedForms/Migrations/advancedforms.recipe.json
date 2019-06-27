@@ -714,30 +714,7 @@
             "Title": "Building Permits"
           }
         },
-        {
-          "ContentItemId": "4bvcs583pwkmbvx550jkn7r6c6",
-          "ContentItemVersionId": "4r684dpr5j4aww6tdwf42tc6x5",
-          "ContentType": "LiquidPage",
-          "DisplayText": "ADVANCED FORMS",
-          "Latest": true,
-          "Published": true,
-          "ModifiedUtc": "2019-01-24T08:06:10.4136892Z",
-          "PublishedUtc": "2019-01-24T08:06:10.4272566Z",
-          "CreatedUtc": "2019-01-15T10:32:32.4034983Z",
-          "Owner": "admin",
-          "Author": "admin",
-          "LiquidPage": {},
-          "AutoroutePart": {
-            "Path": "Advancedforms",
-            "SetHomepage": false
-          },
-          "LiquidPart": {
-            "Liquid": "<style>\r\n  #mainNav{\r\n      background-color: #212529 !important;\r\n      padding-top: 0px;\r\n    padding-bottom: 0px;\r\n  } \r\n  .section-heading{\r\n  margin-top:35px !important;\r\n  }\r\n  header.masthead{\r\n  \tdisplay:none;\r\n  }\r\n  section{\r\n      padding: 50px 0;\r\n  }\r\n  .panel-body {\r\n    padding: 0px;\r\n  border-radius: 0px;\r\n}\r\n  .panel-heading{\r\n      padding: 10px 10px;\r\n    background: #eee;\r\n    margin-top: 20px;\r\n    border: 1px solid rgba(0, 0, 0, 0.125);\r\n    font-size: 18px;\r\n  }\r\n</style>\r\n\r\n<div class=\"row\">\r\n\t<div class=\"col-lg-12 text-center\">\r\n  \t\t<h2 class=\"section-heading text-uppercase\">ADVANCED FORMS</h2>\r\n\t</div>\r\n</div>\r\n<div class=\"row\">\r\n  {% assign allAdvancedForms = Queries.AllAdvancedForms | query | where: \"Content.AdvancedForm.HideFromListing.Value\", false | sort: \"Content.AdvancedForm.Type.Text\" %}\r\n  {% assign allFormType = Queries.GetAllAdvancedFormType | query %}\r\n  {% assign addedType = '' %}\r\n  {% for item in allFormType %}\r\n  \t{% if item.Content.AdvancedFormTypes.HideFromListing.Value != true %}\r\n  \t{% for form in allAdvancedForms %}\r\n  \t{% if item.ContentItemId == form.Content.AdvancedForm.Type.Text %}\r\n  \t{% if addedType != form.Content.AdvancedForm.Type.Text %}\r\n  \t{% assign addedType = form.Content.AdvancedForm.Type.Text %}\r\n\t<div class=\"col-md-6\">\r\n\t\t<div class=\"panel panel-default\">\r\n        \t<div class=\"panel-heading\">{{item}}</div>\r\n    \t\t<div class=\"panel-body\">\r\n              \r\n              \t{% for form in allAdvancedForms %}\r\n              \t{% if item.ContentItemId == form.Content.AdvancedForm.Type.Text %}\r\n            \t<a href=\"{{ form | display_url  }}\" class=\"list-group-item list-group-item-action\">\r\n                <div><strong>{{ form | display_text }} </strong><br/>\r\n                \t{{ form.Content.AdvancedForm.Description.Html | raw }}\r\n                </div>\r\n                </a>\r\n              \t{% endif %}\r\n              \t{% endfor %}\r\n              \r\n          \t</div>\r\n       \t</div>\r\n   \t</div>\r\n  \t{% endif %}\r\n  \t{% endif %}\r\n  \t{% endfor %}\r\n  \t{% endif %}\r\n  {% endfor %}\r\n</div>\r\n\r\n"
-          },
-          "TitlePart": {
-            "Title": "Available online Forms"
-          }
-        },
+        
         {
           "ContentItemId": "40txqffy68pt3wy2qvy6z2yfnr",
           "ContentItemVersionId": "4yffm0cmm68d3702zr4gxxnvxf",
@@ -13401,19 +13378,7 @@
     {
       "name": "Queries",
       "Queries": [
-        {
-          "Template": "select DocumentId\r\nfrom ContentItemIndex \r\nwhere Published = true and ContentType = 'AdvancedForm'",
-          "ReturnDocuments": true,
-          "Name": "AllAdvancedForms",
-          "Source": "Sql"
-        },
-        {
-          "Template": "select DocumentId\r\nfrom ContentItemIndex \r\nwhere Published = true \r\nand ContentType = 'AdvancedFormTypes'",
-          "ReturnDocuments": true,
-          "Name": "GetAllAdvancedFormType",
-          "Source": "Sql",
-          "Schema": null
-        },
+        
         {
           "Template": "select DocumentId\r\nfrom ContentItemIndex \r\nwhere Published = true and ContentType = 'DownloadableForm'",
           "ReturnDocuments": true,
