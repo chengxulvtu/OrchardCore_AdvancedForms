@@ -584,7 +584,7 @@ namespace AdvancedForms.Controllers
                 contentPick.ContentItemId = selectedContent.ContentItemId;
                 contentPick.DisplayText = selectedContent.DisplayText;
                 contentPick.HasPublished = selectedContent.Published;
-                contentPick.HideFromListing = selectedContent.Content.AdvancedFormTypes.HideFromListing.Value;
+                //contentPick.HideFromListing = selectedContent.Content.AdvancedFormTypes.HideFromListing.Value;
                 lst.Add(contentPick);
             }
 
@@ -642,7 +642,7 @@ namespace AdvancedForms.Controllers
                 var AFcontentItem = await _contentManager.GetAsync(contentItemId, VersionOptions.Published);
                 string groups = AFcontentItem.Content.AdvancedForm.Group.Text;
                 roles = groups.Split(",").ToList();
-                if(roles.Any(item => item == "Administrator" || currentUserRoles.Contains(item)))
+                if(currentUserRoles.Any(item => item == "Administrator" || roles.Contains(item)))
                 {
                     contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, this, "SubmissionAdmin_ListItem"));
                 }
