@@ -238,6 +238,54 @@ namespace AdvancedForms.Controllers
             return View(model);
         }
 
+        [Route("submission-confirmation")]
+        [AllowAnonymous]
+        public IActionResult Thankyou()
+        {
+            return View();
+        }
+
+        [Route("DownloadableForms")]
+        [AllowAnonymous]
+        public async Task<IActionResult> DownloadableForms()
+        {
+            List<AdvFormsDisplayViewModel> model = new List<AdvFormsDisplayViewModel>();
+            AdvFormsDisplayViewModel displayModel;
+            var query = _session.Query<ContentItem, ContentItemIndex>();
+            var allDownloadForms = await query.Where(o => o.ContentType == "DownloadableForm" && o.Published).ListAsync();
+            query = _session.Query<ContentItem, ContentItemIndex>();
+            var allDonwloadFormTypes = await query.Where(o => o.ContentType == "AdvancedFormTypes" && o.Published).ListAsync();
+            foreach (var item in allDonwloadFormTypes)
+            {
+                if (!Boolean.Parse(item.Content.AdvancedFormTypes.HideFromListing.Value.ToString()))
+                {
+                    displayModel = new AdvFormsDisplayViewModel();
+                    displayModel.Type = item.DisplayText;
+                    displayModel.Items = new List<AdvFormsDisplay>();
+                    foreach (var form in allDownloadForms)
+                    {
+                        string[] filteredForms = allDownloadForms.FirstOrDefault().Content.DownloadableForm.FormType.ContentItemIds.ToObject<string[]>();
+
+                        if (filteredForms.Any(o => o == item.ContentItemId))
+                        {
+                            displayModel.Items.Add(new AdvFormsDisplay()
+                            {
+                                Action = form.Content.DownloadableForm.UploadFile.Paths[0].ToString(),
+                                ContentItemId = form.ContentItemId,
+                                DisplayText = form.DisplayText,
+                                Description = form.Content.DownloadableForm.Description.Html
+                            });
+                        }
+                    }
+                    if (displayModel.Items.Count > 0)
+                    {
+                        model.Add(displayModel);
+                    }
+                }
+            }
+            return View(model);
+        }
+
         [HttpGet]
         [Route("AdvancedForms/GetPublicComments")]
         public async Task<IActionResult> GetPublicComments(string id)
