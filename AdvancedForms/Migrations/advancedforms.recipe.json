@@ -648,7 +648,7 @@
           ]
         }
       ]
-    },    
+    },
     {
       "name": "Queries",
       "Queries": [
@@ -731,6 +731,10 @@
         {
           "SourcePath": "../wwwroot/Image/Features/7.png",
           "TargetPath": "Features/7.png"
+        },
+        {
+          "SourcePath": "../wwwroot/Image/map-marker.png",
+          "TargetPath": "Esri Pin/map-marker.png"
         }
       ]
     },
