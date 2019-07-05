@@ -208,7 +208,7 @@
            {
                AttachFileHint = T["Attach a file with comment"], AttachmentID = "adminAttachment", AttachRemoveHint = T["Remove Attachment"], AttachRemoveID = "adminAttachmentRemove",
                Editor = Model.AdminEditor, ErrorHint = T["Admin comment required."], ErrorMessageClass = "errorMessageAdmin", FileUploadID = "fileuploadAdmin", EditorHint = T["These comments are private for admins only."]
-           });
+           })
             <button class="publish-button btn btn-success" onclick="submitAdminComment('@Model.SubmissionId')">@T["Save"]</button>
         </div>
         <br />
@@ -241,7 +241,7 @@
            {
                AttachFileHint = T["Attach a file with comment"], AttachmentID = "publicAttachment", AttachRemoveHint = T["Remove Attachment"], AttachRemoveID = "publicAttachmentRemove",
                Editor = Model.PublicEditor, ErrorHint = T["Public comment required."], ErrorMessageClass = "errorMessagePublic", FileUploadID = "fileuploadPublic", EditorHint= T["These comments will be displayed to the submitter and are not private."]
-           });
+           })
             <button class="publish-button btn btn-success" onclick="submitPublicComment('@Model.SubmissionId')">@T["Save"]</button>
         </div>
         <br />

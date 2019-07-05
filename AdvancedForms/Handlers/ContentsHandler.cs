@@ -32,7 +32,7 @@ namespace AdvancedForms.Handlers
 
         public override Task GetContentItemAspectAsync(ContentItemAspectContext context)
         {
-            context.For<ContentItemMetadata>(metadata =>
+            return context.ForAsync<ContentItemMetadata>(metadata =>
             {
                 if (context.ContentItem.ContentType == "AdvancedForm")
                 {
@@ -87,9 +87,8 @@ namespace AdvancedForms.Handlers
                     {
                     }
                 }
+                return Task.CompletedTask;
             });
-
-            return Task.CompletedTask;
         }
     }
 }

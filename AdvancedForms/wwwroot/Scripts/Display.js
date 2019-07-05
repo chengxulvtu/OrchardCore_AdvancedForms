@@ -60,7 +60,7 @@ function saveForm(submission, isDraft) {
 
 var getDateString = function (value) {
     date = new Date(value);
-    return date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear() + ' ' + date.toLocaleTimeString().replace(/:\d{2}\s/, ' ');
+    return (date.getMonth() +1) + '/' + date.getDate() + '/' + date.getFullYear() + ' ' + date.toLocaleTimeString().replace(/:\d{2}\s/, ' ');
 };
 
 function addAFCaseItem(content) {
