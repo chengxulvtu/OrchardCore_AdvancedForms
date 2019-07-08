@@ -314,6 +314,11 @@ namespace AdvancedForms.Controllers
                 await _contentManager.CreateAsync(content, VersionOptions.Draft);
             }
 
+            if (!await _authorizationService.AuthorizeAsync(User, Permissions.SubmitForm, content))
+            {
+                return Unauthorized();
+            }
+
             var formContent = await _contentManager.GetAsync(id, VersionOptions.Latest);
             string adminContainer = formContent.Content.AdvancedForm.AdminContainer.Html != null ? JsonConvert.SerializeObject(formContent.Content.AdvancedForm.AdminContainer.Html) : String.Empty;
             description = formContent.Content.AdvancedForm.Description.Html;
