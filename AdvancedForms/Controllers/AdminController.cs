@@ -279,7 +279,7 @@ namespace AdvancedForms.Controllers
 
                 var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
 
-                _notifier.Success(T["Your Adavanced Form has been published."]);
+                _notifier.Success(T["Your Advanced Form has been published."]);
             });
         }
 
@@ -304,7 +304,7 @@ namespace AdvancedForms.Controllers
             return await CreatePOST(viewModel, async contentItem =>
             {
                 var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
-                _notifier.Success(T["Your Adavanced Form has been saved on draft."]);
+                _notifier.Success(T["Your Advanced Form has been saved on draft."]);
             });
         }
 
