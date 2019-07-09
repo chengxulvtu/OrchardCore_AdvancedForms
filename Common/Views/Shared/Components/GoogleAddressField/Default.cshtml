@@ -1,0 +1,14 @@
+﻿@model Common.ViewModels.GoogleAddressFieldViewModel
+
+<label asp-for="@Model.ID">@Model.Title</label>
+<input type="text" id="@Model.ID" name="@Model.ID" value="@Model.Value" class="form-control content-preview-text content-caption-text" form="main" />
+<span class="hint">@Model.Hint</span>
+
+<script>
+    function initAddressBar() {
+        var input = document.getElementById('@Model.ID');
+        new google.maps.places.Autocomplete(input);
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=@Model.GoogleAPI&libraries=places&callback=initAddressBar" async defer></script>

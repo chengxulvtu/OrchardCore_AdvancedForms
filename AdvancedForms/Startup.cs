@@ -15,6 +15,7 @@ using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.DisplayManagement;
 using OrchardCore.Profile.Navigation;
 using OrchardCore.Settings;
+using Common.Helpers;
 
 namespace AdvancedForms
 {
@@ -29,6 +30,7 @@ namespace AdvancedForms
 
         public override void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<APIConfiguration>(_configuration.GetSection("APIConfiguration"));
             services.AddScoped<IDataMigration, Migrations>();
             services.AddScoped<IPermissionProvider, Permissions>();
 

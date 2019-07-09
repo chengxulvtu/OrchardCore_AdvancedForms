@@ -21,8 +21,4 @@
     <PackageReference Include="OrchardCore.Users.Core" Version="1.0.0-beta3-71772" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Helpers\" />
-  </ItemGroup>
-
 </Project>
