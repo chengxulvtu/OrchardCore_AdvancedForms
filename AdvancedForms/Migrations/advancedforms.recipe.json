@@ -716,6 +716,13 @@
           "Name": "GetAdvancedFormById",
           "Source": "Sql",
           "Schema": null
+        },
+        {
+          "Template": "SELECT I.[RoleName] FROM [UserByRoleNameIndex_Document] AS D \r\nINNER JOIN [UserByRoleNameIndex] AS I ON D.[UserByRoleNameIndexId] = I.[Id] \r\nWHERE D.[DocumentId] = @documentId;",
+          "ReturnDocuments": false,
+          "Name": "GetRolesById",
+          "Source": "Sql",
+          "Schema": null
         }
       ]
     },
@@ -1073,6 +1080,15 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Templates",
+      "Templates": {
+        "Widget-AdvancedFormWidget": {
+          "Content": "{% assign advancedForm = Queries.GetAdvancedFormById | query : contentItemId: Model.ContentItem.Content.AdvancedFormWidget.AdvancedFormPicker.ContentItemIds[0] %}\r\n{% if advancedForm | size > 0 %}\r\n\t<script asp-src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\" at=\"Head\"></script>\r\n\t<style asp-src=\"/AdvancedForms/Styles/formio.full.min.css\"></style>\r\n\t<script asp-src=\"/AdvancedForms/Scripts/formio.full.min.js\" at=\"Head\" asp-name=\"formio.full.min\"></script>\r\n\r\n\t{% style src:\"/AdvancedForms/Styles/formio.full.min.css\", debug_src:\"/AdvancedForms/Styles/formio.full.min.css\" %}\r\n\t\r\n\t{% script src:\"/AdvancedForms/Scripts/formio.full.min.js\", debug_src:\"/AdvancedForms/Scripts/formio.full.min.js\", at:\"Head\" %}\r\n\t{% script src:\"/AdvancedForms/Scripts/urlConfig.js\", debug_src:\"/AdvancedForms/Scripts/urlConfig.js\", at:\"Head\" %}\r\n\t<script at=\"Head\">\r\n\t\tif (typeof urlConfig !== undefined) {\r\n\t\t\turlConfig.Entry = \"{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/Entry\";\r\n\t\t}\r\n\t</script>\r\n\t{% script src:\"/AdvancedForms/Scripts/Display.js\", debug_src:\"/AdvancedForms/Scripts/Display.js\", at:\"Head\" %}\r\n\t{% assign title = advancedForm[0].ContentItem.Content.AdvancedForm.Title %}\r\n\t{% assign id = advancedForm[0].ContentItem.ContentItemId %}\r\n\t{% assign type = advancedForm[0].ContentItem.Content.AdvancedForm.Type.Text %}\r\n\t{% assign group = advancedForm[0].ContentItem.Content.AdvancedForm.Group.Text %}\r\n\r\n\t<script type='text/javascript' at=\"Foot\">\r\n\t\twindow.onload = function() {\r\n\t\t\tFormio.createForm(document.getElementById('formio'),\r\n\t\t\t\t{{advancedForm[0].ContentItem.Content.AdvancedForm.Container.Html | raw}}\r\n\t\t\t).then(function(form) {\r\n\t\t\t\tform.on('submit', function (submission) { saveForm(submission, false); });\r\n\t\t\t\t{% if User.Identity.Name == null %}\r\n\t\t\t\t\t$(\"#submit\").hide();\r\n\t\t\t\t{% endif %}\r\n\t\t\t\t{% if User.Identity.Name != null %}\r\n\t\t\t\t\t$(\"#loginButton\").hide();\r\n\t\t\t\t{% endif %}\r\n\t\t\t});\r\n\t\t\tinitValue('{{title}}','{{id}}','','','','{{type}}','','','', '', '', '', '', '{{group}}');\r\n\t\t};\r\n\t</script>\r\n\t{% antiforgerytoken %}\r\n\t<input type=\"hidden\" id=\"Container\" value=\"{{advancedForm[0].ContentItem.Content.AdvancedForm.Container.Html}}\" />\r\n\t<div id='formio'></div>\r\n\t<a id=\"loginButton\" class=\"btn btn-primary btn-md\" href=\"/Login\">Sign-In</a>\r\n{% endif %}",
+          "Description": "Advanced forms widget for pages"
+        }
+      }
     }
   ]
 }
