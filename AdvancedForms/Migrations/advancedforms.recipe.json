@@ -247,6 +247,27 @@
               }
             }
           ]
+        },
+        {
+          "Name": "AdvancedFormWidget",
+          "DisplayName": "Advanced Form",
+          "Settings": {
+            "Creatable": "False",
+            "Draftable": "True",
+            "Versionable": "True",
+            "Listable": "False",
+            "Securable": "True",
+            "Stereotype": "Widget"
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "AdvancedFormWidget",
+              "Name": "AdvancedFormWidget",
+              "Settings": {
+                "Position": "0"
+              }
+            }
+          ]
         }
       ],
       "ContentParts": [
@@ -646,6 +667,28 @@
               }
             }
           ]
+        },
+        {
+          "Name": "AdvancedFormWidget",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "ContentPickerField",
+              "Name": "AdvancedFormPicker",
+              "Settings": {
+                "DisplayName": "Advanced Form Picker",
+                "Hint": null,
+                "Required": false,
+                "Multiple": false,
+                "DisplayedContentTypes": [
+                  "AdvancedForm"
+                ],
+                "Editor": null,
+                "DisplayMode": null,
+                "Position": "0"
+              }
+            }
+          ]
         }
       ]
     },
@@ -664,6 +707,13 @@
           "Template": "Select * from UserIndex Where NormalizedUserName = @userName",
           "ReturnDocuments": false,
           "Name": "GetUserEmailByUsername",
+          "Source": "Sql",
+          "Schema": null
+        },
+        {
+          "Template": "select DocumentId\r\nfrom ContentItemIndex \r\nwhere Published = true and ContentItemId = @contentItemId",
+          "ReturnDocuments": true,
+          "Name": "GetAdvancedFormById",
           "Source": "Sql",
           "Schema": null
         }
