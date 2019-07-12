@@ -52,7 +52,7 @@ namespace OrchardCore.Profile.Controllers
         IStringLocalizer S { get; set; }
 
 
-        public async Task<IActionResult> Index(string groupId = "")
+        public async Task<IActionResult> Index(string groupId = "", string Title ="", string Status = "")
         {
             if (string.IsNullOrWhiteSpace(groupId))
             {
@@ -71,6 +71,8 @@ namespace OrchardCore.Profile.Controllers
                 profile.UserRoles = ((ClaimsIdentity)User.Identity).Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
                 await _profileService.UpdateProfileAsync(profile);
             }
+            profile.Title = Title;
+            profile.Status = Status;
 
             var viewModel = new ProfileIndexViewModel
             {

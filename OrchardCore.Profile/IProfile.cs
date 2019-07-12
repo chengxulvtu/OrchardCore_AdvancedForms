@@ -8,5 +8,7 @@ namespace OrchardCore.Profile
     {
         string UserName { get; set; }
         List<string> UserRoles { get; set; }
+        string Title { get; set; }
+        string Status { get; set; }
     }
 }

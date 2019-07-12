@@ -8,7 +8,38 @@
         display: none;
     }
 </style>
-<h2 style="font-size: 20px;">Submitted Forms</h2><hr />
+<h2 style="font-size: 20px;">Submitted Forms</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body list-group-item">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-secondary text-light">Title</span>
+                    </div>
+                    <input class="form-control" type="text" id="inputTitle" value="@Model.Title">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-secondary text-light">Status</span>
+                    </div>
+                    <select class="form-control" id="selectStatus">
+                        <option value="all">All</option>
+                        @foreach (var item in Model.ListStatus)
+                        {
+                            <option value="@item.Value">@item.Key</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+
 @if (Model.ContentItemSummaries.Count > 0)
 {
     <ul class="list-group">
@@ -73,4 +104,22 @@ else
     <div class="alert alert-info">
         @T["No result found."]
     </div>
+}
+<script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
+<script type="text/javascript">
+    debugger;
+    $(".form-control").change(function () {
+        debugger;
+        var title = $("#inputTitle").val();
+        var status = $("#selectStatus").val();
+        debugger;
+        window.location.href = window.location.origin + window.location.pathname + "?Title=" + title + "&Status=" + status;
+    });
+</script>
+
+@if (!string.IsNullOrEmpty(Model.Status))
+{
+    <script>
+        $("#selectStatus").val("@Model.Status");
+    </script>
 }

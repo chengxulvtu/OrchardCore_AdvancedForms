@@ -56,16 +56,38 @@ namespace AdvancedForms.Drivers
             {
                 pageOfContentItems = pageOfContentItems.Where(o => o.Owner == profile.UserName);
             }
+
+            if(pageOfContentItems.Count() > 0 && !string.IsNullOrEmpty(profile.Title))
+            {
+                pageOfContentItems = pageOfContentItems.Where(o => o.DisplayText.ToLower().Contains(profile.Title.ToLower()));
+            }
+
+            if (pageOfContentItems.Count() > 0 && !string.IsNullOrEmpty(profile.Status) && profile.Status.ToLower() != "all")
+            {
+                pageOfContentItems = pageOfContentItems.Where(o => o.Content.AdvancedFormSubmissions.Status.Text == profile.Status);
+            }
+
             var contentItemSummaries = new List<dynamic>();
             foreach (var contentItem in pageOfContentItems)
             {
                 contentItemSummaries.Add(contentItem);
             }
 
+            query = _session.Query<ContentItem, ContentItemIndex>();
+            var pageContentStatus = await query.Where(o => o.ContentType == "AdvancedFormStatus" && o.Latest).OrderByDescending(o => o.CreatedUtc).ListAsync();
+            List<KeyValue> lstStatus = new List<KeyValue>();
+            foreach (var item in pageContentStatus)
+            {
+                lstStatus.Add(new KeyValue() { Key = item.DisplayText, Value = item.ContentItemId });
+            }
+
             return await Task.FromResult<IDisplayResult>(
                     Initialize<ProfileViewModel>("Submission_List_Edit", item =>
                     {
                         item.ContentItemSummaries = contentItemSummaries;
+                        item.ListStatus = lstStatus;
+                        item.Title = profile.Title;
+                        item.Status = profile.Status;
                     }).Location("Content:1").OnGroup(GroupId)
             );
         }
