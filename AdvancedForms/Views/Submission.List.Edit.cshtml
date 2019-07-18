@@ -2,7 +2,7 @@
 @using OrchardCore.ContentManagement
 @inject IContentManager ContentManager
 @model ProfileViewModel
-
+<style asp-src="/AdvancedForms/Styles/loader.css"></style>
 <style>
     .btn-group {
         display: none;
@@ -15,17 +15,16 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="input-group input-group-sm">
+                    <input class="form-control" type="text" placeholder="Filter by Title" id="inputTitle" value="@Model.Title">
                     <div class="input-group-prepend">
-                        <span class="input-group-text bg-secondary text-light">Title</span>
+                        <button class="input-group-text bg-secondary" id="btnSearch" style="background-color: transparent !important;color: #000 !important;">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
                     </div>
-                    <input class="form-control" type="text" id="inputTitle" value="@Model.Title">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-secondary text-light">Status</span>
-                    </div>
                     <select class="form-control" id="selectStatus">
                         <option value="all">All</option>
                         @foreach (var item in Model.ListStatus)
@@ -107,14 +106,20 @@ else
 }
 <script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
 <script type="text/javascript">
-    debugger;
-    $(".form-control").change(function () {
-        debugger;
+    $("#selectStatus").change(function () {
+        loadData();
+    });
+
+    $("#btnSearch").click(function () {
+        loadData();
+    });
+
+    function loadData() {
+        $('.loading').show();
         var title = $("#inputTitle").val();
         var status = $("#selectStatus").val();
-        debugger;
         window.location.href = window.location.origin + window.location.pathname + "?Title=" + title + "&Status=" + status;
-    });
+    }
 </script>
 
 @if (!string.IsNullOrEmpty(Model.Status))
@@ -123,3 +128,10 @@ else
         $("#selectStatus").val("@Model.Status");
     </script>
 }
+
+    <div class="loading">@T["Loading"]&#8230;</div>
+<script>
+    window.onload = function () {
+        $('.loading').hide();
+    }
+</script>
