@@ -8,6 +8,7 @@
   <ItemGroup>
     <EmbeddedResource Remove="Views\AdvancedForms\Contents-Meta.SummaryAdmin.cshtml" />
     <EmbeddedResource Remove="Views\AdvancedForms\Display.cshtml~RF1f203469.TMP" />
+    <EmbeddedResource Remove="wwwroot\Scripts\loader.css" />
     <EmbeddedResource Remove="wwwroot\Styles\Submission.js" />
   </ItemGroup>
 
