@@ -14,7 +14,7 @@
     <div class="panel-body list-group-item">
         <div class="row">
             <div class="col-md-6">
-                <div class="input-group input-group-sm">
+                <div class="input-group">
                     <input class="form-control" type="text" placeholder="Filter by Title" id="inputTitle" value="@Model.Title">
                     <div class="input-group-prepend">
                         <button class="input-group-text bg-secondary" id="btnSearch" style="background-color: transparent !important;color: #000 !important;">
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="input-group input-group-sm">
+                <div class="input-group">
                     <select class="form-control" id="selectStatus">
                         <option value="all">All</option>
                         @foreach (var item in Model.ListStatus)
