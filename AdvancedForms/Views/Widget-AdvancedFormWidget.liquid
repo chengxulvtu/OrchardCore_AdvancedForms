@@ -61,7 +61,7 @@ section{
 		{% antiforgerytoken %}
 		<input type="hidden" id="Container" value="{{advancedForm[0].ContentItem.Content.AdvancedForm.Container.Html}}" />
 		<div id='formio'></div>
-		<a id="loginButton" class="btn btn-primary btn-md" href="/Login">Sign-In</a>
+		<a id="loginButton" class="btn btn-primary btn-md" href="/Login?ReturnUrl={{Request.Path}}">Sign-In</a>
 	{% endif %}
 {% else %}
 	<div class="col-md-12 text-center">
