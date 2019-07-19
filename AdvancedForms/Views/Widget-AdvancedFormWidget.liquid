@@ -5,72 +5,69 @@ section{
 }
 </style>
 {% assign advancedForm = Queries.GetAdvancedFormById | query : contentItemId: Model.ContentItem.Content.AdvancedFormWidget.AdvancedFormPicker.ContentItemIds[0] %}
-{% if User.Identity.Name != null %}
-	{% assign userdetails = Queries.GetUserEmailByUsername | query : userName: User.Identity.Name %}
-	{% assign document = userdetails[0].DocumentId %}
-	{% assign roles = Queries.GetRolesById | query : documentId: userdetails[0].DocumentId %}
-	{% assign group = advancedForm[0].ContentItem.Content.AdvancedForm.Group.Text %}
-	{% assign isGroup = false %}
-	{% for role in roles %}
-		{% if group | downcase contains role.RoleName | downcase %}
-			{% assign isGroup = true %}
-		{% endif %}
-		{% if role.RoleName | downcase == "administrator" %}
-			{% assign isGroup = true %}
-		{% endif %}
-	{% endfor %}
-	
-	{% if isGroup %}
-		{% if advancedForm | size > 0 %}
-			<script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
-			<script asp-src="/AdvancedForms/Scripts/formio.full.min.js" at="Head" asp-name="formio.full.min"></script>
-			{% style src:"/AdvancedForms/Styles/formio.full.min.css", debug_src:"/AdvancedForms/Styles/formio.full.min.css" %}
-			{% script src:"/AdvancedForms/Scripts/formio.full.min.js", debug_src:"/AdvancedForms/Scripts/formio.full.min.js", at:"Head" %}
-			{% script src:"/AdvancedForms/Scripts/urlConfig.js", debug_src:"/AdvancedForms/Scripts/urlConfig.js", at:"Head" %}
-			<script at="Head">
-				if (typeof urlConfig !== undefined) {
-					urlConfig.Entry = "{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/Entry";
-				}
-			</script>
-			{% script src:"/AdvancedForms/Scripts/Display.js", debug_src:"/AdvancedForms/Scripts/Display.js", at:"Head" %}
-			{% assign title = advancedForm[0].ContentItem.Content.AdvancedForm.Title %}
-			{% assign id = advancedForm[0].ContentItem.ContentItemId %}
-			{% assign type = advancedForm[0].ContentItem.Content.AdvancedForm.Type.Text %}
+{% assign userdetails = Queries.GetUserEmailByUsername | query : userName: User.Identity.Name %}
+{% assign document = userdetails[0].DocumentId %}
+{% assign roles = Queries.GetRolesById | query : documentId: userdetails[0].DocumentId %}
+{% assign group = advancedForm[0].ContentItem.Content.AdvancedForm.Group.Text %}
+{% assign isGroup = false %}
+{% for role in roles %}
+	{% if group | downcase contains role.RoleName | downcase %}
+		{% assign isGroup = true %}
+	{% endif %}
+	{% if role.RoleName | downcase == "administrator" %}
+		{% assign isGroup = true %}
+	{% endif %}
+{% endfor %}
+{% if roles == null %}
+	{% if group | downcase contains "anonymous" %}
+		{% assign isGroup = true %}
+	{% endif %}
+{% endif %}
 
-			<script type='text/javascript' at="Foot">
-				window.onload = function() {
-					Formio.createForm(document.getElementById('formio'),
-						{{advancedForm[0].ContentItem.Content.AdvancedForm.Container.Html | raw}}
-					).then(function(form) {
-						form.on('submit', function (submission) { saveForm(submission, false); });
-						{% if User.Identity.Name == null %}
-							$("#submit").hide();
-						{% endif %}
-						{% if User.Identity.Name != null %}
-							$("#loginButton").hide();
-						{% endif %}
-					});
-					initValue('{{title}}','{{id}}','','','','{{type}}','','','', '', '', '', '', '{{group}}');
-				};
-			</script>
-			{% antiforgerytoken %}
-			<input type="hidden" id="Container" value="{{advancedForm[0].ContentItem.Content.AdvancedForm.Container.Html}}" />
-			<div id='formio'></div>
-			<a id="loginButton" class="btn btn-primary btn-md" href="/Login">Sign-In</a>
-		{% endif %}
-	{% else %}
-		<div class="col-md-12 text-center">
-			<div class="panel panel-default">
-				<div class="panel-heading">{{advancedForm[0].ContentItem.Content.AdvancedForm.Title | raw}}</div>
-				<div class="panel-body"><a id="loginButton" class="btn btn-primary btn-md" href="/Login?ReturnUrl={{Request.Path}}">Sign-In</a></div>
-			</div>
-		</div>
+	
+{% if isGroup %}
+	{% if advancedForm | size > 0 %}
+		<script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
+		<script asp-src="/AdvancedForms/Scripts/formio.full.min.js" at="Head" asp-name="formio.full.min"></script>
+		{% style src:"/AdvancedForms/Styles/formio.full.min.css", debug_src:"/AdvancedForms/Styles/formio.full.min.css" %}
+		{% script src:"/AdvancedForms/Scripts/formio.full.min.js", debug_src:"/AdvancedForms/Scripts/formio.full.min.js", at:"Head" %}
+		{% script src:"/AdvancedForms/Scripts/urlConfig.js", debug_src:"/AdvancedForms/Scripts/urlConfig.js", at:"Head" %}
+		<script at="Head">
+			if (typeof urlConfig !== undefined) {
+				urlConfig.Entry = "{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/Entry";
+			}
+		</script>
+		{% script src:"/AdvancedForms/Scripts/Display.js", debug_src:"/AdvancedForms/Scripts/Display.js", at:"Head" %}
+		{% assign title = advancedForm[0].ContentItem.Content.AdvancedForm.Title %}
+		{% assign id = advancedForm[0].ContentItem.ContentItemId %}
+		{% assign type = advancedForm[0].ContentItem.Content.AdvancedForm.Type.Text %}
+
+		<script type='text/javascript' at="Foot">
+			window.onload = function() {
+				Formio.createForm(document.getElementById('formio'),
+					{{advancedForm[0].ContentItem.Content.AdvancedForm.Container.Html | raw}}
+				).then(function(form) {
+					form.on('submit', function (submission) { saveForm(submission, false); });
+					{% if User.Identity.Name == null %}
+						$("#submit").hide();
+					{% endif %}
+					{% if User.Identity.Name != null %}
+						$("#loginButton").hide();
+					{% endif %}
+				});
+				initValue('{{title}}','{{id}}','','','','{{type}}','','','', '', '', '', '', '{{group}}');
+			};
+		</script>
+		{% antiforgerytoken %}
+		<input type="hidden" id="Container" value="{{advancedForm[0].ContentItem.Content.AdvancedForm.Container.Html}}" />
+		<div id='formio'></div>
+		<a id="loginButton" class="btn btn-primary btn-md" href="/Login">Sign-In</a>
 	{% endif %}
 {% else %}
-<div class="col-md-12 text-center">
-	<div class="panel panel-default">
-	  <div class="panel-heading">{{advancedForm[0].ContentItem.Content.AdvancedForm.Title | raw}}</div>
-	  <div class="panel-body"><a id="loginButton" class="btn btn-primary btn-md" href="/Login?ReturnUrl={{Request.Path}}">Sign-In</a></div>
+	<div class="col-md-12 text-center">
+		<div class="panel panel-default">
+			<div class="panel-heading">{{advancedForm[0].ContentItem.Content.AdvancedForm.Title | raw}}</div>
+			<div class="panel-body"><a id="loginButton" class="btn btn-primary btn-md" href="/Login?ReturnUrl={{Request.Path}}">Sign-In</a></div>
+		</div>
 	</div>
-</div>
 {% endif %}
