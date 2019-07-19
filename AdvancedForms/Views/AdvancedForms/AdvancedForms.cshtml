@@ -18,6 +18,9 @@
     .panel-heading h4 {
         font-size: 18px;
     }
+    a, a:hover{
+        color:#000;
+    }
 </style>
 <script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
 <div class="row">
@@ -44,7 +47,7 @@
 <div class="row">
     @foreach (var item in Model)
     {
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>
@@ -81,37 +84,47 @@
             $(this).parent().find(".fa").removeClass("fa-minus").addClass("fa-plus");
         });
 
-        $("#btnSearch").click(function () {
-            $(".collapse").collapse('show');
-            var searchTitle = $("#inputTitle").val().toLowerCase();
-            $(".panel a span").each(function () {
-                var currentTitle = $(this).text();
-                $(this).parent().parent().show();
-                if (currentTitle.toLowerCase().indexOf(searchTitle) == -1) {
-                    $(this).parent().parent().hide();
-                }
-            });
-            var noItem = true;
-            $(".alert").hide();
-            $(".panel").each(function () {
-                var isAllHide = true;
-                $(this).show();
-                var anchor = $(this).find("a span");
-                anchor.each(function () {
-                    if (!$(this).is(":hidden")) {
-                        isAllHide = false;
-                        noItem = false;
-                    }
-                });
-                if (isAllHide) {
-                    $(this).hide();
-                }
-            });
-            if (noItem) {
-                $(".alert").show();
+        $('#inputTitle').keypress(function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                searchForms();
             }
         });
+
+        $("#btnSearch").click(function () {
+            searchForms();
+        });
     });
+    function searchForms() {
+        $(".collapse").collapse('show');
+        var searchTitle = $("#inputTitle").val().toLowerCase();
+        $(".panel a span").each(function () {
+            var currentTitle = $(this).text();
+            $(this).parent().parent().show();
+            if (currentTitle.toLowerCase().indexOf(searchTitle) == -1) {
+                $(this).parent().parent().hide();
+            }
+        });
+        var noItem = true;
+        $(".alert").hide();
+        $(".panel").each(function () {
+            var isAllHide = true;
+            $(this).parent().show();
+            var anchor = $(this).find("a span");
+            anchor.each(function () {
+                if (!$(this).is(":hidden")) {
+                    isAllHide = false;
+                    noItem = false;
+                }
+            });
+            if (isAllHide) {
+                $(this).parent().hide();
+            }
+        });
+        if (noItem) {
+            $(".alert").show();
+        }
+    }
     function collapseShow(id) {
         $("#" + id).collapse('toggle');
     }
