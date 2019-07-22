@@ -1,29 +1,8 @@
 ﻿@model List<AdvancedForms.ViewModels.AdvFormsDisplayViewModel>
 <style asp-src="/AdvancedForms/Styles/display.css"></style>
-<style>
-    #mainNav {
-        background-color: #212529 !important;
-        padding-top: 0px;
-        padding-bottom: 0px;
-    }
-
-    #main {
-        padding-top: 70px;
-    }
-
-    label {
-        color: #000 !important;
-    }
-
-    .panel-heading h4 {
-        font-size: 18px;
-    }
-    a, a:hover{
-        color:#000;
-    }
-</style>
 <script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
-<div class="row">
+<script asp-src="/AdvancedForms/Scripts/Display.js" at="Head"></script>
+<div class="row" id="main">
     <div class="col-lg-12 text-center">
         <h2 class="section-heading text-uppercase">ADVANCED FORMS</h2>
     </div>
@@ -31,7 +10,6 @@
 <hr />
 <div class="row">
     <div class="col-md-6">
-
     </div>
     <div class="col-md-6">
         <div class="input-group">
@@ -66,66 +44,7 @@
             </div>
         </div>
     }
-    
-    
     <div class="col-md-12 alert alert-info" style="display:none;">
         <strong>@T["No Item!"]</strong> @T["Not found any form with above filter."]
     </div>
 </div>
-
-<script>
-    $(document).ready(function () {
-        $(".collapse.in").each(function () {
-            $(this).siblings(".panel-heading").find(".fa").addClass("fa-minus").removeClass("fa-plus");
-        });
-        $(".collapse").on('show.bs.collapse', function () {
-            $(this).parent().find(".fa").removeClass("fa-plus").addClass("fa-minus");
-        }).on('hide.bs.collapse', function () {
-            $(this).parent().find(".fa").removeClass("fa-minus").addClass("fa-plus");
-        });
-
-        $('#inputTitle').keypress(function (event) {
-            var keycode = (event.keyCode ? event.keyCode : event.which);
-            if (keycode == '13') {
-                searchForms();
-            }
-        });
-
-        $("#btnSearch").click(function () {
-            searchForms();
-        });
-    });
-    function searchForms() {
-        $(".collapse").collapse('show');
-        var searchTitle = $("#inputTitle").val().toLowerCase();
-        $(".panel a span").each(function () {
-            var currentTitle = $(this).text();
-            $(this).parent().parent().show();
-            if (currentTitle.toLowerCase().indexOf(searchTitle) == -1) {
-                $(this).parent().parent().hide();
-            }
-        });
-        var noItem = true;
-        $(".alert").hide();
-        $(".panel").each(function () {
-            var isAllHide = true;
-            $(this).parent().show();
-            var anchor = $(this).find("a span");
-            anchor.each(function () {
-                if (!$(this).is(":hidden")) {
-                    isAllHide = false;
-                    noItem = false;
-                }
-            });
-            if (isAllHide) {
-                $(this).parent().hide();
-            }
-        });
-        if (noItem) {
-            $(".alert").show();
-        }
-    }
-    function collapseShow(id) {
-        $("#" + id).collapse('toggle');
-    }
-</script>

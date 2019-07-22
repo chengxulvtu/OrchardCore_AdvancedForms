@@ -88,3 +88,55 @@ function printButton() {
     window.open(window.location.href.toLowerCase().replace('/edit/', '/print/').replace('/view/', '/print/'), '_blank');
 };
 
+$(document).ready(function () {
+    $(".collapse.in").each(function () {
+        $(this).siblings(".panel-heading").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+    });
+    $(".collapse").on('show.bs.collapse', function () {
+        $(this).parent().find(".fa").removeClass("fa-plus").addClass("fa-minus");
+    }).on('hide.bs.collapse', function () {
+        $(this).parent().find(".fa").removeClass("fa-minus").addClass("fa-plus");
+    });
+    $('#inputTitle').keypress(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {
+            searchForms();
+        }
+    });
+    $("#btnSearch").click(function () {
+        searchForms();
+    });
+});
+function searchForms() {
+    $(".collapse").collapse('show');
+    var searchTitle = $("#inputTitle").val().toLowerCase();
+    $(".panel a span").each(function () {
+        var currentTitle = $(this).text();
+        $(this).parent().parent().show();
+        if (currentTitle.toLowerCase().indexOf(searchTitle) == -1) {
+            $(this).parent().parent().hide();
+        }
+    });
+    var noItem = true;
+    $(".alert").hide();
+    $(".panel").each(function () {
+        var isAllHide = true;
+        $(this).parent().show();
+        var anchor = $(this).find("a span");
+        anchor.each(function () {
+            if (!$(this).is(":hidden")) {
+                isAllHide = false;
+                noItem = false;
+            }
+        });
+        if (isAllHide) {
+            $(this).parent().hide();
+        }
+    });
+    if (noItem) {
+        $(".alert").show();
+    }
+}
+function collapseShow(id) {
+    $("#" + id).collapse('toggle');
+}

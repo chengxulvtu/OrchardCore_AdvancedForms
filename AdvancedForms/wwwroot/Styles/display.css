@@ -42,10 +42,6 @@ label {
     border: 1px solid #a2a2a2 !important;
 }
 
-#main {
-    padding-top: 70px !important;
-}
-
 #mainNav {
     background-color: #212529 !important;
 }
@@ -284,4 +280,26 @@ legend {
         -o-transform: rotate(360deg);
         transform: rotate(360deg);
     }
+}
+
+#mainNav {
+    background-color: #212529 !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+#main {
+    padding-top: 50px;
+}
+
+label {
+    color: #000 !important;
+}
+
+.panel-heading h4 {
+    font-size: 18px;
+}
+
+a, a:hover {
+    color: #000;
 }
