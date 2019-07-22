@@ -39,7 +39,7 @@ namespace AdvancedForms
             services.AddScoped<IContentHandler, ContentsHandler>();
             services.AddScoped<IDisplayDriver<ISite>, AdvancedFormsSettingsDisplayDriver>();
             services.AddScoped<IDisplayManager<IProfile>, DisplayManager<IProfile>>();
-            services.AddScoped<IDisplayDriver<IProfile>, DefaultProfileDisplayDriver>();
+            services.AddScoped<IDisplayDriver<IProfile>, SubmittedFormsProfileDisplayDriver>();
         }
 
         public override void Configure(IApplicationBuilder builder, IRouteBuilder routes, IServiceProvider serviceProvider)

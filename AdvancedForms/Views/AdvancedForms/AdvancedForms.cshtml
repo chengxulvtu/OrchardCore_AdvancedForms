@@ -36,7 +36,7 @@
                     @foreach (var form in item.Items)
                     {
                         <a href="@form.Action" class="list-group-item fort-group-item-action">
-                            <strong><span>@form.DisplayText</span></strong><br />
+                            <strong><span style="color:#000;">@form.DisplayText</span></strong><br />
                             <label style="cursor:pointer;">@Html.Raw(form.Description)</label>
                         </a>
                     }

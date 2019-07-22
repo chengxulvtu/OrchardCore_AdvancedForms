@@ -24,13 +24,13 @@ namespace AdvancedForms
                 return Task.CompletedTask;
             }
             builder
-                .Add(T["Submitted Forms"], "1", advancedForms => advancedForms
-                    .Url("Profile")
+                .Add(T["Submitted Forms"], "2", advancedForms => advancedForms
+                    .Url("Profile/SubmittedForms")
                     .AddClass("list-group-item list-group-item-action"))
-                .Add(T["Advanced Forms"], "3", advancedForms => advancedForms
+                .Add(T["Advanced Forms"], "4", advancedForms => advancedForms
                     .Url("advancedForms")
                     .AddClass("list-group-item list-group-item-action"))
-                .Add(T["Downloadable Forms"], "4", advancedForms => advancedForms
+                .Add(T["Downloadable Forms"], "5", advancedForms => advancedForms
                     .Url("downloadableForms")
                     .AddClass("list-group-item list-group-item-action"));
             return Task.CompletedTask;

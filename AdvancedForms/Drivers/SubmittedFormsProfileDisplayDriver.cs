@@ -21,22 +21,22 @@ using OrchardCore.Profile.ViewModels;
 
 namespace AdvancedForms.Drivers
 {
-    public class DefaultProfileDisplayDriver : DisplayDriver<IProfile>
+    public class SubmittedFormsProfileDisplayDriver : DisplayDriver<IProfile>
     {
-        public const string GroupId = "general";
+        public const string GroupId = "SubmittedForms";
         private readonly INotifier _notifier;
         private readonly IShellHost _shellHost;
         private readonly ShellSettings _shellSettings;
         private readonly ISession _session;
         private readonly IContentItemDisplayManager _contentItemDisplayManager;
 
-        public DefaultProfileDisplayDriver(
+        public SubmittedFormsProfileDisplayDriver(
             INotifier notifier,
             IShellHost shellHost,
             ShellSettings shellSettings,
             ISession session,
             IContentItemDisplayManager contentItemDisplayManager,
-            IHtmlLocalizer<DefaultProfileDisplayDriver> h)
+            IHtmlLocalizer<SubmittedFormsProfileDisplayDriver> h)
         {
             _notifier = notifier;
             _shellHost = shellHost;
