@@ -296,7 +296,6 @@ namespace AdvancedForms.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [Route("AdvancedForms/Entry")]
         public async Task<IActionResult> Entry(string submission, string title, string id, string container,
             string header, string footer, string description, string type, string submissionId, string instructions, string owner, bool isDraft, bool hideFromListing, bool isGlobalHeader, bool isGlobalFooter, string group)
@@ -315,7 +314,7 @@ namespace AdvancedForms.Controllers
                 await _contentManager.CreateAsync(content, VersionOptions.Draft);
             }
 
-            if (!group.Contains("Anonymous") && !await _authorizationService.AuthorizeAsync(User, Permissions.SubmitForm, content))
+            if (!await _authorizationService.AuthorizeAsync(User, Permissions.SubmitForm, content))
             {
                 return Unauthorized();
             }
@@ -353,7 +352,7 @@ namespace AdvancedForms.Controllers
                 }
             }
 
-            if (string.IsNullOrWhiteSpace(owner) && !string.IsNullOrEmpty(User.Identity.Name))
+            if (string.IsNullOrWhiteSpace(owner))
             {
                 owner = User.Identity.Name;
             }
