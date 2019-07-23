@@ -36,14 +36,14 @@
                                 <span class="input-group-text bg-secondary text-light">Title</span>
                             </div>
                             <input class="form-control" type="text" id="DisplayText" name="DisplayText" value="@Model.DisplayText">
-                            <input type="hidden" class="btn btn-primary" value="submit.Filter" name="submit.Filter" />
+                            <input type="hidden" id="filterTitle" class="btn btn-primary" value="" name="submit.Filter" />
                         </div>
                     </div>
                     @if (Model.ContentItemSummaries.Count > 0)
                     {
                         <div class="form-group col-xl-9 mb-n1" style="padding: 0px 20px;">
                             <div class="input-group input-group-sm">
-                                <button type="submit" id="btnExport" class="btn btn-primary" style="float:right;display:none;right: 0px !important;position: absolute;padding: 2px 10px;" value="submit.Export" name="submit.Export">@T["Export"]</button>
+                                <button id="btnExport" class="btn btn-primary" style="float:right;display:none;right: 0px !important;position: absolute;padding: 2px 10px;" value="" name="submit.Export">@T["Export"]</button>
                                 <input type="hidden" id="checkedItems" name="checkedItems" />
                             </div>
                         </div>
@@ -90,7 +90,26 @@
     }
     $("#DisplayText").blur(function () {
         if (filtered !== this.value) {
+            $("#btnExport").val("");
+            $("#filterTitle").val("submit.Filter");
             $("form").submit();
         }
     });
+
+    $('#DisplayText').keypress(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {
+            event.preventDefault();
+            $("#btnExport").val("");
+            $("#filterTitle").val("submit.Filter");
+            $("form").submit();
+        }
+    });
+
+    $("#btnExport").click(function () {
+        $("#btnExport").val("submit.Export");
+        $("#filterTitle").val("");
+        $("form").submit();
+    });
+
 </script>

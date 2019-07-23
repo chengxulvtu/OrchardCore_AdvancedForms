@@ -9,6 +9,13 @@
         var input = document.getElementById('@Model.ID');
         new google.maps.places.Autocomplete(input);
     }
+    $("#@Model.ID").keypress(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {
+            event.preventDefault();
+        }
+    });
+
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=@Model.GoogleAPI&libraries=places&callback=initAddressBar" async defer></script>

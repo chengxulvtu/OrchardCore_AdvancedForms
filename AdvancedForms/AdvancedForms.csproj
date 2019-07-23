@@ -3,6 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <UserSecretsId>ecf0f637-f6e3-4144-aa0e-9514e04815e4</UserSecretsId>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <MvcRazorCompileOnPublish>true</MvcRazorCompileOnPublish>
+    <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
   </PropertyGroup>
 
   <ItemGroup>
@@ -38,17 +41,17 @@
     <PackageReference Include="Microsoft.NET.Sdk.Web" Version="1.0.0-alpha-20161104-2-112" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
-    <PackageReference Include="OrchardCore" Version="1.0.0-beta3-71772" />
-    <PackageReference Include="OrchardCore.Admin.Abstractions" Version="1.0.0-beta3-71772" />
-    <PackageReference Include="OrchardCore.Autoroute" Version="1.0.0-beta3-71772" />
-    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.0.0-beta3-71772" />
-    <PackageReference Include="OrchardCore.ContentManagement.Abstractions" Version="1.0.0-beta3-71772" />
-    <PackageReference Include="OrchardCore.ContentTypes.Abstractions" Version="1.0.0-beta3-71772" />
-    <PackageReference Include="OrchardCore.Data.Abstractions" Version="1.0.0-beta3-71772" />
-    <PackageReference Include="OrchardCore.Menu" Version="1.0.0-beta3-71772" />
-    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-beta3-71772" />
-    <PackageReference Include="OrchardCore.Mvc.Core" Version="1.0.0-beta3-71772" />
-    <PackageReference Include="OrchardCore.Recipes.Abstractions" Version="1.0.0-beta3-71772" />
+    <PackageReference Include="OrchardCore" Version="1.0.0-beta3-71875" />
+    <PackageReference Include="OrchardCore.Admin.Abstractions" Version="1.0.0-beta3-71875" />
+    <PackageReference Include="OrchardCore.Autoroute" Version="1.0.0-beta3-71875" />
+    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.0.0-beta3-71875" />
+    <PackageReference Include="OrchardCore.ContentManagement.Abstractions" Version="1.0.0-beta3-71875" />
+    <PackageReference Include="OrchardCore.ContentTypes.Abstractions" Version="1.0.0-beta3-71875" />
+    <PackageReference Include="OrchardCore.Data.Abstractions" Version="1.0.0-beta3-71875" />
+    <PackageReference Include="OrchardCore.Menu" Version="1.0.0-beta3-71875" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-beta3-71875" />
+    <PackageReference Include="OrchardCore.Mvc.Core" Version="1.0.0-beta3-71875" />
+    <PackageReference Include="OrchardCore.Recipes.Abstractions" Version="1.0.0-beta3-71875" />
   </ItemGroup>
 
   <ItemGroup>
