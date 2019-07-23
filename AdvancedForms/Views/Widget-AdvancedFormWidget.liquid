@@ -18,16 +18,15 @@ section{
 		{% assign isGroup = true %}
 	{% endif %}
 {% endfor %}
-{% if roles == null %}
-	{% if group | downcase contains "anonymous" %}
-		{% assign isGroup = true %}
-	{% endif %}
+{% if group | downcase contains "anonymous" %}
+	{% assign isGroup = true %}
 {% endif %}
+
 
 	
 {% if isGroup %}
 	{% if advancedForm | size > 0 %}
-		<script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script asp-src="/AdvancedForms/Scripts/formio.full.min.js" at="Head" asp-name="formio.full.min"></script>
 		{% style src:"/AdvancedForms/Styles/formio.full.min.css", debug_src:"/AdvancedForms/Styles/formio.full.min.css" %}
 		{% script src:"/AdvancedForms/Scripts/formio.full.min.js", debug_src:"/AdvancedForms/Scripts/formio.full.min.js", at:"Head" %}
@@ -37,7 +36,7 @@ section{
 				urlConfig.Entry = "{{Request.Scheme}}://{{Request.Host}}/AdvancedForms/Entry";
 			}
 		</script>
-		{% script src:"/AdvancedForms/Scripts/Display.js", debug_src:"/AdvancedForms/Scripts/Display.js", at:"Head" %}
+		<script src="/AdvancedForms/Scripts/Display.js"></script>
 		{% assign title = advancedForm[0].ContentItem.Content.AdvancedForm.Title %}
 		{% assign id = advancedForm[0].ContentItem.ContentItemId %}
 		{% assign type = advancedForm[0].ContentItem.Content.AdvancedForm.Type.Text %}
@@ -52,6 +51,10 @@ section{
 						$("#submit").hide();
 					{% endif %}
 					{% if User.Identity.Name != null %}
+						$("#loginButton").hide();
+					{% endif %}
+					{% if group | downcase contains "anonymous" %}
+						$("#submit").show();
 						$("#loginButton").hide();
 					{% endif %}
 				});
