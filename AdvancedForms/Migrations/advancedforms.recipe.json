@@ -379,7 +379,7 @@
               "FieldName": "ContentPickerField",
               "Name": "FormType",
               "Settings": {
-                "DisplayName": "FormType",
+                "DisplayName": "Form Type",
                 "Editor": null,
                 "DisplayMode": null,
                 "Hint": null,
@@ -792,6 +792,22 @@
         {
           "SourcePath": "../wwwroot/Image/map-marker.png",
           "TargetPath": "Esri Pin/map-marker.png"
+        },
+        {
+          "SourcePath": "../wwwroot/Image/Downloadable Forms/Building-Permit-Checklist-PDF.pdf",
+          "TargetPath": "Downloadable Forms/Building-Permit-Checklist-PDF.pdf"
+        },
+        {
+          "SourcePath": "../wwwroot/Image/Downloadable Forms/Commercial-Building-Permit-Application-2011-PDF.pdf",
+          "TargetPath": "Downloadable Forms/Commercial-Building-Permit-Application-2011-PDF.pdf"
+        },
+        {
+          "SourcePath": "../wwwroot/Image/Downloadable Forms/Residential-Building-Permit-Application-2014-PDF.pdf",
+          "TargetPath": "Downloadable Forms/Residential-Building-Permit-Application-2014-PDF.pdf"
+        },
+        {
+          "SourcePath": "../wwwroot/Image/Downloadable Forms/Sign-Permit-Application-2011-PDF.pdf",
+          "TargetPath": "Downloadable Forms/Sign-Permit-Application-2011-PDF.pdf"
         }
       ]
     },

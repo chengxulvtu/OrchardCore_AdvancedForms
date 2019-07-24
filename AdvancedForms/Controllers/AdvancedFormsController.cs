@@ -197,42 +197,20 @@ namespace AdvancedForms.Controllers
         {
             List<AdvFormsDisplayViewModel> model = new List<AdvFormsDisplayViewModel>();
             AdvFormsDisplayViewModel displayModel;
-            List<string> userRoles = ((ClaimsIdentity)User.Identity).Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
             var query = _session.Query<ContentItem, ContentItemIndex>();
             var allAdvancedForms = await query.Where(o => o.ContentType == "AdvancedForm" && o.Published).ListAsync();
             query = _session.Query<ContentItem, ContentItemIndex>();
             var allAdvancedFormTypes = await query.Where(o => o.ContentType == "AdvancedFormTypes" && o.Published).ListAsync();
-            if (userRoles.Count == 0)
-            {
-                userRoles.Add("CITIZEN");
-            }
-            string[] groups;
+            allAdvancedFormTypes = allAdvancedFormTypes.Where(o => !Boolean.Parse(o.Content.AdvancedFormTypes.HideFromListing.Value.ToString()));
             foreach (var item in allAdvancedFormTypes)
             {
-                if (!Boolean.Parse(item.Content.AdvancedFormTypes.HideFromListing.Value.ToString()))
+                displayModel = new AdvFormsDisplayViewModel();
+                var filteredForms = allAdvancedForms.Where(o => o.Content.AdvancedForm.Type.Text.ToString() == item.ContentItemId && !Boolean.Parse(o.Content.AdvancedForm.HideFromListing.Value.ToString())).ToList();
+                displayModel.Items = GetAFDisplayList(filteredForms, true);
+                if (displayModel.Items.Count > 0)
                 {
-                    displayModel = new AdvFormsDisplayViewModel();
                     displayModel.Type = item.DisplayText;
-                    var filteredForms = allAdvancedForms.Where(o => o.Content.AdvancedForm.Type.Text.ToString() == item.ContentItemId && !Boolean.Parse(o.Content.AdvancedForm.HideFromListing.Value.ToString())).ToList();
-                    displayModel.Items = new List<AdvFormsDisplay>();
-                    foreach (var form in filteredForms)
-                    {
-                        groups = form.Content.AdvancedForm.Group.Text.ToString().Split(',');
-                        if (userRoles.Any(o => o == "Administrator" || groups.Contains(o)))
-                        {
-                            displayModel.Items.Add(new AdvFormsDisplay()
-                            {
-                                Action = form.Content.AutoroutePart.Path.ToString(),
-                                ContentItemId = form.ContentItemId,
-                                DisplayText = form.DisplayText,
-                                Description = form.Content.AdvancedForm.Description.Html
-                            });
-                        }
-                    }
-                    if (displayModel.Items.Count > 0)
-                    {
-                        model.Add(displayModel);
-                    }
+                    model.Add(displayModel);
                 }
             }
             return View(model);
@@ -255,35 +233,66 @@ namespace AdvancedForms.Controllers
             var allDownloadForms = await query.Where(o => o.ContentType == "DownloadableForm" && o.Published).ListAsync();
             query = _session.Query<ContentItem, ContentItemIndex>();
             var allDonwloadFormTypes = await query.Where(o => o.ContentType == "AdvancedFormTypes" && o.Published).ListAsync();
+            allDonwloadFormTypes = allDonwloadFormTypes.Where(o => !Boolean.Parse(o.Content.AdvancedFormTypes.HideFromListing.Value.ToString()));
             foreach (var item in allDonwloadFormTypes)
             {
-                if (!Boolean.Parse(item.Content.AdvancedFormTypes.HideFromListing.Value.ToString()))
+                displayModel = new AdvFormsDisplayViewModel();
+                var filteredForms = allDownloadForms.Where(o => o.Content.DownloadableForm.FormType.ContentItemIds[0].ToString() == item.ContentItemId).ToList();
+                displayModel.Items = GetAFDisplayList(filteredForms, false);
+                if (displayModel.Items.Count > 0)
                 {
-                    displayModel = new AdvFormsDisplayViewModel();
                     displayModel.Type = item.DisplayText;
-                    displayModel.Items = new List<AdvFormsDisplay>();
-                    foreach (var form in allDownloadForms)
-                    {
-                        string[] filteredForms = allDownloadForms.FirstOrDefault().Content.DownloadableForm.FormType.ContentItemIds.ToObject<string[]>();
-
-                        if (filteredForms.Any(o => o == item.ContentItemId))
-                        {
-                            displayModel.Items.Add(new AdvFormsDisplay()
-                            {
-                                Action = form.Content.DownloadableForm.UploadFile.Paths[0].ToString(),
-                                ContentItemId = form.ContentItemId,
-                                DisplayText = form.DisplayText,
-                                Description = form.Content.DownloadableForm.Description.Html
-                            });
-                        }
-                    }
-                    if (displayModel.Items.Count > 0)
-                    {
-                        model.Add(displayModel);
-                    }
+                    model.Add(displayModel);
                 }
             }
             return View(model);
+        }
+
+        public List<AdvFormsDisplay> GetAFDisplayList(List<ContentItem> contentList, bool IsAdvancedForm)
+        {
+            List<string> userRoles = null;
+            if (IsAdvancedForm)
+            {
+                userRoles = ((ClaimsIdentity)User.Identity).Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
+                if (userRoles.Count == 0)
+                {
+                    userRoles.Add("CITIZEN");
+                }
+            }
+            string[] groups;
+            List<AdvFormsDisplay> lstDisplay = new List<AdvFormsDisplay>();
+            AdvFormsDisplay AFdisplay = null;
+            foreach (var form in contentList)
+            {
+                if (IsAdvancedForm)
+                {
+                    groups = form.Content.AdvancedForm.Group.Text.ToString().Split(',');
+                    if (userRoles.Any(o => o == "Administrator" || groups.Contains(o)))
+                    {
+                        AFdisplay = new AdvFormsDisplay()
+                        {
+                            Action = form.Content.AutoroutePart.Path.ToString(),
+                            Description = form.Content.AdvancedForm.Description.Html
+                        };
+                    }
+                }
+                else
+                {
+                    AFdisplay = new AdvFormsDisplay()
+                    {
+                        Action = form.Content.DownloadableForm.UploadFile.Paths[0].ToString(),
+                        Description = form.Content.DownloadableForm.Description.Html
+                    };
+                }
+                if (AFdisplay != null)
+                {
+                    AFdisplay.ContentItemId = form.ContentItemId;
+                    AFdisplay.DisplayText = form.DisplayText;
+                    lstDisplay.Add(AFdisplay);
+                    AFdisplay = null;
+                }
+            }
+            return lstDisplay;
         }
 
         [HttpGet]

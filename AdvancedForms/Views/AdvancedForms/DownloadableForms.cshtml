@@ -26,7 +26,7 @@
 <div class="row">
     @foreach (var item in Model)
     {
-        <div class="col-md-6">
+        <div class="col-md-6 forms_panel">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>
@@ -38,7 +38,7 @@
                     {
                         <a class="list-group-item list-group-item-action" href="/media/@form.Action" download>
                             <strong><span>@form.DisplayText</span></strong>
-                            <i class="fa fa-info-circle" data-toggle="tooltip" title="Click title to download form" style="float:right"></i>
+                            <i class="fa fa-info-circle" data-toggle="tooltip" title='@T["Click title to download form"]' style="float:right"></i>
                             <br />
                             @Html.Raw(form.Description)
                         </a>

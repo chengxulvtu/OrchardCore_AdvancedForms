@@ -93,9 +93,9 @@ $(document).ready(function () {
         $(this).siblings(".panel-heading").find(".fa").addClass("fa-minus").removeClass("fa-plus");
     });
     $(".collapse").on('show.bs.collapse', function () {
-        $(this).parent().find(".fa").removeClass("fa-plus").addClass("fa-minus");
+        $(this).parent().find(".panel-heading .fa").removeClass("fa-plus").addClass("fa-minus");
     }).on('hide.bs.collapse', function () {
-        $(this).parent().find(".fa").removeClass("fa-minus").addClass("fa-plus");
+        $(this).parent().find(".panel-heading .fa").removeClass("fa-minus").addClass("fa-plus");
     });
     $('#inputTitle').keypress(function (event) {
         var keycode = (event.keyCode ? event.keyCode : event.which);
@@ -108,9 +108,9 @@ $(document).ready(function () {
     });
 });
 function searchForms() {
-    $(".collapse").collapse('show');
+    $(".forms_panel .collapse").collapse('show');
     var searchTitle = $("#inputTitle").val().toLowerCase();
-    $(".panel a span").each(function () {
+    $(".forms_panel .panel a span").each(function () {
         var currentTitle = $(this).text();
         $(this).parent().parent().show();
         if (currentTitle.toLowerCase().indexOf(searchTitle) == -1) {
@@ -119,7 +119,7 @@ function searchForms() {
     });
     var noItem = true;
     $(".alert").hide();
-    $(".panel").each(function () {
+    $(".forms_panel .panel").each(function () {
         var isAllHide = true;
         $(this).parent().show();
         var anchor = $(this).find("a span");
