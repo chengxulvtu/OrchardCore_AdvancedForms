@@ -23,7 +23,7 @@ namespace AdvancedForms.Drivers
 {
     public class SubmittedFormsProfileDisplayDriver : DisplayDriver<IProfile>
     {
-        public const string GroupId = "general";
+        public const string GroupId = "SubmittedForms";
         private readonly INotifier _notifier;
         private readonly IShellHost _shellHost;
         private readonly ShellSettings _shellSettings;
@@ -67,12 +67,6 @@ namespace AdvancedForms.Drivers
                 pageOfContentItems = pageOfContentItems.Where(o => o.Content.AdvancedFormSubmissions.Status.Text == profile.Status);
             }
 
-            var contentItemSummaries = new List<dynamic>();
-            foreach (var contentItem in pageOfContentItems)
-            {
-                contentItemSummaries.Add(contentItem);
-            }
-
             query = _session.Query<ContentItem, ContentItemIndex>();
             var pageContentStatus = await query.Where(o => o.ContentType == "AdvancedFormStatus" && o.Latest).OrderByDescending(o => o.CreatedUtc).ListAsync();
             List<KeyValue> lstStatus = new List<KeyValue>();
@@ -84,7 +78,7 @@ namespace AdvancedForms.Drivers
             return await Task.FromResult<IDisplayResult>(
                     Initialize<ProfileViewModel>("Submission_List_Edit", item =>
                     {
-                        item.ContentItemSummaries = contentItemSummaries;
+                        item.ContentItemSummaries = pageOfContentItems.ToList();
                         item.ListStatus = lstStatus;
                         item.Title = profile.Title;
                         item.Status = profile.Status;
