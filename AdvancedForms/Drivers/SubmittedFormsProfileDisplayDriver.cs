@@ -23,7 +23,7 @@ namespace AdvancedForms.Drivers
 {
     public class SubmittedFormsProfileDisplayDriver : DisplayDriver<IProfile>
     {
-        public const string GroupId = "SubmittedForms";
+        public const string GroupId = "general";
         private readonly INotifier _notifier;
         private readonly IShellHost _shellHost;
         private readonly ShellSettings _shellSettings;

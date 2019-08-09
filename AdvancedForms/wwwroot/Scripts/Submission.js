@@ -242,7 +242,12 @@ function getPanel(value, isPublic) {
         panel += ' <a target="_blank" href="' + url + '">Download Attachment</a>';
     }
 
-    if (IsSubmission) {
+    var isDeleted = false;
+    if (comment === "Comment removed by moderator") {
+        isDeleted = true;
+    }
+
+    if (IsSubmission && !isDeleted) {
         if (isPublic) {
             panel += '<button class="pull-right btn btn-link" href="#" style="color:#007bff;margin-top:-6px;" onclick="RemovePublicComment(\'' + value.ContentItemId + '\')">Admin Remove</button>';
         } else {
@@ -251,7 +256,7 @@ function getPanel(value, isPublic) {
         }
     }
 
-    if (currentUser === value.Owner) {
+    if (currentUser === value.Owner && !isDeleted) {
         panel += '<button class="pull-right btn btn-link" href="#" style="color:#007bff;margin-top:-6px;" onclick="EditComment(\'' + value.ContentItemId + '\', this, \'' + editorSelect + '\')">Edit</button>';
     }
     panel += '</div>';
