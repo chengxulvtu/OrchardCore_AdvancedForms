@@ -871,6 +871,27 @@
           }
         }
       ]
+    },
+    {
+      "Name": "AdvancedFormWidget",
+      "DisplayName": "Advanced Form",
+      "Settings": {
+        "Creatable": "False",
+        "Draftable": "True",
+        "Versionable": "True",
+        "Listable": "False",
+        "Securable": "True",
+        "Stereotype": "Widget"
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "AdvancedFormWidget",
+          "Name": "AdvancedFormWidget",
+          "Settings": {
+            "Position": "0"
+          }
+        }
+      ]
     }
   ],
   "ContentPartDefinitionRecords": [
@@ -1470,7 +1491,7 @@
           "FieldName": "ContentPickerField",
           "Name": "FormType",
           "Settings": {
-            "DisplayName": "FormType",
+            "DisplayName": "Form Type",
             "Editor": null,
             "DisplayMode": null,
             "Hint": null,
@@ -1498,6 +1519,20 @@
           "Name": "HideFromListing",
           "Settings": {
             "DisplayName": "Hide From Listing"
+          }
+        },
+        {
+          "FieldName": "BooleanField",
+          "Name": "IsGlobalHeader",
+          "Settings": {
+            "DisplayName": "Using Global Header"
+          }
+        },
+        {
+          "FieldName": "BooleanField",
+          "Name": "IsGlobalFooter",
+          "Settings": {
+            "DisplayName": "Using Global Footer"
           }
         }
       ]
@@ -1585,7 +1620,16 @@
     {
       "Name": "AdvancedFormTypes",
       "Settings": {},
-      "ContentPartFieldDefinitionRecords": []
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "BooleanField",
+          "Name": "HideFromListing",
+          "Settings": {
+            "DisplayName": "Hide From Listing",
+            "Position": "0"
+          }
+        }
+      ]
     },
     {
       "Name": "PickerAdvancedFormTypes",
@@ -1726,7 +1770,29 @@
           }
         }
       ]
+    },
+    {
+      "Name": "AdvancedFormWidget",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "ContentPickerField",
+          "Name": "AdvancedFormPicker",
+          "Settings": {
+            "DisplayName": "Advanced Form Picker",
+            "Hint": null,
+            "Required": false,
+            "Multiple": false,
+            "DisplayedContentTypes": [
+              "AdvancedForm"
+            ],
+            "Editor": null,
+            "DisplayMode": null,
+            "Position": "0"
+          }
+        }
+      ]
     }
   ],
-  "Serial": 116
+  "Serial": 122
 }
