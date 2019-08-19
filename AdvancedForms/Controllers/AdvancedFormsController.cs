@@ -306,6 +306,20 @@ namespace AdvancedForms.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [Route("ContactUsSubmission")]
+        public async Task<IActionResult> ContactUsSubmission(string name, string email, string phoneNumber, string message)
+        {
+            ContentItem contentItem = await _contentManager.NewAsync("ContactUs");
+            await _contentManager.CreateAsync(contentItem, VersionOptions.Draft);
+            var model = new ContactUs(name, email, phoneNumber, message);
+            contentItem.Content.ContactUs = JToken.FromObject(model);
+            await _contentManager.PublishAsync(contentItem);
+            return Ok();
+        }
+
+
+        [HttpPost]
+        [AllowAnonymous]
         [Route("AdvancedForms/Entry")]
         public async Task<IActionResult> Entry(string submission, string title, string id, string container,
             string header, string footer, string description, string type, string submissionId, string instructions, string owner, bool isDraft, bool hideFromListing, bool isGlobalHeader, bool isGlobalFooter, string group)

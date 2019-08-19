@@ -1057,6 +1057,63 @@
               "DestinationActivityId": "4kr4xdr6f7e7bwkvnxzg50v1wz"
             }
           ]
+        },
+        {
+          "WorkflowTypeId": "4tcg7jhw6t8xbsq4h7baqrw8ce",
+          "Name": "Contact Us",
+          "IsEnabled": true,
+          "IsSingleton": false,
+          "DeleteFinishedWorkflows": false,
+          "Activities": [
+            {
+              "ActivityId": "4xyfwdhwv0yhdtb855zj5g8z5w",
+              "Name": "ContentPublishedEvent",
+              "X": 70,
+              "Y": 50,
+              "IsStart": true,
+              "Properties": {
+                "ContentTypeFilter": [
+                  "ContactUs"
+                ],
+                "ActivityMetadata": {
+                  "Title": "New Contact Us Details Submitted"
+                }
+              }
+            },
+            {
+              "ActivityId": "4cf18ej4n7yz51kpqk0wrbtbxc",
+              "Name": "EmailTask",
+              "X": 610,
+              "Y": 110,
+              "IsStart": true,
+              "Properties": {
+                "Sender": {
+                  "Expression": "mohit-db8e0f@inbox.mailtrap.io"
+                },
+                "Recipients": {
+                  "Expression": "mohit.naroliya@arnasoftech.com"
+                },
+                "Subject": {
+                  "Expression": "Contact Us Request"
+                },
+                "Body": {
+                  "Expression": "Name : <b>{{ Workflow.Input.ContentItem.Content.ContactUs.Name.Text }}</b> <br/> <br/>\r\nEmail : <b>{{ Workflow.Input.ContentItem.Content.ContactUs.Email.Text }}</b> <br/> <br/>\r\nPhone Number : <b>{{ Workflow.Input.ContentItem.Content.ContactUs.PhoneNumber.Text }}</b> <br/> <br/>\r\nMessage : <b>{{ Workflow.Input.ContentItem.Content.ContactUs.Message.Text }}</b>"
+                },
+                "IsBodyHtml": true,
+                "ActivityMetadata": {
+                  "Title": "Send Details to Admin"
+                }
+              }
+            }
+          ],
+          "Transitions": [
+            {
+              "Id": 0,
+              "SourceActivityId": "4xyfwdhwv0yhdtb855zj5g8z5w",
+              "SourceOutcomeName": "Done",
+              "DestinationActivityId": "4cf18ej4n7yz51kpqk0wrbtbxc"
+            }
+          ]
         }
       ]
     },
