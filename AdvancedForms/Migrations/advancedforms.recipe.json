@@ -1091,10 +1091,10 @@
                   "Expression": "mohit-db8e0f@inbox.mailtrap.io"
                 },
                 "Recipients": {
-                  "Expression": "mohit.naroliya@arnasoftech.com"
+                  "Expression": "contact@govbuilt.com"
                 },
                 "Subject": {
-                  "Expression": "Contact Us Request"
+                  "Expression": "Contact Form Submission on GovBuilt.com"
                 },
                 "Body": {
                   "Expression": "Name : <b>{{ Workflow.Input.ContentItem.Content.ContactUs.Name.Text }}</b> <br/> <br/>\r\nEmail : <b>{{ Workflow.Input.ContentItem.Content.ContactUs.Email.Text }}</b> <br/> <br/>\r\nPhone Number : <b>{{ Workflow.Input.ContentItem.Content.ContactUs.PhoneNumber.Text }}</b> <br/> <br/>\r\nMessage : <b>{{ Workflow.Input.ContentItem.Content.ContactUs.Message.Text }}</b>"
