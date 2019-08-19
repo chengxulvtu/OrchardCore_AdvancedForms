@@ -387,11 +387,24 @@ namespace AdvancedForms.Controllers
             {
                 ContentHelper helper = new ContentHelper(_contentManager, _session, _contentDefinitionManager, _contentAliasManager);
                 Location = helper.GetInputValue(data, "applicationLocation");
+
+                if ((Location.StartsWith("{") && Location.EndsWith("}")))
+                {
+                    var obj = JToken.Parse(Location);
+                    Location = obj["formatted_address"].ToString();
+                }
+
+
+
                 if (string.IsNullOrEmpty(adminSubmission))
                 {
                     adminSubmission = "{\r\n  \"doNotMapLocation\": false\r\n}";
                 }
             }
+            if (string.IsNullOrEmpty(Location))
+                title = string.Format("{0} by {1}, Created Date: {2}", title, owner, content.CreatedUtc.Value.ToString("MM/dd/yyyy"));
+            else
+                title = string.Format("{0}, {1} by {2}, Created Date: {3}", title, Location, owner, content.CreatedUtc.Value.ToString("MM/dd/yyyy"));
             var viewModel = new AdvancedFormSubmissions(data, metadata, subTitle, container, header, footer, description,
                 type, instructions, owner, status, adminContainer, adminSubmission, Location, hideFromListing, isGlobalHeader, isGlobalFooter, group);
 
