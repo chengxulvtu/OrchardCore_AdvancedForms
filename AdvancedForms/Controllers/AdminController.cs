@@ -638,7 +638,7 @@ namespace AdvancedForms.Controllers
             var currentUserRoles = ((ClaimsIdentity)User.Identity).Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
             foreach (var contentItem in pageOfContentItems)
             {
-                var contentItemId = await _contentAliasManager.GetContentItemIdAsync("slug:AdvancedForms/" + contentItem.DisplayText.Replace(" ","-"));
+                var contentItemId = await _contentAliasManager.GetContentItemIdAsync("slug:AdvancedForms/" + contentItem.Content.AdvancedFormSubmissions.Title.ToString().Replace(" ","-"));
                 var AFcontentItem = await _contentManager.GetAsync(contentItemId, VersionOptions.Published);
                 string groups = AFcontentItem.Content.AdvancedForm.Group.Text;
                 roles = groups.Split(",").ToList();
