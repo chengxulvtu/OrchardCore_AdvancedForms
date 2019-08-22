@@ -762,6 +762,10 @@
           "TargetPath": "advanced forms images/Grapevine.PNG"
         },
         {
+          "SourcePath": "../wwwroot/Image/advanced forms images/manhattan-fire.gif",
+          "TargetPath": "advanced forms images/manhattan-fire.gif"
+        },
+        {
           "SourcePath": "../wwwroot/Image/Features/01.png",
           "TargetPath": "Features/01.png"
         },
