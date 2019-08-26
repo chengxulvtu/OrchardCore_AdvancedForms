@@ -1,6 +1,5 @@
 ﻿@model AdvancedForms.ViewModels.AdvancedFormViewModel
 @using Common.ViewModels;
-
 <script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
 <style asp-src="/AdvancedForms/Styles/formio.full.min.css"></style>
 <style asp-src="/AdvancedForms/Styles/display.css"></style>
@@ -27,7 +26,7 @@
 <script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
 <script name="trumbowyg" depends-on="admin" asp-src="/OrchardCore.Resources/Scripts/trumbowyg.min.js"
         debug-src="/OrchardCore.Resources/Scripts/trumbowyg.js" at="Head"></script>
-
+<style asp-src="/AdvancedForms/Styles/glyphicons.css"></style>
 @{
     var isEdit = !String.IsNullOrEmpty(Model.Id);
     var createOrEdit = isEdit ? "Edit" : "Create";

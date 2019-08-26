@@ -211,4 +211,12 @@
     <Content Remove="wwwroot\Scripts\contentPickerAF.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\Styles\glyphicons.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Styles\glyphicons.css" />
+  </ItemGroup>
+
 </Project>
