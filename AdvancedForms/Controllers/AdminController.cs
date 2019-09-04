@@ -638,13 +638,20 @@ namespace AdvancedForms.Controllers
             var currentUserRoles = ((ClaimsIdentity)User.Identity).Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
             foreach (var contentItem in pageOfContentItems)
             {
-                var contentItemId = await _contentAliasManager.GetContentItemIdAsync("slug:AdvancedForms/" + contentItem.Content.AdvancedFormSubmissions.Title.ToString().Replace(" ","-"));
-                var AFcontentItem = await _contentManager.GetAsync(contentItemId, VersionOptions.Published);
-                string groups = AFcontentItem.Content.AdvancedForm.Group.Text;
-                roles = groups.Split(",").ToList();
-                if(currentUserRoles.Any(item => item == "Administrator" || roles.Contains(item)))
+                var contentItemId = await _contentAliasManager.GetContentItemIdAsync("slug:AdvancedForms/" + contentItem.Content.AdvancedFormSubmissions.Title.ToString().Replace(" ", "-"));
+                if (contentItemId == null)
                 {
-                    contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, this, "SubmissionAdmin_ListItem"));
+                    contentItemId = await _contentAliasManager.GetContentItemIdAsync("slug:AdvancedForms/" + contentItem.DisplayText.ToString().Replace(" ", "-"));
+                }
+                if (contentItemId != null)
+                {
+                    var AFcontentItem = await _contentManager.GetAsync(contentItemId, VersionOptions.Published);
+                    string groups = AFcontentItem.Content.AdvancedForm.Group.Text;
+                    roles = groups.Split(",").ToList();
+                    if (currentUserRoles.Any(item => item == "Administrator" || roles.Contains(item)))
+                    {
+                        contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, this, "SubmissionAdmin_ListItem"));
+                    }
                 }
             }
             model.ContentItemSummaries = contentItemSummaries;
