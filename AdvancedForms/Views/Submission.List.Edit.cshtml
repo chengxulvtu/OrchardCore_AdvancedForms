@@ -1,7 +1,40 @@
 ﻿@using OrchardCore.Profile.ViewModels
 @using OrchardCore.ContentManagement
+@using OrchardCore.ContentManagement.Records
+@using YesSql
 @inject IContentManager ContentManager
+@inject ISession _session
+
 @model ProfileViewModel
+
+@{
+    var query = _session.Query<ContentItem, ContentItemIndex>();
+    var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && o.Latest).OrderByDescending(o => o.CreatedUtc).ListAsync();
+    if (!Model.UserRoles.Any(o => o == "Administrator"))
+    {
+        pageOfContentItems = pageOfContentItems.Where(o => o.Owner == Model.UserName);
+    }
+
+    if (pageOfContentItems.Count() > 0 && !string.IsNullOrEmpty(Model.Title))
+    {
+        pageOfContentItems = pageOfContentItems.Where(o => o.DisplayText.ToLower().Contains(Model.Title.ToLower()));
+    }
+
+    if (pageOfContentItems.Count() > 0 && !string.IsNullOrEmpty(Model.Status) && Model.Status.ToLower() != "all")
+    {
+        pageOfContentItems = pageOfContentItems.Where(o => o.Content.AdvancedFormSubmissions.Status.Text == Model.Status);
+    }
+
+    query = _session.Query<ContentItem, ContentItemIndex>();
+    var pageContentStatus = await query.Where(o => o.ContentType == "AdvancedFormStatus" && o.Latest).OrderByDescending(o => o.CreatedUtc).ListAsync();
+    List<KeyValue> lstStatus = new List<KeyValue>();
+    foreach (var item in pageContentStatus)
+    {
+        lstStatus.Add(new KeyValue() { Key = item.DisplayText, Value = item.ContentItemId });
+    }
+    Model.ContentItemSummaries = pageOfContentItems.ToList();
+    Model.ListStatus = lstStatus;
+}
 <style asp-src="/AdvancedForms/Styles/loader.css"></style>
 <style>
     .btn-group {
@@ -136,7 +169,7 @@ else
     </script>
 }
 
-    <div class="loading">@T["Loading"]&#8230;</div>
+<div class="loading">@T["Loading"]&#8230;</div>
 <script>
     window.onload = function () {
         $('.loading').hide();

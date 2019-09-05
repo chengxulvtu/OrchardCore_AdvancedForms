@@ -25,7 +25,7 @@ namespace AdvancedForms
             }
             builder
                 .Add(T["Submitted Forms"], "2", advancedForms => advancedForms
-                    .Url("Profile/general")
+                    .Url("Profile/submissions")
                     .AddClass("list-group-item list-group-item-action"))
                 .Add(T["Advanced Forms"], "4", advancedForms => advancedForms
                     .Url("advancedForms")

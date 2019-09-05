@@ -8,7 +8,10 @@ namespace OrchardCore.Profile.ViewModels
         public List<ContentItem> ContentItemSummaries { get; set; }
         public List<KeyValue> ListStatus { get; set; }
         public string Title { get; set; }
+        public string UserName {get; set;}
+        public List<string> UserRoles { get; set; }
         public string Status { get; set; }
+        public IProfile iProfile { get; set; }
     }
 
     public class KeyValue
