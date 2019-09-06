@@ -10,5 +10,6 @@ namespace OrchardCore.Profile
         public List<string> UserRoles { get; set; }
         public string Title { get; set; }
         public string Status { get; set; }
+        public int? Page { get; set; }
     }
 }

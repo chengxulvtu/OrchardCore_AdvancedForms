@@ -2,8 +2,13 @@
 @using OrchardCore.ContentManagement
 @using OrchardCore.ContentManagement.Records
 @using YesSql
+@using OrchardCore.DisplayManagement
+@using OrchardCore.Navigation
+@using OrchardCore.Settings
 @inject IContentManager ContentManager
 @inject ISession _session
+@inject IShapeFactory shapeFactory
+@inject ISiteService _siteService
 
 @model ProfileViewModel
 
@@ -32,10 +37,29 @@
     {
         lstStatus.Add(new KeyValue() { Key = item.DisplayText, Value = item.ContentItemId });
     }
+
+
+    PagerParameters pagerParameters = new PagerParameters();
+    pagerParameters.Page = Model.Page;
+    var siteSettings = await _siteService.GetSiteSettingsAsync();
+
+    var pager = new Pager(pagerParameters, siteSettings.PageSize);
+    var maxPagedCount = siteSettings.MaxPagedCount;
+    if (maxPagedCount > 0 && pager.PageSize > maxPagedCount)
+    {
+        pager.PageSize = maxPagedCount;
+    }
+
+    var pagerShape = (await New.Pager(pager)).TotalItemCount(maxPagedCount > 0 ? maxPagedCount : pageOfContentItems.Count());
+    pageOfContentItems = pageOfContentItems.Skip(pager.GetStartIndex()).Take(pager.PageSize);
+
+
+    Model.Pager = pagerShape;
     Model.ContentItemSummaries = pageOfContentItems.ToList();
     Model.ListStatus = lstStatus;
 }
 <style asp-src="/AdvancedForms/Styles/loader.css"></style>
+<style asp-src="/AdvancedForms/Styles/pager.css"></style>
 <style>
     .btn-group {
         display: none;
@@ -137,6 +161,7 @@ else
         @T["No result found."]
     </div>
 }
+@await DisplayAsync(Model.Pager)
 <script asp-src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" at="Head"></script>
 <script type="text/javascript">
     $("#selectStatus").change(function () {

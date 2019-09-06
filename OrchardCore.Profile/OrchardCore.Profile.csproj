@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="Controllers\ProfileController.cs~RF5a482e.TMP" />
     <EmbeddedResource Remove="Views\Navigation-profile.cshtml" />
     <EmbeddedResource Remove="Views\NavigationItem-profile.cshtml" />
     <EmbeddedResource Remove="Views\NavigationItemLink-profile.cshtml" />

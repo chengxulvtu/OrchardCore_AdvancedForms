@@ -42,6 +42,7 @@ namespace AdvancedForms.Drivers
                         item.UserName = profile.UserName;
                         item.Title = profile.Title;
                         item.Status = profile.Status;
+                        item.Page = profile.Page;
                     }).Location("Content:1").OnGroup(GroupId)
             );
         }

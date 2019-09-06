@@ -52,7 +52,7 @@ namespace OrchardCore.Profile.Controllers
         IStringLocalizer S { get; set; }
 
 
-        public async Task<IActionResult> Index(string groupId = "", string Title ="", string Status = "")
+        public async Task<IActionResult> Index(string groupId = "", string Title ="", string Status = "", int? page = null)
         {
             if (string.IsNullOrWhiteSpace(groupId))
             {
@@ -73,6 +73,7 @@ namespace OrchardCore.Profile.Controllers
             }
             profile.Title = Title;
             profile.Status = Status;
+            profile.Page = page;
 
             var viewModel = new ProfileIndexViewModel
             {
