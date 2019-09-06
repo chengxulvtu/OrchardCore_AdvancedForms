@@ -1,4 +1,12 @@
-﻿<h1>Advanced Form Submissions</h1>
+﻿@using OrchardCore.ContentManagement.Display
+@using OrchardCore.DisplayManagement.ModelBinding
+@inject IContentItemDisplayManager _contentItemDisplayManager
+@inject IUpdateModelAccessor _modelUpdaterAccessor
+@{
+    var updater = _modelUpdaterAccessor.ModelUpdater;
+}
+
+<h1>Advanced Form Submissions</h1>
 <style asp-src="/AdvancedForms/Styles/AdvancedForms.css"></style>
 <div id='dashboard'>
 </div>
@@ -24,51 +32,54 @@
 </script>
 <hr />
 
-@using (Html.BeginForm())
-{
-    <fieldset class="filter-options">
-        <div class="card mb-3">
-            <div class="card-body bg-light p-3">
-                <div class="row">
-                    <div class="form-group col-xl-3 mb-xl-n1">
+<fieldset class="filter-options">
+    <div class="card mb-3">
+        <div class="card-body bg-light p-3">
+            <div class="row">
+                <div class="form-group col-xl-3 mb-xl-n1">
+                    @using (Html.BeginForm(null, null, FormMethod.Get, new { name = "submissionForm", id = "submissionForm" }))
+                    {
                         <div class="input-group input-group-sm">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-secondary text-light">Title</span>
                             </div>
                             <input class="form-control" type="text" id="DisplayText" name="DisplayText" value="@Model.DisplayText">
-                            <input type="hidden" id="filterTitle" class="btn btn-primary" value="" name="submit.Filter" />
                         </div>
-                    </div>
-                    @if (Model.ContentItemSummaries.Count > 0)
-                    {
-                        <div class="form-group col-xl-9 mb-n1" style="padding: 0px 20px;">
+                    }
+                </div>
+                @if (Model.ContentItemSummaries.Count > 0)
+                {
+                    <div class="form-group col-xl-9 mb-n1" style="padding: 0px 20px;">
+                        @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "exportForm", id = "exportForm" }))
+                        {
                             <div class="input-group input-group-sm">
                                 <button id="btnExport" class="btn btn-primary" style="float:right;display:none;right: 0px !important;position: absolute;padding: 2px 10px;" value="" name="submit.Export">@T["Export"]</button>
                                 <input type="hidden" id="checkedItems" name="checkedItems" />
                             </div>
-                        </div>
-                    }
-                </div>
+                        }
+                    </div>
+                }
             </div>
         </div>
-    </fieldset>
+    </div>
+</fieldset>
 
-    @if (Model.ContentItemSummaries.Count > 0)
-    {
-        <ul class="list-group">
-            @foreach (var contentItemSummary in Model.ContentItemSummaries)
-            {
-                @await DisplayAsync(contentItemSummary)
-            }
-        </ul>
-    }
-    else
-    {
-        <div class="alert alert-info">
-            @T["No result found."]
-        </div>
-    }
+@if (Model.ContentItemSummaries.Count > 0)
+{
+    <ul class="list-group">
+        @foreach (var contentItemSummary in Model.ContentItemSummaries)
+        {
+            @await DisplayAsync(await _contentItemDisplayManager.BuildDisplayAsync(contentItemSummary, updater, "SubmissionAdmin_ListItem"))
+        }
+    </ul>
 }
+else
+{
+    <div class="alert alert-info">
+        @T["No result found."]
+    </div>
+}
+@await DisplayAsync(Model.Pager)
 
 <script type="text/javascript" at="Foot">
     var checkedItems = [];
@@ -92,7 +103,7 @@
         if (filtered !== this.value) {
             $("#btnExport").val("");
             $("#filterTitle").val("submit.Filter");
-            $("form").submit();
+            $("#submissionForm").submit();
         }
     });
 
@@ -102,14 +113,14 @@
             event.preventDefault();
             $("#btnExport").val("");
             $("#filterTitle").val("submit.Filter");
-            $("form").submit();
+            $("#submissionForm").submit();
         }
     });
 
     $("#btnExport").click(function () {
         $("#btnExport").val("submit.Export");
         $("#filterTitle").val("");
-        $("form").submit();
+        $("#exportForm").submit();
     });
 
 </script>

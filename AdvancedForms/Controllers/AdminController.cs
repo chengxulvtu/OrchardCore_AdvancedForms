@@ -27,6 +27,7 @@ using Newtonsoft.Json;
 using Common.ViewModels;
 using OrchardCore.Security.Services;
 using System.Security.Claims;
+using OrchardCore.Navigation;
 
 namespace AdvancedForms.Controllers
 {
@@ -70,6 +71,7 @@ namespace AdvancedForms.Controllers
             _contentDefinitionManager = contentDefinitionManager;
             _logger = logger;
             T = localizer;
+            New = shapeFactory;
             _contentAliasManager = contentAliasManager;
         }
 
@@ -628,11 +630,13 @@ namespace AdvancedForms.Controllers
             return View("Submission", model);
         }
 
-        public async Task<IActionResult> Submissions()
+        public async Task<IActionResult> Submissions(string DisplayText = "", int? page = null)
         {
             SubmissionsViewModel model = new SubmissionsViewModel();
             var query = _session.Query<ContentItem, ContentItemIndex>();
-            var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).OrderByDescending(o => o.CreatedUtc).ListAsync();
+            if (DisplayText == null)
+                DisplayText = string.Empty;
+            var pageOfContentItems = await query.Where(o => o.DisplayText.Contains(DisplayText) && o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).OrderByDescending(o => o.CreatedUtc).ListAsync();
             var contentItemSummaries = new List<dynamic>();
             List<string> roles;
             var currentUserRoles = ((ClaimsIdentity)User.Identity).Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToList();
@@ -650,10 +654,27 @@ namespace AdvancedForms.Controllers
                     roles = groups.Split(",").ToList();
                     if (currentUserRoles.Any(item => item == "Administrator" || roles.Contains(item)))
                     {
-                        contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, this, "SubmissionAdmin_ListItem"));
+                        contentItemSummaries.Add(contentItem);
                     }
                 }
             }
+
+            PagerParameters pagerParameters = new PagerParameters();
+            pagerParameters.Page = page;
+            var siteSettings = await _siteService.GetSiteSettingsAsync();
+
+            var pager = new Pager(pagerParameters, siteSettings.PageSize);
+            var maxPagedCount = siteSettings.MaxPagedCount;
+            if (maxPagedCount > 0 && pager.PageSize > maxPagedCount)
+            {
+                pager.PageSize = maxPagedCount;
+            }
+
+            var pagerShape = (await New.Pager(pager)).TotalItemCount(maxPagedCount > 0 ? maxPagedCount : contentItemSummaries.Count());
+            contentItemSummaries = contentItemSummaries.Skip(pager.GetStartIndex()).Take(pager.PageSize).ToList();
+
+            model.Pager = pagerShape;
+            model.DisplayText = DisplayText;
             model.ContentItemSummaries = contentItemSummaries;
             return View(model);
         }
@@ -690,24 +711,6 @@ namespace AdvancedForms.Controllers
             }
             graph.FreqStatusColor = statusWithColor;
             return Ok(graph);
-        }
-
-        [HttpPost, ActionName("Submissions")]
-        [FormValueRequired("submit.Filter")]
-        public async Task<IActionResult> SubmissionsFilter(string DisplayText = "")
-        {
-            DisplayText = string.IsNullOrEmpty(DisplayText) ? "" : DisplayText;
-            SubmissionsViewModel model = new SubmissionsViewModel();
-            var query = _session.Query<ContentItem, ContentItemIndex>();
-            var pageOfContentItems = await query.Where(o => o.DisplayText.Contains(DisplayText) && o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).OrderByDescending(o => o.CreatedUtc).ListAsync();
-            var contentItemSummaries = new List<dynamic>();
-            foreach (var contentItem in pageOfContentItems)
-            {
-                contentItemSummaries.Add(await _contentItemDisplayManager.BuildDisplayAsync(contentItem, this, "SubmissionAdmin_ListItem"));
-            }
-            model.ContentItemSummaries = contentItemSummaries;
-            model.DisplayText = DisplayText;
-            return View(model);
         }
 
         [HttpPost, ActionName("Submissions")]
