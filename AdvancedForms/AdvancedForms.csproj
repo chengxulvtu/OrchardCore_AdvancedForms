@@ -2,15 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <UserSecretsId>ecf0f637-f6e3-4144-aa0e-9514e04815e4</UserSecretsId>
-    <PreserveCompilationContext>true</PreserveCompilationContext>
-    <MvcRazorCompileOnPublish>true</MvcRazorCompileOnPublish>
-    <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="Views\AdvancedForms\Contents-Meta.SummaryAdmin.cshtml" />
-    <EmbeddedResource Remove="Views\AdvancedForms\Display.cshtml~RF1f203469.TMP" />
     <EmbeddedResource Remove="wwwroot\Scripts\loader.css" />
     <EmbeddedResource Remove="wwwroot\Styles\Submission.js" />
   </ItemGroup>
@@ -56,6 +55,10 @@
 
   <ItemGroup>
     <Content Remove="Views\Admin\Submissions.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Styles\pager.css" />
   </ItemGroup>
 
   <ItemGroup>
