@@ -1,0 +1,56 @@
+﻿@model Common.ViewModels.SecurityGroupViewModel
+
+
+<div>
+    <label asp-for="Groups">@Model.Title</label>
+    <div id="ContentPicker_PickerSecurityGroup" class="content-picker-default">
+        <fieldset class="">
+            <input ID="@Model.ID" name="@Model.ID" type="hidden" v-model="selectedIds" form="@Model.FormName" />
+            <ul class="list-group col-xl-12 content-picker-default__list" v-show="arrayOfItems.length" v-cloak>
+                <draggable v-model="arrayOfItems">
+                    <li v-for="(item, i) in arrayOfItems"
+                        class="list-group-item content-picker-default__list-item"
+                        :key="item.name">
+                        {{ item.name }}
+                        <div class="btn-group btn-group-sm float-right" role="group">
+                            <button v-on:click="remove(item)" type="button" class="btn btn-secondary content-picker-default__list-item__delete"><i class="fa fa-trash fa-sm" aria-hidden="true"></i></button>
+                        </div>
+                    </li>
+                </draggable>
+            </ul>
+        </fieldset>
+        <fieldset class="row">
+            <div class="col-xl-12">
+                <div id="multiselectGroup_Div" :tabindex="2">
+                    <vue-multiselect v-model="value" :options="options" track-by="name"
+                                     label="displayText" placeholder="@Model.PlaceHolder"
+                                     @@search-change="asyncFind" @@select="onSelect"
+                                     :searchable="true" :close-on-select="true" :reset-after="true"
+                                     :show-labels="true" :hide-selected="true"
+                                     :disabled="isDisabled"
+                                     select-label="Select" deselect-label="Remove">
+                        <template slot="option" slot-scope="props">
+                            <div v-cloak><span>{{ props.option.name }}</span></div>
+                        </template>
+                    </vue-multiselect>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <span class="hint">@Model.Hint</span>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+@if (string.IsNullOrEmpty(Model.Value))
+{
+    <script at="Foot">
+        initializeContentPickerFieldEditorSecurityGroup('ContentPicker_PickerSecurityGroup', [], '', true);
+    </script>
+}
+else
+{
+    <script at="Foot">
+        initializeContentPickerFieldEditorSecurityGroup('ContentPicker_PickerSecurityGroup', [], '', true);
+    </script>
+}

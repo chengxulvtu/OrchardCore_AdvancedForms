@@ -45,6 +45,7 @@ namespace AdvancedForms.Controllers
         private readonly IAuthorizationService _authorizationService;
         private readonly ILogger _logger;
         private readonly IContentAliasManager _contentAliasManager;
+        private readonly ICsvEtl _csvEtl;
 
         public AdminController(
             IContentManager contentManager,
@@ -58,7 +59,8 @@ namespace AdvancedForms.Controllers
             IRoleService roleService,
             IHtmlLocalizer<AdminController> localizer,
             IAuthorizationService authorizationService,
-            IContentAliasManager contentAliasManager
+            IContentAliasManager contentAliasManager,
+            ICsvEtl csvEtl
             )
         {
             _authorizationService = authorizationService;
@@ -73,6 +75,7 @@ namespace AdvancedForms.Controllers
             T = localizer;
             New = shapeFactory;
             _contentAliasManager = contentAliasManager;
+            _csvEtl = csvEtl;
         }
 
         public IHtmlLocalizer T { get; }
@@ -723,7 +726,7 @@ namespace AdvancedForms.Controllers
             var query = _session.Query<ContentItem, ContentItemIndex>();
             var pageOfContentItems = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && (o.Latest || o.Published)).OrderByDescending(o => o.CreatedUtc).ListAsync();
             pageOfContentItems = pageOfContentItems.Where(o => selectedItems.Contains(o.Id)).ToList();
-            string file = await new CsvEtl(_contentManager).GetAdvFormSubmissionsCSVstring(pageOfContentItems);
+            string file = await _csvEtl.GetAdvFormSubmissionsCSVstring(pageOfContentItems);
             return File(new System.Text.UTF8Encoding().GetBytes(file), "text/csv", "Submissions.csv");
         }
         #endregion

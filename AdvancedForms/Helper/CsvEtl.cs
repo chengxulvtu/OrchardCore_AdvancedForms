@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 
 namespace AdvancedForms.Helper
 {
-    public class CsvEtl
+    public class CsvEtl : ICsvEtl
     {
         private readonly IContentManager _contentManager;
 

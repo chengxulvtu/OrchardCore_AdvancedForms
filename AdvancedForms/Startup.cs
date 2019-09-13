@@ -16,6 +16,7 @@ using OrchardCore.DisplayManagement;
 using OrchardCore.Profile.Navigation;
 using OrchardCore.Settings;
 using Common.Helpers;
+using AdvancedForms.Helper;
 
 namespace AdvancedForms
 {
@@ -37,6 +38,7 @@ namespace AdvancedForms
             services.AddScoped<INavigationProvider, AdminMenu>();
             services.AddScoped<IProfileNavigationProvider, ProfileMenu>();
             services.AddScoped<IContentHandler, ContentsHandler>();
+            services.AddScoped<ICsvEtl, CsvEtl>();
             services.AddScoped<IDisplayDriver<ISite>, AdvancedFormsSettingsDisplayDriver>();
             services.AddScoped<IDisplayManager<IProfile>, DisplayManager<IProfile>>();
             services.AddScoped<IDisplayDriver<IProfile>, SubmittedFormsProfileDisplayDriver>();
