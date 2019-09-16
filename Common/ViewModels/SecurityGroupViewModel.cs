@@ -9,7 +9,7 @@ namespace Common.ViewModels
     public class SecurityGroupViewModel
     {
         public string ID { get; set; }
-        public string Value { get; set; }
+        public dynamic Value { get; set; }
         public LocalizedHtmlString Title { get; set; }
         public LocalizedHtmlString Hint { get; set; }
         public LocalizedHtmlString PlaceHolder { get; set; }

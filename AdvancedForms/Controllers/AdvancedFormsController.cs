@@ -95,6 +95,7 @@ namespace AdvancedForms.Controllers
                 Type = contentItem.Content.AdvancedForm.Type.Text,
                 Group = contentItem.Content.AdvancedForm.Group.Text,
                 Container = contentItem.Content.AdvancedForm.Container.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.Container.Html) : String.Empty,
+                FormFields = contentItem.Content.AdvancedForm.FormFields != null && contentItem.Content.AdvancedForm.FormFields.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.FormFields.Html) : String.Empty,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
@@ -136,6 +137,7 @@ namespace AdvancedForms.Controllers
                 Type = contentItem.Content.AdvancedForm.Type.Text,
                 Group = contentItem.Content.AdvancedForm.Group.Text,
                 Container = contentItem.Content.AdvancedForm.Container.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.Container.Html) : String.Empty,
+                FormFields = contentItem.Content.AdvancedForm.FormFields != null && contentItem.Content.AdvancedForm.FormFields.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.FormFields.Html) : String.Empty,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
@@ -322,7 +324,7 @@ namespace AdvancedForms.Controllers
         [AllowAnonymous]
         [Route("AdvancedForms/Entry")]
         public async Task<IActionResult> Entry(string submission, string title, string id, string container,
-            string header, string footer, string description, string type, string submissionId, string instructions, string owner, bool isDraft, bool hideFromListing, bool isGlobalHeader, bool isGlobalFooter, string group)
+            string header, string footer, string description, string type, string submissionId, string instructions, string owner, bool isDraft, bool hideFromListing, bool isGlobalHeader, bool isGlobalFooter, string group, string formFields)
         {
             ContentItem content;
             string adminSubmission = string.Empty;
@@ -352,6 +354,7 @@ namespace AdvancedForms.Controllers
             hideFromListing = formContent.Content.AdvancedForm.HideFromListing.Value;
             isGlobalFooter = formContent.Content.AdvancedForm.IsGlobalFooter.Value;
             isGlobalHeader = formContent.Content.AdvancedForm.IsGlobalHeader.Value;
+            formFields = formContent.Content.AdvancedForm.FormFields != null && formContent.Content.AdvancedForm.FormFields.Html != null ? JsonConvert.SerializeObject(formContent.Content.AdvancedForm.FormFields.Html) : String.Empty;
 
             string metadata = string.Empty, data, status = string.Empty;
             var query = _session.Query<ContentItem, ContentItemIndex>();
@@ -407,7 +410,7 @@ namespace AdvancedForms.Controllers
             else
                 displayText = string.Format("{0}, {1} by {2}, Created Date: {3}", title, Location, owner, content.CreatedUtc.Value.ToString("MM/dd/yyyy"));
             var viewModel = new AdvancedFormSubmissions(data, metadata, subTitle, container, header, footer, description,
-                type, instructions, owner, status, adminContainer, adminSubmission, Location, hideFromListing, isGlobalHeader, isGlobalFooter, group);
+                type, instructions, owner, status, adminContainer, adminSubmission, Location, hideFromListing, isGlobalHeader, isGlobalFooter, group, formFields);
 
             return await EditPOST(content.ContentItemId, displayText, title, viewModel, async contentItem =>
             {
@@ -449,7 +452,7 @@ namespace AdvancedForms.Controllers
             string subTitle = model.Title;
             var subObject = JObject.Parse(model.Submission);
             var viewModel = new AdvancedFormSubmissions(model.Submission,
-            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.ApplicationLocation, model.HideFromListing, model.IsGlobalHeader, model.IsGlobalFooter, model.Group);
+            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.ApplicationLocation, model.HideFromListing, model.IsGlobalHeader, model.IsGlobalFooter, model.Group, model.FormFields);
 
             await EditPOST(content.ContentItemId, content.DisplayText, model.Title, viewModel, async contentItem =>
             {
@@ -492,7 +495,7 @@ namespace AdvancedForms.Controllers
             string subTitle = model.Title;
             var subObject = JObject.Parse(model.Submission);
             var viewModel = new AdvancedFormSubmissions(model.Submission,
-            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.ApplicationLocation, model.HideFromListing, model.IsGlobalHeader, model.IsGlobalFooter, model.Group);
+            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.ApplicationLocation, model.HideFromListing, model.IsGlobalHeader, model.IsGlobalFooter, model.Group, model.FormFields);
 
             await EditPOST(content.ContentItemId, content.DisplayText, model.Title, viewModel, async contentItem =>
             {

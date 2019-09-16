@@ -1,6 +1,6 @@
-﻿var Title, Id, Header, Footer, Description, Type, SubmissionId, Instructions, Owner, DraftSubmission, CaseID, HideFromListing, IsGlobalHeader, IsGlobalFooter, Group;
+﻿var Title, Id, Header, Footer, Description, Type, SubmissionId, Instructions, Owner, DraftSubmission, CaseID, HideFromListing, IsGlobalHeader, IsGlobalFooter, Group, FormFields;
 
-function initValue(title, id, header, footer, description, type, submissionId, instructions, owner, caseId, hideFromListing, isGlobalHeader, isGlobalFooter, group) {
+function initValue(title, id, header, footer, description, type, submissionId, instructions, owner, caseId, hideFromListing, isGlobalHeader, isGlobalFooter, group, formFields) {
     Title = title;
     Id = id;
     Header = header;
@@ -15,6 +15,7 @@ function initValue(title, id, header, footer, description, type, submissionId, i
     IsGlobalHeader = isGlobalHeader;
     IsGlobalFooter = isGlobalFooter;
     Group = group;
+    FormFields = formFields;
 }
 
 function saveDraft() {
@@ -42,7 +43,8 @@ function saveForm(submission, isDraft) {
             hideFromListing: HideFromListing,
             isGlobalHeader: IsGlobalHeader,
             isGlobalFooter: IsGlobalFooter,
-            group: Group
+            group: Group,
+            formFields: FormFields
         },
         success: function (data) {
             if (CaseID !== undefined && CaseID !== null && CaseID !== '') {

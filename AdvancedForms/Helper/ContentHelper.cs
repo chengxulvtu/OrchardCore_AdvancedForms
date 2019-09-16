@@ -89,6 +89,7 @@ namespace AdvancedForms.Helper
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 Container = contentItem.Content.AdvancedForm.Container.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.Container.Html) : String.Empty,
+                FormFields = contentItem.Content.AdvancedForm.FormFields != null && contentItem.Content.AdvancedForm.FormFields.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.FormFields.Html) : String.Empty,
                 AdminContainer = contentItem.Content.AdvancedForm.AdminContainer.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.AdminContainer.Html) : String.Empty,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,

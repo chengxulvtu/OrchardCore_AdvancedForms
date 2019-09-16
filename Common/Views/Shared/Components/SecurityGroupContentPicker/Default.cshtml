@@ -1,5 +1,6 @@
 ﻿@model Common.ViewModels.SecurityGroupViewModel
-
+@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
 
 <div>
     <label asp-for="Groups">@Model.Title</label>
@@ -42,10 +43,11 @@
     </div>
 </div>
 
-@if (string.IsNullOrEmpty(Model.Value))
+@if (Model.Value.Count > 0)
 {
+    var selectedGroups = Html.Raw(JsonConvert.SerializeObject(Model.Value, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }));
     <script at="Foot">
-        initializeContentPickerFieldEditorSecurityGroup('ContentPicker_PickerSecurityGroup', [], '', true);
+        initializeContentPickerFieldEditorSecurityGroup('ContentPicker_PickerSecurityGroup', @selectedGroups, '', true);
     </script>
 }
 else

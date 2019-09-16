@@ -104,6 +104,7 @@ namespace AdvancedForms.Controllers
                 EntryType = Enums.EntryType.Edit,
                 Title = contentItem.DisplayText,
                 Container = contentItem.Content.AdvancedForm.Container.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.Container.Html) : String.Empty,
+                FormFields = contentItem.Content.AdvancedForm.FormFields != null && contentItem.Content.AdvancedForm.FormFields.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.FormFields.Html) : String.Empty,
                 AdminContainer = contentItem.Content.AdvancedForm.AdminContainer.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.AdminContainer.Html) : String.Empty,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
@@ -323,7 +324,7 @@ namespace AdvancedForms.Controllers
             }
 
             var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions,
-                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type, viewModel.AdminContainer, viewModel.HideFromListing, viewModel.IsGlobalHeader, viewModel.IsGlobalFooter, viewModel.Group);
+                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type, viewModel.AdminContainer, viewModel.HideFromListing, viewModel.IsGlobalHeader, viewModel.IsGlobalFooter, viewModel.Group, viewModel.FormFields);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.DisplayText = viewModel.Title;
             var path = CreatePath(viewModel.Title);
@@ -399,6 +400,7 @@ namespace AdvancedForms.Controllers
                 EntryType = Enums.EntryType.Edit,
                 Title = contentItem.DisplayText,
                 Container = contentItem.Content.AdvancedForm.Container.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.Container.Html) : String.Empty,
+                FormFields = contentItem.Content.AdvancedForm.FormFields != null && contentItem.Content.AdvancedForm.FormFields.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.FormFields.Html) : String.Empty,
                 AdminContainer = contentItem.Content.AdvancedForm.AdminContainer.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.AdminContainer.Html) : String.Empty,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
@@ -485,7 +487,7 @@ namespace AdvancedForms.Controllers
             }
 
             var advForm = new AdvancedForm(viewModel.Description, viewModel.Instructions,
-                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type, viewModel.AdminContainer, viewModel.HideFromListing, viewModel.IsGlobalHeader, viewModel.IsGlobalFooter, viewModel.Group);
+                viewModel.Container, viewModel.Title, viewModel.Header, viewModel.Footer, viewModel.Type, viewModel.AdminContainer, viewModel.HideFromListing, viewModel.IsGlobalHeader, viewModel.IsGlobalFooter, viewModel.Group, viewModel.FormFields);
             contentItem.Content.AdvancedForm = JToken.FromObject(advForm);
             contentItem.DisplayText = viewModel.Title;
             var path = CreatePath(viewModel.Title);
@@ -498,6 +500,7 @@ namespace AdvancedForms.Controllers
                 Id = viewModel.Id,
                 Title = contentItem.DisplayText,
                 Container = contentItem.Content.AdvancedForm.Container.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.Container.Html) : String.Empty,
+                FormFields = contentItem.Content.AdvancedForm.FormFields != null && contentItem.Content.AdvancedForm.FormFields.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.FormFields.Html) : String.Empty,
                 AdminContainer = contentItem.Content.AdvancedForm.AdminContainer.Html != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.AdminContainer.Html) : String.Empty,
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
@@ -623,6 +626,7 @@ namespace AdvancedForms.Controllers
                 Submission = subContentItem.Content.AdvancedFormSubmissions.Submission.Html != null ? JsonConvert.SerializeObject(subContentItem.Content.AdvancedFormSubmissions.Submission.Html) : String.Empty,
                 AdminSubmission = subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html != null ? JsonConvert.SerializeObject(subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html) : String.Empty,
                 Metadata = subContentItem.Content.AdvancedFormSubmissions.Metadata.Html != null ? JsonConvert.SerializeObject(subContentItem.Content.AdvancedFormSubmissions.Metadata.Html) : String.Empty,
+                FormFields = subContentItem.Content.AdvancedFormSubmissions.FormFields.Html != null ? JsonConvert.SerializeObject(subContentItem.Content.AdvancedFormSubmissions.FormFields.Html) : String.Empty,
                 Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text,
                 SelectedItems = lst,
                 SelectedGroups = roles,

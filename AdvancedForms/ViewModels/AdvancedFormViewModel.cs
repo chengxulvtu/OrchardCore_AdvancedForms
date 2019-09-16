@@ -31,6 +31,7 @@ namespace AdvancedForms.ViewModels
         public string Container { get; set; }
         public string AdminContainer { get; set; }
         public string Submission { get; set; }
+        public string FormFields { get; set; }
         public string AdminSubmission { get; set; }
         public string ApplicationLocation { get; set; }
         public string Metadata { get; set; }

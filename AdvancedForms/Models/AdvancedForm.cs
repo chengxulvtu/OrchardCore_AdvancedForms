@@ -16,14 +16,15 @@ namespace AdvancedForms.Models
         public BooleanPart HideFromListing { get; set; }
         public BooleanPart IsGlobalHeader { get; set; }
         public BooleanPart IsGlobalFooter { get; set; }
-        public JSonEditorPart Container, AdminContainer;
+        public JSonEditorPart Container, AdminContainer, FormFields;
 
-        public AdvancedForm(string description, string instructions, string container, string title, string header, string footer, string type, string adminContainer, bool isHideFromListing, bool isGlobalHeader, bool isGlobalFooter, string group)
+        public AdvancedForm(string description, string instructions, string container, string title, string header, string footer, string type, string adminContainer, bool isHideFromListing, bool isGlobalHeader, bool isGlobalFooter, string group, string formFields)
         {
             Description = new EditorPart(description);
             Title = title;
             Instructions = new EditorPart(instructions);
             Container = new JSonEditorPart(container);
+            FormFields = new JSonEditorPart(formFields);
             AdminContainer = new JSonEditorPart(adminContainer);
             Header = new EditorPart(header);
             Footer = new EditorPart(footer);

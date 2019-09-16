@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <EmbeddedResource Remove="Views\AdvancedForms\Contents-Meta.SummaryAdmin.cshtml" />
+    <EmbeddedResource Remove="wwwroot\Scripts\AdvancedForms.js~RF69a970.TMP" />
     <EmbeddedResource Remove="wwwroot\Scripts\loader.css" />
     <EmbeddedResource Remove="wwwroot\Styles\Submission.js" />
   </ItemGroup>
@@ -220,6 +221,10 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\Styles\glyphicons.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Scripts\AdvancedForms.js~RF69a970.TMP" />
   </ItemGroup>
 
 </Project>
