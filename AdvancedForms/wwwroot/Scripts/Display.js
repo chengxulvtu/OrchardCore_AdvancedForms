@@ -1,21 +1,12 @@
-﻿var Title, Id, Header, Footer, Description, Type, SubmissionId, Instructions, Owner, DraftSubmission, CaseID, HideFromListing, IsGlobalHeader, IsGlobalFooter, Group, FormFields;
+﻿var Title, Id, SubmissionId, Owner, DraftSubmission, CaseID, Group;
 
-function initValue(title, id, header, footer, description, type, submissionId, instructions, owner, caseId, hideFromListing, isGlobalHeader, isGlobalFooter, group, formFields) {
+function initValue(title, id, submissionId, owner, caseId, group) {
     Title = title;
     Id = id;
-    Header = header;
-    Footer = footer;
-    Description = description;
-    Type = type;
     SubmissionId = submissionId;
-    Instructions = instructions;
     Owner = owner;
     CaseID = caseId;
-    HideFromListing = hideFromListing;
-    IsGlobalHeader = isGlobalHeader;
-    IsGlobalFooter = isGlobalFooter;
     Group = group;
-    FormFields = formFields;
 }
 
 function saveDraft() {
@@ -31,20 +22,10 @@ function saveForm(submission, isDraft) {
             submission: JSON.stringify(submission),
             Title: Title,
             id: Id,
-            container: document.getElementById('Container').value,
-            header: Header,
-            footer: Footer,
-            description: Description,
-            type: Type,
             submissionId: SubmissionId,
-            instructions: Instructions,
             owner: Owner,
             isDraft: isDraft,
-            hideFromListing: HideFromListing,
-            isGlobalHeader: IsGlobalHeader,
-            isGlobalFooter: IsGlobalFooter,
-            group: Group,
-            formFields: FormFields
+            group: Group
         },
         success: function (data) {
             if (CaseID !== undefined && CaseID !== null && CaseID !== '') {
@@ -101,7 +82,7 @@ $(document).ready(function () {
     });
     $('#inputTitle').keypress(function (event) {
         var keycode = (event.keyCode ? event.keyCode : event.which);
-        if (keycode == '13') {
+        if (keycode === '13') {
             searchForms();
         }
     });
@@ -115,7 +96,7 @@ function searchForms() {
     $(".forms_panel .panel a span").each(function () {
         var currentTitle = $(this).text();
         $(this).parent().parent().show();
-        if (currentTitle.toLowerCase().indexOf(searchTitle) == -1) {
+        if (currentTitle.toLowerCase().indexOf(searchTitle) === -1) {
             $(this).parent().parent().hide();
         }
     });

@@ -99,6 +99,7 @@ namespace AdvancedForms.Controllers
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
+                AdvancedFormId = contentItemId,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 CaseID = "",
                 HideFromListing = contentItem.Content.AdvancedForm.HideFromListing.Value,
@@ -142,6 +143,7 @@ namespace AdvancedForms.Controllers
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
+                AdvancedFormId = contentItemId,
                 CaseID = caseID,
                 HideFromListing = contentItem.Content.AdvancedForm.HideFromListing.Value,
                 IsGlobalHeader = contentItem.Content.AdvancedForm.IsGlobalHeader.Value,
@@ -323,16 +325,14 @@ namespace AdvancedForms.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("AdvancedForms/Entry")]
-        public async Task<IActionResult> Entry(string submission, string title, string id, string container,
-            string header, string footer, string description, string type, string submissionId, string instructions, string owner, bool isDraft, bool hideFromListing, bool isGlobalHeader, bool isGlobalFooter, string group, string formFields)
+        public async Task<IActionResult> Entry(string submission, string title, string id, string submissionId, string owner, bool isDraft, string group)
         {
             ContentItem content;
             string adminSubmission = string.Empty;
             if (!string.IsNullOrWhiteSpace(submissionId))
             {
                 content = await _contentManager.GetAsync(submissionId, VersionOptions.Latest);
-                adminSubmission = content.Content.AdvancedFormSubmissions.AdminSubmission != null ?
-                    content.Content.AdvancedFormSubmissions.AdminSubmission.Html.ToString() : null;
+                adminSubmission = content.Content.AdvancedFormSubmissions.AdminSubmission != null ? content.Content.AdvancedFormSubmissions.AdminSubmission.Html.ToString() : null;
             }
             else
             {
@@ -347,14 +347,7 @@ namespace AdvancedForms.Controllers
 
             var formContent = await _contentManager.GetAsync(id, VersionOptions.Latest);
             string adminContainer = formContent.Content.AdvancedForm.AdminContainer.Html != null ? JsonConvert.SerializeObject(formContent.Content.AdvancedForm.AdminContainer.Html) : String.Empty;
-            description = formContent.Content.AdvancedForm.Description.Html;
-            instructions = formContent.Content.AdvancedForm.Instructions.Html;
-            header = formContent.Content.AdvancedForm.Header.Html;
-            footer = formContent.Content.AdvancedForm.Footer.Html;
-            hideFromListing = formContent.Content.AdvancedForm.HideFromListing.Value;
-            isGlobalFooter = formContent.Content.AdvancedForm.IsGlobalFooter.Value;
-            isGlobalHeader = formContent.Content.AdvancedForm.IsGlobalHeader.Value;
-            formFields = formContent.Content.AdvancedForm.FormFields != null && formContent.Content.AdvancedForm.FormFields.Html != null ? JsonConvert.SerializeObject(formContent.Content.AdvancedForm.FormFields.Html) : String.Empty;
+            string formFields = formContent.Content.AdvancedForm.FormFields.Html != null ? JsonConvert.SerializeObject(formContent.Content.AdvancedForm.FormFields.Html) : String.Empty;
 
             string metadata = string.Empty, data, status = string.Empty;
             var query = _session.Query<ContentItem, ContentItemIndex>();
@@ -390,15 +383,11 @@ namespace AdvancedForms.Controllers
             {
                 ContentHelper helper = new ContentHelper(_contentManager, _session, _contentDefinitionManager, _contentAliasManager);
                 Location = helper.GetInputValue(data, "applicationLocation");
-
                 if ((Location.StartsWith("{") && Location.EndsWith("}")))
                 {
                     var obj = JToken.Parse(Location);
                     Location = obj["formatted_address"].ToString();
                 }
-
-
-
                 if (string.IsNullOrEmpty(adminSubmission))
                 {
                     adminSubmission = "{\r\n  \"doNotMapLocation\": false\r\n}";
@@ -409,8 +398,8 @@ namespace AdvancedForms.Controllers
                 displayText = string.Format("{0} by {1}, Created Date: {2}", title, owner, content.CreatedUtc.Value.ToString("MM/dd/yyyy"));
             else
                 displayText = string.Format("{0}, {1} by {2}, Created Date: {3}", title, Location, owner, content.CreatedUtc.Value.ToString("MM/dd/yyyy"));
-            var viewModel = new AdvancedFormSubmissions(data, metadata, subTitle, container, header, footer, description,
-                type, instructions, owner, status, adminContainer, adminSubmission, Location, hideFromListing, isGlobalHeader, isGlobalFooter, group, formFields);
+
+            var viewModel = new AdvancedFormSubmissions(data, metadata, subTitle, owner, status, adminSubmission, Location, formFields, formContent.ContentItemId);
 
             return await EditPOST(content.ContentItemId, displayText, title, viewModel, async contentItem =>
             {
@@ -451,9 +440,7 @@ namespace AdvancedForms.Controllers
             string guid = content.ContentItemId;
             string subTitle = model.Title;
             var subObject = JObject.Parse(model.Submission);
-            var viewModel = new AdvancedFormSubmissions(model.Submission,
-            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.ApplicationLocation, model.HideFromListing, model.IsGlobalHeader, model.IsGlobalFooter, model.Group, model.FormFields);
-
+            var viewModel = new AdvancedFormSubmissions(model.Submission, model.Metadata, subTitle, model.Owner, model.Status, model.AdminSubmission, model.ApplicationLocation, model.FormFields, model.AdvancedFormId);
             await EditPOST(content.ContentItemId, content.DisplayText, model.Title, viewModel, async contentItem =>
             {
                 var typeDefinition = _contentDefinitionManager.GetTypeDefinition(contentItem.ContentType);
@@ -494,9 +481,7 @@ namespace AdvancedForms.Controllers
             string guid = content.ContentItemId;
             string subTitle = model.Title;
             var subObject = JObject.Parse(model.Submission);
-            var viewModel = new AdvancedFormSubmissions(model.Submission,
-            model.Metadata, subTitle, model.Container, model.Header, model.Footer, model.Description, model.Type, model.Instructions, model.Owner, model.Status, model.AdminContainer, model.AdminSubmission, model.ApplicationLocation, model.HideFromListing, model.IsGlobalHeader, model.IsGlobalFooter, model.Group, model.FormFields);
-
+            var viewModel = new AdvancedFormSubmissions(model.Submission, model.Metadata, subTitle, model.Owner, model.Status, model.AdminSubmission, model.ApplicationLocation, model.FormFields, model.AdvancedFormId);
             await EditPOST(content.ContentItemId, content.DisplayText, model.Title, viewModel, async contentItem =>
             {
                 await _contentManager.PublishAsync(contentItem);

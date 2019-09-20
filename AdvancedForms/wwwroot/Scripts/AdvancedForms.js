@@ -35,7 +35,6 @@ function builderAdminFieldsChange(builder) {
 
 var onForm = function (form) {
     form.on('change', function () {
-        debugger;
         var subJsonElement = document.getElementById('subJson');
         subJsonElement.innerHTML = '';
         subJsonElement.appendChild(document.createTextNode(JSON.stringify(form.submission, null, 4)));

@@ -36,6 +36,7 @@ namespace AdvancedForms.ViewModels
         public string ApplicationLocation { get; set; }
         public string Metadata { get; set; }
         public string SubmissionId { get; set; }
+        public string AdvancedFormId { get; set; }
         public string CaseID { get; set; }
         public bool HideFromListing { get; set; }
         public bool IsGlobalHeader { get; set; }

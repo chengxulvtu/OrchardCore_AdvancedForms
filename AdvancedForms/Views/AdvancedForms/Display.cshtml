@@ -54,7 +54,7 @@
                 DraftSubmission = submission;
             });
         });
-        initValue('@Model.Title','@Model.Id','@Model.Header','@Model.Footer','@Model.Description','@Model.Type','@Model.SubmissionId','@Model.Instructions','@Model.Owner', '@Model.CaseID', '@Model.HideFromListing', '@Model.IsGlobalHeader', '@Model.IsGlobalFooter', '@Model.Group', '@Model.FormFields')
+        initValue('@Model.Title','@Model.Id','@Model.SubmissionId','@Model.Owner', '@Model.CaseID','@Model.Group')
     };
     setCurrentUser('@Model.Id', '@User.Identity.Name', false);
 </script>

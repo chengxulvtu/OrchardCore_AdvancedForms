@@ -94,6 +94,7 @@ namespace AdvancedForms.Helper
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 SubmissionId = subContentItem.ContentItemId,
+                AdvancedFormId = contentItem.ContentItemId,
                 Submission = subContentItem.Content.AdvancedFormSubmissions.Submission.Html != null ? JsonConvert.SerializeObject(subContentItem.Content.AdvancedFormSubmissions.Submission.Html) : String.Empty,
                 AdminSubmission = subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html != null ? JsonConvert.SerializeObject(subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html) : String.Empty,
                 EntryType = entryType,

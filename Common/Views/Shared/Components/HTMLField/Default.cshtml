@@ -15,7 +15,6 @@
     $('#@Model.ID').trumbowyg();
 
     function EditComment(id, obj, selector) {
-        debugger;
         clearEditors(); 
         var url =  $(obj).parent().parent().find(".downloadLink")[0];
         $('#' + selector).parent().find(".trumbowyg-editor")[0].innerHTML = $(obj).parent().parent().find(".panel-body")[0].innerHTML;

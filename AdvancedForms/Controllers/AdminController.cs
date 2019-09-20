@@ -109,6 +109,7 @@ namespace AdvancedForms.Controllers
                 Description = contentItem.Content.AdvancedForm.Description.Html,
                 Instructions = contentItem.Content.AdvancedForm.Instructions.Html,
                 Header = contentItem.Content.AdvancedForm.Header.Html,
+                AdvancedFormId = contentItemId,
                 Footer = contentItem.Content.AdvancedForm.Footer.Html,
                 Type = contentItem.Content.AdvancedForm.Type.Text,
                 Group = contentItem.Content.AdvancedForm.Group.Text,
@@ -607,6 +608,7 @@ namespace AdvancedForms.Controllers
             var model = new AdvancedFormViewModel
             {
                 Id = contentItem.ContentItemId,
+                AdvancedFormId = contentItem.ContentItemId,
                 Owner = contentItem.Owner,
                 ModifiedUtc = subContentItem.ModifiedUtc,
                 CreatedUtc = subContentItem.CreatedUtc,
@@ -626,7 +628,7 @@ namespace AdvancedForms.Controllers
                 Submission = subContentItem.Content.AdvancedFormSubmissions.Submission.Html != null ? JsonConvert.SerializeObject(subContentItem.Content.AdvancedFormSubmissions.Submission.Html) : String.Empty,
                 AdminSubmission = subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html != null ? JsonConvert.SerializeObject(subContentItem.Content.AdvancedFormSubmissions.AdminSubmission.Html) : String.Empty,
                 Metadata = subContentItem.Content.AdvancedFormSubmissions.Metadata.Html != null ? JsonConvert.SerializeObject(subContentItem.Content.AdvancedFormSubmissions.Metadata.Html) : String.Empty,
-                FormFields = subContentItem.Content.AdvancedFormSubmissions.FormFields.Html != null ? JsonConvert.SerializeObject(subContentItem.Content.AdvancedFormSubmissions.FormFields.Html) : String.Empty,
+                FormFields = contentItem.Content.AdvancedForm.FormFields != null ? JsonConvert.SerializeObject(contentItem.Content.AdvancedForm.FormFields.Html) : String.Empty,
                 Status = subContentItem.Content.AdvancedFormSubmissions.Status.Text,
                 SelectedItems = lst,
                 SelectedGroups = roles,
@@ -697,21 +699,24 @@ namespace AdvancedForms.Controllers
             Dictionary<string, string> statusWithColor = new Dictionary<string, string>();
             query = _session.Query<ContentItem, ContentItemIndex>();
             var allTypes = await query.Where(o => o.ContentType == "AdvancedFormTypes" && (o.Latest || o.Published)).ListAsync();
+            query = _session.Query<ContentItem, ContentItemIndex>();
+            var allAdvacnedForms = await query.Where(o => o.ContentType == "AdvancedForm" && o.Latest).ListAsync();
             graph.FreqData = new List<FrequencyData>();
             FrequencyData data;
             query = _session.Query<ContentItem, ContentItemIndex>();
-            var allSubmissions = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && o.Latest).ListAsync();
+            var allSubmissions = await query.Where(o => o.ContentType == "AdvancedFormSubmissions" && o.Latest && o.Published).ListAsync();
             int formCount = 0;
             foreach (var type in allTypes)
             {
+                var formsIds = allAdvacnedForms.Where(o => o.Content.AdvancedForm.Type.Text.ToString() == type.ContentItemId).Select(x=>x.ContentItemId).ToList();
                 data = new FrequencyData();
                 data.State = type.DisplayText;
                 data.freq = new Dictionary<string, int>();
-                foreach (var status in allStatus)
+                foreach (ContentItem status in allStatus)
                 {
                     statusWithColor[status.DisplayText.Replace(" ", "_")] = status.Content.AdvancedFormStatus.Color.Text;
                     formCount = allSubmissions.Where(o => o.Content.AdvancedFormSubmissions.Status.Text.ToString() == status.ContentItemId
-                    && o.Content.AdvancedFormSubmissions.Type.Text.ToString() == type.ContentItemId).Count();
+                            && o.Content.AdvancedFormSubmissions.Type.Text.ToString() == type.ContentItemId).Count();
                     data.freq.Add(status.DisplayText.Replace(" ", "_"), formCount);
                 }
                 graph.FreqData.Add(data);
