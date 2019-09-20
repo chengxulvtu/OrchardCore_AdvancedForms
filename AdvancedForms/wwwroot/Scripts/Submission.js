@@ -44,6 +44,7 @@ function submitAdminComment(id) {
         return;
     }
     var url = $("#adminAttachment").text();
+    $("#btnAdminCommentSubmit").attr('disabled', true);
     $.ajax({
         url: urlConfig.SaveUpdateAdminComment,
         method: 'POST',
@@ -57,10 +58,12 @@ function submitAdminComment(id) {
         success: function (data) {
             clearEditors();
             GetAdminComments(id);
+            $("#btnAdminCommentSubmit").attr('disabled', false);
         },
         error: function (error) {
             var errorMsg = "Unable to Save. Try again later.";
             $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
+            $("#btnAdminCommentSubmit").attr('disabled', false);
         }
     });
 }
@@ -76,6 +79,7 @@ function submitPublicComment(id) {
         return;
     }
     var url = $("#publicAttachment").text();
+    $("#btnPublicCommentSave").attr("disabled", true);
     $.ajax({
         url: urlConfig.SaveUpdatePublicComment,
         method: 'POST',
@@ -89,10 +93,12 @@ function submitPublicComment(id) {
         success: function (data) {
             clearEditors();
             GetPublicComments(id);
+            $("#btnPublicCommentSave").attr("disabled", false);
         },
         error: function (error) {
             var errorMsg = "Unable to Save. Try again later.";
             $('<div class="alert alert-danger" role="alert"></div>').text(errorMsg + error.responseText).appendTo($('#advancedForm-errors'));
+            $("#btnPublicCommentSave").attr("disabled", false);
         }
     });
 }
